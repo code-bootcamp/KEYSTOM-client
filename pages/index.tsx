@@ -1,5 +1,5 @@
-// Landing Page
+import StoreContainer from "../src/components/units/storeMain/StoreMain.container";
 
-export default function Home() {
-  return <>테스트</>;
+export default function StoreMain() {
+  return <StoreContainer></StoreContainer>;
 }
