@@ -1,34 +1,19 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# f6b2-team6-client
 
-## Getting Started
-
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## git commit message rule
+1. 타입을 대괄호로 감싸 어떠한 작업을 하였는지 간략하게 표현! 
+2. 제목을 50글자 내로 제한
+3. 제목 끝에 마침표 넣지 않기
+4. 제목은 명령문으로 사용하며 상태 표현(ex: 완료, 수정 필요, 예정 등)
+5. issue number를 끝에 넣기
+ 
+### type
+feat : 새로운 기능에 대한 커밋
+fix : 버그 수정에 대한 커밋
+build : 빌드 관련 파일 수정에 대한 커밋
+chore : 그 외 자잘한 수정에 대한 커밋
+ci : CI관련 설정 수정에 대한 커밋
+docs : 문서 수정에 대한 커밋
+style : 코드 스타일 혹은 포맷 등에 관한 커밋
+refactor :  코드 리팩토링에 대한 커밋
+test : 테스트 코드 수정에 대한 커밋
