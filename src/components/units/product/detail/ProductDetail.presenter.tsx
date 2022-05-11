@@ -1,4 +1,4 @@
-import * as S from './productDetail.styles'
+import * as S from './ProductDetail.styles'
 
 export default function ProductDetailPresenter(){
 

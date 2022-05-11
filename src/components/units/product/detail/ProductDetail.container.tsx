@@ -1,4 +1,4 @@
-import ProductDetailPresenter from "./productDetail.presenter";
+import ProductDetailPresenter from '../detail/ProductDetail.presenter';
 
 
 export default function ProductDetailContainer(){

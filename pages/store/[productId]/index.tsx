@@ -1,5 +1,7 @@
-import ProductDetailContainer from '../../../src/components/units/product/list/detail/productDetail.container';
 // Detail Page
+
+import ProductDetailContainer from '../../../src/components/units/product/detail/ProductDetail.container';
+
 
 export default function ProductDetail(){
 
