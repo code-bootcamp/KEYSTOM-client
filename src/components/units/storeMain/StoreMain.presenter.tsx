@@ -1,82 +1,97 @@
 import * as S from "./StoreMain.styles";
 
+const ProductArr = [
+    {
+        title: "키보드 1호",
+        contents:
+            "키보드 1호 상품 설명입니다. 키보드 1호 상품 설명입니다. 키보드 1호 상품 설명입니다. ",
+        image: "/images/keyboard-01.jpg",
+        price: 120000,
+    },
+    {
+        title: "키보드 2호",
+        contents: "키보드 2호 상품 설명입니다. 어쩌구 저쩌구 ㅇㅇㅇㅇ",
+        image: "/images/keyboard-02.jpg",
+        price: 60000,
+    },
+    {
+        title: "키보드 3호",
+        contents: "키보드 3호 상품 설명입니다. 어쩌구 저쩌구 ㅇㅇㅇㅇ",
+        image: "/images/keyboard-03.jpg",
+        price: 220000,
+    },
+];
+
+const ReviewArr = [
+    {
+        title: "키보드 1호",
+        contents: "리뷰 상세, 1줄 이상은 생략하게 해주세요.(...)",
+        image: "/images/keyboard-01.jpg",
+        like: 15,
+    },
+    {
+        title: "키보드 2호",
+        contents: "리뷰 상세, 1줄 이상은 생략하게 해주세요.(...)",
+        image: "/images/keyboard-02.jpg",
+        like: 10,
+    },
+    {
+        title: "키보드 3호",
+        contents: "리뷰 상세, 1줄 이상은 생략하게 해주세요.(...)",
+        image: "/images/keyboard-03.jpg",
+        like: 5,
+    },
+];
+
 export default function StorePresenter() {
-  return (
-    <S.Wrapper>
-      <S.MainWrapper>
-        <S.ImageWrapper>
-          <S.MainImage></S.MainImage>
-        </S.ImageWrapper>
+    return (
+        <S.Wrapper>
+            <S.MainWrapper>
+                <S.ImageWrapper>
+                    <S.MainImage></S.MainImage>
+                </S.ImageWrapper>
 
-        <S.ReviewWrapper>
-          <S.Text>베스트 리뷰</S.Text>
-          <S.ReviewBoxWrapper>
-            {/* 리뷰박스1 */}
-            <S.ReviewBox>
-              <S.ReviewImage></S.ReviewImage>
-              <S.ReviewDownWrapper>
-                <S.ReviewDownLeftWrapper>
-                  <S.ReviewTitle>커스텀 키보드 1호</S.ReviewTitle>
-                  <S.ReviewContents>
-                    리뷰 상세, 1줄 이상은 생략하게 해주세요.(...)
-                  </S.ReviewContents>
-                </S.ReviewDownLeftWrapper>
-                <S.ReviewDownRightWrapper>
-                  <S.ReviewScore>👍15</S.ReviewScore>
-                </S.ReviewDownRightWrapper>
-              </S.ReviewDownWrapper>
-            </S.ReviewBox>
-            {/* 리뷰박스2 */}
-            <S.ReviewBox>
-              <S.ReviewImage></S.ReviewImage>
-              <S.ReviewDownWrapper>
-                <S.ReviewDownLeftWrapper>
-                  <S.ReviewTitle>커스텀 키보드 1호</S.ReviewTitle>
-                  <S.ReviewContents>
-                    리뷰 상세, 1줄 이상은 생략하게 해주세요.(...)
-                  </S.ReviewContents>
-                </S.ReviewDownLeftWrapper>
-                <S.ReviewDownRightWrapper>
-                  <S.ReviewScore>👍15</S.ReviewScore>
-                </S.ReviewDownRightWrapper>
-              </S.ReviewDownWrapper>
-            </S.ReviewBox>
-          </S.ReviewBoxWrapper>
+                <S.Text>베스트 상품</S.Text>
+                <S.BestProductWrapper>
+                    {ProductArr.map((el) => (
+                        <S.BestProductBox>
+                            <S.ReviewImage src={`${el.image}`}></S.ReviewImage>
+                            <S.ReviewDownWrapper>
+                                <S.ReviewTitleWrapper>
+                                    <S.ReviewTitle>{el.title}</S.ReviewTitle>
+                                    <S.ReviewScore>
+                                        {el.price.toLocaleString()}
+                                        <span>원</span>
+                                    </S.ReviewScore>
+                                </S.ReviewTitleWrapper>
+                                <S.ReviewContents>
+                                    {el.contents}
+                                </S.ReviewContents>
+                            </S.ReviewDownWrapper>
+                        </S.BestProductBox>
+                    ))}
+                </S.BestProductWrapper>
 
-          <S.ReviewBoxWrapper>
-            {/* 리뷰박스3 */}
-            <S.ReviewBox>
-              <S.ReviewImage></S.ReviewImage>
-              <S.ReviewDownWrapper>
-                <S.ReviewDownLeftWrapper>
-                  <S.ReviewTitle>커스텀 키보드 1호</S.ReviewTitle>
-                  <S.ReviewContents>
-                    리뷰 상세, 1줄 이상은 생략하게 해주세요.(...)
-                  </S.ReviewContents>
-                </S.ReviewDownLeftWrapper>
-                <S.ReviewDownRightWrapper>
-                  <S.ReviewScore>👍15</S.ReviewScore>
-                </S.ReviewDownRightWrapper>
-              </S.ReviewDownWrapper>
-            </S.ReviewBox>
-            {/* 리뷰박스4 */}
-            <S.ReviewBox>
-              <S.ReviewImage></S.ReviewImage>
-              <S.ReviewDownWrapper>
-                <S.ReviewDownLeftWrapper>
-                  <S.ReviewTitle>커스텀 키보드 1호</S.ReviewTitle>
-                  <S.ReviewContents>
-                    리뷰 상세, 1줄 이상은 생략하게 해주세요.(...)
-                  </S.ReviewContents>
-                </S.ReviewDownLeftWrapper>
-                <S.ReviewDownRightWrapper>
-                  <S.ReviewScore>👍15</S.ReviewScore>
-                </S.ReviewDownRightWrapper>
-              </S.ReviewDownWrapper>
-            </S.ReviewBox>
-          </S.ReviewBoxWrapper>
-        </S.ReviewWrapper>
-      </S.MainWrapper>
-    </S.Wrapper>
-  );
+                <S.Text>베스트 리뷰</S.Text>
+                <S.BestProductWrapper>
+                    {ReviewArr.map((el) => (
+                        <S.BestProductBox>
+                            <S.ReviewImage src={`${el.image}`}></S.ReviewImage>
+                            <S.ReviewDownWrapper>
+                                <S.ReviewTitleWrapper>
+                                    <S.ReviewTitle>{el.title}</S.ReviewTitle>
+                                    <S.ReviewScore>👍 {el.like}</S.ReviewScore>
+                                </S.ReviewTitleWrapper>
+                                <S.ReviewContents>
+                                    {el.contents}
+                                </S.ReviewContents>
+                            </S.ReviewDownWrapper>
+                        </S.BestProductBox>
+                    ))}
+                </S.BestProductWrapper>
+
+                {/* 구분선 */}
+            </S.MainWrapper>
+        </S.Wrapper>
+    );
 }
