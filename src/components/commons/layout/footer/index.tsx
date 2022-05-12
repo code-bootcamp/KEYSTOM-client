@@ -11,51 +11,54 @@ display: flex;
     color: #2c2c2c;
 ` 
 
-const LeftDiv = styled.div`
-width: 800px;
+const FooterLeftDiv = styled.div`
+width: 600px;
 `
 
-const RightDiv = styled.div``
+const FooterRightDiv = styled.div`
+width: 200px;
+padding-left: 250px;
+`
 
 
-const TopDiv = styled.div`
+const FooterTopDiv = styled.div`
 display: flex;
 align-items: center;
-  width: 100%;
+  width: 700px;
   padding-top: 126px;
   padding-bottom: 166px;
 `
-const LogoDiv = styled.div`
+const FooterLogoDiv = styled.div`
   width: 120px;
   height: 120px;
 `
-const Logo = styled.img`
+const FooterLogo = styled.img`
   width: 100%;
 `
 
-const LogoTitle = styled.div`
+const FooterLogoTitle = styled.div`
   font-weight: 700;
   font-size: 32px;
   line-height: 32px;
   padding-left: 48px;
 `
 
-const BottomWrapper = styled.div`
+const FooterBottomWrapper = styled.div`
 width: 400px;
 display: flex;
 justify-content: space-between;
 `
 
-const BottomDiv = styled.div``
+const FooterBottomDiv = styled.div``
 
-const BottomTitle = styled.div`
+const FooterBottomTitle = styled.div`
 font-weight: 700;
 font-size: 20px;
 line-height: 20px;
 padding-bottom: 24px;
 `
 
-const BottomContent = styled.div`
+const FooterBottomContent = styled.div`
 font-weight: 400;
 font-size: 18px;
 line-height: 24px;
@@ -74,7 +77,7 @@ const CompanyAddress = styled.div`
   padding-bottom: 15px;
 `
 
-const MapDiv =  styled.div`
+const FooterMapDiv =  styled.div`
 width: 300px;
 height: 300px;
 `
@@ -84,35 +87,35 @@ height: 300px;
 export default function LayoutFooter() {
   return (
     <FooterWrapper>
-      <LeftDiv>
-        <TopDiv>
-          <LogoDiv>
-            <Logo src="/images/lg.png"/>
-          </LogoDiv>
-          <LogoTitle>개발자들의 F12</LogoTitle>
-          </TopDiv>
-          <BottomWrapper>
-            <BottomDiv>
-              <BottomTitle>TEL</BottomTitle>
-              <BottomContent>070-456-7890</BottomContent>
-            </BottomDiv>
+      <FooterLeftDiv>
+        <FooterTopDiv>
+          <FooterLogoDiv>
+            <FooterLogo src="/images/lg.png"/>
+          </FooterLogoDiv>
+          <FooterLogoTitle>개발자들의 F12</FooterLogoTitle>
+          </FooterTopDiv>
+          <FooterBottomWrapper>
+            <FooterBottomDiv>
+              <FooterBottomTitle>TEL</FooterBottomTitle>
+              <FooterBottomContent>070-456-7890</FooterBottomContent>
+            </FooterBottomDiv>
 
-            <BottomDiv>
-              <BottomTitle>Email</BottomTitle>
-              <BottomContent>F12dev@gmail.com</BottomContent>
-            </BottomDiv>
-          </BottomWrapper>
-        </LeftDiv>
+            <FooterBottomDiv>
+              <FooterBottomTitle>Email</FooterBottomTitle>
+              <FooterBottomContent>F12dev@gmail.com</FooterBottomContent>
+            </FooterBottomDiv>
+          </FooterBottomWrapper>
+        </FooterLeftDiv>
 
-        <RightDiv>
+        <FooterRightDiv>
           <LocationText>Location</LocationText>
-          <MapDiv>
+          <FooterMapDiv>
             <CompanyAddress>
               서울시 행복구 행복빌딩 B동 1004호
             </CompanyAddress>
             <MapPage/>
-          </MapDiv>
-        </RightDiv>
+          </FooterMapDiv>
+        </FooterRightDiv>
     </FooterWrapper>
-);;
+)
 }
