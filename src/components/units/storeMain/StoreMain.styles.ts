@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { useMediaQuery } from "react-responsive";
+// import { useMediaQuery } from "react-responsive";
 
 export const Wrapper = styled.div`
     width: 100%;
