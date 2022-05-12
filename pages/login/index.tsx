@@ -1,17 +1,7 @@
-// Login Page
-// 로그인 기능
-
-
-import { Modal, Button } from 'antd';
+import LoginContainer from '../../src/components/units/login/Login.container';
 
  function Login(){
-    return (
-        <div>
-            <Modal>
-                
-            </Modal>
-        </div>
-    )
+    return <LoginContainer/>
 }
 
 export default Login;
