@@ -1,9 +1,15 @@
 import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
-  width: 1920px;
-  padding: 70px 210px 500px 210px;
-  background-color: #ffffff;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+export const MainWrapper = styled.div`
+  width: 1500px;
+  padding-top: 70px;
 `;
 
 export const ImageWrapper = styled.div`
