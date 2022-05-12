@@ -9,6 +9,7 @@ export const Wrapper = styled.div`
 export const DetailWrapper = styled.div`
 width: 1500px;
 padding-bottom: 60px;
+color: #1b1b1b;
 `
 
 
@@ -30,6 +31,7 @@ export const ImageLeft = styled.div`
 width: 400px;
 display: flex;
 flex-direction: column;
+border-radius: 30px 0px 0px 0px ;
 `
 
 export const ImageRight = styled.div`
@@ -40,6 +42,8 @@ justify-content: flex-end;
 align-items: flex-end;
 padding-right: 40px;
 padding-bottom: 60px;
+border-radius: 0px 30px 30px 0px;
+
 `
 
 export const Box = styled.div`
@@ -53,12 +57,16 @@ export const OriginKeyboard = styled.div`
 width: 100%;
 height: 308px;
 background-color: #dedede;
+border-radius: 30px 0px 0px 0px;
+
 `
 export const ColorBoxWrapper = styled.div`
 width: 100%;
 height: 492px;
 padding:40px 60px 60px 60px;
 background-color: #929292;
+background: #FFFFFF;
+border-radius: 0px 0px 0px 30px;
 `
 export const ColorBox = styled.div`
 display: flex;
@@ -66,6 +74,7 @@ justify-content: space-between;
 width: 100%;
 height: 100%;
 padding-top: 30px;
+
 `
 
 export const Color = styled.div`
@@ -174,11 +183,23 @@ justify-content: space-between;
 export const BasketButton = styled.button`
 width: 560px;
 height: 120px;
-background-color: #c4c4c4;
+background-color: #676767;
 border: none;
 font-weight: 700;
 font-size: 32px;
 line-height: 32px;
+color: #fff;
+`
+
+export const PaymentButton = styled.button`
+width: 560px;
+height: 120px;
+background-color: #B150F2;
+border: none;
+font-weight: 700;
+font-size: 32px;
+line-height: 32px;
+color: #fff;
 `
 
 export const AllReviewsDiv = styled.div`

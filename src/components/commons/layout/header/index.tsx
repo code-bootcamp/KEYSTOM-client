@@ -1,5 +1,6 @@
 // 헤더 페이지
 import styled from "@emotion/styled"
+import {useRouter } from 'next/router';
 
 const Wrapper = styled.div`
   display: flex;
@@ -18,6 +19,7 @@ const LogoDiv = styled.div`
 
 const Logo = styled.img`
   width: 100%;
+  cursor: pointer;
 `
 const MenuWrapper = styled.div`
   display: flex;
@@ -82,15 +84,30 @@ top:23px;
 
 
 export default function LayoutHeader() {
+const router = useRouter()
+
+  const MoveToHome = () =>{
+    router.push("/")
+  }
+
+  const MoveToStore = () =>{
+    router.push("/store")
+  }
+
+
+  const MoveToMyPage = () =>{
+    router.push("/mypage")
+  }
+
   return (
     <Wrapper>
       <LogoDiv>
-        <Logo src="/images/lg.png"/>
+        <Logo src="/images/lg.png" onClick={MoveToHome}/>
       </LogoDiv>
       <MenuWrapper>
         <MenuDiv>
-          <Menu>STORE</Menu>
-          <Menu>MY PAGE</Menu>
+          <Menu onClick={MoveToStore}>STORE</Menu>
+          <Menu onClick={MoveToMyPage}>MY PAGE</Menu>
         </MenuDiv>
         <MenuDiv>
           <IconWrapper>

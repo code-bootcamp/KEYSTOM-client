@@ -1,4 +1,5 @@
 import * as S from './ProductDetail.styles'
+import ReviewDetail from './reviewDetail/ReviewDetail.container'
 
 export default function ProductDetailPresenter(){
 
@@ -96,54 +97,14 @@ export default function ProductDetailPresenter(){
                         </S.OptionLeftWrapper>
                         <S.OptionRight>
                             <S.ButtonWrapper>
-                                <S.BasketButton>바로 결제</S.BasketButton>
                                 <S.BasketButton>장바구니</S.BasketButton>
+                                <S.PaymentButton>바로 결제</S.PaymentButton>
                             </S.ButtonWrapper>
                         </S.OptionRight>
                     </S.OptionWrapper>
                 </div>
             </S.DetailWrapper>
-
-
-                    <div>
-                        <S.AllReviewsDiv>
-                            <S.AllText>리뷰 수</S.AllText>
-                            <S.AllNum>NN</S.AllNum>
-                        </S.AllReviewsDiv>
-
-                        <S.ReviewWrapper>
-                            <S.ReviewDiv>
-                                <S.ReviewImage>커스텀 키보드 이미지</S.ReviewImage>
-                                <S.ReviewRight>
-                                    <S.ReviewTop>
-                                        <S.ReviewTopTop>
-                                            <S.ReviewTitle>리뷰 제목</S.ReviewTitle>
-                                            <S.TopBottom>
-                                                <S.Reviewer>
-                                                    <S.ReviewSmallTitle>리뷰어</S.ReviewSmallTitle>
-                                                    <S.ReviewSmallText>김철수</S.ReviewSmallText>
-                                                </S.Reviewer>
-                                                <S.ReviewDate>
-                                                    <S.ReviewSmallTitle>작성 날짜</S.ReviewSmallTitle>
-                                                    <S.ReviewSmallText>2022/05/10</S.ReviewSmallText>
-                                                </S.ReviewDate>
-                                            </S.TopBottom>
-                                        </S.ReviewTopTop>
-                                    </S.ReviewTop>
-                                    <S.ReviewBottom>
-                                        <S.Contents>contents</S.Contents>
-                                        <S.LikeDiv>
-                                            <div>좋아요</div>
-                                            <span>NN</span>
-                                        </S.LikeDiv>
-                                    </S.ReviewBottom>
-                                </S.ReviewRight>
-
-                            </S.ReviewDiv>
-                        </S.ReviewWrapper>
-                    </div>
-
-            
+                  <ReviewDetail/>
             
         </S.Wrapper>
         

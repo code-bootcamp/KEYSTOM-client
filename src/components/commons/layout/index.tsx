@@ -11,8 +11,11 @@ interface ILayoutProps {
 }
 
 const Wrapper = styled.div`
-    width: 100%;
-    height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
 `
 
 const BodyWrapper = styled.div`
@@ -24,6 +27,9 @@ const Body = styled.div`
     width: 100%;
     height: auto;
 `
+
+// const HIDDEN_HEADER = ["/user/login"];
+
 
 export default function Layout(props: ILayoutProps) {
   const router = useRouter();

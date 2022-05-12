@@ -2,17 +2,19 @@ import styled from "@emotion/styled"
 import MapPage from "../../map"
 
 const FooterWrapper = styled.div`
-display: flex;
+  display: flex;
     width: 1920px;
     height: 600px;
     background-color: #f1f1f1;
     padding-left: 210px;
     padding-right: 210px;
+    padding-bottom: 120px;
     color: #2c2c2c;
 ` 
 
 const FooterLeftDiv = styled.div`
 width: 600px;
+padding-left: 100px;
 `
 
 const FooterRightDiv = styled.div`
@@ -78,7 +80,7 @@ const CompanyAddress = styled.div`
 `
 
 const FooterMapDiv =  styled.div`
-width: 300px;
+width: 500px;
 height: 300px;
 `
 
