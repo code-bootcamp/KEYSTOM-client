@@ -12,11 +12,13 @@ export default function PaymentPresenter() {
             <S.PaymentWrapper>
                 <S.PaymentText>결제하기</S.PaymentText>
                 <S.PaymentMainWrapper>
-                    <S.PaymentMainImage></S.PaymentMainImage>
+                    <S.PaymentMainImage
+                        style={{ display: "block" }}
+                    ></S.PaymentMainImage>
 
                     <S.PaymentPriceWrapper>
                         <S.PaymentPriceTitle>
-                            구매할 키보드 타이틀
+                            컬러풀 키보드 포 디자이너
                         </S.PaymentPriceTitle>
 
                         <S.PaymentPriceTableWrapper>
@@ -69,7 +71,7 @@ export default function PaymentPresenter() {
                         <S.PaymentPriceTotalWrapper>
                             <S.PaymentPriceTotal>합계</S.PaymentPriceTotal>
                             <S.PaymentPriceTotalNumber>
-                                120,000
+                                120,000<span>원</span>
                             </S.PaymentPriceTotalNumber>
                         </S.PaymentPriceTotalWrapper>
                     </S.PaymentPriceWrapper>

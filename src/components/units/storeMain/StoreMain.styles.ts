@@ -52,9 +52,6 @@ export const BestProductWrapper = styled.div`
 
 export const BestProductBox = styled.div`
     width: 480px;
-    /* height: 540px; */
-
-    background-color: red;
 `;
 
 export const ReviewImage = styled.img`
@@ -66,6 +63,8 @@ export const ReviewImage = styled.img`
     background-image: url("/images/keyboard-01.jpg");
     background-position: center;
     background-size: cover;
+
+    border-radius: 30px 30px 0px 0px;
 `;
 
 export const ReviewDownWrapper = styled.div`
@@ -75,10 +74,13 @@ export const ReviewDownWrapper = styled.div`
 
     background-color: #f3f3f3;
 
+    color: #000000;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     /* align-items: flex-start; */
+
+    border-radius: 0px 0px 30px 30px;
 `;
 
 export const ReviewScore = styled.div`
