@@ -28,6 +28,9 @@ const Body = styled.div`
     height: auto;
 `
 
+// const HIDDEN_HEADER = ["/user/login"];
+
+
 export default function Layout(props: ILayoutProps) {
   const router = useRouter();
   console.log(router);
