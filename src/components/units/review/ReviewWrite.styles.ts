@@ -1,19 +1,19 @@
 import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
-  width: 1920px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 export const ReviewWrapper = styled.div`
-  width: 100%;
+  width: 1500px;
 
-  padding: 100px 210px 500px 210px;
-  background-color: #ffffff;
+  padding-top: 100px;
 
   display: flex;
   flex-direction: column;
-
-  padding-bottom: 30px;
 `;
 
 export const ReviewTextWrapper = styled.div`

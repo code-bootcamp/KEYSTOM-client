@@ -1,19 +1,15 @@
 import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
-  width: 1920px;
-
+  width: 100%;
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
-  background-color: #ffffff;
+  align-items: center;
 `;
 
 export const SearchWrapper = styled.div`
   width: 100%;
-  padding: 79px 210px 30px 210px;
-
-  /* background-color: red; */
+  padding-top: 80px;
 
   border-bottom: 2px solid #c4c4c4;
 `;
@@ -48,8 +44,8 @@ export const SearchText = styled.div`
 `;
 
 export const ProductListWrapper = styled.div`
-  width: 100%;
-  padding: 70px 210px 500px 210px;
+  width: 1500px;
+  padding-top: 70px;
 
   /* display: flex; */
   /* flex-direction: column; */
