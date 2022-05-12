@@ -8,6 +8,7 @@ display: flex;
     background-color: #f1f1f1;
     padding-left: 210px;
     padding-right: 210px;
+    padding-bottom: 120px;
     color: #2c2c2c;
 ` 
 

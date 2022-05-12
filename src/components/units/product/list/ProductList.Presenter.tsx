@@ -1,4 +1,4 @@
-import ProductListPresenterItem from "./ProductList.presenterItem";
+import ProductListPresenterItem from "./ProductList.PresenterItem";
 import * as S from "./ProductList.styles";
 
 const search = 0;
