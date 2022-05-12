@@ -3,29 +3,20 @@ import styled from "@emotion/styled"
 
 export const LoginWrapper = styled.div`
     width: 100%;
-    background: #F8F8F8;
     height: auto;
-    padding-top: 200px;
+    padding-top: 100px;
+    padding-bottom: 100px;
 `
-
-export const BodyHTML = styled.div`
-    width: 100%;
-   padding-bottom: 193px;
-`
-
-
-
 
 export const Wrapper = styled.div`
-width: 742px;
+width: 503px;
 display: flex;
 flex-direction: column;
 margin: 0 auto;
 background: #FFFFFF;
 box-shadow: 0px 5px 7px rgba(0, 0, 0, 0.07);
-border-radius: 10px;
-margin: 193px auto;
-padding: 70px;
+border-radius: 30px;
+padding: 20px 60px 47px 60px;
 
 
 `
@@ -35,37 +26,43 @@ export const LoginDiv = styled.div`
     flex-direction: column;
     align-items:center;
     border-bottom: 1px solid #C9C9C9;
-    padding-bottom: 50px;
 
 `
 
 export const LogoDiv = styled.div`
     width:120px;
     height:120px;
-    background-color: #ebebeb;
-    margin-bottom: 90px;
-
+    margin-bottom: 30px;
 `
 
-export const LoginKR = styled.div`
-    font-weight: 700;
-    font-size: 50px;
+export const Logo = styled.img`
+    width: 100%;
 `
-export const LoginENG = styled.div`
-    font-weight: 400;
-    font-size: 32px;
-    padding-bottom: 10px;
-    padding-left: 12px;
+
+export const CancelWrapper = styled.div`
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+`
+
+export const CancelDiv = styled.div`
+    width: 50px;
+    height: 50px;
+`
+
+export const CancelBtn = styled.img`
+    width: 100%;
+    cursor: pointer;
 `
 
 export const LoginError = styled.div`
-    color: #EF3030;
+    color: #B150F2;
     padding-top: 15px;
 `
 
 export const LoginInput = styled.input`
     width: 100%;
-    height: 77px;
+    height: 50px;
     border: 1px solid #bdbdbd;
     border-radius: 16px;
     line-height: 40px;
@@ -76,33 +73,72 @@ export const LoginInput = styled.input`
 `
 
 export const BtnWrapper = styled.div`
-    padding-top: 50px;
+    padding-top: 20px;
 `
 
 export const LoginBtn = styled.button`
     width: 100%;
-    height: 88px;
-    background-color:gray;
-    color: black;
+    height: 50px;
+    background-color:#B150F2;
+    color: #f1f1f1;
     text-align:center;
-    border-radius: 16px;
+    border-radius: 10px;
     border: none;
     margin-bottom: 20px;
     font-weight: 700;
     font-size: 20px;
 
 `
-export const StringDiv = styled.div`
+
+export const SocialLogin = styled.div`
+    display: flex;
+    justify-content: space-between;
+    padding-left: 60px;
+    padding-right: 60px;
+    width: 100%;
+    padding-top: 20px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid #c4c4c4;
+`
+
+export const SocialLoginBtn = styled.div`
+    width: 54px;
+    height: 54px;
+    background-color: aliceblue;
+`
+export const StringWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
     width: 100%;
     text-align: center;
     padding-right: 20px;
     color:#888;
 `
 
-export const ClickSpan = styled.span`
+export const StringDiv = styled.div`
+    padding-top: 30px;
+    padding-bottom: 10px;
+    color: #6C6C6C;
+
+`
+
+export const FindPassBtn = styled.button`
+    height: 50px;
     font-weight: bold;
-    text-decoration: underline;
-    padding-left: 20px;
-    color: #000;
-    cursor:pointer;
+    color: #B150F2;
+    background-color: #fff;
+    border: 1px solid #B150F2;
+
+`
+export const SignUpBtn = styled.button`
+      width: 100%;
+    height: 50px;
+    background-color:#B150F2;
+    color: #f1f1f1;
+    text-align:center;
+    border-radius: 10px;
+    border: none;
+    margin-bottom: 20px;
+    font-weight: 700;
+    font-size: 20px;
 `
