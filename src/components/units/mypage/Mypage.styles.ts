@@ -4,6 +4,7 @@ export const Wrapper = styled.div`
   width: 1500px;
   margin: 0px auto;
   margin-top: 160px;
+  margin-bottom: 500px;
 `;
 
 export const WrapperContainer = styled.div``;
@@ -21,6 +22,8 @@ export const TopLeftContainer = styled.div`
 export const ProfileImage = styled.img`
   width: 400px;
   height: 400px;
+
+  border-radius: 30px;
 
   background: #d9d9d9;
 `;
@@ -41,13 +44,14 @@ export const NameContainer = styled.div`
 `;
 
 export const Name = styled.div`
+  width: 152px;
   font-family: "NanumGothicCoding";
   font-style: normal;
   font-weight: 700;
   font-size: 24px;
-
-  margin-right: 104px;
 `;
+
+export const VerticalLine = styled.img``;
 
 export const UserName = styled.div`
   font-family: "NanumGothicCoding";
@@ -66,12 +70,11 @@ export const IdContainer = styled.div`
 `;
 
 export const Id = styled.div`
+  width: 152px;
   font-family: "NanumGothicCoding";
   font-style: normal;
   font-weight: 700;
   font-size: 24px;
-
-  margin-right: 80px;
 `;
 
 export const UserId = styled.div`
@@ -91,12 +94,12 @@ export const PointWrapper = styled.div`
 `;
 
 export const Point = styled.div`
+  width: 152px;
+
   font-family: "NanumGothicCoding";
   font-style: normal;
   font-weight: 700;
   font-size: 24px;
-
-  margin-right: 44px;
 `;
 
 export const UserPoint = styled.div`
@@ -114,12 +117,12 @@ export const DeliverWrapper = styled.div`
 `;
 
 export const DeliveryAddress = styled.div`
+  width: 152px;
+
   font-family: "NanumGothicCoding";
   font-style: normal;
   font-weight: 700;
   font-size: 24px;
-
-  margin-right: 44px;
 `;
 
 export const UserDeliveryAddress = styled.div`
@@ -173,7 +176,7 @@ export const PasswordFind = styled.button`
 export const Line = styled.div`
   width: 1500px;
   border: none;
-  border-top: 1px solid #c4c4c4;
+  border-top: 1px solid #b1b1b1;
 
   margin-top: 100px;
   margin-bottom: 100px;
@@ -186,7 +189,9 @@ export const BoughtList = styled.div`
   font-style: normal;
   font-weight: 700;
   font-size: 32px;
-  color: #000000;
+  line-height: 32px;
+
+  color: #ffffff;
 
   margin-bottom: 50px;
 `;
@@ -197,7 +202,7 @@ export const BoughtListInfo = styled.div`
   display: flex;
   flex-direction: row;
 
-  background-color: #c4c4c4;
+  background-color: #f1f1f1;
 
   margin-bottom: 30px;
 `;
@@ -219,10 +224,13 @@ export const BoughtName = styled.div`
   font-style: normal;
   font-weight: 700;
   font-size: 24px;
+  line-height: 28px;
 
   margin-top: auto;
   margin-left: 45px;
   margin-bottom: auto;
+
+  color: #000000;
 `;
 
 export const BoughtDateWrapper = styled.div`
@@ -238,8 +246,10 @@ export const BoughtDateText = styled.div`
   font-family: "NanumGothicCoding";
   font-style: normal;
   font-weight: 700;
-  font-size: 18px;
-  color: #000000;
+  font-size: 22px;
+  line-height: 22px;
+
+  color: #1b1b1b;
 
   margin-bottom: 2px;
 `;
@@ -249,7 +259,9 @@ export const BoughtDateNum = styled.div`
   font-style: normal;
   font-weight: 400;
   font-size: 24px;
-  color: #000000;
+  line-height: 36px;
+
+  color: #676767;
 `;
 
 export const BoughtPriceWrapper = styled.div`
@@ -265,8 +277,10 @@ export const BoughtPriceText = styled.div`
   font-family: "NanumGothicCoding";
   font-style: normal;
   font-weight: 700;
-  font-size: 18px;
-  color: #000000;
+  font-size: 22px;
+  line-height: 22px;
+
+  color: #1b1b1b;
 
   margin-bottom: 2px;
 `;
@@ -276,7 +290,9 @@ export const BoughtPriceNum = styled.div`
   font-style: normal;
   font-weight: 400;
   font-size: 24px;
-  color: #000000;
+  line-height: 36px;
+
+  color: #676767;
 `;
 
 export const BoughtStatusWrapper = styled.div`
@@ -292,16 +308,26 @@ export const BoughtStatusText = styled.div`
   font-family: "NanumGothicCoding";
   font-style: normal;
   font-weight: 700;
-  font-size: 18px;
+  font-size: 22px;
+  line-height: 22px;
+
+  color: #1b1b1b;
 
   margin-bottom: 2px;
 `;
 
 export const BoughtStatus = styled.div`
+  height: 36px;
+
+  display: flex;
+  align-items: center;
+
   font-family: "NanumGothicCoding";
   font-style: normal;
   font-weight: 700;
   font-size: 20px;
+  line-height: 20px;
+  color: #676767;
 `;
 
 export const BoughtReviewWrapper = styled.div`
@@ -317,36 +343,61 @@ export const BoughtReviewText = styled.div`
   font-family: "NanumGothicCoding";
   font-style: normal;
   font-weight: 700;
-  font-size: 18px;
+  font-size: 22px;
+  line-height: 22px;
+
+  color: #1b1b1b;
 
   margin-bottom: 2px;
 `;
 
 export const BoughtReviewStatus = styled.div`
+  height: 36px;
+
+  display: flex;
+  align-items: center;
+
   font-family: "NanumGothicCoding";
   font-style: normal;
   font-weight: 700;
   font-size: 20px;
+  line-height: 20px;
+
+  color: #676767;
 `;
 
 export const BoughtReviewIcon = styled.img`
   width: 54px;
   height: 54px;
 
-  background-color: #d9d9d9;
+  background-color: #f1f1f1;
 
   margin-top: auto;
   margin-bottom: auto;
+
+  cursor: pointer;
 `;
 
-export const BottomWrapper = styled.div``;
+export const BottomMapWrapper = styled.div`
+  width: 1500px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+`;
+
+export const BottomWrapper = styled.div`
+  width: 730px;
+  margin-bottom: 40px;
+`;
 
 export const BasketList = styled.div`
   font-family: "NanumGothicCoding";
   font-style: normal;
   font-weight: 700;
   font-size: 32px;
-  color: #000000;
+  line-height: 32px;
+
+  color: #ffffff;
 
   margin-bottom: 50px;
 `;
@@ -362,7 +413,8 @@ export const BasketProductInfoWrapper = styled.div`
   width: 730px;
   height: 326px;
 
-  background-color: #f3f3f3;
+  background-color: #f1f1f1;
+  border-radius: 0px 0px 30px 30px;
 `;
 
 export const BasketProductInfoWrapper2 = styled.div`
@@ -378,8 +430,11 @@ export const ProductInfoWrapper = styled.div`
 export const ProductName = styled.div`
   font-family: "NanumGothicCoding";
   font-style: normal;
-  font-weight: 400;
+  font-weight: 700;
   font-size: 24px;
+  line-height: 28px;
+
+  color: #000000;
 
   margin-top: 50px;
   margin-left: 40px;
@@ -390,27 +445,22 @@ export const ProductContents = styled.div`
   font-style: normal;
   font-weight: 400;
   font-size: 20px;
+  line-height: 24px;
   color: #000000;
 
   margin-top: 30px;
   margin-left: 40px;
 `;
 
-export const ProductDelete = styled.button`
+export const ProductDelete = styled.img`
   width: 54px;
   height: 54px;
-  background-color: #d9d9d9;
-
-  font-family: "Inter";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-
-  color: #000000;
 
   margin-top: 60px;
   margin-left: auto;
   margin-right: 40px;
+
+  cursor: pointer;
 `;
 
 export const ProductBuyButton = styled.button`
@@ -422,7 +472,9 @@ export const ProductBuyButton = styled.button`
   font-style: normal;
   font-weight: 700;
   font-size: 24px;
-  color: #000000;
+  line-height: 28px;
+  color: #ffffff;
+  background-color: #b150f2;
 
   margin-top: 82px;
   margin-left: 312px;
