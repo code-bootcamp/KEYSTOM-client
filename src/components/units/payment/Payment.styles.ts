@@ -35,6 +35,9 @@ export const PaymentMainWrapper = styled.div`
 export const PaymentMainImage = styled.img`
     width: 900px;
     height: 556px;
+    background-image: url("/images/purchasepage.png");
+    background-position: center;
+    background-size: cover;
 
     margin-right: 40px;
 `;
@@ -206,7 +209,7 @@ export const InputBox = styled.input`
 
     padding-left: 20px;
 
-    background-color: #c4c4c4;
+    background-color: #676767;
     border: none;
 
     color: #000000;
@@ -233,7 +236,7 @@ export const ZipCodeSearchButton = styled.button`
 
     margin-left: 20px;
 
-    color: #000000;
+    color: #ffffff;
 
     :hover {
         background-color: #b150f2;
