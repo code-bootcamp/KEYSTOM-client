@@ -16,7 +16,7 @@ export default function Layout(props: ILayoutProps) {
   return (
     <>
       <LayoutHeader />
-      <body>{props.children}</body>
+        <body>{props.children}</body>
       <LayoutFooter />
     </>
   );
