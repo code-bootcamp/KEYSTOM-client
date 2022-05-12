@@ -54,10 +54,29 @@ const UserIcon = styled.img`
 width: 100%;
 cursor: pointer;
 `
+const BasketWrapper = styled.div`
+  width: 54px;
+  height: 54px;
+  margin-right: 38px;
+  margin-bottom: 23px;
+  margin-top: -38px;
+`
 
 const BasketIcon = styled.img`
-  width: 100%;
+  width: 54px;
+  height: 54px;
 cursor: pointer;
+`
+
+const BasketNum = styled.div`
+width: 20px;
+height: 20px;
+border-radius: 20px;
+padding-left: 6px;
+background-color:#B150F2  ;
+position: relative;
+left: 35px;
+top:23px;
 
 `
 
@@ -77,9 +96,11 @@ export default function LayoutHeader() {
           <IconWrapper>
             <UserIcon src="/images/user.png"/>
           </IconWrapper>
-          <IconWrapper>
-            <BasketIcon src="/images/basket.png"/>
-          </IconWrapper>
+  
+          <BasketWrapper>
+              <BasketNum>0</BasketNum>
+              <BasketIcon src="/images/basket.png"/>
+          </BasketWrapper>
         </MenuDiv>
       </MenuWrapper>
     </Wrapper>
