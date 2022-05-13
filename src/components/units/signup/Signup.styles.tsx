@@ -1,6 +1,8 @@
 import styled from "@emotion/styled"
 
 export const SignUpContainer = styled.div`
+    display: flex;
+    flex-direction: column;
     width: 100%;
     padding-left: 210px;
     padding-right: 210px;
@@ -8,23 +10,26 @@ export const SignUpContainer = styled.div`
 `
 
 export const SignUpTitle = styled.div`
+    display: flex;
+    flex-direction: column;
+    width: 100%;
     font-weight: 700;
     font-size: 32px;
     line-height: 32px;
     padding-top: 100px;
-    padding-bottom: 80px;
+    padding-bottom: 60px;
     border-bottom: 2px solid #c4c4c4;
 
 `
 
 export const SignUpContentsWrapper = styled.div`
-display: flex;
-flex-direction: column;
-justify-content: space-between;
-    padding-bottom: 60px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: space-between;
+    padding-bottom: 20px;
     border-bottom: 2px solid #c4c4c4;
-    margin-bottom: 80px;
-
+    margin-bottom: 60px;
 `
 
 export const InfoTitle = styled.div`
@@ -61,11 +66,13 @@ export const PasswordWatch = styled.div`
 
 export const EyeIcon = styled.img`
     width: 100%;
+    cursor: pointer;
 `
 
 export const IDInfoInput = styled.input`
     width: 262px;
     height: 60px ;
+    padding-left: 20px;
 `
 
 export const InfoText = styled.div`
@@ -101,7 +108,7 @@ export const SignUpButton = styled.button`
     background: #B150F2;
     border: none;
     font-weight: 700;
-font-size: 32px;
-line-height: 32px;
-color: #f1f1f1;
+    font-size: 32px;
+    line-height: 32px;
+    color: #f1f1f1;
 `
