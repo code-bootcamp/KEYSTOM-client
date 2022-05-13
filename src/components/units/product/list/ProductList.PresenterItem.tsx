@@ -6,21 +6,21 @@ const arr = [
         title: "타이틀1",
         price: 120000,
         contents: "이 키보드는 어쩌구 저쩌구한 장점이 있습니다.",
-        image: "/images/keyboard-01.jpg",
+        image: "/images/keyboard-01.png",
     },
     {
         number: 2,
         title: "타이틀1",
         price: 120000,
         contents: "이 키보드는 어쩌구 저쩌구한 장점이 있습니다.",
-        image: "/images/keyboard-01.jpg",
+        image: "/images/keyboard-02.png",
     },
     {
         number: 3,
         title: "타이틀2",
         price: 120000,
         contents: "이 키보드는 어쩌구 저쩌구한 장점이 있습니다.",
-        image: "/images/keyboard-02.jpg",
+        image: "/images/keyboard-03.png",
     },
     {
         number: 4,
@@ -28,7 +28,7 @@ const arr = [
         price: 120000,
         contents:
             "❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤",
-        image: "/images/keyboard-02.jpg",
+        image: "/images/keyboard-01.png",
     },
 ];
 
