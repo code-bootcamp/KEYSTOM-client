@@ -28,16 +28,18 @@ const Body = styled.div`
     height: auto;
 `
 
-// const HIDDEN_HEADER = ["/user/login"];
+// const HIDDEN_HEADER = ["/signup"];
 
 
 export default function Layout(props: ILayoutProps) {
-  const router = useRouter();
-  console.log(router);
+  // const router = useRouter();
+
+  // let isHidden = HIDDEN_HEADER.includes(router.asPath)
 
   return (
     <Wrapper>
-      <LayoutHeader />
+      {/* {!isHidden && <LayoutHeader />} */}
+     <LayoutHeader />
         <BodyWrapper>
           <Body>{props.children}</Body>
         </BodyWrapper>
