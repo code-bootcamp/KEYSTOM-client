@@ -111,9 +111,12 @@ export const ProductImage = styled.img`
     width: 366px;
     height: 366px;
 
+    background-color: #ffffff;
+
     /* background-image: url("/images/keyboard-01.jpg"); */
     background-position: center;
     background-size: cover;
+    border-radius: 30px 0px 0px 30px;
 `;
 
 export const ProductBoxRightWrapper = styled.div`
@@ -122,6 +125,8 @@ export const ProductBoxRightWrapper = styled.div`
     display: flex;
     flex-direction: column;
     color: #000000;
+    background: #ffffff;
+    border-radius: 0px 30px 30px 0px;
 
     padding: 90px 30px 0px 40px;
 `;

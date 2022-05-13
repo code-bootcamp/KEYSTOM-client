@@ -39,6 +39,8 @@ export const PaymentMainImage = styled.img`
     background-position: center;
     background-size: cover;
 
+    border-radius: 30px;
+
     margin-right: 40px;
 `;
 
