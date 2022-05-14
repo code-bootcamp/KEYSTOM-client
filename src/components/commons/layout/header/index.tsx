@@ -99,6 +99,14 @@ const router = useRouter()
     router.push("/mypage")
   }
 
+  const moveToMyPage = () => {
+    router.push("/mypage")
+  }
+
+  const moveToLogin = () => {
+    router.push("/login")
+  }
+
   return (
     <Wrapper>
       <LogoDiv>
@@ -111,12 +119,12 @@ const router = useRouter()
         </MenuDiv>
         <MenuDiv>
           <IconWrapper>
-            <UserIcon src="/images/user.png"/>
+            <UserIcon src="/images/user.png" onClick={moveToLogin}/>
           </IconWrapper>
   
           <BasketWrapper>
               <BasketNum>0</BasketNum>
-              <BasketIcon src="/images/basket.png"/>
+              <BasketIcon src="/images/basket.png" onClick={moveToMyPage}/>
           </BasketWrapper>
         </MenuDiv>
       </MenuWrapper>

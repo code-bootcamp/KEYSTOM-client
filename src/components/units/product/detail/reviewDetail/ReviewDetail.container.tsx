@@ -13,7 +13,7 @@ export default function ReviewDetail(){
             {[0,1,2,3].map((el)=>(
          
                     <A.ReviewDiv>
-                        <A.ReviewImage>커스텀 키보드 이미지</A.ReviewImage>
+                        <A.ReviewImage src="/images/reviewimg.png"/>
                         <A.ReviewRight>
                             <A.ReviewTop>
                                 <A.ReviewTopTop>
@@ -22,7 +22,11 @@ export default function ReviewDetail(){
                                 </A.ReviewTopTop>
                             </A.ReviewTop>
                             <A.ReviewBottom>
-                                <A.Contents>contents</A.Contents>
+                                <A.Contents>
+                                리뷰 글이 계속 이어지게 주세요.
+                                회색 영역 바깥으로 넘어가지 않게 부탁드립니다.
+                                위로 20px, 좌우로 40px, 아래로 46px입니다! 넘어가면 생략되게...
+                                </A.Contents>
                                 <A.BottomDiv>
                                     <A.BottomText>
                                         <A.Reviewer>
@@ -35,8 +39,8 @@ export default function ReviewDetail(){
                                         </A.ReviewDate>
                                     </A.BottomText>
                                     <A.LikeDiv>
-                                        <div>좋아요</div>
-                                        <span>NN</span>
+                                        <A.ReviewLikeImage src="/images/review-like.png"/>
+                                        <A.ReviewLikeNum>12</A.ReviewLikeNum>
                                     </A.LikeDiv>
                                 </A.BottomDiv>
                           

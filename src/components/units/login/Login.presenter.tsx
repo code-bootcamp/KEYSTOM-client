@@ -1,10 +1,16 @@
 import { Modal, Button } from 'antd';
+import Router from 'next/router';
 import * as S from "./Login.styles"
+import { useRouter } from 'next/router';
 
 
 export default function LoginPresenter(){
+const router = useRouter()
 
 
+const moveToSignup = () => {
+    router.push("/signup")
+}
 
     return (
         <S.LoginWrapper>
@@ -30,9 +36,9 @@ export default function LoginPresenter(){
                     <S.BtnWrapper>
                         <S.LoginBtn>로그인하기</S.LoginBtn>
                         <S.SocialLogin>
-                            <S.SocialLoginBtn>카카오</S.SocialLoginBtn>
-                            <S.SocialLoginBtn>네이버</S.SocialLoginBtn>
-                            <S.SocialLoginBtn>구글</S.SocialLoginBtn>
+                            <S.SocialLoginBtn src="/images//KakaoLogin_img.png"/>
+                            <S.SocialLoginBtn src="/images/NaverLogin_img.png"/>
+                            <S.SocialLoginBtn src="/images/GoogleLogin_img.png"/>
                         </S.SocialLogin>
                     </S.BtnWrapper>
 
@@ -43,7 +49,7 @@ export default function LoginPresenter(){
 
                     <S.StringWrapper>
                         <S.StringDiv>아직 회원이 아니신가요?</S.StringDiv>
-                        <S.SignUpBtn>회원가입하기</S.SignUpBtn>
+                        <S.SignUpBtn onClick={moveToSignup}>회원가입하기</S.SignUpBtn>
                     </S.StringWrapper>
                 </S.Wrapper>
     </S.LoginWrapper>

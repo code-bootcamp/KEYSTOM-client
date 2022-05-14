@@ -101,10 +101,9 @@ export const SocialLogin = styled.div`
     border-bottom: 1px solid #c4c4c4;
 `
 
-export const SocialLoginBtn = styled.div`
+export const SocialLoginBtn = styled.img`
     width: 54px;
     height: 54px;
-    background-color: aliceblue;
 `
 export const StringWrapper = styled.div`
     display: flex;

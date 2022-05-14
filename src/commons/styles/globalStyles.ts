@@ -8,6 +8,8 @@ import { css } from "@emotion/react";
 
 export const globalStyles = css`
   * {
+    font-family: 'NanumGothicCoding';
+    font-style: normal;
   }
 
   body,html{

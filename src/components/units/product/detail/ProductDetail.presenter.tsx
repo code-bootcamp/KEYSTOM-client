@@ -468,38 +468,36 @@ export default function ProductDetailPresenter() {
         <S.ImageWrapper>
           <S.ImageLeft>
             <S.OriginKeyboard>
-              원래 키보드 이미지
-              {/* <image/> */}
             </S.OriginKeyboard>
             <S.ColorBoxWrapper>
-              <S.Box>박스</S.Box>
+              <S.PickImage src="/images/colorpick.png"/>
               <div>
                 <S.ColorBox>
-                  <S.Color></S.Color>
-                  <S.Color></S.Color>
-                  <S.Color></S.Color>
-                  <S.Color></S.Color>
+                  <S.Color1></S.Color1>
+                  <S.Color2></S.Color2>
+                  <S.Color3></S.Color3>
+                  <S.Color4></S.Color4>
                 </S.ColorBox>
 
                 <S.ColorBox>
-                  <S.Color></S.Color>
-                  <S.Color></S.Color>
-                  <S.Color></S.Color>
-                  <S.Color></S.Color>
+                  <S.Color5></S.Color5>
+                  <S.Color6></S.Color6>
+                  <S.Color7></S.Color7>
+                  <S.Color8></S.Color8>
                 </S.ColorBox>
 
                 <S.ColorBox>
-                  <S.Color></S.Color>
-                  <S.Color></S.Color>
-                  <S.Color></S.Color>
-                  <S.Color></S.Color>
+                  <S.Color9></S.Color9>
+                  <S.Color10></S.Color10>
+                  <S.Color11></S.Color11>
+                  <S.Color12></S.Color12>
                 </S.ColorBox>
 
                 <S.ColorBox>
-                  <S.Color></S.Color>
-                  <S.Color></S.Color>
-                  <S.Color></S.Color>
-                  <S.Color></S.Color>
+                  <S.Color13></S.Color13>
+                  <S.Color14></S.Color14>
+                  <S.Color15></S.Color15>
+                  <S.Color16></S.Color16>
                 </S.ColorBox>
               </div>
             </S.ColorBoxWrapper>
@@ -540,7 +538,7 @@ export default function ProductDetailPresenter() {
               />
             </Canvas>
 
-            <S.Box>박스</S.Box>
+            <S.VectorImage src="/images/Vector.png"/>
           </S.ImageRight>
         </S.ImageWrapper>
       </S.DetailWrapper>
@@ -555,35 +553,36 @@ export default function ProductDetailPresenter() {
                 <div>수량</div>
                 <div>가격</div>
               </S.OptionTitle>
-              <S.OptionLeft>
+              <S.OptionBottom>
                 <S.Option>
                   <S.OptionText>자판 색 변경</S.OptionText>
                   <S.OptionQty>4</S.OptionQty>
                   <S.OptionPrice>30,000</S.OptionPrice>
                 </S.Option>
                 <S.Option>
-                  <div>스페이스바 색 변경</div>
-                  <div>1</div>
-                  <div>10,000</div>
+                  <S.OptionText>스페이스바 색 변경</S.OptionText>
+                  <S.OptionQty>1</S.OptionQty>
+                  <S.OptionPrice>10,000</S.OptionPrice>
                 </S.Option>
                 <S.Option>
-                  <div>자판 색 변경</div>
-                  <div>4</div>
-                  <div>30,000</div>
+                  <S.OptionText>자판 색 변경</S.OptionText>
+                  <S.OptionQty>4</S.OptionQty>
+                  <S.OptionPrice>30,000</S.OptionPrice>
                 </S.Option>
                 <S.Option>
-                  <div>자판 색 변경</div>
-                  <div>4</div>
-                  <div>30,000</div>
+                  <S.OptionText>자판 색 변경</S.OptionText>
+                  <S.OptionQty>4</S.OptionQty>
+                  <S.OptionPrice>30,000</S.OptionPrice> 
                 </S.Option>
                 <S.PriceWrapper>
                   <S.PriceAdd>합계</S.PriceAdd>
                   <S.PriceNum>120,000원</S.PriceNum>
                 </S.PriceWrapper>
-              </S.OptionLeft>
+              </S.OptionBottom>
             </S.OptionLeftWrapper>
             <S.OptionRight>
               <S.ButtonWrapper>
+                <S.MoveToListButton>목록보기</S.MoveToListButton>
                 <S.BasketButton>장바구니</S.BasketButton>
                 <S.PaymentButton>바로 결제</S.PaymentButton>
               </S.ButtonWrapper>
