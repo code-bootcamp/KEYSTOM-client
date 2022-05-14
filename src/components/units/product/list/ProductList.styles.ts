@@ -77,6 +77,7 @@ export const SearchText = styled.div`
 export const ProductListWrapper = styled.div`
     width: 1500px;
     padding-top: 102px;
+    padding-bottom: 460px;
 
     /* display: flex; */
     /* flex-direction: column; */
@@ -128,7 +129,7 @@ export const ProductBoxRightWrapper = styled.div`
     background: #ffffff;
     border-radius: 0px 30px 30px 0px;
 
-    padding: 90px 30px 0px 40px;
+    padding: 60px 30px 30px 30px;
 `;
 
 export const ProductTitle = styled.div`
@@ -149,7 +150,7 @@ export const ProductContents = styled.div`
     font-weight: 400;
     font-size: 18px;
 
-    white-space: nowrap;
+    /* white-space: nowrap; */
     overflow: hidden;
     text-overflow: ellipsis;
 `;

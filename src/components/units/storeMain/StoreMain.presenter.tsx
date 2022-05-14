@@ -80,7 +80,10 @@ export default function StorePresenter() {
                             <S.ReviewDownWrapper>
                                 <S.ReviewTitleWrapper>
                                     <S.ReviewTitle>{el.title}</S.ReviewTitle>
-                                    <S.ReviewScore>👍 {el.like}</S.ReviewScore>
+                                    <S.ReviewLikeWrapper>
+                                        <S.ReviewEmoji></S.ReviewEmoji>
+                                        <S.ReviewScore>{el.like}</S.ReviewScore>
+                                    </S.ReviewLikeWrapper>
                                 </S.ReviewTitleWrapper>
                                 <S.ReviewContents>
                                     {el.contents}

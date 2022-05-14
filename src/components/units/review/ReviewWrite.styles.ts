@@ -11,6 +11,7 @@ export const ReviewWrapper = styled.div`
     width: 1500px;
 
     padding-top: 100px;
+    padding-bottom: 500px;
 
     display: flex;
     flex-direction: column;

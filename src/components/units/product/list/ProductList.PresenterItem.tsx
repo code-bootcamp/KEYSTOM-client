@@ -19,11 +19,27 @@ const arr = [
         number: 3,
         title: "타이틀2",
         price: 120000,
-        contents: "이 키보드는 어쩌구 저쩌구한 장점이 있습니다.",
+        contents:
+            "이 키보드는 어쩌구 저쩌구한 장점이 있습니다.이 키보드는 어쩌구 저쩌구한 장점이 있습니다.이 키보드는 어쩌구 저쩌구한 장점이 있습니다.이 키보드는 어쩌구 저쩌구한 장점이 있습니다.",
         image: "/images/keyboard-03.png",
     },
     {
         number: 4,
+        title: "타이틀2",
+        price: 120000,
+        contents:
+            "❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤",
+        image: "/images/keyboard-01.png",
+    },
+    {
+        number: 5,
+        title: "타이틀2",
+        price: 120000,
+        contents: "이 키보드는 어쩌구 저쩌구한 장점이 있습니다.",
+        image: "/images/keyboard-03.png",
+    },
+    {
+        number: 6,
         title: "타이틀2",
         price: 120000,
         contents:
