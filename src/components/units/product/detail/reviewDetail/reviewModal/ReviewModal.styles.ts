@@ -19,7 +19,7 @@ background-color: #f3f3f3;
 padding-bottom: 330px;
 `
 
-export const ReviewImage = styled.div`
+export const ReviewImageDiv = styled.div`
 display: flex;
 flex-direction: column;
 justify-content: flex-end;
@@ -31,18 +31,33 @@ border-radius:30px 30px 0px 0px ;
 
 `
 
-export const ImagePreviewWrapper = styled.div`
-display: flex;
-justify-content: space-between;
-width: 500px;
-padding-bottom: 38px ;
-cursor: pointer;
+export const ReviewImageWrapper = styled.div`
+width: 100%;
+height: 505px;
 `
 
-export const ImagePreview = styled.div`
+export const PreviewWrapper = styled.div`
+position: relative;
+bottom:50px;
+left: 220px;
+`
+export const ImagePreviewWrapper = styled.div`
+position: absolute;
+display: flex;
+justify-content: space-between;
+width:480px ;
+padding-bottom: 36px;
+`
+export const ReviewImage = styled.img`
+width: 100%;
+`
+
+export const ImagePreview = styled.img`
 width: 80px;
 height: 80px;
-background-color: #c4c4c4;
+border-radius: 10px ;
+cursor: pointer;
+
 `
 export const ReviewWrapper = styled.div`
 padding: 70px;
@@ -73,14 +88,14 @@ export const ReviewerTitle = styled.div`
 export const ReviewTopWrapper = styled.div`
 display: flex;
 justify-content: space-between;
-align-items: flex-end;
+align-items: center;
 width: 390px;
 font-weight: 400;
 font-size: 20px;
 line-height: 30px;
 `
 
-export const ReviewerProfile = styled.div`
+export const ReviewerProfile = styled.img`
 width: 45px;
 height: 45px;
 background: #C4C4C4;
@@ -90,25 +105,37 @@ margin-right: 20px;
 
 export const ReviewerText = styled.div`
 padding-right: 30px;
+font-weight: 400;
+font-size: 18px;
+line-height: 24px;
 `
 
 export const ReviewDate = styled.div`
+font-family: 'Noto Sans CJK KR';
+font-style: normal;
 padding-right: 30px;
+font-weight: 400;
+font-size: 20px;
+line-height: 30px;
 `
 
 export const ReviewLike = styled.div`
  display: flex;
- align-items: flex-end;
+ align-items: center;
 `
 
-export const ReviewLikeIcon = styled.div`
+export const ReviewLikeIcon = styled.img`
  width: 54px;
  height: 54px;
- background-color: aliceblue;
 `
 
 export const ReviewLikeNum = styled.div`
+font-family: 'Noto Sans CJK KR';
+font-style: normal;
 padding-left: 10px;
+font-weight: 700;
+font-size: 24px;
+line-height: 36px;
 `
 export const ReviewContentsDiv = styled.div`
 padding-top: 40px;
@@ -116,11 +143,14 @@ padding-bottom: 40px;
 border-bottom: 1px solid #c4c4c4;
 
 `
-export const ReviewContents = styled.textarea`
+export const ReviewContents = styled.div`
 width: 100%;
-height: 140px;
-padding: 20px;
+padding: 20px 70px;
 color: #b1b1b1;
+font-weight: 400;
+font-size: 18px;
+line-height: 24px;
+color: #000000;
 `
 
 export const ReviewCommentWrapper = styled.div`
@@ -158,12 +188,20 @@ padding-bottom: 10px;
 `
 
 export const CommentAllText = styled.div`
+font-weight: 400;
+font-size: 24px;
+line-height: 28px;
 
 
 `
 
 export const CommentAllNum = styled.div`
-
+font-family: 'Noto Sans CJK KR';
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 30px;
+padding-left:20px ;
 `
 
 

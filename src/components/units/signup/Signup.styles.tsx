@@ -1,12 +1,18 @@
 import styled from "@emotion/styled"
 
+
+export const Container = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+`
 export const SignUpContainer = styled.div`
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 1920px;
     padding-left: 210px;
     padding-right: 210px;
-    padding-bottom: 600px;
+    padding-bottom: 500px;
 `
 
 export const SignUpTitle = styled.div`
@@ -66,6 +72,7 @@ export const PasswordWatch = styled.div`
 
 export const EyeIcon = styled.img`
     width: 100%;
+    padding-top: 3px;
     cursor: pointer;
 `
 
@@ -99,9 +106,20 @@ export const ZoncodeInput = styled.input`
 
 export const SignUpBtnWrapper = styled.div`
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
 `
 
+export const SignUpCancelButton = styled.button`
+    width: 560px;
+    height: 120px;
+    background: #1b1b1b;
+    border: 1px solid #B150F2;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 32px;
+    color: #B150F2;
+    margin-right: 40px;
+`
 export const SignUpButton = styled.button`
     width: 560px;
     height: 120px;

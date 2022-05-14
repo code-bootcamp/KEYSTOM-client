@@ -8,7 +8,7 @@ export const Wrapper = styled.div`
 `
 export const DetailWrapper = styled.div`
 width: 1500px;
-padding-bottom: 60px;
+padding-bottom: 30px;
 color: #1b1b1b;
 `
 
@@ -46,10 +46,9 @@ border-radius: 0px 30px 30px 0px;
 
 `
 
-export const Box = styled.div`
+export const PickImage = styled.img`
 width: 54px;
 height: 54px;
-background-color: #d9d9d9;
 `
 
 
@@ -77,13 +76,139 @@ padding-top: 30px;
 
 `
 
-export const Color = styled.div`
+export const Color1 = styled.div`
 width: 60px;
 height: 60px;
 border-radius: 50px;
-background-color: #c4c4c4;
+background-color: #FF3E3E;
+cursor: pointer;
 `
 
+export const Color2 = styled.div`
+width: 60px;
+height: 60px;
+border-radius: 50px;
+background-color: #FFA030;
+cursor: pointer;
+`
+
+export const Color3 = styled.div`
+width: 60px;
+height: 60px;
+border-radius: 50px;
+background-color: #FFE351;
+cursor: pointer;
+`
+
+export const Color4 = styled.div`
+width: 60px;
+height: 60px;
+border-radius: 50px;
+background-color: #A3FF5B;
+cursor: pointer;
+`
+
+export const Color5 = styled.div`
+width: 60px;
+height: 60px;
+border-radius: 50px;
+background-color: #83E1FF;
+cursor: pointer;
+`
+
+export const Color6 = styled.div`
+width: 60px;
+height: 60px;
+border-radius: 50px;
+background-color: #627BFF;
+cursor: pointer;
+`
+
+export const Color7 = styled.div`
+width: 60px;
+height: 60px;
+border-radius: 50px;
+background-color: #9D50FF;
+cursor: pointer;
+`
+
+export const Color8 = styled.div`
+width: 60px;
+height: 60px;
+border-radius: 50px;
+background-color: #52068D;
+cursor: pointer;
+`
+
+export const Color9 = styled.div`
+width: 60px;
+height: 60px;
+border-radius: 50px;
+background-color: #FF83E4;
+cursor: pointer;
+`
+
+export const Color10 = styled.div`
+width: 60px;
+height: 60px;
+border-radius: 50px;
+background-color: #FF1392;
+cursor: pointer;
+`
+
+export const Color11 = styled.div`
+width: 60px;
+height: 60px;
+border-radius: 50px;
+background-color: #474747;
+cursor: pointer;
+`
+
+export const Color12 = styled.div`
+width: 60px;
+height: 60px;
+border-radius: 50px;
+background-color: #1b1b1b;
+cursor: pointer;
+`
+
+export const Color13 = styled.div`
+width: 60px;
+height: 60px;
+border-radius: 50px;
+background-color: #FFDCDC;
+cursor: pointer;
+`
+
+export const Color14 = styled.div`
+width: 60px;
+height: 60px;
+border-radius: 50px;
+background-color: #fff;
+border: 1px solid #1b1b1b;
+cursor: pointer;
+`
+
+export const Color15 = styled.div`
+width: 60px;
+height: 60px;
+border-radius: 50px;
+background-color: #06E9A5;
+cursor: pointer;
+`
+
+export const Color16 = styled.div`
+width: 60px;
+height: 60px;
+border-radius: 50px;
+background-color: #E8D1FF;
+cursor: pointer;
+`
+
+
+export const VectorImage = styled.img`
+
+`
 
 
 export const OptionWrapper = styled.div`
@@ -93,30 +218,31 @@ display: flex;
 export const OptionLeftWrapper = styled.div`
 width: 900px;
 height: 100%;
+
 `
 
-export const OptionLeft = styled.div`
+export const OptionBottom = styled.div`
 display: flex;
 flex-direction: column;
 justify-content: space-between;
 width: 100%;
-padding: 40px;
+padding: 20px 70px;
 background: #F4F4F4;
-padding-left: 70px;
-padding-right: 70px;
+border-radius: 0px 0px 30px 30px;
 `
 export const OptionTitle = styled.div`
 display: flex;
 justify-content: space-between;
 align-items: center;
-padding-left: 70px;
-padding-right: 70px;
+padding-left: 90px;
+padding-right: 90px;
 height: 80px;
 width: 100%;
 background-color: #c4c4c4;
 font-weight: 700;
 font-size: 20px;
 line-height: 20px;
+border-radius:  30px 30px 0px 0px;
 
 `
 export const Option = styled.div`
@@ -126,16 +252,40 @@ align-items: center;
 width:100%;
 height: 78px;
 border-bottom: 1px solid #c4c4c4;
+
 `
 
 export const OptionText = styled.div`
-width: 80%;
+text-align: left;
+padding-left: 20px;
+width: 65%;
+font-weight: 400;
+font-size: 18px;
+line-height: 24px;
+font-family: 'Noto Sans CJK KR';
+font-style: normal;
+font-weight: 400;
+font-size: 24px;
+line-height: 36px;
 `
 export const OptionQty = styled.div`
-width: 30%;
+text-align: center;
+width: 15%;
+font-family: 'Noto Sans CJK KR';
+font-style: normal;
+font-weight: 400;
+font-size: 24px;
+line-height: 36px;
 `
 export const OptionPrice = styled.div`
-width: 70%;
+width: 500px;
+text-align: right;
+padding-right: 20px;
+font-family: 'Noto Sans CJK KR';
+font-style: normal;
+font-weight: 400;
+font-size: 24px;
+line-height: 36px;
 `
 
 export const OptionRight = styled.div`
@@ -162,9 +312,12 @@ padding-right: 28px;
 `
 
 export const PriceNum = styled.div`
+font-family: 'Noto Sans CJK KR';
+font-style: normal;
 font-weight: 700;
 font-size: 32px;
 line-height: 47px;
+text-align: right;
 `
 
 export const WhatDiv = styled.div`
@@ -174,13 +327,13 @@ height: 80%;
 
 export const ButtonWrapper = styled.div`
 width: 100%;
-height: 270px;
+height: 400px;
 display: flex;
 flex-direction: column;
 justify-content: space-between;
 `
 
-export const BasketButton = styled.button`
+export const MoveToListButton = styled.button`
 width: 560px;
 height: 120px;
 background-color: #676767;
@@ -189,6 +342,17 @@ font-weight: 700;
 font-size: 32px;
 line-height: 32px;
 color: #fff;
+`
+
+export const BasketButton = styled.button`
+width: 560px;
+height: 120px;
+background-color: #1b1b1b;
+border: 1px solid #B150F2;
+font-weight: 700;
+font-size: 32px;
+line-height: 32px;
+color: #B150F2;
 `
 
 export const PaymentButton = styled.button`

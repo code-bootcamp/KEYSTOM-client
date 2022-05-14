@@ -36,12 +36,12 @@ width: 730px;
 height: 662px;
 background: #F3F3F3;
 margin-bottom: 50px;
+border-radius: 30px;
 `
 
-export const ReviewImage = styled.div`
+export const ReviewImage = styled.img`
 width: 100%;
 height: 366px;
-background-color: #fff;
 `
 export const ReviewRight = styled.div`
 width: 100%;
@@ -58,7 +58,7 @@ flex-direction: column;
 `
 
 export const ReviewTitle = styled.div`
-font-weight: 700;
+font-weight: 400;
 font-size: 24px;
 line-height: 24px;
 `
@@ -72,7 +72,6 @@ align-items: center;
 export const BottomText = styled.div`
 display: flex;
 justify-content: flex-end;
-padding-top: 65px;
 
 `
 
@@ -106,20 +105,38 @@ line-height: 18px;
 
 export const ReviewBottom = styled.div`
 width: 100%;
-padding-top: 27px;
 `
 
-export const Contents = styled.textarea`
+export const Contents = styled.div`
 width: 100%;
-height: 135px;
+height: 80px;
+padding: 20px 40px 0px 40px;
+margin-bottom: 46px;
+font-weight: 400;
+font-size: 20px;
+line-height: 24px;
+text-overflow:ellipsis;
 `
 
 export const LikeDiv = styled.div`
 display: flex;
-flex-direction: column;
-align-items: flex-end;
+justify-content: flex-end;
+align-items: center;
 width: 100%;
 height: 80px;
 padding-right: 30px;
 padding-top: 30px;
+padding-bottom: 33px;
+`
+
+export const ReviewLikeImage = styled.img`
+width: 54px;
+height: 54px;
+cursor: pointer;
+`
+
+export const ReviewLikeNum = styled.div`
+font-weight: 700;
+font-size: 24px;
+line-height: 36px;
 `

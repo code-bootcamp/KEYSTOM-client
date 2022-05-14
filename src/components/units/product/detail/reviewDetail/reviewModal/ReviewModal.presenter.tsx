@@ -7,26 +7,36 @@ export default function ReviewModalPresenter(){
     return(
         <B.ReviewModalWrapper>
             <B.ModalDiv>
-                <B.ReviewImage>
-                    <B.ImagePreviewWrapper>
-                        <B.ImagePreview></B.ImagePreview>
-                        <B.ImagePreview></B.ImagePreview>
-                        <B.ImagePreview></B.ImagePreview>
-                        <B.ImagePreview></B.ImagePreview>
-                        <B.ImagePreview></B.ImagePreview>
-                    </B.ImagePreviewWrapper>
-                </B.ReviewImage>
+              
+                    <B.ReviewImageWrapper>
+                        <B.ReviewImage src="/images/review-modal.png"/>
+                    </B.ReviewImageWrapper>
+
+
+                    <B.PreviewWrapper>
+                        <B.PreviewWrapper>
+                            <B.ImagePreviewWrapper>
+                                <B.ImagePreview src='/images/review-preview.png'/>
+                                <B.ImagePreview src='/images/review-preview.png'/>
+                                <B.ImagePreview src='/images/review-preview.png'/>
+                                <B.ImagePreview src='/images/review-preview.png'/>
+                                <B.ImagePreview src='/images/review-preview.png'/>
+            
+                            </B.ImagePreviewWrapper>
+                        </B.PreviewWrapper>
+                    </B.PreviewWrapper>
+                
 
                 <B.ReviewWrapper>
                     <B.ReviewTitleDiv>
                         <B.ReviewTitle>리뷰 제목</B.ReviewTitle>
                         <B.ReviewTopWrapper>
-                            <B.ReviewerProfile></B.ReviewerProfile>
+                            <B.ReviewerProfile src="/images/profile.png"/>
                             <B.ReviewerText>김철수</B.ReviewerText>
                             <B.ReviewDate>2022/05/22</B.ReviewDate>
                             <B.ReviewLike>
-                                <B.ReviewLikeIcon></B.ReviewLikeIcon>
-                                <B.ReviewLikeNum>nn</B.ReviewLikeNum>
+                                <B.ReviewLikeIcon src='/images/review-like.png'/>
+                                <B.ReviewLikeNum>12</B.ReviewLikeNum>
                             </B.ReviewLike>
 
                         </B.ReviewTopWrapper>

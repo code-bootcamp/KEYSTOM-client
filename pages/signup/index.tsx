@@ -1,7 +1,7 @@
 import SignUpContainer from '../../src/components/units/signup/Signup.container';
 
-function Login(){
+function SignUp(){
     return <SignUpContainer/>
 }
 
-export default Login;
+export default SignUp;
