@@ -11,6 +11,7 @@ export const Wrapper = styled.div`
 export const MainWrapper = styled.div`
     width: 1500px;
     padding-top: 70px;
+    padding-bottom: 300px;
 `;
 
 export const ImageWrapper = styled.div`
@@ -83,6 +84,15 @@ export const ReviewDownWrapper = styled.div`
     border-radius: 0px 0px 30px 30px;
 `;
 
+export const ReviewEmoji = styled.div`
+    width: 54px;
+    height: 54px;
+
+    background-image: url("/images/like.png");
+    background-position: center;
+    background-size: cover;
+`;
+
 export const ReviewScore = styled.div`
     /* width: 54px; */
     font-weight: 700;
@@ -101,6 +111,13 @@ export const ReviewTitleWrapper = styled.div`
 export const ReviewTitle = styled.div`
     font-weight: 400;
     font-size: 24px;
+`;
+
+export const ReviewLikeWrapper = styled.div`
+    display: flex;
+    flex-direction: row;
+
+    cursor: pointer;
 `;
 
 export const ReviewContents = styled.div`

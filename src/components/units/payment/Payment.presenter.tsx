@@ -12,9 +12,7 @@ export default function PaymentPresenter() {
             <S.PaymentWrapper>
                 <S.PaymentText>결제하기</S.PaymentText>
                 <S.PaymentMainWrapper>
-                    <S.PaymentMainImage
-                        style={{ display: "block" }}
-                    ></S.PaymentMainImage>
+                    <S.PaymentMainImage></S.PaymentMainImage>
 
                     <S.PaymentPriceWrapper>
                         <S.PaymentPriceTitle>
@@ -237,10 +235,13 @@ export default function PaymentPresenter() {
                             </S.Label>
                             <S.LabelText>무료</S.LabelText>
                         </S.OrderPriceWrapper>
-                        <S.Line></S.Line>
-                        <S.PaymentSubmitButton>결제하기</S.PaymentSubmitButton>
+                        {/* <S.Line></S.Line> */}
                     </S.PaymentSubRightWrapper>
                 </S.PaymentSubWrapper>
+                <S.ButtonWrapper>
+                    <S.PaymentSubmitButton>결제하기</S.PaymentSubmitButton>
+                    <S.PaymentSubmitButton>돌아가기</S.PaymentSubmitButton>
+                </S.ButtonWrapper>
             </S.PaymentWrapper>
         </S.Wrapper>
     );

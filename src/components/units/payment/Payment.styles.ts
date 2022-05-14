@@ -11,6 +11,7 @@ export const PaymentWrapper = styled.div`
     width: 1500px;
 
     padding-top: 100px;
+    padding-bottom: 500px;
 `;
 
 export const PaymentText = styled.div`
@@ -32,7 +33,7 @@ export const PaymentMainWrapper = styled.div`
     border-bottom: 2px solid #c4c4c4;
 `;
 
-export const PaymentMainImage = styled.img`
+export const PaymentMainImage = styled.div`
     width: 900px;
     height: 556px;
     background-image: url("/images/purchasepage.png");
@@ -283,6 +284,13 @@ export const Line = styled.div`
 
     /* margin-top: 30px; */
     border-bottom: 2px solid #c4c4c4; ;
+`;
+
+export const ButtonWrapper = styled.div`
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
 `;
 
 export const PaymentSubmitButton = styled.button`
