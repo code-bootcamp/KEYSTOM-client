@@ -1,11 +1,10 @@
-import styled from "@emotion/styled"
-
+import styled from "@emotion/styled";
 
 export const Container = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-`
+`;
 export const SignUpContainer = styled.div`
     display: flex;
     flex-direction: column;
@@ -13,7 +12,7 @@ export const SignUpContainer = styled.div`
     padding-left: 210px;
     padding-right: 210px;
     padding-bottom: 500px;
-`
+`;
 
 export const SignUpTitle = styled.div`
     display: flex;
@@ -25,8 +24,7 @@ export const SignUpTitle = styled.div`
     padding-top: 100px;
     padding-bottom: 60px;
     border-bottom: 2px solid #c4c4c4;
-
-`
+`;
 
 export const SignUpContentsWrapper = styled.div`
     display: flex;
@@ -36,7 +34,7 @@ export const SignUpContentsWrapper = styled.div`
     padding-bottom: 20px;
     border-bottom: 2px solid #c4c4c4;
     margin-bottom: 60px;
-`
+`;
 
 export const InfoTitle = styled.div`
     font-weight: 700;
@@ -44,89 +42,89 @@ export const InfoTitle = styled.div`
     line-height: 32px;
     padding-top: 60px;
     padding-bottom: 60px;
-`
+`;
 
 export const InfoDiv = styled.div`
-display: flex;
-align-items: center;
-padding-bottom: 20px;
-`
+    display: flex;
+    align-items: center;
+    padding-bottom: 20px;
+`;
 
 export const NameInfoInput = styled.input`
-width: 380px;
-height: 60px;
-padding-left: 20px;
-`
+    width: 380px;
+    height: 60px;
+    padding-left: 20px;
+`;
 
 export const InfoInput = styled.input`
     width: 400px;
     height: 60px;
     padding-left: 20px;
-`
+`;
 
 export const PasswordWatch = styled.div`
     width: 54px;
     height: 60px;
     background-color: #676767;
-`
+`;
 
 export const EyeIcon = styled.img`
     width: 100%;
     padding-top: 3px;
     cursor: pointer;
-`
+`;
 
 export const IDInfoInput = styled.input`
     width: 262px;
-    height: 60px ;
+    height: 60px;
     padding-left: 20px;
-`
+`;
 
 export const InfoText = styled.div`
     width: 150px;
     font-weight: 700;
-font-size: 20px;
-line-height: 20px;
-`
+    font-size: 20px;
+    line-height: 20px;
+`;
 export const InfoInputWrapper = styled.div`
     display: flex;
     flex-direction: column;
-`
+`;
 
 export const ZoncodeWrapper = styled.div`
     display: flex;
-`
+`;
 
 export const ZoncodeInput = styled.input`
     width: 116px;
     height: 60px;
     margin-right: 20px;
     padding-left: 20px;
-`
+`;
 
 export const SignUpBtnWrapper = styled.div`
     display: flex;
     justify-content: center;
-`
+`;
 
 export const SignUpCancelButton = styled.button`
     width: 560px;
     height: 120px;
     background: #1b1b1b;
-    border: 1px solid #B150F2;
+    border: 1px solid #b150f2;
     font-weight: 700;
     font-size: 32px;
     line-height: 32px;
-    color: #B150F2;
+    color: #b150f2;
     margin-right: 40px;
-`
+`;
 export const SignUpButton = styled.button`
     width: 560px;
     height: 120px;
-    background: #B150F2;
+    background: #b150f2;
     border: none;
     font-weight: 700;
     font-size: 32px;
     line-height: 32px;
     color: #f1f1f1;
-`
+`;

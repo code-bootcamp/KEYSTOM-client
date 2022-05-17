@@ -48,12 +48,19 @@ const arr = [
     },
 ];
 
-export default function ProductListPresenterItem() {
+export default function ProductListPresenterItem(props) {
     return (
         <S.ProductBoxWrapper>
-            {arr.map((el) => (
-                <S.ProductBox key={el.number}>
-                    <S.ProductImage src={`${el.image}`}></S.ProductImage>
+            {props.data?.fetchProducts.map((el) => (
+                <S.ProductBox key={el.id}>
+                    {el.image === null ? (
+                        <S.ProductImage src={`${el.image}`}></S.ProductImage>
+                    ) : (
+                        <S.ProductImage
+                            style={{ backgroundColor: "gray" }}
+                        ></S.ProductImage>
+                    )}
+
                     <S.ProductBoxRightWrapper>
                         <S.ProductTitle>{el.title}</S.ProductTitle>
                         <S.ProductPrice>
