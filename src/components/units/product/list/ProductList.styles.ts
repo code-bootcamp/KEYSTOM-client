@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { SearchOutlined } from "@ant-design/icons";
 
 export const Wrapper = styled.div`
     width: 100%;
@@ -41,15 +42,14 @@ export const SearchInputWrapper = styled.div`
     align-items: center;
 `;
 
-export const SearchIcon = styled.div`
-    width: 54px;
-    height: 54px;
-
-    background-image: url("/images/search.png");
-    background-position: center;
-    background-size: cover;
-
+export const SearchIcon = styled(SearchOutlined)`
+    color: white;
+    font-size: 50px;
     cursor: pointer;
+
+    :hover {
+        color: #b150f2;
+    }
 `;
 
 export const SearchInput = styled.input`
@@ -108,7 +108,7 @@ export const ProductBox = styled.div`
     border-radius: 30px;
 `;
 
-export const ProductImage = styled.img`
+export const ProductImage = styled.div`
     width: 366px;
     height: 366px;
 

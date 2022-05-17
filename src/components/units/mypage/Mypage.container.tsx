@@ -1,5 +1,7 @@
+import { useAuth } from "../../commons/hooks/useAuth";
 import MypagePresenter from "./Mypage.presenter";
 
 export default function MypageContainer() {
-  return <MypagePresenter />;
+    useAuth();
+    return <MypagePresenter />;
 }

@@ -4,8 +4,8 @@ import { Global } from "@emotion/react";
 import { globalStyles } from "../src/commons/styles/globalStyles";
 import { AppProps } from "next/app";
 import { RecoilRoot } from "recoil";
-import ApolloSetting from "../src/commons/apollo";
-import ChatBotPage from "../src/components/commons/chatbot";
+import AppLayout from "../src/components/commons/appLayout";
+import ApolloSetting from "../src/components/commons/apollo";
 
 function MyApp({ Component, pageProps }: AppProps) {
     return (
@@ -13,8 +13,9 @@ function MyApp({ Component, pageProps }: AppProps) {
             <ApolloSetting>
                 <Global styles={globalStyles} />
                 <Layout>
-                    <ChatBotPage></ChatBotPage>
-                    <Component {...pageProps} />
+                    <AppLayout>
+                        <Component {...pageProps} />
+                    </AppLayout>
                 </Layout>
             </ApolloSetting>
         </RecoilRoot>
