@@ -1,18 +1,42 @@
 import * as B from "./ReviewModal.styles"
-import Reply from "./ReviewReply"
+import Modal from 'antd/lib/modal/Modal';
+import CommentListPage from "./comment/commentList/CommentList.container";
+import CommentWritePage from './comment/commentWrite/index';
+import {FETCH_COMMENTS} from './ReviewModal.queries'
+import { useQuery } from "@apollo/client"
 
-export default function ReviewModalPresenter(){
+export default function ReviewModalPresenter(props:any){
 
+    const {data} = useQuery(FETCH_COMMENTS)
+    console.log(data)
 
     return(
-        <B.ReviewModalWrapper>
+        <div>
+            {props.isOpen&&
+            
+            <Modal
+            visible={true}
+            centered
+            onOk={props.handleOk}
+            onCancel={props.handleCancel}
+            width= {"auto"}
+            bodyStyle={{width:"100%", height:"auto", borderRadius:"30px",  padding:"0px" }}
+            cancelButtonProps={{style:{display:"none"}}}
+            okButtonProps={{style:{display:"none"}}}
+            style={{ width:"100%", height:"auto", boxShadow:"0px 4px 20px rgba(0, 0, 0,0.2)", margin:"100px", borderRadius:"30px", overflow:"hidden"}}
+            maskStyle={{width:"100%", height:"100%",background:"#000", opacity:0.5}}
+            footer={null}
+            zIndex={10}
+            maskClosable={true}
+            keyboard={true}
+            closable={false}
+            >
             <B.ModalDiv>
               
                     <B.ReviewImageWrapper>
                         <B.ReviewImage src="/images/review-modal.png"/>
                     </B.ReviewImageWrapper>
-
-
+                    <B.ModalCancelBtn src='/images/close.png' />
                     <B.PreviewWrapper>
                         <B.PreviewWrapper>
                             <B.ImagePreviewWrapper>
@@ -54,10 +78,7 @@ export default function ReviewModalPresenter(){
                         </B.ReviewContents>
                     </B.ReviewContentsDiv>
                     <B.ReviewCommentWrapper>
-                        <B.ReviewCommentWriteWrapper>
-                            <B.CommentInput placeholder="댓글 작성하기"/>
-                            <B.CommentBtn>작성하기</B.CommentBtn>
-                        </B.ReviewCommentWriteWrapper>
+                        <CommentWritePage/>
                     
                     <B.ReviewCommentListWrapper>
                         <B.CommentAllDiv>
@@ -65,45 +86,18 @@ export default function ReviewModalPresenter(){
                             <B.CommentAllNum>4</B.CommentAllNum>
                         </B.CommentAllDiv>
 
-                          {[0,1].map(el=>(
+                          {data?.fetchComments.map((el:any)=>(
                             <div>
-
-                            
-                                <B.CommentWrapper>
-                                     <B.CommentProfile></B.CommentProfile>
-                                         <B.CommentInner>
-                                             <B.CommentTop>
-                                                 <B.CommentTopDiv>
-                                                     <B.CommentWriter>댓쓴이1</B.CommentWriter>
-                                                     <B.CommentCreatedAt>2022/05/10</B.CommentCreatedAt>
-                                                 </B.CommentTopDiv>
-                                                
-                                                 <B.CommentBtns>
-                                                     <B.CommentEditBtn>E</B.CommentEditBtn>
-                                                     <B.CommentDeleteBtn>X</B.CommentDeleteBtn>
-                                                 </B.CommentBtns>
-                                             </B.CommentTop>
-                                             <B.CommentContents>정말 알고 싶었던 정보였어요!</B.CommentContents>
-                                             <B.ReplyBtn>
-                                                <B.ReplyIcon src="/images/commentwrite.png"/>
-                                            </B.ReplyBtn>
-                                         </B.CommentInner>
-                                 </B.CommentWrapper>
-
-                                 {[0].map(el=>(
-                                    <div>
-                                        <Reply/>
-                                    </div>
-                                 ))}
+                                <CommentListPage el={el}/>
                             </div>
                           ))}
-
-                   
-
                     </B.ReviewCommentListWrapper>
                     </B.ReviewCommentWrapper>
                 </B.ReviewWrapper>
             </B.ModalDiv>
-        </B.ReviewModalWrapper>
+            </Modal>
+            
+            }
+        </div>
     )
 }

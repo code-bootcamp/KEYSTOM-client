@@ -18,23 +18,25 @@ display: flex;
 justify-content: space-between;
 width: 70px;
 `
-export const ReplyEditBtn = styled.button`
-width: 30px;
-height: 30px;
-background-color:#c4c4c4;
+export const ReplyEditBtn = styled.img`
+width: 24px;
+height: 24px;
+cursor: pointer;
+
 
 `
-export const ReplyDeleteBtn = styled.button`
-width: 30px;
-height: 30px;
-background-color:#c4c4c4;
+export const ReplyDeleteBtn = styled.img`
+width: 24px;
+height: 24px;
+cursor: pointer;
+
 `
 
 
 
 export const ReplyProfile = styled.div`
 width: 60px;
-height: 60px;
+height: 45px;
 background: #eccdf3;
 border-radius: 30px;
 margin-right: 20px;
@@ -43,7 +45,7 @@ margin-right: 20px;
 export const ReplyInner = styled.div`
 display: flex;
 flex-direction: column;
-width: 1070px;
+width: 980px;
 
 `
 
@@ -119,8 +121,9 @@ export default function Reply(){
                              </ReplyTopDiv>
                             
                              <ReplyBtns>
-                                 <ReplyEditBtn>E</ReplyEditBtn>
-                                 <ReplyDeleteBtn>X</ReplyDeleteBtn>
+
+                                 <ReplyEditBtn src="/images/edit.png"/>
+                                 <ReplyDeleteBtn src="/images/delete.png"/>
                              </ReplyBtns>
                          </ReplyTop>
                          <ReplyContents>감사합니당!</ReplyContents>
