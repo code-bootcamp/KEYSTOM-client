@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { EyeOutlined } from "@ant-design/icons";
 
 export const Container = styled.div`
     display: flex;
@@ -46,7 +47,9 @@ export const InfoTitle = styled.div`
 
 export const InfoDiv = styled.div`
     display: flex;
+    flex-direction: row;
     align-items: center;
+
     padding-bottom: 20px;
 `;
 
@@ -63,19 +66,39 @@ export const InfoInput = styled.input`
 `;
 
 export const PasswordWatch = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
     width: 54px;
     height: 60px;
     background-color: #676767;
+
+    padding-top: 8px;
+    /* background-color: red; */
 `;
 
-export const EyeIcon = styled.img`
-    width: 100%;
+export const EyeIcon = styled(EyeOutlined)<{ isWrite: boolean }>`
+    /* width: 54px; */
+    /* width: 54px; */
+    font-size: 40px;
     padding-top: 3px;
     cursor: pointer;
+
+    color: ${(props) => (props.isWrite ? "#b150f2" : " #ffffff")};
+`;
+
+export const EyeIcon2 = styled(EyeOutlined)<{ isWrite2: boolean }>`
+    /* width: 54px; */
+    /* width: 54px; */
+    font-size: 40px;
+    padding-top: 3px;
+    cursor: pointer;
+
+    color: ${(props) => (props.isWrite2 ? "#b150f2" : " #ffffff")};
 `;
 
 export const IDInfoInput = styled.input`
-    width: 262px;
+    width: 380px;
     height: 60px;
     padding-left: 20px;
 `;
@@ -84,8 +107,15 @@ export const InfoText = styled.div`
     width: 150px;
     font-weight: 700;
     font-size: 20px;
-    line-height: 20px;
 `;
+
+export const SignUpError = styled.div`
+    color: #b150f2;
+    /* padding-top: 15px; */
+    margin-bottom: 20px;
+    margin-left: 150px;
+`;
+
 export const InfoInputWrapper = styled.div`
     display: flex;
     flex-direction: column;

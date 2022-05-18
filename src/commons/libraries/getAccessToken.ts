@@ -12,10 +12,11 @@ export async function getAccessToken() {
     try {
         const graphQLClient = new GraphQLClient(
             // "https://backend06.codebootcamp.co.kr/graphql",
-            "http://antipiebse.shop/graphql",
+            "https://antipiebse.shop/graphql",
             { credentials: "include" }
         );
         const result = await graphQLClient.request(RESTORE_ACCESS_TOKEN);
+        console.log("토큰 잘왔냐?", result);
         const newAccessToken = result.restoreAccessToken.accessToken;
 
         return newAccessToken;

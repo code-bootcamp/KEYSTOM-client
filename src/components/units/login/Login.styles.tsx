@@ -53,7 +53,8 @@ export const CancelBtn = styled.img`
 
 export const LoginError = styled.div`
     color: #b150f2;
-    padding-top: 15px;
+    /* padding-top: 15px; */
+    margin-bottom: 20px;
 `;
 
 export const LoginInput = styled.input`
@@ -65,7 +66,6 @@ export const LoginInput = styled.input`
     background: #f6f6f6;
     border-radius: 10px;
     padding-left: 30px;
-    margin-bottom: 20px;
     color: #2c2c2c;
 `;
 

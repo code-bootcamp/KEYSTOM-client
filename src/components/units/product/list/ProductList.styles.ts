@@ -108,7 +108,7 @@ export const ProductBox = styled.div`
     border-radius: 30px;
 `;
 
-export const ProductImage = styled.div`
+export const ProductImage = styled.div<{ src?: string }>`
     width: 366px;
     height: 366px;
 

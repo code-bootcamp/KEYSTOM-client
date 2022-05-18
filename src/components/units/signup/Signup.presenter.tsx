@@ -2,7 +2,7 @@ import * as S from "./Signup.styles";
 
 export default function SignUpPresenter(props: any) {
     return (
-        <form onSubmit={props.handleSubmit(props.onclickSubmit)}>
+        <form onSubmit={props.handleSubmit(props.onClickSignUp)}>
             <S.Container>
                 <S.SignUpContainer>
                     <S.SignUpTitle>회원가입하기</S.SignUpTitle>
@@ -11,29 +11,57 @@ export default function SignUpPresenter(props: any) {
 
                         <S.InfoDiv>
                             <S.InfoText>이름</S.InfoText>
-                            <S.NameInfoInput placeholder="홍길동" />
+                            <S.NameInfoInput
+                                placeholder="홍길동"
+                                {...props.register("name")}
+                            ></S.NameInfoInput>
                         </S.InfoDiv>
+                        <S.SignUpError>
+                            {props.formState.errors.name?.message}
+                        </S.SignUpError>
 
                         <S.InfoDiv>
-                            <S.InfoText>아이디</S.InfoText>
-                            <S.IDInfoInput placeholder="HongilDong8093" />
+                            <S.InfoText>메일</S.InfoText>
+                            <S.IDInfoInput
+                                placeholder="HongilDong8093"
+                                {...props.register("email")}
+                            />
                         </S.InfoDiv>
+                        <S.SignUpError>
+                            {props.formState.errors.email?.message}
+                        </S.SignUpError>
 
                         <S.InfoDiv>
                             <S.InfoText>비밀번호</S.InfoText>
-                            <S.InfoInput placeholder="********" />
+                            <S.InfoInput
+                                type="password"
+                                placeholder="********"
+                                {...props.register("password")}
+                                onChange={props.onChangePassword}
+                            />
                             <S.PasswordWatch>
-                                <S.EyeIcon src="/images/eye.png" />
+                                <S.EyeIcon isWrite={props.isWrite} />
                             </S.PasswordWatch>
                         </S.InfoDiv>
+                        <S.SignUpError>
+                            {props.formState.errors.password?.message}
+                        </S.SignUpError>
 
                         <S.InfoDiv>
                             <S.InfoText>비밀번호 확인</S.InfoText>
-                            <S.InfoInput placeholder="영문 + 숫자 조합 8~16자리를 입력해주세요. " />
+                            <S.InfoInput
+                                type="password"
+                                placeholder="영문 + 숫자 조합 8~16자리를 입력해주세요. "
+                                {...props.register("passwordCheck")}
+                                onChange={props.onChangePasswordCheck}
+                            />
                             <S.PasswordWatch>
-                                <S.EyeIcon src="/images/eye.png" />
+                                <S.EyeIcon2 isWrite2={props.isWrite2} />
                             </S.PasswordWatch>
                         </S.InfoDiv>
+                        <S.SignUpError>
+                            {props.formState.errors.passwordCheck?.message}
+                        </S.SignUpError>
 
                         <S.InfoDiv>
                             <S.InfoText>배송 주소</S.InfoText>
@@ -60,9 +88,7 @@ export default function SignUpPresenter(props: any) {
                         <S.SignUpCancelButton onClick={props.moveToHome}>
                             취소하기
                         </S.SignUpCancelButton>
-                        <S.SignUpButton onClick={props.onClickSignUp}>
-                            가입하기
-                        </S.SignUpButton>
+                        <S.SignUpButton>가입하기</S.SignUpButton>
                     </S.SignUpBtnWrapper>
                 </S.SignUpContainer>
             </S.Container>
