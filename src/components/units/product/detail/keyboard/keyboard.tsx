@@ -1,19 +1,7 @@
-import * as S from "./ProductDetail.styles";
-import ReviewDetail from "./reviewDetail/ReviewDetail.container";
-
-// 키보드에 필요한 import
-import { Suspense, useRef, useState, useEffect } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
-import {
-  ContactShadows,
-  Environment,
-  useGLTF,
-  OrbitControls,
-} from "@react-three/drei";
-import { HexColorPicker, HexColorInput } from "react-colorful";
+import { useRef, useState, useEffect } from "react";
+import { useGLTF } from "@react-three/drei";
 import { proxy, useSnapshot } from "valtio";
 
-// 키보드 색상 state
 const state = proxy({
   current: null,
   items: {
@@ -81,22 +69,24 @@ const state = proxy({
   },
 });
 
-// 색상 바뀐거 찾는 함수
-let length = 0;
-
-function ChangeKey() {
-  useEffect(() => {
-    length = Object.values(state.items).filter((el) => el !== "#ffffff").length;
-  });
-
-  return <div>{length}</div>;
-}
-
-// 키보드 3d 구현 함수
-function Keyboard(props: any) {
+export default function Keyboard(props: any) {
   const ref = useRef();
   const snap = useSnapshot(state);
   const { nodes, materials } = useGLTF("/images/keyboard_fix.glb");
+
+  // console.log(Object.entries(state.items).map((el) => el[1]));
+  // console.log(Object.entries(state.items));
+
+  // console.log(Object.entries(state.items).length);
+  // console.log(materials.esc.color);
+
+  let changeCount = 0;
+  useEffect(() => {
+    if (snap.items.SPACEBAR === "#ffffff") {
+      changeCount + 1;
+      console.log(changeCount);
+    }
+  }, [changeCount]);
 
   return (
     <>
@@ -551,162 +541,5 @@ function Keyboard(props: any) {
         />
       </group>
     </>
-  );
-}
-
-function Picker() {
-  // const [count, setCount] = useState(0);
-  const snap = useSnapshot(state);
-
-  // console.log(snap.items[snap.current]);
-  // useEffect(() => {
-  //   if (snap.items[snap.current] !== "#ffffff") {
-  //     // setCount((prev) => prev + 1);
-  //     count++;
-  //   }
-  // }, [snap.items[snap.current]]);
-
-  // console.log(count);
-  let length = Object.values(state.items).filter(
-    (el) => el !== "#ffffff"
-  ).length;
-
-  return (
-    <div
-      style={{
-        display: snap.current ? "block" : "none",
-        marginTop: "30px",
-      }}
-    >
-      <HexColorPicker
-        className="picker"
-        color={snap.items[snap.current]}
-        onChange={(color) => (state.items[snap.current] = color)}
-        style={{ width: "280px", height: "280px" }}
-      />
-      <div style={{ borderLeftColor: `${state.items[snap.current]}` }}>
-        {state.items[snap.current]}
-      </div>
-      <HexColorInput
-        color={snap.items[snap.current]}
-        onChange={(color) => (state.items[snap.current] = color)}
-      />
-    </div>
-  );
-}
-
-export default function ProductDetailPresenter() {
-  const snap = useSnapshot(state);
-
-  return (
-    <S.Wrapper>
-      <S.DetailWrapper>
-        <S.Title>키보드 타이틀</S.Title>
-        <S.ImageWrapper>
-          <S.ImageLeft>
-            <S.OriginKeyboard></S.OriginKeyboard>
-            <S.ColorBoxWrapper>
-              <S.PickImage src="/images/colorpick.png" />
-              <div>
-                <Picker />
-                {/* <HexColorPicker color={color} onChange={setColor} />
-                <S.ColorBox>
-                  <S.Color1 onClick={onClickColor1}></S.Color1>
-                  <S.Color2 onClick={onClickColor2}></S.Color2>
-                  <S.Color3 onClick={onClickColor3}></S.Color3>
-                  <S.Color4 onClick={onClickColor4}></S.Color4>
-                </S.ColorBox>
-
-                <S.ColorBox>
-                  <S.Color5 onClick={onClickColor5}></S.Color5>
-                  <S.Color6 onClick={onClickColor6}></S.Color6>
-                  <S.Color7 onClick={onClickColor7}></S.Color7>
-                  <S.Color8 onClick={onClickColor8}></S.Color8>
-                </S.ColorBox>
-
-                <S.ColorBox>
-                  <S.Color9 onClick={onClickColor9}></S.Color9>
-                  <S.Color10 onClick={onClickColor10}></S.Color10>
-                  <S.Color11 onClick={onClickColor11}></S.Color11>
-                  <S.Color12 onClick={onClickColor12}></S.Color12>
-                </S.ColorBox>
-
-                <S.ColorBox>
-                  <S.Color13 onClick={onClickColor13}></S.Color13>
-                  <S.Color14 onClick={onClickColor14}></S.Color14>
-                  <S.Color15 onClick={onClickColor15}></S.Color15>
-                  <S.Color16 onClick={onClickColor16}></S.Color16>
-                </S.ColorBox> */}
-              </div>
-            </S.ColorBoxWrapper>
-          </S.ImageLeft>
-          <S.ImageRight>
-            <Canvas
-              style={{ marginLeft: "80px" }}
-              camera={{ fov: 35, near: 0.2, position: [0, 0.7, 0.6] }}
-            >
-              <Suspense fallback={null}>
-                <Keyboard />
-                <Environment preset="city" />
-              </Suspense>
-              <OrbitControls enableZoom={true} enablePan={false} />
-            </Canvas>
-            <S.VectorImage src="/images/Vector.png" />
-          </S.ImageRight>
-        </S.ImageWrapper>
-      </S.DetailWrapper>
-
-      <S.DetailWrapper>
-        <div>
-          <S.Title>적용한 커스텀 옵션</S.Title>
-          <S.OptionWrapper>
-            <S.OptionLeftWrapper>
-              <S.OptionTitle>
-                <div>옵션명</div>
-                <div>수량</div>
-                <div>가격</div>
-              </S.OptionTitle>
-              <S.OptionBottom>
-                <S.Option>
-                  <S.OptionText>자판 색 변경</S.OptionText>
-
-                  <S.OptionQty>
-                    <ChangeKey />
-                  </S.OptionQty>
-                  <S.OptionPrice>30,000</S.OptionPrice>
-                </S.Option>
-                <S.Option>
-                  <S.OptionText>스페이스바 색 변경</S.OptionText>
-                  <S.OptionQty>1</S.OptionQty>
-                  <S.OptionPrice>10,000</S.OptionPrice>
-                </S.Option>
-                <S.Option>
-                  <S.OptionText>자판 색 변경</S.OptionText>
-                  <S.OptionQty>4</S.OptionQty>
-                  <S.OptionPrice>30,000</S.OptionPrice>
-                </S.Option>
-                <S.Option>
-                  <S.OptionText>자판 색 변경</S.OptionText>
-                  <S.OptionQty>4</S.OptionQty>
-                  <S.OptionPrice>30,000</S.OptionPrice>
-                </S.Option>
-                <S.PriceWrapper>
-                  <S.PriceAdd>합계</S.PriceAdd>
-                  <S.PriceNum>120,000원</S.PriceNum>
-                </S.PriceWrapper>
-              </S.OptionBottom>
-            </S.OptionLeftWrapper>
-            <S.OptionRight>
-              <S.ButtonWrapper>
-                <S.MoveToListButton>목록보기</S.MoveToListButton>
-                <S.BasketButton>장바구니</S.BasketButton>
-                <S.PaymentButton>바로 결제</S.PaymentButton>
-              </S.ButtonWrapper>
-            </S.OptionRight>
-          </S.OptionWrapper>
-        </div>
-      </S.DetailWrapper>
-      <ReviewDetail />
-    </S.Wrapper>
   );
 }
