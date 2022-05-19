@@ -1,10 +1,18 @@
 import {gql} from '@apollo/client'
 
 
-export const FETCH_COMMENTS = gql`
-    query fetchComments{
+export const FETCH_REVIEW = gql`
+query fetchReview($reviewId: String! ){
+    fetchReview(reviewId: $reviewId){
         id
-        commentContent
-        ParentId
+        reviewTitle
+        reviewContent
+        like
+        createdAt
+        user{
+            name
+            profileImage
+        }
     }
+}
 `

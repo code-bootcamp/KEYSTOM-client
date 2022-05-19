@@ -1,3 +1,4 @@
+import Head from "next/head";
 import * as S from "./Payment.styles";
 
 // const arr = [
@@ -6,9 +7,19 @@ import * as S from "./Payment.styles";
 //   { optionCode: 3, optionNumber: 5, optionPrice: 10000 },
 // ];
 
-export default function PaymentPresenter() {
+export default function PaymentPresenter(props:any) {
     return (
         <S.Wrapper>
+            <Head>
+                <script
+                type="text/javascript"
+                src="https://code.jquery.com/jquery-1.12.4.min.js"
+                ></script>
+                <script
+                type="text/javascript"
+                src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"
+                ></script>
+            </Head>
             <S.PaymentWrapper>
                 <S.PaymentText>결제하기</S.PaymentText>
                 <S.PaymentMainWrapper>
@@ -239,7 +250,7 @@ export default function PaymentPresenter() {
                     </S.PaymentSubRightWrapper>
                 </S.PaymentSubWrapper>
                 <S.ButtonWrapper>
-                    <S.PaymentSubmitButton>결제하기</S.PaymentSubmitButton>
+                    <S.PaymentSubmitButton onClick={props.requestPayment}>결제하기</S.PaymentSubmitButton>
                     <S.PaymentSubmitButton>돌아가기</S.PaymentSubmitButton>
                 </S.ButtonWrapper>
             </S.PaymentWrapper>
