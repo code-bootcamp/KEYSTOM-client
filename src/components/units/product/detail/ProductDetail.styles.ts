@@ -5,6 +5,7 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 373px;
 `;
 export const DetailWrapper = styled.div`
   width: 1500px;
@@ -13,11 +14,14 @@ export const DetailWrapper = styled.div`
 `;
 
 export const Title = styled.div`
+  font-family: "NanumGothicCoding";
+  font-style: normal;
   font-weight: 700;
   font-size: 32px;
   line-height: 32px;
   padding-top: 100px;
   padding-bottom: 28px;
+  color: #ffffff;
 `;
 
 export const ImageWrapper = styled.div`
@@ -62,142 +66,6 @@ export const ColorBoxWrapper = styled.div`
   background-color: #929292;
   background: #ffffff;
   border-radius: 0px 0px 0px 30px;
-`;
-export const ColorBox = styled.div`
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  height: 100%;
-  padding-top: 30px;
-`;
-
-export const Color1 = styled.div`
-  width: 60px;
-  height: 60px;
-  border-radius: 50px;
-  background-color: #ff3e3e;
-  cursor: pointer;
-`;
-
-export const Color2 = styled.div`
-  width: 60px;
-  height: 60px;
-  border-radius: 50px;
-  background-color: #ffa030;
-  cursor: pointer;
-`;
-
-export const Color3 = styled.div`
-  width: 60px;
-  height: 60px;
-  border-radius: 50px;
-  background-color: #ffe351;
-  cursor: pointer;
-`;
-
-export const Color4 = styled.div`
-  width: 60px;
-  height: 60px;
-  border-radius: 50px;
-  background-color: #a3ff5b;
-  cursor: pointer;
-`;
-
-export const Color5 = styled.div`
-  width: 60px;
-  height: 60px;
-  border-radius: 50px;
-  background-color: #83e1ff;
-  cursor: pointer;
-`;
-
-export const Color6 = styled.div`
-  width: 60px;
-  height: 60px;
-  border-radius: 50px;
-  background-color: #627bff;
-  cursor: pointer;
-`;
-
-export const Color7 = styled.div`
-  width: 60px;
-  height: 60px;
-  border-radius: 50px;
-  background-color: #9d50ff;
-  cursor: pointer;
-`;
-
-export const Color8 = styled.div`
-  width: 60px;
-  height: 60px;
-  border-radius: 50px;
-  background-color: #52068d;
-  cursor: pointer;
-`;
-
-export const Color9 = styled.div`
-  width: 60px;
-  height: 60px;
-  border-radius: 50px;
-  background-color: #ff83e4;
-  cursor: pointer;
-`;
-
-export const Color10 = styled.div`
-  width: 60px;
-  height: 60px;
-  border-radius: 50px;
-  background-color: #ff1392;
-  cursor: pointer;
-`;
-
-export const Color11 = styled.div`
-  width: 60px;
-  height: 60px;
-  border-radius: 50px;
-  background-color: #474747;
-  cursor: pointer;
-`;
-
-export const Color12 = styled.div`
-  width: 60px;
-  height: 60px;
-  border-radius: 50px;
-  background-color: #1b1b1b;
-  cursor: pointer;
-`;
-
-export const Color13 = styled.div`
-  width: 60px;
-  height: 60px;
-  border-radius: 50px;
-  background-color: #ffdcdc;
-  cursor: pointer;
-`;
-
-export const Color14 = styled.div`
-  width: 60px;
-  height: 60px;
-  border-radius: 50px;
-  background-color: #fff;
-  border: 1px solid #1b1b1b;
-  cursor: pointer;
-`;
-
-export const Color15 = styled.div`
-  width: 60px;
-  height: 60px;
-  border-radius: 50px;
-  background-color: #06e9a5;
-  cursor: pointer;
-`;
-
-export const Color16 = styled.div`
-  width: 60px;
-  height: 60px;
-  border-radius: 50px;
-  background-color: #e8d1ff;
-  cursor: pointer;
 `;
 
 export const VectorImage = styled.img``;
