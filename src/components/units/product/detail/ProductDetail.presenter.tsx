@@ -81,15 +81,87 @@ const state = proxy({
   },
 });
 
-// 색상 바뀐거 찾는 함수
+// 스페이스바 제외 색상 바뀐거 찾는 함수
 let length = 0;
+let spacebarLength = 0;
+let enterLength = 0;
+let escLength = 0;
 
 function ChangeKey() {
   useEffect(() => {
-    length = Object.values(state.items).filter((el) => el !== "#ffffff").length;
+    if (
+      Object.values(state.items)[14] !== "#ffffff" ||
+      Object.values(state.items)[33] !== "#ffffff" ||
+      Object.values(state.items)[47] !== "#ffffff"
+    ) {
+      if (
+        Object.values(state.items)[14] !== "#ffffff" &&
+        Object.values(state.items)[33] !== "#ffffff" &&
+        Object.values(state.items)[47] !== "#ffffff"
+      ) {
+        length =
+          Object.values(state.items).filter((el) => el !== "#ffffff").length -
+          3;
+      } else if (
+        Object.values(state.items)[14] !== "#ffffff" &&
+        Object.values(state.items)[33] !== "#ffffff"
+      ) {
+        length =
+          Object.values(state.items).filter((el) => el !== "#ffffff").length -
+          2;
+      } else if (
+        Object.values(state.items)[33] !== "#ffffff" &&
+        Object.values(state.items)[47] !== "#ffffff"
+      ) {
+        length =
+          Object.values(state.items).filter((el) => el !== "#ffffff").length -
+          2;
+      } else if (
+        Object.values(state.items)[14] !== "#ffffff" &&
+        Object.values(state.items)[47] !== "#ffffff"
+      ) {
+        length =
+          Object.values(state.items).filter((el) => el !== "#ffffff").length -
+          2;
+      } else {
+        length =
+          Object.values(state.items).filter((el) => el !== "#ffffff").length -
+          1;
+      }
+    } else {
+      length = Object.values(state.items).filter(
+        (el) => el !== "#ffffff"
+      ).length;
+    }
   });
 
   return <div>{length}</div>;
+}
+
+// 스페이스바 색상 바꼈을 때
+function SpaceBarChangeKey() {
+  useEffect(() => {
+    spacebarLength = Object.values(state.items)[33] !== "#ffffff" ? 1 : 0;
+  });
+
+  return <div>{spacebarLength}</div>;
+}
+
+function EnterChangeKey() {
+  useEffect(() => {
+    enterLength = Object.values(state.items)[14] !== "#ffffff" ? 1 : 0;
+  });
+
+  return <div>{enterLength}</div>;
+}
+
+// esc 색상 바꼈을 때
+function EscChangeKey() {
+  useEffect(() => {
+    escLength = Object.values(state.items)[47] !== "#ffffff" ? 1 : 0;
+  });
+
+  return <div>{escLength}</div>;
 }
 
 // 키보드 3d 구현 함수
@@ -599,114 +671,99 @@ export default function ProductDetailPresenter() {
   const snap = useSnapshot(state);
 
   return (
-    <S.Wrapper>
-      <S.DetailWrapper>
-        <S.Title>키보드 타이틀</S.Title>
-        <S.ImageWrapper>
-          <S.ImageLeft>
-            <S.OriginKeyboard></S.OriginKeyboard>
-            <S.ColorBoxWrapper>
-              <S.PickImage src="/images/colorpick.png" />
-              <div>
-                <Picker />
-                {/* <HexColorPicker color={color} onChange={setColor} />
-                <S.ColorBox>
-                  <S.Color1 onClick={onClickColor1}></S.Color1>
-                  <S.Color2 onClick={onClickColor2}></S.Color2>
-                  <S.Color3 onClick={onClickColor3}></S.Color3>
-                  <S.Color4 onClick={onClickColor4}></S.Color4>
-                </S.ColorBox>
+    <>
+      <S.Wrapper>
+        <S.DetailWrapper>
+          <S.Title>올 포 디자이너</S.Title>
+          <S.ImageWrapper>
+            <S.ImageLeft>
+              <S.OriginKeyboard></S.OriginKeyboard>
+              <S.ColorBoxWrapper>
+                <S.PickImage src="/images/colorpick.png" />
+                <div>
+                  <Picker />
+                </div>
+              </S.ColorBoxWrapper>
+            </S.ImageLeft>
+            <S.ImageRight>
+              <Canvas
+                style={{ marginLeft: "80px" }}
+                camera={{ fov: 35, near: 0.2, position: [0, 0.7, 0.6] }}
+              >
+                <Suspense fallback={null}>
+                  <Keyboard />
+                  <Environment preset="city" />
+                </Suspense>
+                <OrbitControls enableZoom={true} enablePan={false} />
+              </Canvas>
+              <S.VectorImage src="/images/Vector.png" />
+            </S.ImageRight>
+          </S.ImageWrapper>
+        </S.DetailWrapper>
 
-                <S.ColorBox>
-                  <S.Color5 onClick={onClickColor5}></S.Color5>
-                  <S.Color6 onClick={onClickColor6}></S.Color6>
-                  <S.Color7 onClick={onClickColor7}></S.Color7>
-                  <S.Color8 onClick={onClickColor8}></S.Color8>
-                </S.ColorBox>
+        <S.DetailWrapper>
+          <div>
+            <S.Title>적용한 커스텀 옵션</S.Title>
+            <S.OptionWrapper>
+              <S.OptionLeftWrapper>
+                <S.OptionTitle>
+                  <div>옵션명</div>
+                  <div>수량</div>
+                  <div>가격</div>
+                </S.OptionTitle>
+                <S.OptionBottom>
+                  <S.Option>
+                    <S.OptionText>자판 색 변경</S.OptionText>
 
-                <S.ColorBox>
-                  <S.Color9 onClick={onClickColor9}></S.Color9>
-                  <S.Color10 onClick={onClickColor10}></S.Color10>
-                  <S.Color11 onClick={onClickColor11}></S.Color11>
-                  <S.Color12 onClick={onClickColor12}></S.Color12>
-                </S.ColorBox>
-
-                <S.ColorBox>
-                  <S.Color13 onClick={onClickColor13}></S.Color13>
-                  <S.Color14 onClick={onClickColor14}></S.Color14>
-                  <S.Color15 onClick={onClickColor15}></S.Color15>
-                  <S.Color16 onClick={onClickColor16}></S.Color16>
-                </S.ColorBox> */}
-              </div>
-            </S.ColorBoxWrapper>
-          </S.ImageLeft>
-          <S.ImageRight>
-            <Canvas
-              style={{ marginLeft: "80px" }}
-              camera={{ fov: 35, near: 0.2, position: [0, 0.7, 0.6] }}
-            >
-              <Suspense fallback={null}>
-                <Keyboard />
-                <Environment preset="city" />
-              </Suspense>
-              <OrbitControls enableZoom={true} enablePan={false} />
-            </Canvas>
-            <S.VectorImage src="/images/Vector.png" />
-          </S.ImageRight>
-        </S.ImageWrapper>
-      </S.DetailWrapper>
-
-      <S.DetailWrapper>
-        <div>
-          <S.Title>적용한 커스텀 옵션</S.Title>
-          <S.OptionWrapper>
-            <S.OptionLeftWrapper>
-              <S.OptionTitle>
-                <div>옵션명</div>
-                <div>수량</div>
-                <div>가격</div>
-              </S.OptionTitle>
-              <S.OptionBottom>
-                <S.Option>
-                  <S.OptionText>자판 색 변경</S.OptionText>
-
-                  <S.OptionQty>
-                    <ChangeKey />
-                  </S.OptionQty>
-                  <S.OptionPrice>30,000</S.OptionPrice>
-                </S.Option>
-                <S.Option>
-                  <S.OptionText>스페이스바 색 변경</S.OptionText>
-                  <S.OptionQty>1</S.OptionQty>
-                  <S.OptionPrice>10,000</S.OptionPrice>
-                </S.Option>
-                <S.Option>
-                  <S.OptionText>자판 색 변경</S.OptionText>
-                  <S.OptionQty>4</S.OptionQty>
-                  <S.OptionPrice>30,000</S.OptionPrice>
-                </S.Option>
-                <S.Option>
-                  <S.OptionText>자판 색 변경</S.OptionText>
-                  <S.OptionQty>4</S.OptionQty>
-                  <S.OptionPrice>30,000</S.OptionPrice>
-                </S.Option>
-                <S.PriceWrapper>
-                  <S.PriceAdd>합계</S.PriceAdd>
-                  <S.PriceNum>120,000원</S.PriceNum>
-                </S.PriceWrapper>
-              </S.OptionBottom>
-            </S.OptionLeftWrapper>
-            <S.OptionRight>
-              <S.ButtonWrapper>
-                <S.MoveToListButton>목록보기</S.MoveToListButton>
-                <S.BasketButton>장바구니</S.BasketButton>
-                <S.PaymentButton>바로 결제</S.PaymentButton>
-              </S.ButtonWrapper>
-            </S.OptionRight>
-          </S.OptionWrapper>
-        </div>
-      </S.DetailWrapper>
+                    <S.OptionQty>
+                      <ChangeKey />
+                    </S.OptionQty>
+                    <S.OptionPrice>{length * 8000}</S.OptionPrice>
+                  </S.Option>
+                  <S.Option>
+                    <S.OptionText>스페이스바 색 변경</S.OptionText>
+                    <S.OptionQty>
+                      <SpaceBarChangeKey />
+                    </S.OptionQty>
+                    <S.OptionPrice>{spacebarLength * 11000}</S.OptionPrice>
+                  </S.Option>
+                  <S.Option>
+                    <S.OptionText>엔터 색 변경</S.OptionText>
+                    <S.OptionQty>
+                      <EnterChangeKey />
+                    </S.OptionQty>
+                    <S.OptionPrice>{enterLength * 12000}</S.OptionPrice>
+                  </S.Option>
+                  <S.Option>
+                    <S.OptionText>ESC 색 변경</S.OptionText>
+                    <S.OptionQty>
+                      <EscChangeKey />
+                    </S.OptionQty>
+                    <S.OptionPrice>{escLength * 9000}</S.OptionPrice>
+                  </S.Option>
+                  <S.PriceWrapper>
+                    <S.PriceAdd>합계</S.PriceAdd>
+                    <S.PriceNum>
+                      {length * 8000 +
+                        spacebarLength * 11000 +
+                        enterLength * 12000 +
+                        escLength * 9000}
+                    </S.PriceNum>
+                  </S.PriceWrapper>
+                </S.OptionBottom>
+              </S.OptionLeftWrapper>
+              <S.OptionRight>
+                <S.ButtonWrapper>
+                  <S.MoveToListButton>목록보기</S.MoveToListButton>
+                  <S.BasketButton>장바구니</S.BasketButton>
+                  <S.PaymentButton>바로 결제</S.PaymentButton>
+                </S.ButtonWrapper>
+              </S.OptionRight>
+            </S.OptionWrapper>
+          </div>
+        </S.DetailWrapper>
+      </S.Wrapper>
       <ReviewDetail />
-    </S.Wrapper>
+    </>
   );
 }
