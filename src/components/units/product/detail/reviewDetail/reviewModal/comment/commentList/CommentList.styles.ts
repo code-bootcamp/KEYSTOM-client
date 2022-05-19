@@ -2,7 +2,10 @@ import styled from "@emotion/styled";
 
 
 
+export const CommentContainer = styled.div`
+width: 100%;
 
+`
 
 export const CommentWrapper = styled.div`
 display: flex;

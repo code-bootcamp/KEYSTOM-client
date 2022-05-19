@@ -75,9 +75,9 @@ padding-top: 140px;
 padding-bottom: 24px;
 `
 
-const CompanyAddress = styled.div`
-  padding-bottom: 15px;
-`
+// const CompanyAddress = styled.div`
+//   padding-bottom: 15px;
+// `
 
 const FooterMapDiv =  styled.div`
 width: 500px;
@@ -112,9 +112,6 @@ export default function LayoutFooter() {
         <FooterRightDiv>
           <LocationText>Location</LocationText>
           <FooterMapDiv>
-            <CompanyAddress>
-              서울시 행복구 행복빌딩 B동 1004호
-            </CompanyAddress>
             <MapPage/>
           </FooterMapDiv>
         </FooterRightDiv>
