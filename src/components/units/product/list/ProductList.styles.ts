@@ -79,19 +79,8 @@ export const ProductListWrapper = styled.div`
     padding-top: 102px;
     padding-bottom: 460px;
 
-    /* display: flex; */
-    /* flex-direction: column; */
-`;
-
-export const ProductBoxWrapper = styled.div`
-    width: 100%;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-
-    /* margin-bottom: 40px; */
-
-    flex-wrap: wrap;
 `;
 
 export const ProductBox = styled.div`

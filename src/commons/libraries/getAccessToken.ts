@@ -13,15 +13,18 @@ export async function getAccessToken() {
             "https://antipiebse.shop/graphql",
             { credentials: "include" }
         );
+        console.log("결과확인1");
         const result = await graphQLClient.request(RESTORE_ACCESS_TOKEN);
+        console.log("결과확인2", result);
 
         const newAccessToken = result.restoreAccessToken;
         // const newAccessToken = result.restoreAccessToken.accessToken;
         // const newAccessToken = result;
         console.log(newAccessToken);
+        // alert("새로운 엑세스 토큰이 발급!!!");
 
         return newAccessToken;
     } catch (error) {
-        console.log(error instanceof Error);
+        console.log("겟엑세스토큰 실패임");
     }
 }

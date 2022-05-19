@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 import { accessTokenState, userInfoState } from "../../commons/store";
 import { useApolloClient, useMutation } from "@apollo/client";
 import { useRecoilState } from "recoil";
-import { LOGIN } from "./Login.queries";
+import { LOGIN, LOGIN_TEST } from "./Login.queries";
 import { ILogin } from "./Login.types";
 
 const schema = yup.object({
@@ -28,6 +28,7 @@ export default function LoginContainer() {
     const [, setAccessToken] = useRecoilState(accessTokenState);
     const [, setUserInfo] = useRecoilState(userInfoState);
     const [login] = useMutation(LOGIN);
+    const [logintest] = useMutation(LOGIN_TEST);
     const client = useApolloClient();
 
     const { register, formState, handleSubmit } = useForm({

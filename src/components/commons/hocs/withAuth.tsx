@@ -22,29 +22,31 @@
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { useRecoilState, useRecoilValueLoadable } from "recoil";
-import { accessTokenState, restoreAccessTokenLoadable } from "../store/index";
+import {
+    accessTokenState,
+    isLoadedState,
+    restoreAccessTokenLoadable,
+} from "../store/index";
 import { Modal } from "antd";
 // @ts-ignore
 
 export const withAuth = (Component) => (props) => {
-    const [accessToken] = useRecoilState(accessTokenState);
-    const restoreAccessToken = useRecoilValueLoadable(
-        restoreAccessTokenLoadable
-    );
     const router = useRouter();
+    const [accessToken] = useRecoilState(accessTokenState);
+    const [isLoaded] = useRecoilState(isLoadedState);
+    const aaa = useRecoilValueLoadable(restoreAccessTokenLoadable);
 
     useEffect(() => {
+        // 3. 글로벌 프로미스 방식(비회원 접근시 토큰 재발급 요청 방지를 위해 로딩과 함께 사용할 것)
         if (!accessToken) {
-            restoreAccessToken.toPromise().then((newAccessToken) => {
+            aaa.toPromise().then((newAccessToken) => {
                 if (!newAccessToken) {
-                    Modal.error({
-                        content: "상품을 등록하려면 로그인이 필요합니다.",
-                    });
+                    alert("로그인 후 이용 가능합니다!!!");
                     router.push("/login");
                 }
             });
         }
-    }, []);
+    }, [isLoaded]);
 
     return <Component {...props} />;
 };
