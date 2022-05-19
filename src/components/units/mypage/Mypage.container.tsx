@@ -1,7 +1,9 @@
+import { withAuth } from "../../commons/hocs/withAuth";
 import { useAuth } from "../../commons/hooks/useAuth";
 import MypagePresenter from "./Mypage.presenter";
 
-export default function MypageContainer() {
-    useAuth();
+function MypageContainer() {
     return <MypagePresenter />;
 }
+
+export default withAuth(MypageContainer);
