@@ -2,14 +2,16 @@ import * as B from "./ReviewModal.styles"
 import Modal from 'antd/lib/modal/Modal';
 import CommentListPage from "./comment/commentList/CommentList.container";
 import CommentWritePage from './comment/commentWrite/index';
+import { useQuery } from '@apollo/client';
+import Router from "next/router";
+import { useRouter } from 'next/router';
 
 export default function ReviewModalPresenter(props:any){
-
-
+    // const router = useRouter()
+    // console.log("router", router)
+    // console.log("reviewData", reviewData)
     return(
         <div>
-            {props.isOpen&&
-            
             <Modal
             visible={true}
             centered
@@ -49,14 +51,14 @@ export default function ReviewModalPresenter(props:any){
 
                 <B.ReviewWrapper>
                     <B.ReviewTitleDiv>
-                        <B.ReviewTitle>리뷰 제목</B.ReviewTitle>
+                        <B.ReviewTitle>{props.reviewData?.fetchReview.reviewTitle}</B.ReviewTitle>
                         <B.ReviewTopWrapper>
                             <B.ReviewerProfile src="/images/profile.png"/>
-                            <B.ReviewerText>김철수</B.ReviewerText>
-                            <B.ReviewDate>2022/05/22</B.ReviewDate>
+                            <B.ReviewerText>{props.reviewData?.fetchReview.user.name}</B.ReviewerText>
+                            <B.ReviewDate>{props.reviewData?.fetchReview.createdAt}</B.ReviewDate>
                             <B.ReviewLike>
                                 <B.ReviewLikeIcon src='/images/review-like.png'/>
-                                <B.ReviewLikeNum>12</B.ReviewLikeNum>
+                                <B.ReviewLikeNum>{props.reviewData?.fetchReview.like}</B.ReviewLikeNum>
                             </B.ReviewLike>
 
                         </B.ReviewTopWrapper>
@@ -65,16 +67,11 @@ export default function ReviewModalPresenter(props:any){
 
                     <B.ReviewContentsDiv>
                         <B.ReviewContents>
-                        리뷰 글이 계속 이어지게 주세요.
-                        회색 영역 바깥으로 넘어가지 않게 부탁드립니다.
-                        위로 20px, 좌우로 70px입니다!이번엔 생략하지 말고 쓴 내용이 전부 보이게요.
-                        이렇게 길게 리뷰를 쓸 것 같진 않지만 만약 아래로 더 리뷰가 이어진다고 하면
-                        텍스트 필드를 더 아래로 늘려주세요. 그 다음에 있는 컴포넌트하고 50px 차이나게 부탁드립니다!
-                        리뷰가 짧아도 여기까지는 마지노선으로 유지해주세요!
+                        {props.reviewData?.fetchReview.reviewContent}
                         </B.ReviewContents>
                     </B.ReviewContentsDiv>
                     <B.ReviewCommentWrapper>
-                        <CommentWritePage/>
+                        <CommentWritePage selectedId={props.selectedId}/>
                     
                     <B.ReviewCommentListWrapper>
                         <B.CommentAllDiv>
@@ -82,9 +79,9 @@ export default function ReviewModalPresenter(props:any){
                             <B.CommentAllNum>4</B.CommentAllNum>
                         </B.CommentAllDiv>
 
-                          {props.data?.fetchComments.map((el:any)=>(
+                          {props.commentData?.fetchReviewComments.map((el:any)=>(
                             <div>
-                                <CommentListPage el={el}  key={el.id}/>
+                                <CommentListPage el={el}  key={el.id} commentData={props.commentData} />
                             </div>
                           ))}
                     </B.ReviewCommentListWrapper>
@@ -92,8 +89,6 @@ export default function ReviewModalPresenter(props:any){
                 </B.ReviewWrapper>
             </B.ModalDiv>
             </Modal>
-            
-            }
         </div>
     )
 }

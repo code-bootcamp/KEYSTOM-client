@@ -38,7 +38,7 @@ const CREATE_COMMENT = gql`
 `
 
 
-export default function CommentWritePage(){
+export default function CommentWritePage(props:any){
     const [createComment]  = useMutation(CREATE_COMMENT)
     const [commentContent, setCommentContent] = useState("")
      
@@ -55,7 +55,7 @@ export default function CommentWritePage(){
                 variables:{
                     createCommentInput:{
                         commentContent,
-                        reviewId:"68c9fab9-a329-4cab-9559-cacd3cc6bad4",
+                        reviewId:props.selectedId,
                         ParentId:"a24c30eb-f86d-49dc-b0d7-e4de7ef9197a"
 
                     }

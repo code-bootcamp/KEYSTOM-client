@@ -1,10 +1,10 @@
 import * as B from "./CommentList.styles"
 import Reply from '../../ReviewReply';
+import { useQuery } from "@apollo/client"
 
 
 export default function CommentListPage(props:any){
 
-   
 
     return(
         <B.CommentContainer  key={props.el.id}>
@@ -14,8 +14,8 @@ export default function CommentListPage(props:any){
                     <B.CommentInner>
                         <B.CommentTop>
                             <B.CommentTopDiv>
-                                <B.CommentWriter>댓쓴이1</B.CommentWriter>
-                                <B.CommentCreatedAt>2022/05/10</B.CommentCreatedAt>
+                                <B.CommentWriter></B.CommentWriter>
+                                <B.CommentCreatedAt>{props.el.createdAt}</B.CommentCreatedAt>
                             </B.CommentTopDiv>
                             
                             <B.CommentBtns>
@@ -23,20 +23,19 @@ export default function CommentListPage(props:any){
                                 <B.CommentDeleteBtn src="/images/delete.png"/>
                             </B.CommentBtns>
                         </B.CommentTop>
-                        <B.CommentContents>{props.el.comentContent}</B.CommentContents>
+                        <B.CommentContents>{props.el.commentContent}</B.CommentContents>
                         <B.ReplyBtn>
                             <B.ReplyIcon src="/images/commentwrite.png"/>
                         </B.ReplyBtn>
                     </B.CommentInner>
-                    {[0].map(el=>(
+
+            </B.CommentWrapper>
+
+            {[0].map(el=>(
                         <div>
                             <Reply/>
                         </div>
-                    ))}     
-
-            </B.CommentWrapper>
-        
-        
+            ))}     
         </B.CommentContainer>
     )
 }
