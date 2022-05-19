@@ -107,6 +107,10 @@ const router = useRouter()
     router.push("/login")
   }
 
+  const MoveToRestorePage = () => {
+    router.push("/market")
+  }
+
   return (
     <Wrapper>
       <LogoDiv>
@@ -114,8 +118,9 @@ const router = useRouter()
       </LogoDiv>
       <MenuWrapper>
         <MenuDiv>
-          <Menu onClick={MoveToStore}>STORE</Menu>
-          <Menu onClick={MoveToMyPage}>MY PAGE</Menu>
+          <Menu onClick={MoveToStore}>Store</Menu>
+          <Menu onClick={MoveToMyPage}>My page</Menu>
+          <Menu onClick={MoveToRestorePage}>Restore</Menu>
         </MenuDiv>
         <MenuDiv>
           <IconWrapper>

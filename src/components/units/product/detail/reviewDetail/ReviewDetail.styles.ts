@@ -45,6 +45,8 @@ export const ReviewDiv = styled.div`
   background: #f3f3f3;
   margin-bottom: 50px;
   border-radius: 30px;
+  cursor: pointer;
+
 `;
 
 export const ReviewImage = styled.img`

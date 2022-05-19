@@ -1,36 +1,38 @@
-import { useMutation } from "@apollo/client"
-import { useState } from "react"
 import ReviewModalPresenter from "./ReviewModal.presenter"
-import {FETCH_COMMENTS} from './ReviewModal.queries'
 import { useQuery } from "@apollo/client"
+import { FETCH_REVIEW } from './ReviewModal.queries';
+import { FETCH_REVIEW_COMMENTS } from './comment/commentList/CommentList.queries';
 
-export default function ReviewModalContainer(){
+export default function ReviewModalContainer(props:any){
+    
+    const {data:commentData} = useQuery(FETCH_REVIEW_COMMENTS,{
+        variables:{
+            reviewId:String(props.selectedId)
+        }
+    })
+    console.log("commentData", commentData)
+  
 
-    const {data} = useQuery(FETCH_COMMENTS)
-    console.log(data)
+    const {data : reviewData} = useQuery(FETCH_REVIEW,{
+        variables:{
+            reviewId:String(props.selectedId)
+            // reviewId:String(props.id)
+            // reviewId:JSON.stringify(props.el.id)
+            // reviewId:String(event.target as HTMLButtonElement).id
+        }
+    })
 
-
-// 리뷰 모달
-const [isOpen, setIsOpen] = useState(true)
-
-const showModal = () => {
-    setIsOpen(true)
-}
-
-const handleOK = () => {
-    setIsOpen(false)
-}
-
-const handleCancel = () => {
-    setIsOpen(false)
-}
-
+    console.log("reviewData", reviewData)
     
     return<ReviewModalPresenter
-    isOpen={isOpen}
-    showModal={showModal}
-    handleOK={handleOK}
-    handleCancel={handleCancel}
-    data={data}
+    showModal={props.showModal}
+    handleOK={props.handleOK}
+    handleCancel={props.handleCancel}
+    id={props.id}
+    // el={props.el}
+    selectedId={props.selectedId}
+    reviewData={reviewData}
+    commentData={commentData}
+
     />
 }
