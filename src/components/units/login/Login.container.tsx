@@ -46,7 +46,20 @@ export default function LoginContainer() {
             console.log("이건 내 토큰", result.data?.login);
             const accessToken = result.data?.login;
             setAccessToken(accessToken);
-            localStorage.setItem("accessToken", accessToken);
+            // localStorage.setItem("accessToken", accessToken);
+
+            //   // 유저정보 받아오기
+            //   const resultUserInfo = await client.query({
+            //     query: MY_PAGE,
+            //     context: {
+            //       headers: {
+            //         Authorization: `Bearer ${accessToken}`,
+            //       },
+            //     },
+            //   });
+            //   const userInfo = resultUserInfo.data.fetchUserLoggedIn;
+            //   setUserInfo(userInfo);
+
             alert("로그인에 성공했습니다!.");
             router.push("/");
         } catch (error) {

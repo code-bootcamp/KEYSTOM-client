@@ -9,10 +9,9 @@ import { useState } from "react";
 const CREATE_USER = gql`
     mutation createUser($createUserInput: CreateUserInput!) {
         createUser(createUserInput: $createUserInput) {
-            id
+            nickName
             email
             name
-            identify
             profileImage
             isAdmin
             address
@@ -71,9 +70,6 @@ export default function SignUpContainer() {
                         email: data?.email,
                         password: data?.password,
                         name: data?.name,
-                        identify: "이건 뭐야?",
-                        profileImage: "이미지 주소 하드 코딩",
-                        isAdmin: false,
                         address: "주소 하드 코딩",
                     },
                 },

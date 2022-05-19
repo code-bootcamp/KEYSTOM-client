@@ -5,3 +5,17 @@ export const LOGIN = gql`
         login(email: $email, password: $password)
     }
 `;
+
+export const MY_PAGE = gql`
+    query fetchUserLoggedIn {
+        fetchUserLoggedIn {
+            name
+            email
+            _id
+            userPoint {
+                _id
+                amount
+            }
+        }
+    }
+`;
