@@ -1,49 +1,11 @@
+import { useQuery } from "@apollo/client";
+import { FETCH_BEST_PRODUCTS, FETCH_BEST_REVIEW } from "./StoreMain.queries";
 import * as S from "./StoreMain.styles";
 
-const ProductArr = [
-    {
-        title: "키보드 1호",
-        contents:
-            "키보드 1호 상품 설명입니다. 키보드 1호 상품 설명입니다. 키보드 1호 상품 설명입니다. ",
-        image: "/images/keyboard-01.jpg",
-        price: 120000,
-    },
-    {
-        title: "키보드 2호",
-        contents: "키보드 2호 상품 설명입니다. 어쩌구 저쩌구 ㅇㅇㅇㅇ",
-        image: "/images/keyboard-02.jpg",
-        price: 60000,
-    },
-    {
-        title: "키보드 3호",
-        contents: "키보드 3호 상품 설명입니다. 어쩌구 저쩌구 ㅇㅇㅇㅇ",
-        image: "/images/keyboard-03.jpg",
-        price: 220000,
-    },
-];
-
-const ReviewArr = [
-    {
-        title: "키보드 1호",
-        contents: "리뷰 상세, 1줄 이상은 생략하게 해주세요.(...)",
-        image: "/images/keyboard-01.jpg",
-        like: 15,
-    },
-    {
-        title: "키보드 2호",
-        contents: "리뷰 상세, 1줄 이상은 생략하게 해주세요.(...)",
-        image: "/images/keyboard-02.jpg",
-        like: 10,
-    },
-    {
-        title: "키보드 3호",
-        contents: "리뷰 상세, 1줄 이상은 생략하게 해주세요.(...)",
-        image: "/images/keyboard-03.jpg",
-        like: 5,
-    },
-];
-
 export default function StorePresenter() {
+    const { data: productData } = useQuery(FETCH_BEST_PRODUCTS);
+    const { data: reviewData } = useQuery(FETCH_BEST_REVIEW);
+
     return (
         <S.Wrapper>
             <S.MainWrapper>
@@ -53,19 +15,21 @@ export default function StorePresenter() {
 
                 <S.Text>베스트 상품</S.Text>
                 <S.BestProductWrapper>
-                    {ProductArr.map((el) => (
-                        <S.BestProductBox>
+                    {productData?.fetchBestProduct.map((el: any) => (
+                        <S.BestProductBox
+                            key={productData?.fetchBestProduct.id}
+                        >
                             <S.ReviewImage src={`${el.image}`}></S.ReviewImage>
                             <S.ReviewDownWrapper>
                                 <S.ReviewTitleWrapper>
-                                    <S.ReviewTitle>{el.title}</S.ReviewTitle>
+                                    <S.ReviewTitle>{el.name}</S.ReviewTitle>
                                     <S.ReviewScore>
                                         {el.price.toLocaleString()}
                                         <span>원</span>
                                     </S.ReviewScore>
                                 </S.ReviewTitleWrapper>
                                 <S.ReviewContents>
-                                    {el.contents}
+                                    {el.description}
                                 </S.ReviewContents>
                             </S.ReviewDownWrapper>
                         </S.BestProductBox>
@@ -74,19 +38,21 @@ export default function StorePresenter() {
 
                 <S.Text>베스트 리뷰</S.Text>
                 <S.BestProductWrapper>
-                    {ReviewArr.map((el) => (
-                        <S.BestProductBox>
+                    {reviewData?.fetchBestReview.map((el: any) => (
+                        <S.BestProductBox key={reviewData?.fetchBestReview.id}>
                             <S.ReviewImage src={`${el.image}`}></S.ReviewImage>
                             <S.ReviewDownWrapper>
                                 <S.ReviewTitleWrapper>
-                                    <S.ReviewTitle>{el.title}</S.ReviewTitle>
+                                    <S.ReviewTitle>
+                                        {el.reviewTitle}
+                                    </S.ReviewTitle>
                                     <S.ReviewLikeWrapper>
                                         <S.ReviewEmoji></S.ReviewEmoji>
                                         <S.ReviewScore>{el.like}</S.ReviewScore>
                                     </S.ReviewLikeWrapper>
                                 </S.ReviewTitleWrapper>
                                 <S.ReviewContents>
-                                    {el.contents}
+                                    {el.reviewContent}
                                 </S.ReviewContents>
                             </S.ReviewDownWrapper>
                         </S.BestProductBox>

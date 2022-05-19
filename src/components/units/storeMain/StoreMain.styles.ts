@@ -53,9 +53,10 @@ export const BestProductWrapper = styled.div`
 
 export const BestProductBox = styled.div`
     width: 480px;
+    border-radius: 30px 30px 0px 0px;
 `;
 
-export const ReviewImage = styled.img`
+export const ReviewImage = styled.div<{ src: string }>`
     width: 480px;
     height: 366px;
 
