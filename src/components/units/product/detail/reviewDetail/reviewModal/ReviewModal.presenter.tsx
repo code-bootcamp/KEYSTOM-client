@@ -2,13 +2,9 @@ import * as B from "./ReviewModal.styles"
 import Modal from 'antd/lib/modal/Modal';
 import CommentListPage from "./comment/commentList/CommentList.container";
 import CommentWritePage from './comment/commentWrite/index';
-import {FETCH_COMMENTS} from './ReviewModal.queries'
-import { useQuery } from "@apollo/client"
 
 export default function ReviewModalPresenter(props:any){
 
-    const {data} = useQuery(FETCH_COMMENTS)
-    console.log(data)
 
     return(
         <div>
@@ -86,9 +82,9 @@ export default function ReviewModalPresenter(props:any){
                             <B.CommentAllNum>4</B.CommentAllNum>
                         </B.CommentAllDiv>
 
-                          {data?.fetchComments.map((el:any)=>(
+                          {props.data?.fetchComments.map((el:any)=>(
                             <div>
-                                <CommentListPage el={el}/>
+                                <CommentListPage el={el}  key={el.id}/>
                             </div>
                           ))}
                     </B.ReviewCommentListWrapper>

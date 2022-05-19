@@ -55,8 +55,8 @@ export default function CommentWritePage(){
                 variables:{
                     createCommentInput:{
                         commentContent,
-                        reviewId:"f13044ba-7827-4bee-a7c5-ca301b5c3008",
-                        ParentId:"e64d7000-ac27-4ba4-899f-728ad49890c8"
+                        reviewId:"68c9fab9-a329-4cab-9559-cacd3cc6bad4",
+                        ParentId:"a24c30eb-f86d-49dc-b0d7-e4de7ef9197a"
 
                     }
                 }
