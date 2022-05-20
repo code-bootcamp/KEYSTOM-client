@@ -1,9 +1,21 @@
-import { withAuth } from "../../commons/hocs/withAuth";
-import { useAuth } from "../../commons/hooks/useAuth";
+import { gql, useQuery } from "@apollo/client";
 import MypagePresenter from "./Mypage.presenter";
 
-function MypageContainer() {
+const FETCH_USER_LOGGED_IN = gql`
+    query fetchUserLoggedIn {
+        fetchUserLoggedIn {
+            nickName
+            email
+            name
+            profileImage
+            address
+        }
+    }
+`;
+
+export default function MypageContainer() {
+    const { data } = useQuery(FETCH_USER_LOGGED_IN);
+    console.log(data);
+
     return <MypagePresenter />;
 }
-
-export default withAuth(MypageContainer);
