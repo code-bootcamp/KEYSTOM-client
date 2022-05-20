@@ -1,8 +1,11 @@
 // 마이 페이지
 // 유저 정보 보여주기
 
+import { withAuth } from "../../src/components/commons/hocs/withAuth";
 import MypageContainer from "../../src/components/units/mypage/Mypage.container";
 
-export default function Mypage() {
-  return <MypageContainer />;
+function Mypage() {
+    return <MypageContainer />;
 }
+
+export default withAuth(Mypage);
