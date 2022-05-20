@@ -1,6 +1,6 @@
 import * as S from "./Mypage.styles";
 
-export default function MypagePresenter() {
+export default function MypagePresenter(props:any) {
   return (
     <S.Wrapper>
       <S.WrapperContainer>
@@ -62,7 +62,7 @@ export default function MypagePresenter() {
                 <S.BoughtReviewText>리뷰</S.BoughtReviewText>
                 <S.BoughtReviewStatus>작성 안함</S.BoughtReviewStatus>
               </S.BoughtReviewWrapper>
-              <S.BoughtReviewIcon src="./images/review.png" />
+              <S.BoughtReviewIcon onClick={props.moveToReviewWrite} src="./images/review.png"/>
             </S.BoughtListInfo>
           ))}
         </S.MiddleWrapper>

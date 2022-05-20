@@ -97,13 +97,19 @@ export const ReviewTitle = styled.div`
     font-size: 24px;
 
     color: #000000;
-    padding: 40px 0px 40px 40px;
+    padding: 40px;
     border-bottom: 2px solid #c4c4c4; ;
 `;
 
+export const ReviewTitleInput = styled.input`
+width: 100%;
+height: 50px;
+background-color: #f1f1f1;
+`
+
 export const ReviewContents = styled.textarea`
     width: 100%;
-    height: 634px;
+    height: 600px;
 
     font-weight: 400;
     font-size: 20px;
@@ -118,7 +124,7 @@ export const ReviewContentsMaxLength = styled.div`
     width: 100%;
 
     text-align: end;
-    padding: 0px 20px 10px 0px;
+    padding: 0px 40px 40px 0px;
 
     font-weight: 400;
     font-size: 18px;
