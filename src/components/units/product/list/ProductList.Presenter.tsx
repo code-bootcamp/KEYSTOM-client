@@ -36,6 +36,7 @@ export default function ProductListPresenter(props: any) {
                             key={el.id}
                             el={el}
                             data={props.data}
+                            onClickMoveToDetail={props.onClickMoveToDetail}
                         />
                     ))}
                 </InfiniteScroll>

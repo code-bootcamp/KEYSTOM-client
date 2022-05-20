@@ -1,4 +1,5 @@
 import { gql, useQuery } from "@apollo/client";
+import { useRouter } from "next/router";
 import ProductListPresenter from "./ProductList.Presenter";
 
 const FETCH_PRODUCTS = gql`
@@ -22,6 +23,7 @@ const FETCH_PRODUCTS = gql`
 
 export default function ProductListContainer() {
     const { data, fetchMore } = useQuery(FETCH_PRODUCTS);
+    const router = useRouter();
 
     const onLoadMore = () => {
         if (!data) return;
@@ -41,11 +43,16 @@ export default function ProductListContainer() {
         });
     };
     console.log(data);
+    console.log(router);
+    const onClickMoveToDetail = (e) => {
+        router.push(`/store/${e.target.id}`);
+    };
 
     return (
         <ProductListPresenter
             data={data}
             onLoadMore={onLoadMore}
+            onClickMoveToDetail={onClickMoveToDetail}
         ></ProductListPresenter>
     );
 }

@@ -4,10 +4,16 @@ export default function ProductListPresenterItem(props: any) {
     return (
         <S.ProductBox>
             {props.el.image === null ? (
-                <S.ProductImage src={`${props.el.image}`}></S.ProductImage>
+                <S.ProductImage
+                    onClick={props.onClickMoveToDetail}
+                    src={`${props.el.image}`}
+                    id={props.el.id}
+                ></S.ProductImage>
             ) : (
                 <S.ProductImage
+                    onClick={props.onClickMoveToDetail}
                     style={{ backgroundColor: "gray" }}
+                    id={props.el.id}
                 ></S.ProductImage>
             )}
 
