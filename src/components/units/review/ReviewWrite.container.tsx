@@ -1,37 +1,72 @@
 import ReviewWritePresenter from "./ReviewWrite.presenter";
-import { gql, useMutation } from "@apollo/client";
+import {  useMutation } from "@apollo/client";
+import { CREATE_REVIEW, CREATE_REVIEW_IMAGE } from './ReviewWrite.queries';
+import { useState, ChangeEvent } from 'react';
+import { Modal } from "antd";
 
-const CREATE_REVIEW = gql`
-    mutation createReview($createReviewInput: CreateReviewInput!) {
-        createReview(createReviewInput: $createReviewInput) {
-            id
-            reviewContent
-            like
-        }
-    }
-`;
+
 
 export default function ReviewWriteContainer() {
     const [createReview] = useMutation(CREATE_REVIEW);
+    const [createReviewImage] = useMutation(CREATE_REVIEW_IMAGE)
+    const [reviewTitle, setReviewTitle] = useState("")
+    const [reviewContent, setReviewContent] = useState("")
+    const [imageFile, setImageFile] = useState(["","",""])
+
+    const onChangeReviewTitle = (event: ChangeEvent<HTMLInputElement>) => {
+        setReviewTitle(event.target.value)
+    }
+
+
+    const onChangeReviewContent = (event: ChangeEvent<HTMLTextAreaElement>) => {
+        setReviewContent(event.target.value)
+    }
+
+
+    const onChangeImageFile = (imageUrl:string, index:number) => {
+        const newImage = [...imageFile]
+        newImage[index] = imageUrl
+        setImageFile(newImage)
+    }
+
 
     const onClickSubmit = async () => {
         try {
             const result = await createReview({
                 variables: {
-                    createReviewInput: {},
+                    createReviewInput: {
+                        reviewTitle,
+                        reviewContent,
+                        productId:"123",
+                        email:"dalkom@aaa.com"
+                    },
                 },
             });
-            console.log(result);
-            alert("성공");
-        } catch (error) {
-            alert("실패");
+
+            const resultImg = await createReviewImage({
+                variables:{
+                    reviewImageUrl:"/",
+                    reviewId:"391700a1-2aca-4643-9f09-a9aa50eb870a"
+                }
+            })
+
+            console.log("결과", result, "이미지결과", resultImg);
+            Modal.success({content:"리뷰 작성을 완료했습니다!"})
+        } catch (error:any) {
+            Modal.error({content:error.message})
         }
     };
 
     return (
         <div>
-            <button onClick={onClickSubmit}>상품등록</button>
-            <ReviewWritePresenter></ReviewWritePresenter>;
+            {/* <button onClick={onClickSubmit}>상품등록</button> */}
+            <ReviewWritePresenter 
+            onChangeReviewTitle={onChangeReviewTitle}
+            onChangeReviewContent={onChangeReviewContent}
+            onClickSubmit={onClickSubmit}
+            onChangeImageFile={onChangeImageFile}
+            imageFile={imageFile}
+            />
         </div>
     );
 }
