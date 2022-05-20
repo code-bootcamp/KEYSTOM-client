@@ -23,7 +23,7 @@ export const MainImage = styled.div`
   width: 100%;
   height: 1080px;
   /* background-color: Red; */
-  background-image: url("/images/keyboard.gif");
+  background-image: url("/images/keyshow.gif");
   background-position: center;
   background-size: cover;
 `;
@@ -52,13 +52,13 @@ export const BestProductWrapper = styled.div`
 `;
 
 export const BestProductBox = styled.div`
-    width: 480px;
-    border-radius: 30px 30px 0px 0px;
+  width: 480px;
+  border-radius: 30px 30px 0px 0px;
 `;
 
 export const ReviewImage = styled.div<{ src: string }>`
-    width: 480px;
-    height: 366px;
+  width: 480px;
+  height: 366px;
 
   /* background-color: blue; */
 

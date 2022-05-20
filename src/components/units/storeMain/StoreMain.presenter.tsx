@@ -1,5 +1,3 @@
-import { useQuery } from "@apollo/client";
-import { FETCH_BEST_PRODUCTS, FETCH_BEST_REVIEW } from "./StoreMain.queries";
 import * as S from "./StoreMain.styles";
 import { useEffect, useRef, useState } from "react";
 import styled from "@emotion/styled";
@@ -163,65 +161,122 @@ function HideButtonFunc({ children, timeline }) {
   return <HideButton ref={el}>{children}</HideButton>;
 }
 
+const ProductArr = [
+  {
+    title: "키보드 1호",
+    contents:
+      "키보드 1호 상품 설명입니다. 키보드 1호 상품 설명입니다. 키보드 1호 상품 설명입니다. ",
+    image: "/images/keyboard-01.jpg",
+    price: 120000,
+  },
+  {
+    title: "키보드 2호",
+    contents: "키보드 2호 상품 설명입니다. 어쩌구 저쩌구 ㅇㅇㅇㅇ",
+    image: "/images/keyboard-02.jpg",
+    price: 60000,
+  },
+  {
+    title: "키보드 3호",
+    contents: "키보드 3호 상품 설명입니다. 어쩌구 저쩌구 ㅇㅇㅇㅇ",
+    image: "/images/keyboard-03.jpg",
+    price: 220000,
+  },
+];
+
+const ReviewArr = [
+  {
+    title: "키보드 1호",
+    contents: "리뷰 상세, 1줄 이상은 생략하게 해주세요.(...)",
+    image: "/images/keyboard-01.jpg",
+    like: 15,
+  },
+  {
+    title: "키보드 2호",
+    contents: "리뷰 상세, 1줄 이상은 생략하게 해주세요.(...)",
+    image: "/images/keyboard-02.jpg",
+    like: 10,
+  },
+  {
+    title: "키보드 3호",
+    contents: "리뷰 상세, 1줄 이상은 생략하게 해주세요.(...)",
+    image: "/images/keyboard-03.jpg",
+    like: 5,
+  },
+];
+
 export default function StorePresenter() {
-    const { data: productData } = useQuery(FETCH_BEST_PRODUCTS);
-    const { data: reviewData } = useQuery(FETCH_BEST_REVIEW);
+  const [tl, setTl] = useState();
 
-    return (
-        <S.Wrapper>
-            <S.MainWrapper>
-                <S.ImageWrapper>
-                    <S.MainImage></S.MainImage>
-                </S.ImageWrapper>
+  useEffect(() => {
+    const tl = gsap.timeline();
+    setTl(tl);
+  }, []);
 
-                <S.Text>베스트 상품</S.Text>
-                <S.BestProductWrapper>
-                    {productData?.fetchBestProduct.map((el: any) => (
-                        <S.BestProductBox
-                            key={productData?.fetchBestProduct.id}
-                        >
-                            <S.ReviewImage src={`${el.image}`}></S.ReviewImage>
-                            <S.ReviewDownWrapper>
-                                <S.ReviewTitleWrapper>
-                                    <S.ReviewTitle>{el.name}</S.ReviewTitle>
-                                    <S.ReviewScore>
-                                        {el.price.toLocaleString()}
-                                        <span>원</span>
-                                    </S.ReviewScore>
-                                </S.ReviewTitleWrapper>
-                                <S.ReviewContents>
-                                    {el.description}
-                                </S.ReviewContents>
-                            </S.ReviewDownWrapper>
-                        </S.BestProductBox>
-                    ))}
-                </S.BestProductWrapper>
+  return (
+    <>
+      <S.Wrapper>
+        <PreloaderWrapper>
+          <Preloader timeline={tl}>
+            <PreloaderChild>
+              <HideTitleFunc timeline={tl}>
+                당신만의 키보드를 만들어 보세요
+              </HideTitleFunc>
+              <HideTopContentsFunc timeline={tl}>
+                취향은 내맘대로, 색상은 자유자재로.
+              </HideTopContentsFunc>
+              <HideBottomContentsFunc timeline={tl}>
+                F12에서 진정한 자유를 만나보세요.
+              </HideBottomContentsFunc>
+              <HideButtonFunc timeline={tl}>시작하기</HideButtonFunc>
+            </PreloaderChild>
+          </Preloader>
+        </PreloaderWrapper>
+        <S.MainWrapper>
+          <S.ImageWrapper>
+            <S.MainImage></S.MainImage>
+          </S.ImageWrapper>
 
-                <S.Text>베스트 리뷰</S.Text>
-                <S.BestProductWrapper>
-                    {reviewData?.fetchBestReview.map((el: any) => (
-                        <S.BestProductBox key={reviewData?.fetchBestReview.id}>
-                            <S.ReviewImage src={`${el.image}`}></S.ReviewImage>
-                            <S.ReviewDownWrapper>
-                                <S.ReviewTitleWrapper>
-                                    <S.ReviewTitle>
-                                        {el.reviewTitle}
-                                    </S.ReviewTitle>
-                                    <S.ReviewLikeWrapper>
-                                        <S.ReviewEmoji></S.ReviewEmoji>
-                                        <S.ReviewScore>{el.like}</S.ReviewScore>
-                                    </S.ReviewLikeWrapper>
-                                </S.ReviewTitleWrapper>
-                                <S.ReviewContents>
-                                    {el.reviewContent}
-                                </S.ReviewContents>
-                            </S.ReviewDownWrapper>
-                        </S.BestProductBox>
-                    ))}
-                </S.BestProductWrapper>
+          <S.Text>베스트 상품</S.Text>
+          <S.BestProductWrapper>
+            {ProductArr.map((el) => (
+              <S.BestProductBox>
+                <S.ReviewImage src={`${el.image}`}></S.ReviewImage>
+                <S.ReviewDownWrapper>
+                  <S.ReviewTitleWrapper>
+                    <S.ReviewTitle>{el.title}</S.ReviewTitle>
+                    <S.ReviewScore>
+                      {el.price.toLocaleString()}
+                      <span>원</span>
+                    </S.ReviewScore>
+                  </S.ReviewTitleWrapper>
+                  <S.ReviewContents>{el.contents}</S.ReviewContents>
+                </S.ReviewDownWrapper>
+              </S.BestProductBox>
+            ))}
+          </S.BestProductWrapper>
 
-                {/* 구분선 */}
-            </S.MainWrapper>
-        </S.Wrapper>
-    );
+          <S.Text>베스트 리뷰</S.Text>
+          <S.BestProductWrapper>
+            {ReviewArr.map((el) => (
+              <S.BestProductBox>
+                <S.ReviewImage src={`${el.image}`}></S.ReviewImage>
+                <S.ReviewDownWrapper>
+                  <S.ReviewTitleWrapper>
+                    <S.ReviewTitle>{el.title}</S.ReviewTitle>
+                    <S.ReviewLikeWrapper>
+                      <S.ReviewEmoji></S.ReviewEmoji>
+                      <S.ReviewScore>{el.like}</S.ReviewScore>
+                    </S.ReviewLikeWrapper>
+                  </S.ReviewTitleWrapper>
+                  <S.ReviewContents>{el.contents}</S.ReviewContents>
+                </S.ReviewDownWrapper>
+              </S.BestProductBox>
+            ))}
+          </S.BestProductWrapper>
+
+          {/* 구분선 */}
+        </S.MainWrapper>
+      </S.Wrapper>
+    </>
+  );
 }
