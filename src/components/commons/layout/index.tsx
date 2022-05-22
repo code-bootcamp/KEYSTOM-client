@@ -16,33 +16,33 @@ const Wrapper = styled.div`
   align-items: center;
   width: 100%;
   height: 100vh;
-`
+`;
 
 const BodyWrapper = styled.div`
-    display: flex;
-    width: 100%;
-`
+  display: flex;
+  width: 100%;
+`;
 
 const Body = styled.div`
-    width: 100%;
-    height: auto;
-`
+  width: 100%;
+  height: auto;
+`;
 
 // const HIDDEN_HEADER = ["/signup"];
-
+const HIDDEN = ["./"];
 
 export default function Layout(props: ILayoutProps) {
-  // const router = useRouter();
+  const router = useRouter();
 
-  // let isHidden = HIDDEN_HEADER.includes(router.asPath)
+  let isHidden = HIDDEN.includes(router.asPath);
 
   return (
     <Wrapper>
-      {/* {!isHidden && <LayoutHeader />} */}
-     <LayoutHeader />
-        <BodyWrapper>
-          <Body>{props.children}</Body>
-        </BodyWrapper>
+      {isHidden && <LayoutHeader />}
+      {/* <LayoutHeader /> */}
+      <BodyWrapper>
+        <Body>{props.children}</Body>
+      </BodyWrapper>
       <LayoutFooter />
     </Wrapper>
   );

@@ -2,29 +2,19 @@ import * as S from "./ProductDetail.styles";
 import ReviewDetail from "./reviewDetail/ReviewDetail.container";
 
 // 키보드에 필요한 import
-import { Suspense, useEffect, useRef } from "react";
-import { Canvas } from "@react-three/fiber";
-import { useGLTF, Environment, OrbitControls } from "@react-three/drei";
+import { Suspense, useRef, useState, useEffect } from "react";
+import { Canvas, useFrame } from "@react-three/fiber";
+import {
+  ContactShadows,
+  Environment,
+  useGLTF,
+  OrbitControls,
+} from "@react-three/drei";
 import { HexColorPicker, HexColorInput } from "react-colorful";
-import { useSnapshot, proxy } from "valtio";
-
-// import Keyboard from "./keyboard/keyboard";
-
-// import { keyboardState } from "../../../commons/store";
-
-// import {
-//   ChangeKey,
-//   SpaceBarChangeKey,
-//   EnterChangeKey,
-//   EscChangeKey,
-//   spacebarLength,
-//   enterLength,
-//   escLength,
-//   length,
-// } from "./keyboard/length";
+import { proxy, useSnapshot } from "valtio";
 
 // 키보드 색상 state
-const keyboardState = proxy({
+const state = proxy({
   current: null,
   items: {
     "'\"": "#ffffff",
@@ -91,6 +81,7 @@ const keyboardState = proxy({
   },
 });
 
+// 스페이스바 제외 색상 바뀐거 찾는 함수
 let length = 0;
 let spacebarLength = 0;
 let enterLength = 0;
@@ -99,46 +90,46 @@ let escLength = 0;
 function ChangeKey() {
   useEffect(() => {
     if (
-      Object.values(keyboardState.items)[14] !== "#ffffff" ||
-      Object.values(keyboardState.items)[33] !== "#ffffff" ||
-      Object.values(keyboardState.items)[47] !== "#ffffff"
+      Object.values(state.items)[14] !== "#ffffff" ||
+      Object.values(state.items)[33] !== "#ffffff" ||
+      Object.values(state.items)[47] !== "#ffffff"
     ) {
       if (
-        Object.values(keyboardState.items)[14] !== "#ffffff" &&
-        Object.values(keyboardState.items)[33] !== "#ffffff" &&
-        Object.values(keyboardState.items)[47] !== "#ffffff"
+        Object.values(state.items)[14] !== "#ffffff" &&
+        Object.values(state.items)[33] !== "#ffffff" &&
+        Object.values(state.items)[47] !== "#ffffff"
       ) {
         length =
-          Object.values(keyboardState.items).filter((el) => el !== "#ffffff")
-            .length - 3;
+          Object.values(state.items).filter((el) => el !== "#ffffff").length -
+          3;
       } else if (
-        Object.values(keyboardState.items)[14] !== "#ffffff" &&
-        Object.values(keyboardState.items)[33] !== "#ffffff"
+        Object.values(state.items)[14] !== "#ffffff" &&
+        Object.values(state.items)[33] !== "#ffffff"
       ) {
         length =
-          Object.values(keyboardState.items).filter((el) => el !== "#ffffff")
-            .length - 2;
+          Object.values(state.items).filter((el) => el !== "#ffffff").length -
+          2;
       } else if (
-        Object.values(keyboardState.items)[33] !== "#ffffff" &&
-        Object.values(keyboardState.items)[47] !== "#ffffff"
+        Object.values(state.items)[33] !== "#ffffff" &&
+        Object.values(state.items)[47] !== "#ffffff"
       ) {
         length =
-          Object.values(keyboardState.items).filter((el) => el !== "#ffffff")
-            .length - 2;
+          Object.values(state.items).filter((el) => el !== "#ffffff").length -
+          2;
       } else if (
-        Object.values(keyboardState.items)[14] !== "#ffffff" &&
-        Object.values(keyboardState.items)[47] !== "#ffffff"
+        Object.values(state.items)[14] !== "#ffffff" &&
+        Object.values(state.items)[47] !== "#ffffff"
       ) {
         length =
-          Object.values(keyboardState.items).filter((el) => el !== "#ffffff")
-            .length - 2;
+          Object.values(state.items).filter((el) => el !== "#ffffff").length -
+          2;
       } else {
         length =
-          Object.values(keyboardState.items).filter((el) => el !== "#ffffff")
-            .length - 1;
+          Object.values(state.items).filter((el) => el !== "#ffffff").length -
+          1;
       }
     } else {
-      length = Object.values(keyboardState.items).filter(
+      length = Object.values(state.items).filter(
         (el) => el !== "#ffffff"
       ).length;
     }
@@ -150,17 +141,15 @@ function ChangeKey() {
 // 스페이스바 색상 바꼈을 때
 function SpaceBarChangeKey() {
   useEffect(() => {
-    spacebarLength =
-      Object.values(keyboardState.items)[33] !== "#ffffff" ? 1 : 0;
+    spacebarLength = Object.values(state.items)[33] !== "#ffffff" ? 1 : 0;
   });
 
   return <div>{spacebarLength}</div>;
 }
 
-// Enter 색상 바꼈을 때
 function EnterChangeKey() {
   useEffect(() => {
-    enterLength = Object.values(keyboardState.items)[14] !== "#ffffff" ? 1 : 0;
+    enterLength = Object.values(state.items)[14] !== "#ffffff" ? 1 : 0;
   });
 
   return <div>{enterLength}</div>;
@@ -169,15 +158,16 @@ function EnterChangeKey() {
 // esc 색상 바꼈을 때
 function EscChangeKey() {
   useEffect(() => {
-    escLength = Object.values(keyboardState.items)[47] !== "#ffffff" ? 1 : 0;
+    escLength = Object.values(state.items)[47] !== "#ffffff" ? 1 : 0;
   });
 
   return <div>{escLength}</div>;
 }
 
+// 키보드 3d 구현 함수
 function Keyboard(props: any) {
   const ref = useRef();
-  const snap = useSnapshot(keyboardState);
+  const snap = useSnapshot(state);
   const { nodes, materials } = useGLTF("/images/keyboard_fix.glb");
 
   return (
@@ -187,7 +177,7 @@ function Keyboard(props: any) {
         {...props}
         dispose={null}
         onClick={(e) => (
-          e.stopPropagation(), (keyboardState.current = e.object.material.name)
+          e.stopPropagation(), (state.current = e.object.material.name)
         )}
         position={[-0.28, 0, -0.1]}
         rotation={[0, 0, 0]}
@@ -422,7 +412,7 @@ function Keyboard(props: any) {
           receiveShadow
           geometry={nodes[";_Plane035"].geometry}
           material={materials[";:"]}
-          material-color={snap.items[";"]}
+          material-color={snap.items[";:"]}
         />
         <mesh
           castShadow
@@ -637,34 +627,49 @@ function Keyboard(props: any) {
 }
 
 function Picker() {
-  const snap = useSnapshot(keyboardState);
+  // const [count, setCount] = useState(0);
+  const snap = useSnapshot(state);
+
+  // console.log(snap.items[snap.current]);
+  // useEffect(() => {
+  //   if (snap.items[snap.current] !== "#ffffff") {
+  //     // setCount((prev) => prev + 1);
+  //     count++;
+  //   }
+  // }, [snap.items[snap.current]]);
+
+  // console.log(count);
+  let length = Object.values(state.items).filter(
+    (el) => el !== "#ffffff"
+  ).length;
 
   return (
     <div
       style={{
-        // display: snap.current ? "block" : "none",
-        display: "block",
+        display: snap.current ? "block" : "none",
         marginTop: "30px",
       }}
     >
       <HexColorPicker
         className="picker"
         color={snap.items[snap.current]}
-        onChange={(color) => (keyboardState.items[snap.current] = color)}
+        onChange={(color) => (state.items[snap.current] = color)}
         style={{ width: "280px", height: "280px" }}
       />
-      <div style={{ borderLeftColor: `${keyboardState.items[snap.current]}` }}>
-        {keyboardState.items[snap.current]}
+      <div style={{ borderLeftColor: `${state.items[snap.current]}` }}>
+        {state.items[snap.current]}
       </div>
       <HexColorInput
         color={snap.items[snap.current]}
-        onChange={(color) => (keyboardState.items[snap.current] = color)}
+        onChange={(color) => (state.items[snap.current] = color)}
       />
     </div>
   );
 }
 
 export default function ProductDetailPresenter() {
+  const snap = useSnapshot(state);
+
   return (
     <>
       <S.Wrapper>
@@ -683,7 +688,7 @@ export default function ProductDetailPresenter() {
             <S.ImageRight>
               <Canvas
                 style={{ marginLeft: "80px" }}
-                camera={{ fov: 30, near: 0.4, position: [-0.1, 0.8, 0.6] }}
+                camera={{ fov: 35, near: 0.2, position: [0, 0.7, 0.6] }}
               >
                 <Suspense fallback={null}>
                   <Keyboard />
