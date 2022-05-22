@@ -11,7 +11,7 @@ export default function ReviewWriteContainer() {
     const [createReviewImage] = useMutation(CREATE_REVIEW_IMAGE)
     const [reviewTitle, setReviewTitle] = useState("")
     const [reviewContent, setReviewContent] = useState("")
-    const [imageFile, setImageFile] = useState(["","",""])
+    const [imageFile, setImageFile] = useState<string[]>([])
 
     const onChangeReviewTitle = (event: ChangeEvent<HTMLInputElement>) => {
         setReviewTitle(event.target.value)
@@ -23,13 +23,19 @@ export default function ReviewWriteContainer() {
     }
 
 
-    const onChangeImageFile = (imageUrl:string, index:number) => {
-        const newImage = [...imageFile]
-        newImage[index] = imageUrl
-        setImageFile(newImage)
-    }
+    // const onChangeImageURL = (imageUrl:string, idx:number) => {
+    //     let imageList = [...imageFile]
+    //     // imageList[idx] = imageUrl
+    //     // const nowImageUrl = URL.createObjectURL(imageList[idx])
+
+    //     if(imageList.length > 8){
+    //         imageList = imageList.slice(0,8)
+    //     }
+    //     setImageFile(imageList)
+    // }
 
 
+    
     const onClickSubmit = async () => {
         try {
             const result = await createReview({
@@ -64,8 +70,9 @@ export default function ReviewWriteContainer() {
             onChangeReviewTitle={onChangeReviewTitle}
             onChangeReviewContent={onChangeReviewContent}
             onClickSubmit={onClickSubmit}
-            onChangeImageFile={onChangeImageFile}
+            // onChangeImageURL={onChangeImageURL}
             imageFile={imageFile}
+            setImageFile={setImageFile}
             />
         </div>
     );
