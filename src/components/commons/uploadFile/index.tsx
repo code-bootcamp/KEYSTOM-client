@@ -1,13 +1,20 @@
 import { gql, useMutation } from '@apollo/client';
-import { Modal } from 'antd';
+import { Modal, Result } from 'antd';
 import { useRef, useState, ChangeEvent } from 'react';
 import styled from '@emotion/styled';
-import { checkFileValidation } from '../../../commons/libraries/fileValidation';
+// import { checkFileValidation } from '../../../commons/libraries/fileValidation';
 
 const UPLOAD_FILE = gql`
-    mutation uploadFile($file:Upload!){
-        uploadFile(file:$file){
-            url
+    mutation uploadFile($files:[Upload!]!){
+        uploadFile(files:$files)
+    }
+`
+
+const CREATE_REVIEW_IMAGE = gql`
+    mutation createReviewImage($reviewImageUrl: String! $reviewId: String!){
+        createReviewImage(reviewImageUrl: $reviewImageUrl reviewId: $reviewId){
+            id
+            reviewImageUrl
         }
     }
 `
@@ -26,88 +33,90 @@ const ReviewUploadImage = styled.button`
     border-radius: 10px;
 
     color: #000000;
+    cursor: pointer;
+
 `;
 
 const ImageWrapper = styled.div`
-       width: 100%;
+    width: 100%;
     display: flex;
-`
-
-const UploadDiv = styled.div`
-    width: 100px;
-    height: 100px;
-    background-color: #bdbdbd;
-    cursor: pointer;
-    text-align: center;
-    font-size: 20px;
-    font-weight: 500;
-    display: flex;
-    flex-direction: column;
-    justify-content:center;
-    align-items: center;
-    margin-right: 15px;
 `
 
 const Image = styled.img`
-    width: 12vw;
-    margin-right: 15px;
 `
 
-
-
 interface IUploadFilePage{
-    onChangeImageFile:(imageUrl:string, index:number) => void
-    imageUrl:string
-    idx:number
+    // onChangeImageURL:(imageUrl:string, idx:number) => void
+    // imageUrl:string
+    // idx:number
+    setImageFile:any
+    imageFile:string[]
 }
 
 export default function UploadFilePage(props:IUploadFilePage){
+    // const [createReviewImage] = useMutation(CREATE_REVIEW_IMAGE)
     const [uploadFile] = useMutation(UPLOAD_FILE)
     const imageFileRef = useRef<HTMLInputElement>(null)
+    // const [imageFile, setImageFile] = useState([])
 
-
-    const onChangeFile = async(event: ChangeEvent<HTMLInputElement>) => {
-        const file = event.target.files?.[0]
-        console.log("file이다", file)
-
-        const isValidation = checkFileValidation(file)
-        if(!isValidation) return;
-        try{
-            const result = await uploadFile({
-                variables:{file}
-            })
-            console.log("result!!!", result)
-        
-        }catch(error:any){
-            Modal.error({content:error.message})
-        }
-    }
 
     const onClickUpload = () => {
         imageFileRef.current?.click()
     }
 
+    const onChangeFile = async(event: ChangeEvent<HTMLInputElement>) => {
+        if(props.imageFile.length > 8){
+            return Modal.error({content:"이미지는 8개까지 업로드 하실 수 있습니다!"})
+        }
+        const file:any | null = event.target.files
+        console.log("file이다", file)
+
+        // const isValidation = checkFileValidation(file)
+        // if(!isValidation) return;
+        let imageList = [...file]
+        imageList.map(async(el)=>{
+            try{
+                const result = await uploadFile({
+                    variables:{
+                        files:el,
+                    }
+                })
+                console.log("result!!!", result)
+                props.setImageFile((prev:string[])=>([...prev, result.data.uploadImage]))
+            }catch(error:any){
+                Modal.error({content:error.message})
+            }
+        })
+
+      
+    }
+
+   
+
     return(
         <ImageWrapper>
-            {props.imageUrl ? (
+            {/* {props.imageFile ? ( */}
+               
+                {/* ): ( */}
+                <ReviewUploadImage  onClick={onClickUpload}>
+                    <span>Upload Image</span>
+                </ReviewUploadImage>
 
+                {props.imageFile &&  
                 <Image
                 onClick={onClickUpload}
-                src={`https://storage.googleapis.com/${props.fileUrl}`}
-                />
-
-            ) :(
-                <UploadDiv  onClick={onClickUpload}>
-                    <span>image</span>
-                </UploadDiv>
-
-            )}
-      
+                src={`https://storage.googleapis.com/${props.imageFile}`}
+                /> 
+                }
+               
+                {/* )}                    */}
             <div style={{display: "none"}}>
-                        <input 
-                            onChange={onChangeFile}  
-                            type="file"  
-                            ref={imageFileRef}/>
+                <input 
+                onChange={onChangeFile}  
+                type="file"  
+                multiple
+                accept='.jpg,.jpeg,.png'
+                ref={imageFileRef}/>
             </div>
     
                 
