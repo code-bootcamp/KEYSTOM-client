@@ -10,22 +10,12 @@ const UPLOAD_FILE = gql`
     }
 `
 
-const CREATE_REVIEW_IMAGE = gql`
-    mutation createReviewImage($reviewImageUrl: String! $reviewId: String!){
-        createReviewImage(reviewImageUrl: $reviewImageUrl reviewId: $reviewId){
-            id
-            reviewImageUrl
-        }
-    }
-`
-
-
 const ReviewUploadImage = styled.button`
     width: 160px;
     height: 160px;
 
     background-color: #c4c4c4;
-    margin-right: 30px;
+    margin-right: 20px;
 
     text-align: center;
     border: none;
@@ -43,6 +33,11 @@ const ImageWrapper = styled.div`
 `
 
 const Image = styled.img`
+border: 1px solid #fff;
+width: 160px;
+height: 160px;
+border-radius: 10px;
+margin-right: 20px;
 `
 
 interface IUploadFilePage{
@@ -54,10 +49,8 @@ interface IUploadFilePage{
 }
 
 export default function UploadFilePage(props:IUploadFilePage){
-    // const [createReviewImage] = useMutation(CREATE_REVIEW_IMAGE)
     const [uploadFile] = useMutation(UPLOAD_FILE)
     const imageFileRef = useRef<HTMLInputElement>(null)
-    // const [imageFile, setImageFile] = useState([])
 
 
     const onClickUpload = () => {
@@ -65,14 +58,12 @@ export default function UploadFilePage(props:IUploadFilePage){
     }
 
     const onChangeFile = async(event: ChangeEvent<HTMLInputElement>) => {
-        if(props.imageFile.length > 8){
-            return Modal.error({content:"이미지는 8개까지 업로드 하실 수 있습니다!"})
+        if(props.imageFile.length > 6){
+            return Modal.error({content:"이미지는 7개까지 업로드 하실 수 있습니다!"})
         }
         const file:any | null = event.target.files
         console.log("file이다", file)
 
-        // const isValidation = checkFileValidation(file)
-        // if(!isValidation) return;
         let imageList = [...file]
         imageList.map(async(el)=>{
             try{
@@ -82,7 +73,9 @@ export default function UploadFilePage(props:IUploadFilePage){
                     }
                 })
                 console.log("result!!!", result)
-                props.setImageFile((prev:string[])=>([...prev, result.data.uploadImage]))
+                props.setImageFile((prev:string[])=>([...prev, result.data.uploadFile[0]]))
+                console.log("imageFile", props.imageFile)
+
             }catch(error:any){
                 Modal.error({content:error.message})
             }
@@ -102,11 +95,16 @@ export default function UploadFilePage(props:IUploadFilePage){
                     <span>Upload Image</span>
                 </ReviewUploadImage>
 
-                {props.imageFile &&  
+                {props.imageFile.length >= 1 ?
+                props.imageFile.map((el)=>(
                 <Image
                 onClick={onClickUpload}
-                src={`https://storage.googleapis.com/${props.imageFile}`}
+                src={`https://storage.googleapis.com/${el}`}
                 /> 
+                ))
+                
+                :
+                <div></div>
                 }
                
                 {/* )}                    */}

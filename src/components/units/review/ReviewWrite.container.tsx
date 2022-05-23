@@ -22,19 +22,6 @@ export default function ReviewWriteContainer() {
         setReviewContent(event.target.value)
     }
 
-
-    // const onChangeImageURL = (imageUrl:string, idx:number) => {
-    //     let imageList = [...imageFile]
-    //     // imageList[idx] = imageUrl
-    //     // const nowImageUrl = URL.createObjectURL(imageList[idx])
-
-    //     if(imageList.length > 8){
-    //         imageList = imageList.slice(0,8)
-    //     }
-    //     setImageFile(imageList)
-    // }
-
-
     
     const onClickSubmit = async () => {
         try {
@@ -65,7 +52,6 @@ export default function ReviewWriteContainer() {
 
     return (
         <div>
-            {/* <button onClick={onClickSubmit}>상품등록</button> */}
             <ReviewWritePresenter 
             onChangeReviewTitle={onChangeReviewTitle}
             onChangeReviewContent={onChangeReviewContent}
