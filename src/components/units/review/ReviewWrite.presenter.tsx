@@ -49,16 +49,10 @@ export default function ReviewWritePresenter(props:IReviewWritePresenter) {
                 </S.ReviewTitleContentsWrapper>
 
                 <S.ReviewUploadWrapper>
-                    {/* {props.imageFile?.map((el:any,idx:number)=>( */}
                             <UploadFilePage
-                            key={uuidv4()}
-                            // imageUrl={el} 
-                            // idx={idx}
-                            // onChangeImageURL={props.onChangeImageURL}
                             imageFile={props.imageFile}
                             setImageFile={props.setImageFile}
                             />
-                     {/* ))} */}
                    
                 </S.ReviewUploadWrapper>
 
