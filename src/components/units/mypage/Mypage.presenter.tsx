@@ -1,6 +1,12 @@
+import { useRouter } from "next/router";
 import * as S from "./Mypage.styles";
 
 export default function MypagePresenter(props: any) {
+    const router = useRouter();
+    const onClickMoveToPayment = () => {
+        router.push("/payment");
+    };
+
     return (
         <S.Wrapper>
             <S.WrapperContainer>
@@ -83,31 +89,40 @@ export default function MypagePresenter(props: any) {
 
                 <S.BasketList>내 장바구니</S.BasketList>
                 <S.BottomMapWrapper>
-                    {[0, 1, 2, 3].map((el) => (
-                        <S.BottomWrapper>
-                            <S.BasketProductImageWrapper>
-                                <S.BasketProductImage src="/images/mybasket_img1.png" />
-                            </S.BasketProductImageWrapper>
+                    {props.baskets ? (
+                        props.baskets.map((el: any) => (
+                            <S.BottomWrapper>
+                                <S.BasketProductImageWrapper>
+                                    <S.BasketProductImage src="/images/mybasket_img1.png" />
+                                </S.BasketProductImageWrapper>
 
-                            <S.BasketProductInfoWrapper>
-                                <S.BasketProductInfoWrapper2>
-                                    <S.ProductInfoWrapper>
-                                        <S.ProductName>
-                                            스카이 블루 키보드
-                                        </S.ProductName>
-                                        <S.ProductContents>
-                                            먁북을 위해 커스텀된 키보드, 저렴한
-                                            가격으로(⋯)
-                                        </S.ProductContents>
-                                    </S.ProductInfoWrapper>
-                                    <S.ProductDelete src="./images/delete.png" />
-                                </S.BasketProductInfoWrapper2>
-                                <S.ProductBuyButton>
-                                    결제하기
-                                </S.ProductBuyButton>
-                            </S.BasketProductInfoWrapper>
-                        </S.BottomWrapper>
-                    ))}
+                                <S.BasketProductInfoWrapper>
+                                    <S.BasketProductInfoWrapper2>
+                                        <S.ProductInfoWrapper>
+                                            <S.ProductName>
+                                                {el.name}
+                                            </S.ProductName>
+                                            <S.ProductContents>
+                                                {el.description}
+                                            </S.ProductContents>
+                                        </S.ProductInfoWrapper>
+                                        <S.ProductDelete
+                                            onClick={props.onClickDeleteBasket}
+                                            src="./images/delete.png"
+                                            id={el.id}
+                                        />
+                                    </S.BasketProductInfoWrapper2>
+                                    <S.ProductBuyButton
+                                        onClick={onClickMoveToPayment}
+                                    >
+                                        결제하기
+                                    </S.ProductBuyButton>
+                                </S.BasketProductInfoWrapper>
+                            </S.BottomWrapper>
+                        ))
+                    ) : (
+                        <div></div>
+                    )}
                 </S.BottomMapWrapper>
             </S.WrapperContainer>
         </S.Wrapper>
