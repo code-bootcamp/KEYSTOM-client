@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 import TypeWriter from "typewriter-effect";
 import "animate.css/animate.compat.css";
 import ScrollAnimation from "react-animate-on-scroll";
+import LayoutHeader from '../../commons/layout/header/index';
 
 // 키보드 배경
 function Preloader({ children, timeline }) {

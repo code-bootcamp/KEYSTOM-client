@@ -12,18 +12,20 @@ padding-bottom: 40px;
 `
 
 const CommentInput = styled.input`
-width: 690px;
-height: 60px;
+width: 600px;
+height: 54px;
 padding-left: 20px;
-background-color: #dedede;
+/* background-color: #dedede; */
+border-radius: 10px;
+/* border: 1px solid #dedede; */
 `
 
 const CommentBtn = styled.button`
 width: 150px;
-height: 60px;
+height: 54px;
 font-weight: 700;
-font-size:18px;
-line-height: 20px;
+font-size: 16px;
+line-height: 24px;
 color: #FFFFFF;
 `
 

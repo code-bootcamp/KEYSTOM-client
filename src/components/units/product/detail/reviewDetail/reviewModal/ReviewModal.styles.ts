@@ -12,9 +12,9 @@ export const ModalDiv = styled.div`
 display: flex;
 flex-direction: column;
 background-color: #f3f3f3;
-width: 1000px;
+width: 900px;
 border-radius:30px ;
-padding-bottom: 200px;
+padding-bottom: 150px;
 `
 
 export const ReviewImageDiv = styled.div`
@@ -23,35 +23,34 @@ flex-direction: column;
 justify-content: flex-end;
 align-items: center;
 width: 100%;
-height: 505px;
+height: 498px;
 background-color: #fff;
 border-radius:30px 30px 0px 0px ;
-
 `
 
 export const ReviewImageWrapper = styled.div`
 width: 100%;
+height: auto;
 `
 
 export const ModalCancelBtn = styled.img`
 position: absolute;
-top: 10px;
-right: 10px;
-width: 54px;
-height: 54px;
+top: 16px;
+right: 18px;
+width: 24px;
+height: 24px;
 cursor: pointer;
 `
-
 
 export const PreviewWrapper = styled.div`
 position: relative;
 top:-120px;
-left: 130px;
+left: 230px;
 `
 export const ImagePreviewWrapper = styled.div`
 display: flex;
 justify-content: space-between;
-width:480px ;
+width:440px;
 padding-bottom: 36px;
 `
 export const ReviewImage = styled.img`
@@ -70,11 +69,18 @@ padding: 0px 70px;
 `
 export const ReviewTitleDiv = styled.div`
 display: flex;
+flex-direction: column;
 justify-content: space-between;
-align-items: flex-end;
  width: 100%;
  border-bottom: 1px solid #c4c4c4;
  padding-bottom: 13px;
+`
+
+export const ReviewModalTop = styled.div`
+display: flex;
+padding-bottom: 41px;
+justify-content: space-between;
+
 `
 
 export const ReviewTitle = styled.div`
@@ -95,34 +101,24 @@ export const ReviewTopWrapper = styled.div`
 display: flex;
 justify-content: space-between;
 align-items: center;
-width: 390px;
 font-weight: 400;
-font-size: 20px;
-line-height: 30px;
+font-size: 14px;
+line-height: 20px;
+color: #B1B1B1;
 `
 
 export const ReviewerProfile = styled.img`
-width: 45px;
-height: 45px;
-background: #C4C4C4;
+width: 32px;
+height: 32px;
 border-radius: 30px;
-margin-right: 20px;
+margin-right: 8px;
 `
 
 export const ReviewerText = styled.div`
-padding-right: 30px;
-font-weight: 400;
-font-size: 18px;
-line-height: 24px;
 `
 
 export const ReviewDate = styled.div`
-font-family: 'Noto Sans CJK KR';
-font-style: normal;
-padding-right: 30px;
-font-weight: 400;
-font-size: 20px;
-line-height: 30px;
+padding-left: 8px;
 `
 
 export const ReviewLike = styled.div`
@@ -131,31 +127,29 @@ export const ReviewLike = styled.div`
 `
 
 export const ReviewLikeIcon = styled.img`
- width: 54px;
- height: 54px;
+ width: 24px;
+ height: 24px;
+ cursor: pointer;
 `
 
 export const ReviewLikeNum = styled.div`
-font-family: 'Noto Sans CJK KR';
-font-style: normal;
+color: #B150F2;
 padding-left: 10px;
 font-weight: 700;
-font-size: 24px;
-line-height: 36px;
+font-size: 14px;
+line-height: 20px;
 `
 export const ReviewContentsDiv = styled.div`
-padding-top: 40px;
-padding-bottom: 40px;
 border-bottom: 1px solid #c4c4c4;
 
 `
 export const ReviewContents = styled.div`
 width: 100%;
-padding: 20px 70px;
+padding: 20px 0px;
 color: #b1b1b1;
 font-weight: 400;
-font-size: 18px;
-line-height: 24px;
+font-size: 14px;
+line-height: 20px;
 color: #000000;
 `
 
@@ -171,22 +165,15 @@ export const CommentAllDiv = styled.div`
 display: flex;
 border-bottom: 1px solid #c4c4c4;
 padding-bottom: 10px;
+font-weight: 400;
+font-size: 14px;
+line-height: 24px;
 `
 
 export const CommentAllText = styled.div`
-font-weight: 400;
-font-size: 24px;
-line-height: 28px;
-
-
 `
 
 export const CommentAllNum = styled.div`
-font-family: 'Noto Sans CJK KR';
-font-style: normal;
-font-weight: 400;
-font-size: 20px;
-line-height: 30px;
 padding-left:20px ;
 `
 

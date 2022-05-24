@@ -23,11 +23,13 @@ export default function ReviewModalContainer(props:any){
     })
 
     console.log("reviewData", reviewData)
-    
+
+
     return<ReviewModalPresenter
     showModal={props.showModal}
     handleOK={props.handleOK}
     handleCancel={props.handleCancel}
+    onClickCloseModal={props.onClickCloseModal}
     id={props.id}
     // el={props.el}
     selectedId={props.selectedId}
