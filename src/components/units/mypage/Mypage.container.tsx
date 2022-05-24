@@ -9,7 +9,6 @@ const FETCH_USER_LOGGED_IN = gql`
             email
             name
             nickName
-            profileImage
             isAdmin
         }
     }

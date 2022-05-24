@@ -10,38 +10,39 @@ export default function MypagePresenter(props: any) {
     return (
         <S.Wrapper>
             <S.WrapperContainer>
+                <S.BoughtList>My Profile</S.BoughtList>
                 <S.TopWrapper>
                     <S.TopLeftContainer>
-                        <S.ProfileImage src="./images/profilePic.png" />
+                        <S.ProfileImage />
                     </S.TopLeftContainer>
 
                     <S.TopRightContainer>
                         <S.NameContainer>
-                            <S.Name>이름</S.Name>
-                            <S.VerticalLine src="./images/Rectangle99.png" />
+                            <S.Name>Name</S.Name>
+                            <S.VerticalLine src="./images/Rectangle97.png" />
                             <S.UserName>
                                 {props.data?.fetchUserLoggedIn.name}
                             </S.UserName>
                         </S.NameContainer>
                         <S.IdContainer>
-                            <S.Id>아이디</S.Id>
-                            <S.VerticalLine src="./images/Rectangle99.png" />
+                            <S.Id>ID</S.Id>
+                            <S.VerticalLine src="./images/Rectangle97.png" />
                             <S.UserId>
                                 {props.data?.fetchUserLoggedIn.email}
                             </S.UserId>
                         </S.IdContainer>
                         <S.PointWrapper>
-                            <S.Point>고유번호</S.Point>
-                            <S.VerticalLine src="./images/Rectangle99.png" />
+                            <S.Point>Address</S.Point>
+                            <S.VerticalLine src="./images/Rectangle97.png" />
                             <S.UserPoint>
-                                {props.data?.fetchUserLoggedIn.nickName}
+                                {props.data?.fetchUserLoggedIn.address}
                             </S.UserPoint>
                         </S.PointWrapper>
                         <S.DeliverWrapper>
-                            <S.DeliveryAddress>배송 주소</S.DeliveryAddress>
-                            <S.VerticalLine src="./images/Rectangle99.png" />
+                            <S.DeliveryAddress>Coupons</S.DeliveryAddress>
+                            <S.VerticalLine src="./images/Rectangle97.png" />
                             <S.UserDeliveryAddress>
-                                {props.data?.fetchUserLoggedIn.address}
+                                {props.data?.fetchUserLoggedIn.nickName}
                             </S.UserDeliveryAddress>
                         </S.DeliverWrapper>
 
@@ -53,33 +54,38 @@ export default function MypagePresenter(props: any) {
                 <S.Line />
 
                 <S.MiddleWrapper>
-                    <S.BoughtList>내 구매 이력</S.BoughtList>
+                    <S.BoughtList>My Order History</S.BoughtList>
                     {[0, 1, 2].map((el) => (
                         <S.BoughtListInfo>
                             <S.BoughtImage src="./images/mypurchaselist_img1.png" />
                             <S.BoughtName>유튜버 키보드</S.BoughtName>
+
                             <S.BoughtDateWrapper>
-                                <S.BoughtDateText>구매 날짜</S.BoughtDateText>
+                                <S.BoughtDateText>Date</S.BoughtDateText>
                                 <S.BoughtDateNum>2022.05.03</S.BoughtDateNum>
                             </S.BoughtDateWrapper>
+
                             <S.BoughtPriceWrapper>
-                                <S.BoughtPriceText>가격</S.BoughtPriceText>
+                                <S.BoughtPriceText>Price</S.BoughtPriceText>
                                 <S.BoughtPriceNum>1,600,000</S.BoughtPriceNum>
                             </S.BoughtPriceWrapper>
+
                             <S.BoughtStatusWrapper>
-                                <S.BoughtStatusText>상태</S.BoughtStatusText>
+                                <S.BoughtStatusText>State</S.BoughtStatusText>
                                 <S.BoughtStatus>배송 준비 중</S.BoughtStatus>
                             </S.BoughtStatusWrapper>
+
                             <S.BoughtReviewWrapper>
-                                <S.BoughtReviewText>리뷰</S.BoughtReviewText>
+                                <S.BoughtReviewText>Review</S.BoughtReviewText>
                                 <S.BoughtReviewStatus>
                                     작성 안함
                                 </S.BoughtReviewStatus>
                             </S.BoughtReviewWrapper>
                             <S.BoughtReviewIcon
                                 onClick={props.moveToReviewWrite}
-                                src="./images/review.png"
-                            />
+                            >
+                                작성하기
+                            </S.BoughtReviewIcon>
                         </S.BoughtListInfo>
                     ))}
                 </S.MiddleWrapper>
@@ -87,7 +93,7 @@ export default function MypagePresenter(props: any) {
                 {/* Line */}
                 <S.Line />
 
-                <S.BasketList>내 장바구니</S.BasketList>
+                <S.BasketList>My Basket</S.BasketList>
                 <S.BottomMapWrapper>
                     {props.baskets ? (
                         props.baskets.map((el: any) => (

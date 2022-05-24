@@ -446,14 +446,58 @@ export default function StorePresenter() {
                                     <S.Text2>
                                         The way to customize keyboard
                                     </S.Text2>
-                                    <S.Text3>Select your wanted key</S.Text3>
-                                    <S.Text3>Choose your own color</S.Text3>
-                                    <S.Text3>Order it!</S.Text3>
+                                    <S.Text3>
+                                        <span
+                                            style={{
+                                                textDecoration: "underline",
+                                            }}
+                                        >
+                                            1
+                                        </span>{" "}
+                                        Select your wanted key
+                                    </S.Text3>
+                                    <S.Text3>
+                                        <span
+                                            style={{
+                                                textDecoration: "underline",
+                                            }}
+                                        >
+                                            2
+                                        </span>{" "}
+                                        Choose your own color
+                                    </S.Text3>
+                                    <S.Text3>
+                                        <span
+                                            style={{
+                                                textDecoration: "underline",
+                                            }}
+                                        >
+                                            3
+                                        </span>{" "}
+                                        Order it!
+                                    </S.Text3>
                                 </S.TextWrapper>
                                 <S.Player>동영상</S.Player>
                             </S.ContentsWrapper>
                         </S.MainImage2>
                     </S.ImageWrapper>
+
+                    <S.ImageWrapper>
+                        <S.MainImage3>
+                            <S.TextWrapper2>
+                                <S.Text3>
+                                    It is very simple way to get your own
+                                    customized keyboard !{" "}
+                                </S.Text3>
+                                <S.Text3>Enjoy ! : )</S.Text3>
+
+                                <S.MoveButton onClick={MoveToStore}>
+                                    Go to customize
+                                </S.MoveButton>
+                            </S.TextWrapper2>
+                        </S.MainImage3>
+                    </S.ImageWrapper>
+
                     {/* 
                     <ScrollAnimation
                         animateIn="fadeInDownBig"
