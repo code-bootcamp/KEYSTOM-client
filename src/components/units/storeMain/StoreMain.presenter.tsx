@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 import TypeWriter from "typewriter-effect";
 import "animate.css/animate.compat.css";
 import ScrollAnimation from "react-animate-on-scroll";
-import LayoutHeader from '../../commons/layout/header/index';
+import LayoutHeader from "../../commons/layout/header/index";
 
 // 키보드 배경
 function Preloader({ children, timeline }) {
@@ -351,7 +351,7 @@ export default function StorePresenter() {
     return (
         <>
             <S.Wrapper>
-                <PreloaderWrapper>
+                {/* <PreloaderWrapper>
                     <Preloader timeline={tl}>
                         <PreloaderChild>
                             <ScrollAnimation
@@ -373,9 +373,9 @@ export default function StorePresenter() {
                             </HideButtonFunc>
                         </PreloaderChild>
                     </Preloader>
-                </PreloaderWrapper>
+                </PreloaderWrapper> */}
 
-                <HeaderWrapper>
+                {/* <HeaderWrapper>
                     <LogoDiv>
                         <Logo src="/images/lg.png" onClick={MoveToHome} />
                     </LogoDiv>
@@ -393,19 +393,19 @@ export default function StorePresenter() {
                                 />
                             </IconWrapper>
 
-                            <BasketWrapper>
-                                {/* <BasketNum>0</BasketNum> */}
-                                <BasketIcon
+                            <BasketWrapper> */}
+                {/* <BasketNum>0</BasketNum> */}
+                {/* <BasketIcon
                                     src="/images/basket.png"
                                     onClick={moveToMyPage}
                                 />
                             </BasketWrapper>
                         </MenuDiv>
                     </MenuWrapper>
-                </HeaderWrapper>
+                </HeaderWrapper> */}
 
                 <S.MainWrapper>
-                    <div style={{ color: "white", fontSize: "36px" }}>
+                    {/* <div style={{ color: "white", fontSize: "36px" }}>
                         <span>F12는</span>
                         <TypeWriter
                             options={{ loop: true }}
@@ -433,11 +433,28 @@ export default function StorePresenter() {
                                     .start();
                             }}
                         />
-                    </div>
+                    </div> */}
                     <S.ImageWrapper>
                         <S.MainImage></S.MainImage>
                     </S.ImageWrapper>
 
+                    <S.ImageWrapper>
+                        <S.MainImage2>
+                            <S.ContentsWrapper>
+                                <S.TextWrapper>
+                                    <S.Text1>How to Customize?</S.Text1>
+                                    <S.Text2>
+                                        The way to customize keyboard
+                                    </S.Text2>
+                                    <S.Text3>Select your wanted key</S.Text3>
+                                    <S.Text3>Choose your own color</S.Text3>
+                                    <S.Text3>Order it!</S.Text3>
+                                </S.TextWrapper>
+                                <S.Player>동영상</S.Player>
+                            </S.ContentsWrapper>
+                        </S.MainImage2>
+                    </S.ImageWrapper>
+                    {/* 
                     <ScrollAnimation
                         animateIn="fadeInDownBig"
                         animateOut="fadeOut"
@@ -471,40 +488,46 @@ export default function StorePresenter() {
                                 </S.BestProductBox>
                             ))}
                         </S.BestProductWrapper>
-                    </ScrollAnimation>
+                    </ScrollAnimation> */}
 
                     <ScrollAnimation
                         animateIn="lightSpeedInRight"
                         animateOut="slideOutLeft"
                     >
-                        <S.Text>Best Review</S.Text>
-                    </ScrollAnimation>
-                    <ScrollAnimation animateIn="fadeIn" animateOut="fadeOut">
-                        <S.BestProductWrapper>
-                            {ReviewArr.map((el) => (
-                                <S.BestProductBox>
-                                    <S.ReviewImage
-                                        src={`${el.image}`}
-                                    ></S.ReviewImage>
-                                    <S.ReviewDownWrapper>
-                                        <S.ReviewLikeWrapper>
-                                            <S.ReviewEmoji></S.ReviewEmoji>
-                                            <S.ReviewScore>
-                                                {el.like}
-                                            </S.ReviewScore>
-                                        </S.ReviewLikeWrapper>
-                                        <S.ReviewTitleWrapper>
-                                            <S.ReviewTitle>
-                                                {el.title}
-                                            </S.ReviewTitle>
-                                        </S.ReviewTitleWrapper>
-                                        <S.ReviewContents>
-                                            {el.contents}
-                                        </S.ReviewContents>
-                                    </S.ReviewDownWrapper>
-                                </S.BestProductBox>
-                            ))}
-                        </S.BestProductWrapper>
+                        <S.BestReviewWrapper>
+                            <S.Text>Best Review</S.Text>
+
+                            <ScrollAnimation
+                                animateIn="fadeIn"
+                                animateOut="fadeOut"
+                            >
+                                <S.BestProductWrapper>
+                                    {ReviewArr.map((el) => (
+                                        <S.BestProductBox>
+                                            <S.ReviewImage
+                                                src={`${el.image}`}
+                                            ></S.ReviewImage>
+                                            <S.ReviewDownWrapper>
+                                                <S.ReviewLikeWrapper>
+                                                    <S.ReviewEmoji></S.ReviewEmoji>
+                                                    <S.ReviewScore>
+                                                        {el.like}
+                                                    </S.ReviewScore>
+                                                </S.ReviewLikeWrapper>
+                                                <S.ReviewTitleWrapper>
+                                                    <S.ReviewTitle>
+                                                        {el.title}
+                                                    </S.ReviewTitle>
+                                                </S.ReviewTitleWrapper>
+                                                <S.ReviewContents>
+                                                    {el.contents}
+                                                </S.ReviewContents>
+                                            </S.ReviewDownWrapper>
+                                        </S.BestProductBox>
+                                    ))}
+                                </S.BestProductWrapper>
+                            </ScrollAnimation>
+                        </S.BestReviewWrapper>
                     </ScrollAnimation>
 
                     {/* 구분선 */}
