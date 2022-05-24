@@ -31,7 +31,7 @@ export const ReviewProductWrapper = styled.div`
     display: flex;
     flex-direction: row;
 
-    padding-bottom: 43px;
+    padding-bottom: 30px;
 `;
 
 export const ReviewProductImage = styled.div`
@@ -84,10 +84,12 @@ export const ReviewTitleContentsWrapper = styled.div`
     width: 100%;
     height: 800px;
 
-    background-color: #f3f3f3;
+    background-color: #2c2c2c;
     margin-bottom: 30px;
 
-    border-radius: 30px;
+    border-radius: 10px;
+
+    border: 1px solid #ffffff;
 `;
 
 export const ReviewTitle = styled.div`
@@ -97,26 +99,28 @@ export const ReviewTitle = styled.div`
     font-size: 24px;
 
     color: #000000;
-    padding: 40px;
-    border-bottom: 2px solid #c4c4c4; ;
+    padding: 30px 40px 30px 40px;
+
+    border-bottom: 1px solid #ffffff;
 `;
 
 export const ReviewTitleInput = styled.input`
-width: 100%;
-height: 50px;
-background-color: #f1f1f1;
-`
+    width: 100%;
+    height: 24px;
+    background-color: #2c2c2c;
+    color: #ffffff;
+`;
 
 export const ReviewContents = styled.textarea`
     width: 100%;
     height: 600px;
 
     font-weight: 400;
-    font-size: 20px;
+    font-size: 18px;
 
-    padding: 30px 30px 30px 40px;
-    background-color: #f3f3f3;
-    color: #000000;
+    padding: 30px 40px 30px 40px;
+    background-color: #2c2c2c;
+    color: #ffffff;
     border: none;
 `;
 
@@ -128,7 +132,7 @@ export const ReviewContentsMaxLength = styled.div`
 
     font-weight: 400;
     font-size: 18px;
-    color: #000000;
+    color: #fff;
 `;
 
 export const ReviewUploadWrapper = styled.div`
@@ -138,14 +142,14 @@ export const ReviewUploadWrapper = styled.div`
     display: flex;
     flex-direction: row;
 
-    background-color: #f3f3f3;
+    background-color: #2c2c2c;
 
     padding: 30px 0px 30px 30px;
 
-    margin-bottom: 100px;
+    margin-bottom: 50px;
 
-    background: #2c2c2c;
-    border-radius: 30px;
+    border: 1px solid #ffffff;
+    border-radius: 10px;
 `;
 
 export const ReviewUploadImage = styled.button`
@@ -179,11 +183,9 @@ export const ReviewSubmitButton = styled.button`
     width: 360px;
     height: 120px;
 
-    background-color: #676767;
+    background-color: #2c2c2c;
     border: none;
-    border-radius: 20px;
-
-    margin-right: 27px;
+    border-radius: 10px;
 
     cursor: pointer;
     :hover {
@@ -195,9 +197,11 @@ export const ReviewCancelButton = styled.button`
     width: 360px;
     height: 120px;
 
-    background-color: #676767;
+    background-color: #2c2c2c;
     border: none;
-    border-radius: 20px;
+    border-radius: 10px;
+
+    margin-right: 27px;
 
     cursor: pointer;
     :hover {

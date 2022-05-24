@@ -9,9 +9,9 @@ import { useState } from "react";
 const CREATE_USER = gql`
     mutation createUser($createUserInput: CreateUserInput!) {
         createUser(createUserInput: $createUserInput) {
-            nickName
             email
             name
+            nickName
             profileImage
             isAdmin
             address
@@ -20,14 +20,14 @@ const CREATE_USER = gql`
 `;
 
 const schema = yup.object({
-    email: yup
-        .string()
-        .email("형식에 맞지 않습니다.")
-        .required("이메일을 필수 입력값 입니다."),
     name: yup
         .string()
         // .matches(/^[a-zA-Z0-9]/, "형식에 맞지 않습니다.")
         .required("이름은 필수 입력값 입니다."),
+    email: yup
+        .string()
+        .email("형식에 맞지 않습니다.")
+        .required("이메일을 필수 입력값 입니다."),
     password: yup
         .string()
         .matches(/^[A-Za-z\d$@$!%*#?&]{8,20}$/, "형식에 맞지 않습니다.")

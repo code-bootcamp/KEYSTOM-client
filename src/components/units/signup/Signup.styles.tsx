@@ -7,42 +7,42 @@ export const Container = styled.div`
     align-items: center;
 `;
 export const SignUpContainer = styled.div`
+    width: 1236px;
     display: flex;
     flex-direction: column;
-    width: 1920px;
-    padding-left: 210px;
-    padding-right: 210px;
-    padding-bottom: 500px;
+    /* justify-content: center; */
+    align-items: center;
+
+    border-bottom: 2px solid #b1b1b1;
 `;
 
 export const SignUpTitle = styled.div`
     display: flex;
     flex-direction: column;
     width: 100%;
+
     font-weight: 700;
     font-size: 32px;
-    line-height: 32px;
-    padding-top: 100px;
+
+    padding-top: 60px;
     padding-bottom: 60px;
-    border-bottom: 2px solid #c4c4c4;
+    border-bottom: 2px solid #b1b1b1;
 `;
 
 export const SignUpContentsWrapper = styled.div`
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 666px;
     justify-content: space-between;
-    padding-bottom: 20px;
-    border-bottom: 2px solid #c4c4c4;
-    margin-bottom: 60px;
+    padding-bottom: 40px;
 `;
 
 export const InfoTitle = styled.div`
     font-weight: 700;
     font-size: 32px;
-    line-height: 32px;
+
     padding-top: 60px;
-    padding-bottom: 60px;
+    padding-bottom: 37px;
 `;
 
 export const InfoDiv = styled.div`
@@ -54,34 +54,42 @@ export const InfoDiv = styled.div`
 `;
 
 export const NameInfoInput = styled.input`
-    width: 380px;
-    height: 60px;
-    padding-left: 20px;
+    width: 379px;
+    height: 54px;
+
+    border: none;
+    border-bottom: 1px solid #ffffff;
+    background-color: transparent;
+
+    :focus {
+        outline: none;
+    }
 `;
 
 export const InfoInput = styled.input`
     width: 400px;
-    height: 60px;
-    padding-left: 20px;
+    height: 54px;
+
+    border: none;
+    border-bottom: 1px solid #ffffff;
+    background-color: transparent;
+
+    :focus {
+        outline: none;
+    }
 `;
 
 export const PasswordWatch = styled.div`
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    width: 54px;
-    height: 60px;
-    background-color: #676767;
-
-    padding-top: 8px;
+    background-color: transparent;
     /* background-color: red; */
 `;
 
 export const EyeIcon = styled(EyeOutlined)<{ isWrite: boolean }>`
     /* width: 54px; */
     /* width: 54px; */
-    font-size: 40px;
-    padding-top: 3px;
+    font-size: 30px;
+    /* padding-top: 10px; */
+
     cursor: pointer;
 
     color: ${(props) => (props.isWrite ? "#b150f2" : " #ffffff")};
@@ -90,30 +98,40 @@ export const EyeIcon = styled(EyeOutlined)<{ isWrite: boolean }>`
 export const EyeIcon2 = styled(EyeOutlined)<{ isWrite2: boolean }>`
     /* width: 54px; */
     /* width: 54px; */
-    font-size: 40px;
-    padding-top: 3px;
+    font-size: 30px;
+    /* padding-top: 10px; */
+
     cursor: pointer;
 
     color: ${(props) => (props.isWrite2 ? "#b150f2" : " #ffffff")};
 `;
 
 export const IDInfoInput = styled.input`
-    width: 380px;
-    height: 60px;
-    padding-left: 20px;
+    width: 379px;
+    height: 54px;
+
+    border: none;
+    border-bottom: 1px solid #ffffff;
+    background-color: transparent;
+
+    :focus {
+        outline: none;
+    }
 `;
 
 export const InfoText = styled.div`
     width: 150px;
     font-weight: 700;
     font-size: 20px;
+
+    margin-right: 50px;
 `;
 
 export const SignUpError = styled.div`
     color: #b150f2;
     /* padding-top: 15px; */
     margin-bottom: 20px;
-    margin-left: 150px;
+    margin-left: 200px;
 `;
 
 export const InfoInputWrapper = styled.div`
@@ -127,14 +145,37 @@ export const ZoncodeWrapper = styled.div`
 
 export const ZoncodeInput = styled.input`
     width: 116px;
-    height: 60px;
+    height: 54px;
     margin-right: 20px;
-    padding-left: 20px;
+
+    border: none;
+    border-bottom: 1px solid #ffffff;
+    background-color: transparent;
+
+    :focus {
+        outline: none;
+    }
+`;
+
+export const ZoncodeButton = styled.button`
+    background-color: transparent;
+
+    border: 1px solid #ffffff;
+    border-radius: 6px;
+
+    cursor: pointer;
+    :hover {
+        border: 1px solid #b150f2;
+        color: #b150f2;
+    }
 `;
 
 export const SignUpBtnWrapper = styled.div`
     display: flex;
     justify-content: center;
+
+    padding-top: 60px;
+    padding-bottom: 500px;
 `;
 
 export const SignUpCancelButton = styled.button`

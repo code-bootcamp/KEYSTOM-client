@@ -18,12 +18,14 @@ export default function ProductListPresenterItem(props: any) {
             )}
 
             <S.ProductBoxRightWrapper>
-                <S.ProductTitle>{props.el.title}</S.ProductTitle>
+                <S.ProductTitle>일단 넣자{props.el.title}</S.ProductTitle>
                 <S.ProductPrice>
-                    {props.el.price.toLocaleString()}
+                    {props.el.price?.toLocaleString()}
                     <span>원</span>
                 </S.ProductPrice>
-                <S.ProductContents>{props.el.description}</S.ProductContents>
+                <S.ProductContents>
+                    내용 일단 넣자{props.el.description}
+                </S.ProductContents>
             </S.ProductBoxRightWrapper>
         </S.ProductBox>
     );
