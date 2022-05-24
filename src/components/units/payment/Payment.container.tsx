@@ -15,7 +15,7 @@ export default function PaymentContainer() {
 
     const requestPayment = () => {
         const IMP = window.IMP;
-        IMP.init("imp49910675");
+        IMP.init("imp61795344");
         IMP.request_pay(
             {
               pg: "html5_inicis",
@@ -37,16 +37,16 @@ export default function PaymentContainer() {
                             order:{
                                 count:1,
                                 price:100,
-                                recieverNAme:"123",
-                                recieverPhone:"0101000",
+                                receiverNAme:"123",
+                                receiverPhone:"0101000",
                                 email:"wjwow007@gmail.com",
                                 address:"address"
                             }
                         }
                     },
-                    refetchQueries:[{
-                      query: FETCH_USER
-                    }]
+                    // refetchQueries:[{
+                    //   query: FETCH_USER
+                    // }]
                   })
                   Modal.success({content:"결제를 성공하였습니다. 감사합니다!"})
                 } else {
