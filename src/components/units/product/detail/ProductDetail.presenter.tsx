@@ -135,24 +135,7 @@ function ChangeKey() {
     }
   });
 
-  return <div>{length}</div>;
-}
-
-// 스페이스바 색상 바꼈을 때
-function SpaceBarChangeKey() {
-  useEffect(() => {
-    spacebarLength = Object.values(state.items)[33] !== "#ffffff" ? 1 : 0;
-  });
-
-  return <div>{spacebarLength}</div>;
-}
-
-function EnterChangeKey() {
-  useEffect(() => {
-    enterLength = Object.values(state.items)[14] !== "#ffffff" ? 1 : 0;
-  });
-
-  return <div>{enterLength}</div>;
+  return <S.Option1Count>{length}</S.Option1Count>;
 }
 
 // esc 색상 바꼈을 때
@@ -161,7 +144,25 @@ function EscChangeKey() {
     escLength = Object.values(state.items)[47] !== "#ffffff" ? 1 : 0;
   });
 
-  return <div>{escLength}</div>;
+  return <S.Option2Count>{escLength}</S.Option2Count>;
+}
+
+// 스페이스바 색상 바꼈을 때
+function SpaceBarChangeKey() {
+  useEffect(() => {
+    spacebarLength = Object.values(state.items)[33] !== "#ffffff" ? 1 : 0;
+  });
+
+  return <S.Option3Count>{spacebarLength}</S.Option3Count>;
+}
+
+// 엔터 색상 바꼈을 때
+function EnterChangeKey() {
+  useEffect(() => {
+    enterLength = Object.values(state.items)[14] !== "#ffffff" ? 1 : 0;
+  });
+
+  return <S.Option4Count>{enterLength}</S.Option4Count>;
 }
 
 // 키보드 3d 구현 함수
@@ -170,6 +171,7 @@ function Keyboard(props: any) {
   const snap = useSnapshot(state);
   const { nodes, materials } = useGLTF("/images/keyboard_fix.glb");
 
+  console.log(length);
   return (
     <>
       <group
@@ -179,7 +181,7 @@ function Keyboard(props: any) {
         onClick={(e) => (
           e.stopPropagation(), (state.current = e.object.material.name)
         )}
-        position={[-0.28, 0, -0.1]}
+        position={[-0.26, 0, -0.1]}
         rotation={[0, 0, 0]}
         scale={[2, 2, 2]}
       >
@@ -617,7 +619,7 @@ function Keyboard(props: any) {
           receiveShadow
           geometry={nodes.Cube.geometry}
           material={materials.Material}
-          position={[-0.28, 0, -0.1]}
+          position={[-0.26, 0, -0.1]}
           rotation={[0, 0, 0]}
           scale={[2, 2, 2]}
         />
@@ -627,67 +629,43 @@ function Keyboard(props: any) {
 }
 
 function Picker() {
-  // const [count, setCount] = useState(0);
   const snap = useSnapshot(state);
 
-  // console.log(snap.items[snap.current]);
-  // useEffect(() => {
-  //   if (snap.items[snap.current] !== "#ffffff") {
-  //     // setCount((prev) => prev + 1);
-  //     count++;
-  //   }
-  // }, [snap.items[snap.current]]);
-
-  // console.log(count);
-  let length = Object.values(state.items).filter(
-    (el) => el !== "#ffffff"
-  ).length;
-
   return (
-    <div
-      style={{
-        display: snap.current ? "block" : "none",
-        marginTop: "30px",
-      }}
-    >
-      <HexColorPicker
+    <S.HexColorPickerWrapper>
+      <S.HexColorPick
         className="picker"
         color={snap.items[snap.current]}
         onChange={(color) => (state.items[snap.current] = color)}
-        style={{ width: "280px", height: "280px" }}
       />
-      <div style={{ borderLeftColor: `${state.items[snap.current]}` }}>
-        {state.items[snap.current]}
-      </div>
-      <HexColorInput
-        color={snap.items[snap.current]}
-        onChange={(color) => (state.items[snap.current] = color)}
-      />
-    </div>
+
+      <S.HexColorCodeWrapper>
+        <S.HexColorCode>색상코드</S.HexColorCode>
+        <S.HexColorPickInput
+          color={snap.items[snap.current]}
+          onChange={(color) => (state.items[snap.current] = color)}
+        />
+      </S.HexColorCodeWrapper>
+    </S.HexColorPickerWrapper>
   );
 }
 
 export default function ProductDetailPresenter() {
-  const snap = useSnapshot(state);
-
   return (
-    <>
-      <S.Wrapper>
-        <S.DetailWrapper>
-          <S.Title>올 포 디자이너</S.Title>
-          <S.ImageWrapper>
-            <S.ImageLeft>
-              <S.OriginKeyboard></S.OriginKeyboard>
-              <S.ColorBoxWrapper>
-                <S.PickImage src="/images/colorpick.png" />
-                <div>
-                  <Picker />
-                </div>
-              </S.ColorBoxWrapper>
-            </S.ImageLeft>
-            <S.ImageRight>
+    <S.Wrapper>
+      <S.ProductWrapper>
+        <S.ProductLeftWrapper>
+          <S.AllForDesigner>올 포 디자이너</S.AllForDesigner>
+          <S.ProductSelectWrapper>
+            <S.TwoDColorWrapper>
+              <S.TwoDImage />
+              <S.PickerWrapper>
+                <Picker />
+              </S.PickerWrapper>
+            </S.TwoDColorWrapper>
+            <S.ThreeDWrapper>
               <Canvas
-                style={{ marginLeft: "80px" }}
+                style={{ width: "950px" }}
                 camera={{ fov: 35, near: 0.2, position: [0, 0.7, 0.6] }}
               >
                 <Suspense fallback={null}>
@@ -696,74 +674,46 @@ export default function ProductDetailPresenter() {
                 </Suspense>
                 <OrbitControls enableZoom={true} enablePan={false} />
               </Canvas>
-              <S.VectorImage src="/images/Vector.png" />
-            </S.ImageRight>
-          </S.ImageWrapper>
-        </S.DetailWrapper>
-
-        <S.DetailWrapper>
-          <div>
-            <S.Title>적용한 커스텀 옵션</S.Title>
-            <S.OptionWrapper>
-              <S.OptionLeftWrapper>
-                <S.OptionTitle>
-                  <div>옵션명</div>
-                  <div>수량</div>
-                  <div>가격</div>
-                </S.OptionTitle>
-                <S.OptionBottom>
-                  <S.Option>
-                    <S.OptionText>자판 색 변경</S.OptionText>
-
-                    <S.OptionQty>
-                      <ChangeKey />
-                    </S.OptionQty>
-                    <S.OptionPrice>{length * 8000}</S.OptionPrice>
-                  </S.Option>
-                  <S.Option>
-                    <S.OptionText>스페이스바 색 변경</S.OptionText>
-                    <S.OptionQty>
-                      <SpaceBarChangeKey />
-                    </S.OptionQty>
-                    <S.OptionPrice>{spacebarLength * 11000}</S.OptionPrice>
-                  </S.Option>
-                  <S.Option>
-                    <S.OptionText>엔터 색 변경</S.OptionText>
-                    <S.OptionQty>
-                      <EnterChangeKey />
-                    </S.OptionQty>
-                    <S.OptionPrice>{enterLength * 12000}</S.OptionPrice>
-                  </S.Option>
-                  <S.Option>
-                    <S.OptionText>ESC 색 변경</S.OptionText>
-                    <S.OptionQty>
-                      <EscChangeKey />
-                    </S.OptionQty>
-                    <S.OptionPrice>{escLength * 9000}</S.OptionPrice>
-                  </S.Option>
-                  <S.PriceWrapper>
-                    <S.PriceAdd>합계</S.PriceAdd>
-                    <S.PriceNum>
-                      {length * 8000 +
-                        spacebarLength * 11000 +
-                        enterLength * 12000 +
-                        escLength * 9000}
-                    </S.PriceNum>
-                  </S.PriceWrapper>
-                </S.OptionBottom>
-              </S.OptionLeftWrapper>
-              <S.OptionRight>
-                <S.ButtonWrapper>
-                  <S.MoveToListButton>목록보기</S.MoveToListButton>
-                  <S.BasketButton>장바구니</S.BasketButton>
-                  <S.PaymentButton>바로 결제</S.PaymentButton>
-                </S.ButtonWrapper>
-              </S.OptionRight>
-            </S.OptionWrapper>
-          </div>
-        </S.DetailWrapper>
-      </S.Wrapper>
-      <ReviewDetail />
-    </>
+            </S.ThreeDWrapper>
+          </S.ProductSelectWrapper>
+        </S.ProductLeftWrapper>
+        <S.PriceWrapper>
+          <S.ApllyedOptions>Applyed Options</S.ApllyedOptions>
+          <S.OptionTableWrapper>
+            <S.OptionHeader>
+              <S.OptionName>옵션명</S.OptionName>
+              <S.OptionCount>수량</S.OptionCount>
+              <S.OptionPrice>가격</S.OptionPrice>
+            </S.OptionHeader>
+            <S.Option1Wrapper>
+              <S.Option1Name>자판</S.Option1Name>
+              <ChangeKey />
+              <S.Option1Price>{length * 6000}</S.Option1Price>
+            </S.Option1Wrapper>
+            <S.Option2Wrapper>
+              <S.Option2Name>ESC</S.Option2Name>
+              <EscChangeKey />
+              <S.Option2Price>{escLength}</S.Option2Price>
+            </S.Option2Wrapper>
+            <S.Option3Wrapper>
+              <S.Option3Name>스페이스바</S.Option3Name>
+              <SpaceBarChangeKey />
+              <S.Option3Price>{spacebarLength * 8000}</S.Option3Price>
+            </S.Option3Wrapper>
+            <S.Option4Wrapper>
+              <S.Option4Name>엔터</S.Option4Name>
+              <EnterChangeKey />
+              <S.Option4Price>{enterLength * 10000}</S.Option4Price>
+            </S.Option4Wrapper>
+            <S.TotalAccount>
+              {length * 6000 +
+                escLength * 7000 +
+                spacebarLength * 8000 +
+                enterLength * 10000}
+            </S.TotalAccount>
+          </S.OptionTableWrapper>
+        </S.PriceWrapper>
+      </S.ProductWrapper>
+    </S.Wrapper>
   );
 }

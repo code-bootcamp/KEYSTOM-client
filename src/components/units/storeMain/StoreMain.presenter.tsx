@@ -1,6 +1,5 @@
 import * as S from "./StoreMain.styles";
 import { useEffect, useRef, useState } from "react";
-import styled from "@emotion/styled";
 import gsap from "gsap";
 import { useRouter } from "next/router";
 import TypeWriter from "typewriter-effect";
@@ -23,7 +22,7 @@ function Preloader({ children, timeline }) {
       });
   });
 
-  return <PreloaderDiv ref={el}>{children}</PreloaderDiv>;
+  return <S.PreloaderDiv ref={el}>{children}</S.PreloaderDiv>;
 }
 
 // 당신만의 키보드를 만들어 보세요.
@@ -42,7 +41,7 @@ function HideTitleFunc({ children, timeline }) {
       });
   });
 
-  return <HideTitle ref={el}>{children}</HideTitle>;
+  return <S.HideTitle ref={el}>{children}</S.HideTitle>;
 }
 
 // 취향은 내맘대로, 색상은 자유자재로
@@ -61,7 +60,7 @@ function HideTopContentsFunc({ children, timeline }) {
       });
   });
 
-  return <HideTopContents ref={el}>{children}</HideTopContents>;
+  return <S.HideTopContents ref={el}>{children}</S.HideTopContents>;
 }
 
 // F12에서 진정한 자유를 만나보세요.
@@ -80,7 +79,7 @@ function HideBottomContentsFunc({ children, timeline }) {
       });
   });
 
-  return <HideBottomContents ref={el}>{children}</HideBottomContents>;
+  return <S.HideBottomContents ref={el}>{children}</S.HideBottomContents>;
 }
 
 // 시작하기 버튼
@@ -99,7 +98,7 @@ function HideButtonFunc({ children, timeline }) {
       });
   });
 
-  return <HideButton ref={el}>{children}</HideButton>;
+  return <S.HideButton ref={el}>{children}</S.HideButton>;
 }
 
 const ProductArr = [
@@ -145,175 +144,6 @@ const ReviewArr = [
   },
 ];
 
-const PreloaderWrapper = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  margin: 0px;
-  padding: 0;
-  box-sizing: border-box;
-  position: relative;
-  z-index: 9999;
-`;
-
-const PreloaderDiv = styled.div`
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  overflow: hidden;
-  overflow-y: hidden; /* Hide vertical scrollbar */
-  overflow-x: hidden;
-`;
-
-const PreloaderChild = styled.div`
-  width: 100%;
-  min-height: 100%;
-  position: relative;
-  z-index: 999;
-  background: url("/images/Bg_img.png") no-repeat center center fixed;
-`;
-
-const HideTitle = styled.div`
-  width: 744px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 355px;
-
-  font-family: "NanumGothicCoding";
-  font-style: normal;
-  font-weight: 700;
-  font-size: 48px;
-  line-height: 64px;
-  color: #ffffff;
-`;
-
-const HideTopContents = styled.div`
-  width: 420px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 73px;
-
-  font-family: "NanumGothicCoding";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 24px;
-  line-height: 28px;
-  color: #f1f1f1;
-`;
-
-const HideBottomContents = styled.div`
-  width: 420px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 5px;
-
-  font-family: "NanumGothicCoding";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 24px;
-  line-height: 28px;
-  color: #f1f1f1;
-`;
-
-const HideButton = styled.button`
-  width: 242px;
-  height: 84px;
-  background: #b150f2;
-  border-radius: 20px;
-  margin-left: 839px;
-  margin-top: 176px;
-  border: none;
-
-  font-family: "NanumGothicCoding";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 20px;
-  line-height: 24px;
-  color: #ffffff;
-`;
-
-const HeaderWrapper = styled.div`
-  display: flex;
-  align-items: flex-end;
-  width: 1920px;
-  height: 180px;
-  background-color: #2c2c2c;
-  padding-left: 210px;
-  padding-right: 210px;
-  display: relative;
-  z-index: 2;
-`;
-
-const LogoDiv = styled.div`
-  width: 120px;
-  height: 120px;
-`;
-
-const Logo = styled.img`
-  width: 100%;
-  cursor: pointer;
-`;
-const MenuWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-`;
-
-const MenuDiv = styled.div`
-  display: flex;
-  align-items: center;
-`;
-const Menu = styled.div`
-  font-weight: 700;
-  font-size: 18px;
-  line-height: 18px;
-  color: #f1f1f1;
-  padding-left: 58px;
-  cursor: pointer;
-  :hover {
-    color: #b150f2;
-  }
-`;
-
-const IconWrapper = styled.div`
-  display: flex;
-  width: 54px;
-  height: 54px;
-  margin-right: 38px;
-  margin-bottom: 23px;
-`;
-
-const UserIcon = styled.img`
-  width: 100%;
-  cursor: pointer;
-`;
-const BasketWrapper = styled.div`
-  width: 54px;
-  height: 54px;
-  margin-right: 38px;
-  margin-bottom: 23px;
-  margin-top: -38px;
-`;
-
-const BasketIcon = styled.img`
-  width: 54px;
-  height: 54px;
-  cursor: pointer;
-`;
-
-// const BasketNum = styled.div`
-//   width: 20px;
-//   height: 20px;
-//   border-radius: 20px;
-//   padding-left: 6px;
-//   background-color: #b150f2;
-//   position: relative;
-//   left: 35px;
-//   top: 23px;
-// `;
-
 export default function StorePresenter() {
   const [tl, setTl] = useState();
   const router = useRouter();
@@ -350,9 +180,9 @@ export default function StorePresenter() {
   return (
     <>
       <S.Wrapper>
-        <PreloaderWrapper>
+        <S.PreloaderWrapper>
           <Preloader timeline={tl}>
-            <PreloaderChild>
+            <S.PreloaderChild>
               <ScrollAnimation
                 animateIn="slideInLeft"
                 animateOut="slideOutLeft"
@@ -368,32 +198,32 @@ export default function StorePresenter() {
                 F12에서 진정한 자유를 만나보세요.
               </HideBottomContentsFunc>
               <HideButtonFunc timeline={tl}>시작하기</HideButtonFunc>
-            </PreloaderChild>
+            </S.PreloaderChild>
           </Preloader>
-        </PreloaderWrapper>
+        </S.PreloaderWrapper>
 
-        <HeaderWrapper>
-          <LogoDiv>
-            <Logo src="/images/lg.png" onClick={MoveToHome} />
-          </LogoDiv>
-          <MenuWrapper>
-            <MenuDiv>
-              <Menu onClick={MoveToStore}>Store</Menu>
-              <Menu onClick={MoveToMyPage}>My page</Menu>
-              <Menu onClick={MoveToRestorePage}>Restore</Menu>
-            </MenuDiv>
-            <MenuDiv>
-              <IconWrapper>
-                <UserIcon src="/images/user.png" onClick={moveToLogin} />
-              </IconWrapper>
+        <S.HeaderWrapper>
+          <S.LogoDiv>
+            <S.Logo src="/images/lg.png" onClick={MoveToHome} />
+          </S.LogoDiv>
+          <S.MenuWrapper>
+            <S.MenuDiv>
+              <S.Menu onClick={MoveToStore}>Store</S.Menu>
+              <S.Menu onClick={MoveToMyPage}>My page</S.Menu>
+              <S.Menu onClick={MoveToRestorePage}>Restore</S.Menu>
+            </S.MenuDiv>
+            <S.MenuDiv>
+              <S.IconWrapper>
+                <S.UserIcon src="/images/user.png" onClick={moveToLogin} />
+              </S.IconWrapper>
 
-              <BasketWrapper>
+              <S.BasketWrapper>
                 {/* <BasketNum>0</BasketNum> */}
-                <BasketIcon src="/images/basket.png" onClick={moveToMyPage} />
-              </BasketWrapper>
-            </MenuDiv>
-          </MenuWrapper>
-        </HeaderWrapper>
+                <S.BasketIcon src="/images/basket.png" onClick={moveToMyPage} />
+              </S.BasketWrapper>
+            </S.MenuDiv>
+          </S.MenuWrapper>
+        </S.HeaderWrapper>
 
         <S.MainWrapper>
           <div style={{ color: "white", fontSize: "36px" }}>

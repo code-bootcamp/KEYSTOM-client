@@ -130,3 +130,162 @@ export const ReviewContents = styled.div`
   overflow: hidden;
   text-overflow: ellipsis;
 `;
+
+export const PreloaderWrapper = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 0px;
+  padding: 0;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 9999;
+`;
+
+export const PreloaderDiv = styled.div`
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  overflow: hidden;
+  overflow-y: hidden; /* Hide vertical scrollbar */
+  overflow-x: hidden;
+`;
+
+export const PreloaderChild = styled.div`
+  width: 100%;
+  min-height: 100%;
+  position: relative;
+  z-index: 999;
+  background: url("/images/Bg_img.png") no-repeat center center fixed;
+`;
+
+export const HideTitle = styled.div`
+  width: 744px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 355px;
+
+  font-family: "NanumGothicCoding";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 64px;
+  color: #ffffff;
+`;
+
+export const HideTopContents = styled.div`
+  width: 420px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 73px;
+
+  font-family: "NanumGothicCoding";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 28px;
+  color: #f1f1f1;
+`;
+
+export const HideBottomContents = styled.div`
+  width: 420px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5px;
+
+  font-family: "NanumGothicCoding";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 28px;
+  color: #f1f1f1;
+`;
+
+export const HideButton = styled.button`
+  width: 242px;
+  height: 84px;
+  background: #b150f2;
+  border-radius: 20px;
+  margin-left: 839px;
+  margin-top: 176px;
+  border: none;
+
+  font-family: "NanumGothicCoding";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  color: #ffffff;
+`;
+
+export const HeaderWrapper = styled.div`
+  display: flex;
+  align-items: flex-end;
+  width: 1920px;
+  height: 180px;
+  background-color: #2c2c2c;
+  padding-left: 210px;
+  padding-right: 210px;
+  display: relative;
+  z-index: 2;
+`;
+
+export const LogoDiv = styled.div`
+  width: 120px;
+  height: 120px;
+`;
+
+export const Logo = styled.img`
+  width: 100%;
+  cursor: pointer;
+`;
+export const MenuWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+`;
+
+export const MenuDiv = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+export const Menu = styled.div`
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 18px;
+  color: #f1f1f1;
+  padding-left: 58px;
+  cursor: pointer;
+  :hover {
+    color: #b150f2;
+  }
+`;
+
+export const IconWrapper = styled.div`
+  display: flex;
+  width: 54px;
+  height: 54px;
+  margin-right: 38px;
+  margin-bottom: 23px;
+`;
+
+export const UserIcon = styled.img`
+  width: 100%;
+  cursor: pointer;
+`;
+export const BasketWrapper = styled.div`
+  width: 54px;
+  height: 54px;
+  margin-right: 38px;
+  margin-bottom: 23px;
+  margin-top: -38px;
+`;
+
+export const BasketIcon = styled.img`
+  width: 54px;
+  height: 54px;
+  cursor: pointer;
+`;

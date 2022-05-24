@@ -1,329 +1,365 @@
 import styled from "@emotion/styled";
+import { HexColorPicker, HexColorInput } from "react-colorful";
 
 export const Wrapper = styled.div`
-  width: 100%;
+  width: 1920px;
+  display: flex;
+
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 90px;
+  margin-bottom: 150px;
+`;
+
+export const ProductWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+
+  margin-left: auto;
+  margin-right: auto;
+  margin-left: 210px;
+`;
+
+export const ProductLeftWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
-  margin-bottom: 373px;
-`;
-export const DetailWrapper = styled.div`
-  width: 1500px;
-  padding-bottom: 30px;
-  color: #1b1b1b;
 `;
 
-export const Title = styled.div`
-  font-family: "NanumGothicCoding";
-  font-style: normal;
-  font-weight: 700;
-  font-size: 32px;
-  line-height: 32px;
-  padding-top: 100px;
-  padding-bottom: 28px;
-  color: #ffffff;
-`;
-
-export const ImageWrapper = styled.div`
-  display: flex;
-  width: 100%;
-  height: 800px;
-`;
-
-export const ImageLeft = styled.div`
-  width: 400px;
-  display: flex;
-  flex-direction: column;
-  border-radius: 30px 0px 0px 0px;
-`;
-
-export const ImageRight = styled.div`
-  width: 1100px;
-  background-color: #c4c4c4;
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
-  padding-right: 40px;
-  padding-bottom: 60px;
-  border-radius: 0px 30px 30px 0px;
-`;
-
-export const PickImage = styled.img`
-  width: 54px;
-  height: 54px;
-`;
-
-export const OriginKeyboard = styled.div`
-  width: 100%;
-  height: 308px;
-  background-color: #dedede;
-  border-radius: 30px 0px 0px 0px;
-`;
-export const ColorBoxWrapper = styled.div`
-  width: 100%;
-  height: 492px;
-  padding: 40px 60px 60px 60px;
-  background-color: #929292;
-  background: #ffffff;
-  border-radius: 0px 0px 0px 30px;
-`;
-
-export const VectorImage = styled.img``;
-
-export const OptionWrapper = styled.div`
-  display: flex;
-`;
-
-export const OptionLeftWrapper = styled.div`
-  width: 900px;
-  height: 100%;
-`;
-
-export const OptionBottom = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 100%;
-  padding: 20px 70px;
-  background: #f4f4f4;
-  border-radius: 0px 0px 30px 30px;
-`;
-export const OptionTitle = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-left: 90px;
-  padding-right: 90px;
-  height: 80px;
-  width: 100%;
-  background-color: #c4c4c4;
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 20px;
-  border-radius: 30px 30px 0px 0px;
-`;
-export const Option = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  height: 78px;
-  border-bottom: 1px solid #c4c4c4;
-`;
-
-export const OptionText = styled.div`
-  text-align: left;
-  padding-left: 20px;
-  width: 65%;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 24px;
-  font-family: "Noto Sans CJK KR";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 24px;
-  line-height: 36px;
-`;
-export const OptionQty = styled.div`
-  text-align: center;
-  width: 15%;
-  font-family: "Noto Sans CJK KR";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 24px;
-  line-height: 36px;
-`;
-export const OptionPrice = styled.div`
-  width: 500px;
-  text-align: right;
-  padding-right: 20px;
-  font-family: "Noto Sans CJK KR";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 24px;
-  line-height: 36px;
-`;
-
-export const OptionRight = styled.div`
-  width: 560px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding-left: 40px;
-`;
-
-export const PriceWrapper = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  padding-top: 30px;
-`;
-
-export const PriceAdd = styled.div`
-  font-weight: 400;
-  font-size: 24px;
-  line-height: 24px;
-  padding-right: 28px;
-`;
-
-export const PriceNum = styled.div`
+export const AllForDesigner = styled.div`
   font-family: "Noto Sans CJK KR";
   font-style: normal;
   font-weight: 700;
   font-size: 32px;
   line-height: 47px;
-  text-align: right;
+
+  color: #ffffff;
+
+  margin-bottom: 23px;
 `;
 
-export const WhatDiv = styled.div`
-  width: 100%;
-  height: 80%;
+export const ProductSelectWrapper = styled.div`
+  width: 1180px;
+  height: 800px;
+  display: flex;
+
+  background: #c4c4c4;
+
+  border-radius: 10px;
 `;
 
-export const ButtonWrapper = styled.div`
-  width: 100%;
-  height: 400px;
+export const TwoDColorWrapper = styled.div`
+  height: 462px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+
+  margin-top: auto;
 `;
 
-export const MoveToListButton = styled.button`
-  width: 560px;
-  height: 120px;
-  background-color: #676767;
-  border: none;
-  font-weight: 700;
-  font-size: 32px;
-  line-height: 32px;
-  color: #fff;
+export const TwoDImage = styled.img`
+  width: 231px;
+  height: 177px;
+  background-color: white;
 `;
 
-export const BasketButton = styled.button`
-  width: 560px;
-  height: 120px;
-  background-color: #1b1b1b;
-  border: 1px solid #b150f2;
-  font-weight: 700;
-  font-size: 32px;
-  line-height: 32px;
+export const PickerWrapper = styled.div`
+  width: 230px;
+  background-color: #ffffff;
+  border-radius: 0px 0px 0px 10px;
+`;
+
+export const HexColorPickerWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+`;
+
+export const HexColorPick = styled(HexColorPicker)`
+  width: "200px";
+  height: "200px";
+  margin: 0px auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+`;
+
+export const HexColorCodeWrapper = styled.div`
+  display: flex;
+  margin-left: 10px;
+  margin-bottom: 20px;
+`;
+
+export const HexColorCode = styled.span`
+  font-family: "Noto Sans CJK KR";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  margin-right: 10px;
+  margin-top: auto;
+  margin-bottom: auto;
+
+  color: black;
+`;
+
+export const HexColorPickInput = styled(HexColorInput)`
+  width: 128px;
+  background-color: white;
+  border-bottom: 1px solid #1b1b1b;
+
   color: #b150f2;
 `;
 
-export const PaymentButton = styled.button`
-  width: 560px;
-  height: 120px;
-  background-color: #b150f2;
-  border: none;
-  font-weight: 700;
-  font-size: 32px;
-  line-height: 32px;
-  color: #fff;
+export const ThreeDWrapper = styled.div`
+  width: auto;
 `;
 
-export const AllReviewsDiv = styled.div`
-  display: flex;
-  align-items: center;
-  padding-left: 210px;
-  padding-top: 387px;
-  padding-bottom: 50px;
+export const PriceWrapper = styled.div`
+  margin-top: 66px;
+  margin-left: 20px;
 `;
 
-export const AllText = styled.div`
-  padding-right: 40px;
-  font-weight: 400;
-  font-size: 24px;
-`;
-
-export const AllNum = styled.div`
-  font-weight: 700;
-  font-size: 32px;
-`;
-
-export const ReviewWrapper = styled.div`
-  width: 100%;
-  background-color: #c4c4c4;
-  padding: 80px 210px 500px 210px;
-`;
-export const ReviewDiv = styled.div`
-  display: flex;
-  justify-content: space-between;
-  width: 1500px;
-  height: 440px;
-  background: #f3f3f3;
-  padding: 30px;
-`;
-
-export const ReviewImage = styled.div`
-  width: 693px;
-  height: 375px;
-  background-color: #fff;
-`;
-export const ReviewRight = styled.div`
-  width: 50%;
-  padding: 28px;
-  /* background-color: gold; */
-`;
-export const ReviewTop = styled.div`
-  border-bottom: 1px solid #c4c4c4;
-  padding-bottom: 15px;
-`;
-
-export const ReviewTopTop = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-
-export const ReviewTitle = styled.div`
+export const ApllyedOptions = styled.div`
+  font-family: "Noto Sans CJK KR";
+  font-style: normal;
   font-weight: 700;
   font-size: 24px;
-  line-height: 24px;
+  line-height: 28px;
+
+  color: #ffffff;
 `;
 
-export const TopBottom = styled.div`
-  display: flex;
-  justify-content: flex-end;
+export const OptionTableWrapper = styled.div`
+  width: 300px;
+  height: 444px;
+  border: 1px solid #ffffff;
+  border-radius: 10px;
+
+  margin-top: 24px;
 `;
 
-export const Reviewer = styled.div`
-  display: flex;
-  padding-right: 60px;
-`;
-
-export const ReviewDate = styled.div`
-  display: flex;
-`;
-
-export const ReviewSmallTitle = styled.div`
-  font-weight: 700;
-  font-size: 18px;
-  line-height: 18px;
-  padding-right: 10px;
-`;
-
-export const ReviewSmallText = styled.div`
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 18px;
-`;
-
-export const ReviewBottom = styled.div`
-  width: 100%;
-  padding-top: 27px;
-`;
-
-export const Contents = styled.textarea`
-  width: 100%;
-  height: 135px;
-`;
-
-export const LikeDiv = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  width: 100%;
+export const OptionHeader = styled.div`
+  width: 298px;
   height: 80px;
-  padding-right: 30px;
+  display: flex;
+  flex-direction: row;
+  background: #2c2c2c;
+
   padding-top: 30px;
+
+  border-radius: 10px 10px 0px 0px;
+  border-bottom: 1px solid #ffffff;
+`;
+
+export const OptionName = styled.div`
+  font-family: "Noto Sans CJK KR";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 20px;
+
+  color: #ffffff;
+
+  margin-left: 20px;
+`;
+
+export const OptionCount = styled.div`
+  font-family: "Noto Sans CJK KR";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 20px;
+
+  color: #ffffff;
+
+  margin-left: 68px;
+`;
+
+export const OptionPrice = styled.div`
+  font-family: "Noto Sans CJK KR";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 20px;
+
+  color: #ffffff;
+
+  margin-left: 81px;
+`;
+
+export const Option1Wrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  padding-top: 23px;
+  padding-bottom: 23px;
+
+  border-bottom: 1px solid #ffffff;
+`;
+
+export const Option1Name = styled.div`
+  width: 70px;
+  font-family: "Noto Sans CJK KR";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+
+  color: #ffffff;
+
+  margin-left: 20px;
+`;
+
+export const Option1Count = styled.div`
+  font-family: "Noto Sans CJK KR";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+
+  /* color: #ffffff; */
+  color: red;
+`;
+
+export const Option1Price = styled.div`
+  font-family: "Noto Sans CJK KR";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+
+  color: #ffffff;
+`;
+
+export const Option2Wrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  padding-top: 23px;
+  padding-bottom: 23px;
+
+  border-bottom: 1px solid #ffffff;
+`;
+
+export const Option2Name = styled.div`
+  width: 70px;
+  font-family: "Noto Sans CJK KR";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+
+  color: #ffffff;
+
+  margin-left: 20px;
+`;
+
+export const Option2Count = styled.div`
+  font-family: "Noto Sans CJK KR";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+
+  color: #ffffff;
+`;
+
+export const Option2Price = styled.div`
+  font-family: "Noto Sans CJK KR";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+
+  color: #ffffff;
+`;
+
+export const Option3Wrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  padding-top: 23px;
+  padding-bottom: 23px;
+
+  border-bottom: 1px solid #ffffff;
+`;
+
+export const Option3Name = styled.div`
+  width: 70px;
+  font-family: "Noto Sans CJK KR";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+
+  color: #ffffff;
+
+  margin-left: 20px;
+`;
+
+export const Option3Count = styled.div`
+  font-family: "Noto Sans CJK KR";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+
+  color: #ffffff;
+`;
+
+export const Option3Price = styled.div`
+  font-family: "Noto Sans CJK KR";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+
+  color: #ffffff;
+`;
+
+export const Option4Wrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  padding-top: 23px;
+  padding-bottom: 23px;
+
+  border-bottom: 1px solid #ffffff;
+`;
+
+export const Option4Name = styled.div`
+  width: 70px;
+  font-family: "Noto Sans CJK KR";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+
+  color: #ffffff;
+
+  margin-left: 20px;
+`;
+
+export const Option4Count = styled.div`
+  font-family: "Noto Sans CJK KR";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+
+  color: #ffffff;
+`;
+
+export const Option4Price = styled.div`
+  font-family: "Noto Sans CJK KR";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+
+  color: #ffffff;
+`;
+
+export const TotalAccount = styled.div`
+  font-family: "Noto Sans CJK KR";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 36px;
+
+  color: #ffffff;
 `;
