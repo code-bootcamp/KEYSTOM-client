@@ -1,28 +1,16 @@
-import { gql, useQuery } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
 import ProductListPresenter from "./ProductList.Presenter";
+import { FETCH_PRODUCTS } from './ProductList.queries';
 
-const FETCH_PRODUCTS = gql`
-    query fetchProducts($page: Float) {
-        fetchProducts(page: $page) {
-            id
-            name
-            description
-            price
-            like
-            image
-            thumbnailImage
-            createdAt
-            productTags {
-                id
-                tag
-            }
-        }
-    }
-`;
+
 
 export default function ProductListContainer() {
-    const { data, fetchMore } = useQuery(FETCH_PRODUCTS);
+    const { data, fetchMore } = useQuery(FETCH_PRODUCTS,{
+        variables:{
+            page:1
+        }
+    });
     const router = useRouter();
 
     const onLoadMore = () => {
