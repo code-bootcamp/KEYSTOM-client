@@ -10,6 +10,7 @@ export default function ReviewModalPresenter(props:any){
     // const router = useRouter()
     // console.log("router", router)
     // console.log("reviewData", reviewData)
+
     return(
         <div>
             <Modal
@@ -18,10 +19,10 @@ export default function ReviewModalPresenter(props:any){
             onOk={props.handleOk}
             onCancel={props.handleCancel}
             width= {"auto"}
-            bodyStyle={{width:"100%", height:"auto", borderRadius:"30px",  padding:"0px" }}
+            bodyStyle={{width:"100%", borderRadius:"30px",  padding:"0px" }}
             cancelButtonProps={{style:{display:"none"}}}
             okButtonProps={{style:{display:"none"}}}
-            style={{ width:"100%", height:"auto", boxShadow:"0px 4px 20px rgba(0, 0, 0,0.2)", margin:"100px", borderRadius:"30px", overflow:"hidden"}}
+            style={{ width:"100%", boxShadow:"0px 4px 20px rgba(0, 0, 0,0.2)", margin:"100px", borderRadius:"30px", overflow:"hidden"}}
             maskStyle={{width:"100%", height:"100%",background:"#000", opacity:0.5}}
             footer={null}
             zIndex={10}
@@ -34,40 +35,38 @@ export default function ReviewModalPresenter(props:any){
                     <B.ReviewImageWrapper>
                         <B.ReviewImage src="/images/review-modal.png"/>
                     </B.ReviewImageWrapper>
-                    <B.ModalCancelBtn src='/images/close.png' />
+                    <B.ModalCancelBtn src='/close.png' onClick={props.onClickCloseModal}/>
                     <B.PreviewWrapper>
-                        <B.PreviewWrapper>
-                            <B.ImagePreviewWrapper>
-                                <B.ImagePreview src='/images/review-preview.png'/>
-                                <B.ImagePreview src='/images/review-preview.png'/>
-                                <B.ImagePreview src='/images/review-preview.png'/>
-                                <B.ImagePreview src='/images/review-preview.png'/>
-                                <B.ImagePreview src='/images/review-preview.png'/>
-            
-                            </B.ImagePreviewWrapper>
-                        </B.PreviewWrapper>
+                        <B.ImagePreviewWrapper>
+                            <B.ImagePreview src='/review-thumb.png'/>
+                            <B.ImagePreview src='/Product_img.png'/>
+                            <B.ImagePreview src='/Product_img.png'/>
+                            <B.ImagePreview src='/Product_img.png'/>
+                            <B.ImagePreview src='/Product_img.png'/>
+                        </B.ImagePreviewWrapper>
                     </B.PreviewWrapper>
                 
 
                 <B.ReviewWrapper>
                     <B.ReviewTitleDiv>
-                        <B.ReviewTitle>{props.reviewData?.fetchReview.reviewTitle}</B.ReviewTitle>
-                        <B.ReviewTopWrapper>
-                            <B.ReviewerProfile src="/images/profile.png"/>
-                            <B.ReviewerText>{props.reviewData?.fetchReview.user.name}</B.ReviewerText>
-                            <B.ReviewDate>{props.reviewData?.fetchReview.createdAt}</B.ReviewDate>
+                        <B.ReviewModalTop>
+                            <B.ReviewTopWrapper>
+                                <B.ReviewerProfile src="/jake.png"/>
+                                <B.ReviewerText>{props.reviewData?.fetchReview.user.name} | </B.ReviewerText>
+                                <B.ReviewDate>{props.reviewData?.fetchReview.createdAt}</B.ReviewDate>
+                            </B.ReviewTopWrapper>
                             <B.ReviewLike>
-                                <B.ReviewLikeIcon src='/images/review-like.png'/>
+                                <B.ReviewLikeIcon src='/like.png'/>
                                 <B.ReviewLikeNum>{props.reviewData?.fetchReview.like}</B.ReviewLikeNum>
                             </B.ReviewLike>
-
-                        </B.ReviewTopWrapper>
-
+                        </B.ReviewModalTop>
+                        <B.ReviewTitle>{props.reviewData?.fetchReview.reviewTitle}title</B.ReviewTitle>
                     </B.ReviewTitleDiv>
 
                     <B.ReviewContentsDiv>
                         <B.ReviewContents>
                         {props.reviewData?.fetchReview.reviewContent}
+                       
                         </B.ReviewContents>
                     </B.ReviewContentsDiv>
                     <B.ReviewCommentWrapper>

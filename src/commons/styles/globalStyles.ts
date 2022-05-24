@@ -8,9 +8,14 @@ import { css } from "@emotion/react";
 
 export const globalStyles = css`
   * {
-    font-family: 'NanumGothicCoding';
+    font-family: 'Quicksand';
     font-style: normal;
   }
+
+    @font-face {
+      font-family:"Quicksand" ;
+      src: url(/font/Quicksand-Medium.ttf);
+    }
 
   body,html{
     background-color: #1b1b1b;
@@ -18,8 +23,7 @@ export const globalStyles = css`
   }
 
   input{
-    background-color: #676767;
-    border: none;
+    border: 1px solid #fff;
     ::placeholder{
       color:#b1b1b1 ;
     }

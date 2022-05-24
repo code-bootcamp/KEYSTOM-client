@@ -12,19 +12,22 @@ export default function ReviewDetailPresenter(props:any){
 
     // 리뷰 모달
     const showModal = (event:any) => {
-        setIsOpen(true)
-        setSelectedId(event.target.id)
-    }
-    
-    const handleOK = () => {
-        setIsOpen(false)
-    }
-    
-    const handleCancel = () => {
-        setIsOpen(false)
-    }
-    
-
+      setIsOpen(true)
+      setSelectedId(event.target.id)
+  }
+  
+  const handleOK = () => {
+      setIsOpen(false)
+  }
+  
+  const handleCancel = () => {
+      setIsOpen(false)
+  }
+  
+  const onClickCloseModal = () => {
+    setIsOpen(false)
+  }
+  
 
 return(
     <>
@@ -72,6 +75,7 @@ return(
                         showModal={showModal}
                         handleOK={handleOK}
                         handleCancel={handleCancel}
+                        onClickCloseModal={onClickCloseModal}
                         el={el}
                         selectedId={selectedId}
                         commentData={props.commentData}

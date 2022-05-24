@@ -94,7 +94,7 @@ export default function LayoutFooter() {
           <FooterLogoDiv>
             <FooterLogo src="/images/lg.png"/>
           </FooterLogoDiv>
-          <FooterLogoTitle>개발자들의 F12</FooterLogoTitle>
+          <FooterLogoTitle>F12 Developers</FooterLogoTitle>
           </FooterTopDiv>
           <FooterBottomWrapper>
             <FooterBottomDiv>
