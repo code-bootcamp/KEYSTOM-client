@@ -4,84 +4,82 @@ import { useEffect, useState } from "react";
 import ProductDetailPresenter from "../detail/ProductDetail.presenter";
 
 const FETCH_PRODUCT = gql`
-    query fetchProduct($productId: String!) {
-        fetchProduct(productId: $productId) {
-            id
-            name
-            description
-            price
-            like
-            image
-            thumbnailImage
-            createdAt
-        }
+  query fetchProduct($productId: String!) {
+    fetchProduct(productId: $productId) {
+      id
+      title
+      description
+      price
+      like
+      createdAt
     }
+  }
 `;
 
 export default function ProductDetailContainer() {
-    const router = useRouter();
-    const [isBasket, setIsBasket] = useState(false);
+  const router = useRouter();
+  const [isBasket, setIsBasket] = useState(false);
 
-    const { data } = useQuery(FETCH_PRODUCT, {
-        variables: {
-            productId: router.query.productId,
-        },
-    });
+  console.log("여기" + router.query.productId);
 
-    useEffect(() => {
-        const productId = data?.fetchProduct.id;
-        const baskets = JSON.parse(localStorage.getItem("baskets") || "[]");
-        const a = baskets.map((el: any) => el.id);
+  const { data } = useQuery(FETCH_PRODUCT, {
+    variables: {
+      productId: String(router.query.productId),
+    },
+  });
 
-        // console.log("로컬스토리지 저장 된 값", a);
+  useEffect(() => {
+    const productId = data?.fetchProduct.id;
+    const baskets = JSON.parse(localStorage.getItem("baskets") || "[]");
+    const a = baskets.map((el: any) => el.id);
 
-        if (a.includes(productId)) {
-            setIsBasket(true);
-            console.log("값 바뀌나?,", isBasket);
-        }
-    }, [data?.fetchProduct.id]);
+    // console.log("로컬스토리지 저장 된 값", a);
 
-    // 담기
-    const onClickBasket = (el: any) => () => {
-        // 1. 기존 장바구니 가져오기
-        const baskets = JSON.parse(localStorage.getItem("baskets") || "[]");
+    if (a.includes(productId)) {
+      setIsBasket(true);
+      //   console.log("값 바뀌나?,", isBasket);
+    }
+  }, [data?.fetchProduct.id]);
 
-        // 2. 이미 담겼는지 확인하기
-        const temp = baskets.filter((basketEl: any) => basketEl.id === el.id);
+  // 담기
+  const onClickBasket = (el: any) => () => {
+    // 1. 기존 장바구니 가져오기
+    const baskets = JSON.parse(localStorage.getItem("baskets") || "[]");
 
-        if (temp.length === 1) {
-            alert("이미 장바구니에 있습니다!");
-            return;
-        }
+    // 2. 이미 담겼는지 확인하기
+    const temp = baskets.filter((basketEl: any) => basketEl.id === el.id);
 
-        // // 3. 장바구니에 담기
-        const { __typename, ...newEl } = el;
-        baskets.push(newEl);
+    if (temp.length === 1) {
+      alert("이미 장바구니에 있습니다!");
+      return;
+    }
 
-        localStorage.setItem("baskets", JSON.stringify(baskets));
+    // // 3. 장바구니에 담기
+    const { __typename, ...newEl } = el;
+    baskets.push(newEl);
 
-        setIsBasket(true);
-    };
+    localStorage.setItem("baskets", JSON.stringify(baskets));
 
-    // =================================================================
+    setIsBasket(true);
+  };
 
-    // 담기 취소
-    const onClickDelete = (el: any) => () => {
-        const baskets = JSON.parse(localStorage.getItem("baskets") || "[]");
+  // =================================================================
 
-        const newBaskets = baskets.filter(
-            (basketEl: any) => basketEl.id !== el.id
-        );
-        localStorage.setItem("baskets", JSON.stringify(newBaskets));
-        setIsBasket((prev) => !prev);
-    };
+  // 담기 취소
+  const onClickDelete = (el: any) => () => {
+    const baskets = JSON.parse(localStorage.getItem("baskets") || "[]");
 
-    return (
-        <ProductDetailPresenter
-            onClickBasket={onClickBasket}
-            onClickDelete={onClickDelete}
-            isBasket={isBasket}
-            data={data}
-        />
-    );
+    const newBaskets = baskets.filter((basketEl: any) => basketEl.id !== el.id);
+    localStorage.setItem("baskets", JSON.stringify(newBaskets));
+    setIsBasket((prev) => !prev);
+  };
+
+  return (
+    <ProductDetailPresenter
+      onClickBasket={onClickBasket}
+      onClickDelete={onClickDelete}
+      isBasket={isBasket}
+      data={data}
+    />
+  );
 }
