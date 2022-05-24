@@ -8,6 +8,17 @@ export const Wrapper = styled.div`
     align-items: center;
 `;
 
+
+export const ListBannerWrapper = styled.div`
+width: 100%;
+height: 480px;
+/* background-color: aliceblue; */
+`
+
+export const ListBanner = styled.img`
+width: 100%;
+height: 100%;
+`
 export const SearchWrapper = styled.div`
     width: 100%;
     padding-top: 50px;
@@ -18,7 +29,7 @@ export const SearchWrapper = styled.div`
 
 export const SearchInputIconWrapper = styled.div`
     width: 1500px;
-    height: 80px;
+    height: 70px;
 
     padding: 20px;
     padding-left: 30px;
@@ -27,8 +38,8 @@ export const SearchInputIconWrapper = styled.div`
     font-size: 20px;
 
     background-color: transparent;
-    border: 2px solid #ffffff;
-    border-radius: 30px;
+    border: 2px solid #b1b1b1;
+    border-radius: 20px;
 
     display: flex;
     flex-direction: row;
@@ -43,8 +54,8 @@ export const SearchInputWrapper = styled.div`
 `;
 
 export const SearchIcon = styled(SearchOutlined)`
-    color: white;
-    font-size: 50px;
+    color: #b1b1b1;
+    font-size: 40px;
     cursor: pointer;
 
     :hover {
@@ -53,8 +64,8 @@ export const SearchIcon = styled(SearchOutlined)`
 `;
 
 export const SearchInput = styled.input`
-    width: 1300px;
-    height: 54px;
+    width: 1240px;
+    height: 50px;
     font-weight: 400;
     font-size: 20px;
 
@@ -102,6 +113,7 @@ export const ProductImage = styled.div<{ src?: string }>`
     height: 366px;
 
     background-color: #ffffff;
+    cursor: pointer;
 
     /* background-image: url("/images/keyboard-01.jpg"); */
     background-position: center;

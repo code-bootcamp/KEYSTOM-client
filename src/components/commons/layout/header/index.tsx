@@ -4,22 +4,23 @@ import {useRouter } from 'next/router';
 
 const Wrapper = styled.div`
   display: flex;
-  align-items: flex-end;
-  width: 1920px;
-  height: 80px;
-  background-color: #2c2c2c;
-  padding-left: 210px;
-  padding-right: 210px;
+  width: 100%;
+  background-color: transparent;
+  padding: 25px 340px;
+  color: #fff;
 `
 
 const LogoDiv = styled.div`
-  width: 54px;
-  height: 54px;
-  margin-left: 60px;
+  width: 140px;
+  margin-right: 60px;
 `
 
-const Logo = styled.img`
+const Logo = styled.div`
+font-family: "Orbitron-bold";
+font-size: 24px;
+line-height: 100%;
   width: 100%;
+  text-align: center;
   cursor: pointer;
 `
 const MenuWrapper = styled.div`
@@ -34,16 +35,24 @@ align-items: center;
 margin-right: 60px;
 `
 const Menu = styled.div`
-color: #f1f1f1;
-padding-left: 35px;
-font-weight: 400;
-font-size: 14px;
+/* color: #B150F2; */
+color: #fff;
+padding-left: 50px;
+font-weight: 300;
+font-size: 20px;
 line-height: 24px;
 cursor: pointer;
 :hover{
-  color:#B150F2 ;
+  font-weight: 600;
+color: #B150F2;
+
 }
 
+`
+const MenuIconDiv = styled.div`
+display: flex;
+  width: 68px;
+  height: 100%;
 `
 
 const IconWrapper = styled.div`
@@ -51,8 +60,6 @@ display: flex;
   width: 24px;
   height: 24px;
   margin-right: 20px;
-  margin-bottom: 14px;
-  
 `
 
 const UserIcon = styled.img`
@@ -62,7 +69,6 @@ cursor: pointer;
 const BasketWrapper = styled.div`
   width: 24px;
   height: 24px;
-  margin-bottom: 16px;
 `
 
 const BasketIcon = styled.img`
@@ -109,23 +115,23 @@ const router = useRouter()
   return (
     <Wrapper>
       <LogoDiv>
-        <Logo src="/images/lg.png" onClick={moveToHome}/>
+        <Logo onClick={moveToHome}>KEYSTOM</Logo>
       </LogoDiv>
       <MenuWrapper>
         <MenuDiv>
           <Menu onClick={moveToStore}>STORE</Menu>
-          <Menu onClick={moveToMyPage}>MY PAGE</Menu>
           <Menu onClick={moveToEventPage}>EVENT</Menu>
+          <Menu onClick={moveToMyPage}>MY PAGE</Menu>
         </MenuDiv>
-        <MenuDiv>
+        <MenuIconDiv>
           <IconWrapper>
-            <UserIcon src="/account.png" onClick={moveToLogin}/>
+            <UserIcon src="/images/header/account.png" onClick={moveToLogin}/>
           </IconWrapper>
           <BasketWrapper>
               {/* <BasketNum>0</BasketNum> */}
-              <BasketIcon src="/on.png" onClick={moveToMyPage}/>
+              <BasketIcon src="/images/header/on.png" onClick={moveToMyPage}/>
           </BasketWrapper>
-        </MenuDiv>
+        </MenuIconDiv>
       </MenuWrapper>
     </Wrapper>
   );

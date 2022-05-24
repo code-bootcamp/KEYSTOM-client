@@ -22,6 +22,9 @@ export default function ProductListPresenter(props: any) {
 
     return (
         <S.Wrapper>
+            <S.ListBannerWrapper>
+                <S.ListBanner src="/images/list/list-banner.png"/>
+            </S.ListBannerWrapper>
             <S.SearchWrapper>
                 <S.SearchInputWrapper>
                     <S.SearchInputIconWrapper>
@@ -45,7 +48,7 @@ export default function ProductListPresenter(props: any) {
                         justifyContent: "space-between",
                     }}
                 >
-                    {[1, 2, 3, 4, 5, 6].map((el: any) => (
+                    {props.data?.fetchProducts.map((el: any) => (
                         <ProductListPresenterItem
                             key={el.id}
                             el={el}

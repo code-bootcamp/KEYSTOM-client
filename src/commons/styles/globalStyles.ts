@@ -26,6 +26,15 @@ export const globalStyles = css`
       src: url(/font/Roboto-Bold.ttf);
     }
 
+    @font-face {
+      font-family:"Orbitron" ;
+      src: url(/font/Orbitron-Regular.ttf);
+    }
+
+    @font-face {
+      font-family:"Orbitron-bold" ;
+      src: url(/font/Orbitron-Bold.ttf);
+    }
 
   body,html{
     background-color: #1b1b1b;
