@@ -1,10 +1,9 @@
 import UploadFilePage from "../../commons/uploadFile";
 import * as S from "./ReviewWrite.styles";
-import { IReviewWritePresenter } from './ReviewWrite.types';
+import { IReviewWritePresenter } from "./ReviewWrite.types";
 import { v4 as uuidv4 } from "uuid";
 
-
-export default function ReviewWritePresenter(props:IReviewWritePresenter) {
+export default function ReviewWritePresenter(props: IReviewWritePresenter) {
     return (
         <S.Wrapper>
             <S.ReviewWrapper>
@@ -35,30 +34,32 @@ export default function ReviewWritePresenter(props:IReviewWritePresenter) {
 
                 <S.ReviewTitleContentsWrapper>
                     <S.ReviewTitle>
-                        <S.ReviewTitleInput 
-                        onChange={props.onChangeReviewTitle}
-                        placeholder="제목을 입력해 주세요."
+                        <S.ReviewTitleInput
+                            onChange={props.onChangeReviewTitle}
+                            placeholder="제목을 입력해 주세요."
                         />
                     </S.ReviewTitle>
-                    <S.ReviewContents 
-                    onChange={props.onChangeReviewContent}
-                    placeholder="리뷰를 작성해주세요!"></S.ReviewContents>
+                    <S.ReviewContents
+                        onChange={props.onChangeReviewContent}
+                        placeholder="리뷰를 작성해주세요!"
+                    ></S.ReviewContents>
                     <S.ReviewContentsMaxLength>
                         0/1000
                     </S.ReviewContentsMaxLength>
                 </S.ReviewTitleContentsWrapper>
 
                 <S.ReviewUploadWrapper>
-                            <UploadFilePage
-                            imageFile={props.imageFile}
-                            setImageFile={props.setImageFile}
-                            />
-                   
+                    <UploadFilePage
+                        imageFile={props.imageFile}
+                        setImageFile={props.setImageFile}
+                    />
                 </S.ReviewUploadWrapper>
 
                 <S.ReviewButtonWrapper>
-                    <S.ReviewSubmitButton onClick={props.onClickSubmit}>작성하기</S.ReviewSubmitButton>
                     <S.ReviewCancelButton>작성취소</S.ReviewCancelButton>
+                    <S.ReviewSubmitButton onClick={props.onClickSubmit}>
+                        작성하기
+                    </S.ReviewSubmitButton>
                 </S.ReviewButtonWrapper>
             </S.ReviewWrapper>
         </S.Wrapper>

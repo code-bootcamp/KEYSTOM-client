@@ -6,11 +6,11 @@ import { useEffect, useState } from "react";
 const FETCH_USER_LOGGED_IN = gql`
     query fetchUserLoggedIn {
         fetchUserLoggedIn {
-            nickName
             email
             name
+            nickName
             profileImage
-            address
+            isAdmin
         }
     }
 `;
@@ -21,6 +21,8 @@ export default function MypageContainer() {
 
     const router = useRouter();
     const { data } = useQuery(FETCH_USER_LOGGED_IN);
+
+    console.log("로그인 유저", data);
 
     useEffect(() => {
         const basketsArr = JSON.parse(localStorage.getItem("baskets") || "[]");

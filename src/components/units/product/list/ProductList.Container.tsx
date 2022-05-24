@@ -44,7 +44,7 @@ export default function ProductListContainer() {
     };
     console.log(data);
     console.log(router);
-    const onClickMoveToDetail = (e) => {
+    const onClickMoveToDetail = (e: any) => {
         router.push(`/store/${e.target.id}`);
     };
 

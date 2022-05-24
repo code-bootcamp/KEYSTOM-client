@@ -16,6 +16,7 @@
     "@react-three/drei": "^8.20.2",
     "@react-three/fiber": "7.0.26",
     "@types/apollo-upload-client": "^17.0.0",
+    "@types/react-infinite-scroller": "^1.2.3",
     "animate.css": "^4.1.1",
     "antd": "^4.20.4",
     "apollo-upload-client": "^17.0.0",

@@ -69,7 +69,9 @@ export default function SignUpPresenter(props: any) {
                                 <S.InfoDiv>
                                     <S.ZoncodeWrapper>
                                         <S.ZoncodeInput placeholder="14600" />
-                                        <button>우편 번호 찾기</button>
+                                        <S.ZoncodeButton>
+                                            우편 번호 찾기
+                                        </S.ZoncodeButton>
                                     </S.ZoncodeWrapper>
                                 </S.InfoDiv>
                                 <S.InfoDiv>
@@ -83,14 +85,24 @@ export default function SignUpPresenter(props: any) {
                                 </S.InfoDiv>
                             </S.InfoInputWrapper>
                         </S.InfoDiv>
+
+                        <S.InfoDiv>
+                            <S.InfoText>휴대폰 번호</S.InfoText>
+                            <S.InfoInput type="number" />
+                        </S.InfoDiv>
+                        <S.SignUpError>
+                            {props.formState.errors.passwordCheck?.message}
+                        </S.SignUpError>
+
+                        {/* 구분선 */}
                     </S.SignUpContentsWrapper>
-                    <S.SignUpBtnWrapper>
-                        <S.SignUpCancelButton onClick={props.moveToHome}>
-                            취소하기
-                        </S.SignUpCancelButton>
-                        <S.SignUpButton>가입하기</S.SignUpButton>
-                    </S.SignUpBtnWrapper>
                 </S.SignUpContainer>
+                <S.SignUpBtnWrapper>
+                    <S.SignUpCancelButton onClick={props.moveToHome}>
+                        취소하기
+                    </S.SignUpCancelButton>
+                    <S.SignUpButton>가입하기</S.SignUpButton>
+                </S.SignUpBtnWrapper>
             </S.Container>
         </form>
     );
