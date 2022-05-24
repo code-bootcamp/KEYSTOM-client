@@ -35,6 +35,15 @@ export const MainImage2 = styled.div`
     background-size: cover;
 `;
 
+export const MainImage3 = styled.div`
+    width: 100%;
+    height: 1080px;
+    /* background-color: Red; */
+    background-image: url("/images/main/main_3.png");
+    background-position: center;
+    background-size: cover;
+`;
+
 export const ContentsWrapper = styled.div`
     width: 100%;
     height: 100%;
@@ -48,6 +57,14 @@ export const ContentsWrapper = styled.div`
 export const TextWrapper = styled.div`
     display: flex;
     flex-direction: column;
+`;
+
+export const TextWrapper2 = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding-top: 188px;
 `;
 
 export const Text1 = styled.div`
@@ -69,6 +86,17 @@ export const Text3 = styled.div`
     font-size: 24px;
 
     margin-bottom: 29px;
+`;
+
+export const MoveButton = styled.button`
+    width: 300px;
+    height: 80px;
+    background-color: #b150f2;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 24px;
+
+    margin-top: 130px;
 `;
 
 export const Player = styled.div`
@@ -99,7 +127,7 @@ export const Text = styled.div`
 
 export const BestReviewWrapper = styled.div`
     width: 100%;
-    padding: 228px 0 500px 0;
+    padding: 228px 340px 500px 340px;
 `;
 
 export const BestProductWrapper = styled.div`
@@ -111,13 +139,13 @@ export const BestProductWrapper = styled.div`
 `;
 
 export const BestProductBox = styled.div`
-    width: 480px;
+    width: 400px;
     border-radius: 30px 30px 0px 0px;
 `;
 
 export const ReviewImage = styled.img<{ src: string }>`
-    width: 480px;
-    height: 366px;
+    width: 400px;
+    height: 291px;
 
     /* background-color: blue; */
 
@@ -129,8 +157,8 @@ export const ReviewImage = styled.img<{ src: string }>`
 `;
 
 export const ReviewDownWrapper = styled.div`
-    width: 480px;
-    height: 200px;
+    width: 400px;
+    height: 174px;
     padding: 30px 30px;
 
     background-color: #2c2c2c;

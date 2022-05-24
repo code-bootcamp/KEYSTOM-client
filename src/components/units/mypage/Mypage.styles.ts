@@ -1,13 +1,19 @@
 import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
-    width: 1500px;
-    margin: 0px auto;
-    margin-top: 160px;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin-top: 120px;
     margin-bottom: 500px;
 `;
 
-export const WrapperContainer = styled.div``;
+export const WrapperContainer = styled.div`
+    width: 1240px;
+`;
 
 export const TopWrapper = styled.div`
     display: flex;
@@ -19,36 +25,37 @@ export const TopLeftContainer = styled.div`
     flex-direction: column;
 `;
 
-export const ProfileImage = styled.img`
-    width: 400px;
-    height: 400px;
+export const ProfileImage = styled.div`
+    width: 200px;
+    height: 200px;
 
     border-radius: 30px;
 
     background: #d9d9d9;
+    background-image: url("images/mypage/profilePic.png");
+    border-radius: 10px;
 `;
 
 export const TopRightContainer = styled.div`
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
 
-    margin-top: 24px;
     margin-left: 60px;
 `;
 
 export const NameContainer = styled.div`
     display: flex;
     flex-direction: row;
-
-    margin-bottom: 32px;
 `;
 
 export const Name = styled.div`
-    width: 152px;
     font-family: "NanumGothicCoding";
     font-style: normal;
+
+    width: 100px;
     font-weight: 700;
-    font-size: 24px;
+    font-size: 20px;
 `;
 
 export const VerticalLine = styled.img``;
@@ -56,25 +63,24 @@ export const VerticalLine = styled.img``;
 export const UserName = styled.div`
     font-family: "NanumGothicCoding";
     font-style: normal;
+
     font-weight: 400;
     font-size: 20px;
 
-    margin-left: 44px;
+    margin-left: 20px;
 `;
 
 export const IdContainer = styled.div`
     display: flex;
     flex-direction: row;
-
-    margin-bottom: 32px;
 `;
 
 export const Id = styled.div`
-    width: 152px;
     font-family: "NanumGothicCoding";
     font-style: normal;
+    width: 100px;
     font-weight: 700;
-    font-size: 24px;
+    font-size: 20px;
 `;
 
 export const UserId = styled.div`
@@ -83,23 +89,20 @@ export const UserId = styled.div`
     font-weight: 400;
     font-size: 20px;
 
-    margin-left: 44px;
+    margin-left: 20px;
 `;
 
 export const PointWrapper = styled.div`
     display: flex;
     flex-direction: row;
-
-    margin-bottom: 32px;
 `;
 
 export const Point = styled.div`
-    width: 152px;
-
     font-family: "NanumGothicCoding";
     font-style: normal;
+    width: 100px;
     font-weight: 700;
-    font-size: 24px;
+    font-size: 20px;
 `;
 
 export const UserPoint = styled.div`
@@ -108,7 +111,7 @@ export const UserPoint = styled.div`
     font-weight: 400;
     font-size: 20px;
 
-    margin-left: 44px;
+    margin-left: 20px;
 `;
 
 export const DeliverWrapper = styled.div`
@@ -117,12 +120,11 @@ export const DeliverWrapper = styled.div`
 `;
 
 export const DeliveryAddress = styled.div`
-    width: 152px;
-
     font-family: "NanumGothicCoding";
     font-style: normal;
+    width: 100px;
     font-weight: 700;
-    font-size: 24px;
+    font-size: 20px;
 `;
 
 export const UserDeliveryAddress = styled.div`
@@ -131,7 +133,7 @@ export const UserDeliveryAddress = styled.div`
     font-weight: 400;
     font-size: 20px;
 
-    margin-left: 44px;
+    margin-left: 20px;
 `;
 
 export const ButtonWrapper = styled.div`
@@ -174,12 +176,12 @@ export const PasswordFind = styled.button`
 `;
 
 export const Line = styled.div`
-    width: 1500px;
+    width: 100%;
     border: none;
     border-top: 1px solid #b1b1b1;
 
-    margin-top: 100px;
-    margin-bottom: 100px;
+    margin-top: 60px;
+    margin-bottom: 60px;
 `;
 
 export const MiddleWrapper = styled.div``;
@@ -193,19 +195,18 @@ export const BoughtList = styled.div`
 
     color: #ffffff;
 
-    margin-bottom: 50px;
+    margin-bottom: 20px;
 `;
 
 export const BoughtListInfo = styled.div`
-    width: 1500px;
-    height: 144px;
+    width: 1240px;
+    height: 104px;
     display: flex;
     flex-direction: row;
+    justify-content: space-around;
 
-    background-color: #f1f1f1;
-
+    background-color: #2c2c2c;
     margin-bottom: 30px;
-
     border-radius: 10px;
 `;
 
@@ -213,26 +214,21 @@ export const BoughtImage = styled.img`
     width: 104px;
     height: 104px;
     background-color: white;
-
-    margin-top: auto;
-    margin-left: 20px;
-    margin-bottom: auto;
+    border-radius: 10px 0px 0px 10px;
 `;
 
 export const BoughtName = styled.div`
-    width: 471px;
-
     font-family: "NanumGothicCoding";
     font-style: normal;
-    font-weight: 700;
-    font-size: 24px;
-    line-height: 28px;
+    font-weight: 400;
+    font-size: 20px;
 
     margin-top: auto;
-    margin-left: 45px;
+    margin-left: 30px;
+
     margin-bottom: auto;
 
-    color: #000000;
+    color: #ffffff;
 `;
 
 export const BoughtDateWrapper = styled.div`
@@ -240,18 +236,17 @@ export const BoughtDateWrapper = styled.div`
     flex-direction: column;
 
     margin-top: auto;
-    margin-right: 80px;
     margin-bottom: auto;
 `;
 
 export const BoughtDateText = styled.div`
     font-family: "NanumGothicCoding";
     font-style: normal;
-    font-weight: 700;
-    font-size: 22px;
+    font-weight: 400;
+    font-size: 14px;
     line-height: 22px;
 
-    color: #1b1b1b;
+    color: #b1b1b1;
 
     margin-bottom: 2px;
 `;
@@ -263,7 +258,7 @@ export const BoughtDateNum = styled.div`
     font-size: 24px;
     line-height: 36px;
 
-    color: #676767;
+    color: #ffffff; ;
 `;
 
 export const BoughtPriceWrapper = styled.div`
@@ -271,18 +266,17 @@ export const BoughtPriceWrapper = styled.div`
     flex-direction: column;
 
     margin-top: auto;
-    margin-right: 93px;
     margin-bottom: auto;
 `;
 
 export const BoughtPriceText = styled.div`
     font-family: "NanumGothicCoding";
     font-style: normal;
-    font-weight: 700;
-    font-size: 22px;
+    font-weight: 400;
+    font-size: 14px;
     line-height: 22px;
 
-    color: #1b1b1b;
+    color: #b1b1b1;
 
     margin-bottom: 2px;
 `;
@@ -294,7 +288,7 @@ export const BoughtPriceNum = styled.div`
     font-size: 24px;
     line-height: 36px;
 
-    color: #676767;
+    color: #ffffff; ;
 `;
 
 export const BoughtStatusWrapper = styled.div`
@@ -302,18 +296,17 @@ export const BoughtStatusWrapper = styled.div`
     flex-direction: column;
 
     margin-top: auto;
-    margin-right: 80px;
     margin-bottom: auto;
 `;
 
 export const BoughtStatusText = styled.div`
     font-family: "NanumGothicCoding";
     font-style: normal;
-    font-weight: 700;
-    font-size: 22px;
+    font-weight: 400;
+    font-size: 14px;
     line-height: 22px;
 
-    color: #1b1b1b;
+    color: #b1b1b1;
 
     margin-bottom: 2px;
 `;
@@ -326,10 +319,12 @@ export const BoughtStatus = styled.div`
 
     font-family: "NanumGothicCoding";
     font-style: normal;
-    font-weight: 700;
-    font-size: 20px;
-    line-height: 20px;
-    color: #676767;
+
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 36px;
+
+    color: #ffffff; ;
 `;
 
 export const BoughtReviewWrapper = styled.div`
@@ -337,18 +332,17 @@ export const BoughtReviewWrapper = styled.div`
     flex-direction: column;
 
     margin-top: auto;
-    margin-right: 71px;
     margin-bottom: auto;
 `;
 
 export const BoughtReviewText = styled.div`
     font-family: "NanumGothicCoding";
     font-style: normal;
-    font-weight: 700;
-    font-size: 22px;
+    font-weight: 400;
+    font-size: 14px;
     line-height: 22px;
 
-    color: #1b1b1b;
+    color: #b1b1b1;
 
     margin-bottom: 2px;
 `;
@@ -361,23 +355,35 @@ export const BoughtReviewStatus = styled.div`
 
     font-family: "NanumGothicCoding";
     font-style: normal;
-    font-weight: 700;
-    font-size: 20px;
-    line-height: 20px;
 
-    color: #676767;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 36px;
+
+    color: #ffffff; ;
 `;
 
-export const BoughtReviewIcon = styled.img`
-    width: 54px;
-    height: 54px;
+export const BoughtReviewIcon = styled.button`
+    width: 140px;
+    height: 44px;
 
-    background-color: #f1f1f1;
+    background-color: transparent;
 
     margin-top: auto;
     margin-bottom: auto;
 
+    font-weight: 700;
+    font-size: 14px;
+
+    border: 1px solid #ffffff;
+    border-radius: 6px;
+
     cursor: pointer;
+
+    :hover {
+        background-color: #b150f2;
+        border: none;
+    }
 `;
 
 export const BottomMapWrapper = styled.div`
@@ -401,7 +407,7 @@ export const BasketList = styled.div`
 
     color: #ffffff;
 
-    margin-bottom: 50px;
+    margin-bottom: 20px;
 `;
 
 export const BasketProductImageWrapper = styled.div``;
