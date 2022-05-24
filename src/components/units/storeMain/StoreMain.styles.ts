@@ -9,23 +9,77 @@ export const Wrapper = styled.div`
 `;
 
 export const MainWrapper = styled.div`
-    width: 1500px;
-    padding-top: 70px;
-    padding-bottom: 300px;
+    width: 1920px;
+    /* padding-top: 70px; */
 `;
 
 export const ImageWrapper = styled.div`
     width: 100%;
-    padding-bottom: 171px;
 `;
 
 export const MainImage = styled.div`
     width: 100%;
     height: 1080px;
     /* background-color: Red; */
-    background-image: url("/images/keyshow.gif");
+    background-image: url("/images/main/carousel_1.png");
     background-position: center;
     background-size: cover;
+`;
+
+export const MainImage2 = styled.div`
+    width: 100%;
+    height: 1080px;
+    /* background-color: Red; */
+    background-image: url("/images/main/main_2.png");
+    background-position: center;
+    background-size: cover;
+`;
+
+export const ContentsWrapper = styled.div`
+    width: 100%;
+    height: 100%;
+    padding: 325px 340px 361px 340px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+`;
+
+export const TextWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+`;
+
+export const Text1 = styled.div`
+    font-weight: 900;
+    font-size: 48px;
+
+    margin-bottom: 20px;
+`;
+
+export const Text2 = styled.div`
+    font-weight: 400;
+    font-size: 20px;
+
+    margin-bottom: 89px;
+`;
+
+export const Text3 = styled.div`
+    font-weight: 400;
+    font-size: 24px;
+
+    margin-bottom: 29px;
+`;
+
+export const Player = styled.div`
+    width: 732px;
+    height: 407px;
+
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+        #2c2c2c;
+    border: 1px solid #b150f2;
+    box-shadow: 0px 4px 4px #1b1b1b;
+    border-radius: 10px;
 `;
 
 export const ReviewWrapper = styled.div`
@@ -39,16 +93,21 @@ export const Text = styled.div`
     width: 100%;
     font-weight: 700;
     font-size: 32px;
-    margin-bottom: 35px;
+
+    margin-bottom: 44px;
+`;
+
+export const BestReviewWrapper = styled.div`
+    width: 100%;
+    padding: 228px 0 500px 0;
 `;
 
 export const BestProductWrapper = styled.div`
     width: 100%;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
 
-    margin-bottom: 191px;
+    justify-content: space-between;
 `;
 
 export const BestProductBox = styled.div`
