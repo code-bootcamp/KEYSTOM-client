@@ -87,9 +87,7 @@ export const PasswordWatch = styled.div`
 `;
 
 export const EyeIcon = styled(EyeOutlined)<{ isWrite: boolean }>`
-    /* width: 54px; */
-    /* width: 54px; */
-    font-size: 30px;
+    font-size: 24px;
     /* padding-top: 10px; */
 
     cursor: pointer;
@@ -98,9 +96,7 @@ export const EyeIcon = styled(EyeOutlined)<{ isWrite: boolean }>`
 `;
 
 export const EyeIcon2 = styled(EyeOutlined)<{ isWrite2: boolean }>`
-    /* width: 54px; */
-    /* width: 54px; */
-    font-size: 30px;
+    font-size: 24px;
     /* padding-top: 10px; */
 
     cursor: pointer;
@@ -183,7 +179,7 @@ export const SignUpBtnWrapper = styled.div`
 
 export const SignUpCancelButton = styled.button`
     width: 350px;
-    height: 120px;
+    height: 100px;
     background: #1b1b1b;
     border: 1px solid #b150f2;
     font-weight: 700;
@@ -194,7 +190,7 @@ export const SignUpCancelButton = styled.button`
 `;
 export const SignUpButton = styled.button`
     width: 350px;
-    height: 120px;
+    height: 100px;
     background: #b150f2;
     border: none;
     font-weight: 700;
