@@ -28,8 +28,12 @@ export default function MypagePresenter(props: any) {
               <S.UserId>{props.data?.fetchUserLoggedIn.user.email}</S.UserId>
             </S.IdContainer>
             <S.NickNameContainer>
-                
-            </S.NickNameContain>
+              <S.NickName>NickName</S.NickName>
+              <S.VerticalLine src="./images/Rectangle97.png" />
+              <S.UserNickName>
+                {props.data?.fetchUserLoggedIn.user.nickName}
+              </S.UserNickName>
+            </S.NickNameContainer>
             <S.PointWrapper>
               <S.Point>Address</S.Point>
               <S.VerticalLine src="./images/Rectangle97.png" />
@@ -42,9 +46,12 @@ export default function MypagePresenter(props: any) {
               <S.DeliveryAddress>Coupons</S.DeliveryAddress>
               <S.VerticalLine src="./images/Rectangle97.png" />
               <S.UserDeliveryAddress>
-                {props.data?.fetchUserLoggedIn.user.nickName}
+                사용가능한 쿠폰이 {props.couponsData?.fetchCoupons.length}개
+                있습니다.
               </S.UserDeliveryAddress>
-              <S.SeeCoupon>쿠폰함 보기</S.SeeCoupon>
+              <S.SeeCoupon onClick={props.onClickSeeCoupon}>
+                쿠폰함 보기
+              </S.SeeCoupon>
             </S.DeliverWrapper>
 
             {/* 버튼 */}
@@ -56,19 +63,19 @@ export default function MypagePresenter(props: any) {
 
         <S.MiddleWrapper>
           <S.BoughtList>My Order History</S.BoughtList>
-          {[0, 1, 2].map((el) => (
+          {props.orderData?.fetchUserOrder.map((el) => (
             <S.BoughtListInfo>
               <S.BoughtImage src="./images/mypurchaselist_img1.png" />
-              <S.BoughtName>유튜버 키보드</S.BoughtName>
+              <S.BoughtName></S.BoughtName>
 
               <S.BoughtDateWrapper>
                 <S.BoughtDateText>Date</S.BoughtDateText>
-                <S.BoughtDateNum>2022.05.03</S.BoughtDateNum>
+                <S.BoughtDateNum>{el.createdAt}</S.BoughtDateNum>
               </S.BoughtDateWrapper>
 
               <S.BoughtPriceWrapper>
                 <S.BoughtPriceText>Price</S.BoughtPriceText>
-                <S.BoughtPriceNum>1,600,000</S.BoughtPriceNum>
+                <S.BoughtPriceNum>{el.price}</S.BoughtPriceNum>
               </S.BoughtPriceWrapper>
 
               <S.BoughtStatusWrapper>

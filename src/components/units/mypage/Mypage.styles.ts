@@ -50,7 +50,6 @@ export const NameContainer = styled.div`
 `;
 
 export const Name = styled.div`
-  font-family: "NanumGothicCoding";
   font-style: normal;
 
   width: 100px;
@@ -61,7 +60,6 @@ export const Name = styled.div`
 export const VerticalLine = styled.img``;
 
 export const UserName = styled.div`
-  font-family: "NanumGothicCoding";
   font-style: normal;
 
   font-weight: 400;
@@ -75,8 +73,28 @@ export const IdContainer = styled.div`
   flex-direction: row;
 `;
 
+export const NickNameContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
+export const NickName = styled.div`
+  font-style: normal;
+
+  width: 100px;
+  font-weight: 700;
+  font-size: 20px;
+`;
+
+export const UserNickName = styled.div`
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+
+  margin-left: 20px;
+`;
+
 export const Id = styled.div`
-  font-family: "NanumGothicCoding";
   font-style: normal;
   width: 100px;
   font-weight: 700;
@@ -84,7 +102,6 @@ export const Id = styled.div`
 `;
 
 export const UserId = styled.div`
-  font-family: "NanumGothicCoding";
   font-style: normal;
   font-weight: 400;
   font-size: 20px;
@@ -98,7 +115,6 @@ export const PointWrapper = styled.div`
 `;
 
 export const Point = styled.div`
-  font-family: "NanumGothicCoding";
   font-style: normal;
   width: 100px;
   font-weight: 700;
@@ -106,7 +122,6 @@ export const Point = styled.div`
 `;
 
 export const UserPoint = styled.div`
-  font-family: "Noto Sans CJK KR";
   font-style: normal;
   font-weight: 400;
   font-size: 20px;
@@ -120,7 +135,6 @@ export const DeliverWrapper = styled.div`
 `;
 
 export const DeliveryAddress = styled.div`
-  font-family: "NanumGothicCoding";
   font-style: normal;
   width: 100px;
   font-weight: 700;
@@ -128,7 +142,6 @@ export const DeliveryAddress = styled.div`
 `;
 
 export const UserDeliveryAddress = styled.div`
-  font-family: "Noto Sans CJK KR";
   font-style: normal;
   font-weight: 400;
   font-size: 20px;
@@ -142,13 +155,15 @@ export const SeeCoupon = styled.div`
   border: 1px solid #ffffff;
   border-radius: 4px;
 
-  padding: 4px 17px;
+  padding: 4px 17px 4px 17px;
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
   line-height: 20px;
 
   color: #ffffff;
+
+  cursor: pointer;
 `;
 
 export const ButtonWrapper = styled.div`
@@ -163,7 +178,6 @@ export const PointCharge = styled.button`
   height: 80px;
   background: #c4c4c4;
 
-  font-family: "NanumGothicCoding";
   font-style: normal;
   font-weight: 700;
   font-size: 24px;
@@ -180,7 +194,6 @@ export const PasswordFind = styled.button`
   height: 80px;
   background: #c4c4c4;
 
-  font-family: "NanumGothicCoding";
   font-style: normal;
   font-weight: 700;
   font-size: 24px;
@@ -202,7 +215,6 @@ export const Line = styled.div`
 export const MiddleWrapper = styled.div``;
 
 export const BoughtList = styled.div`
-  font-family: "NanumGothicCoding";
   font-style: normal;
   font-weight: 700;
   font-size: 32px;
@@ -233,7 +245,6 @@ export const BoughtImage = styled.img`
 `;
 
 export const BoughtName = styled.div`
-  font-family: "NanumGothicCoding";
   font-style: normal;
   font-weight: 400;
   font-size: 20px;
@@ -255,7 +266,6 @@ export const BoughtDateWrapper = styled.div`
 `;
 
 export const BoughtDateText = styled.div`
-  font-family: "NanumGothicCoding";
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
@@ -267,7 +277,6 @@ export const BoughtDateText = styled.div`
 `;
 
 export const BoughtDateNum = styled.div`
-  font-family: "Noto Sans CJK KR";
   font-style: normal;
   font-weight: 400;
   font-size: 24px;
@@ -285,7 +294,6 @@ export const BoughtPriceWrapper = styled.div`
 `;
 
 export const BoughtPriceText = styled.div`
-  font-family: "NanumGothicCoding";
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
@@ -297,7 +305,6 @@ export const BoughtPriceText = styled.div`
 `;
 
 export const BoughtPriceNum = styled.div`
-  font-family: "Noto Sans CJK KR";
   font-style: normal;
   font-weight: 400;
   font-size: 24px;
@@ -315,7 +322,6 @@ export const BoughtStatusWrapper = styled.div`
 `;
 
 export const BoughtStatusText = styled.div`
-  font-family: "NanumGothicCoding";
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
@@ -332,7 +338,6 @@ export const BoughtStatus = styled.div`
   display: flex;
   align-items: center;
 
-  font-family: "NanumGothicCoding";
   font-style: normal;
 
   font-weight: 400;
@@ -351,7 +356,6 @@ export const BoughtReviewWrapper = styled.div`
 `;
 
 export const BoughtReviewText = styled.div`
-  font-family: "NanumGothicCoding";
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
@@ -368,7 +372,6 @@ export const BoughtReviewStatus = styled.div`
   display: flex;
   align-items: center;
 
-  font-family: "NanumGothicCoding";
   font-style: normal;
 
   font-weight: 400;
@@ -414,7 +417,6 @@ export const BottomWrapper = styled.div`
 `;
 
 export const BasketList = styled.div`
-  font-family: "NanumGothicCoding";
   font-style: normal;
   font-weight: 700;
   font-size: 32px;
@@ -451,7 +453,6 @@ export const ProductInfoWrapper = styled.div`
 `;
 
 export const ProductName = styled.div`
-  font-family: "NanumGothicCoding";
   font-style: normal;
   font-weight: 700;
   font-size: 24px;
@@ -464,7 +465,6 @@ export const ProductName = styled.div`
 `;
 
 export const ProductContents = styled.div`
-  font-family: "NanumGothicCoding";
   font-style: normal;
   font-weight: 400;
   font-size: 20px;
@@ -491,7 +491,6 @@ export const ProductBuyButton = styled.button`
   height: 80px;
   background-color: #c4c4c4;
 
-  font-family: "NanumGothicCoding";
   font-style: normal;
   font-weight: 700;
   font-size: 24px;
