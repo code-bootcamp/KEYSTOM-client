@@ -2,10 +2,12 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "cSpell.ignoreWords": [
         "Btns",
+        "Daum",
         "Mypage",
         "Zoncode",
         "mypurchaselist",
         "reviewimg",
-        "uuidv"
+        "uuidv",
+        "zipcode"
     ]
 }

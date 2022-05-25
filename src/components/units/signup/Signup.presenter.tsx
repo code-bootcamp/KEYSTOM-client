@@ -1,4 +1,7 @@
+import { Modal } from "antd";
 import * as S from "./Signup.styles";
+import DaumPostcode from 'react-daum-postcode';
+
 
 export default function SignUpPresenter(props: any) {
     return (
@@ -32,15 +35,26 @@ export default function SignUpPresenter(props: any) {
                         </S.SignUpError>
 
                         <S.InfoDiv>
+                            <S.InfoText>NickName</S.InfoText>
+                            <S.IDInfoInput
+                                placeholder="Gill"
+                                {...props.register("nickName")}
+                            />
+                        </S.InfoDiv>
+                        <S.SignUpError>
+                            {props.formState.errors.nickName?.message}
+                        </S.SignUpError>
+
+                        <S.InfoDiv>
                             <S.InfoText>Password</S.InfoText>
                             <S.InfoInput
-                                type="password"
+                                type={props.passwordType}
                                 placeholder="********"
                                 {...props.register("password")}
                                 onChange={props.onChangePassword}
                             />
                             <S.PasswordWatch>
-                                <S.EyeIcon isWrite={props.isWrite} />
+                                <S.EyeIcon isWrite={props.isWrite} onClick={props.togglePassword}/>
                             </S.PasswordWatch>
                         </S.InfoDiv>
                         <S.SignUpError>
@@ -50,13 +64,13 @@ export default function SignUpPresenter(props: any) {
                         <S.InfoDiv>
                             <S.InfoText>Password Check</S.InfoText>
                             <S.InfoInput
-                                type="password"
+                                type={props.passwordCheckType}
                                 placeholder="영문 + 숫자 조합 8~16자리를 입력해주세요. "
                                 {...props.register("passwordCheck")}
                                 onChange={props.onChangePasswordCheck}
                             />
                             <S.PasswordWatch>
-                                <S.EyeIcon2 isWrite2={props.isWrite2} />
+                                <S.EyeIcon2 isWrite2={props.isWrite2} onClick={props.togglePasswordCheck}/>
                             </S.PasswordWatch>
                         </S.InfoDiv>
                         <S.SignUpError>
@@ -68,8 +82,9 @@ export default function SignUpPresenter(props: any) {
                             <S.InfoInputWrapper>
                                 <S.InfoDiv>
                                     <S.ZoncodeWrapper>
-                                        <S.ZoncodeInput placeholder="14600" />
-                                        <S.ZoncodeButton>
+                                        <S.ZoncodeInput readOnly placeholder="14600"  type="text" id="zipCode" 
+                                        value={props.zipCode ||""} />
+                                        <S.ZoncodeButton onClick={props.showModal} type="button">
                                             Find Address
                                         </S.ZoncodeButton>
                                     </S.ZoncodeWrapper>
@@ -78,20 +93,35 @@ export default function SignUpPresenter(props: any) {
                                     <S.InfoInput
                                         placeholder="서울시 행복구 낙원동 1004로"
                                         readOnly
+                                        value={props.address}
                                     />
                                 </S.InfoDiv>
                                 <S.InfoDiv>
-                                    <S.InfoInput placeholder="B동 1202호" />
+                                    <S.InfoInput 
+                                    placeholder="B동 1202호" 
+                                    onChange={props.onChangeAddressDetail}/>
                                 </S.InfoDiv>
                             </S.InfoInputWrapper>
+
+                            {props.isOpen &&
+                                <Modal 
+                                    visible={true}     
+                                    onOk={props.handleOk} 
+                                    onCancel={props.handleCancel}>
+
+                                    <DaumPostcode onComplete={props.handleComplete} />
+                                </Modal>
+                            }
                         </S.InfoDiv>
 
                         <S.InfoDiv>
-                            <S.InfoText>휴대폰 번호</S.InfoText>
-                            <S.InfoInput type="number" />
+                            <S.InfoText>Phone</S.InfoText>
+                            <S.InfoInput type="number"
+                            placeholder="010-1234-5678"
+                            {...props.register("phone")} />
                         </S.InfoDiv>
                         <S.SignUpError>
-                            {props.formState.errors.passwordCheck?.message}
+                            {props.formState.errors.phone?.message}
                         </S.SignUpError>
 
                         {/* 구분선 */}
