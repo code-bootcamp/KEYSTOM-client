@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 import { useRouter } from "next/router";
 
 const Wrapper = styled.div`
+
   display: flex;
   width: 100%;
   background-color: transparent;
@@ -104,6 +105,7 @@ const BasketIcon = styled.img`
 // `
 
 export default function LayoutHeader() {
+
   const router = useRouter();
 
   const moveToHome = () => {
