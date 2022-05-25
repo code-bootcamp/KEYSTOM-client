@@ -653,7 +653,7 @@ function Picker() {
   );
 }
 
-export default function ProductDetailPresenter() {
+export default function ProductDetailPresenter(props:any) {
   const snap = useSnapshot(state);
 
   return (
@@ -661,7 +661,7 @@ export default function ProductDetailPresenter() {
       <S.Wrapper>
         <S.ProductWrapper>
           <S.ProductLeftWrapper>
-            <S.AllForDesigner>올 포 디자이너</S.AllForDesigner>
+            <S.AllForDesigner>{props.data?.fetchProduct.title}</S.AllForDesigner>
             <S.ProductSelectWrapper>
               <S.TwoDColorWrapper>
                 <S.TwoDImage />

@@ -8,6 +8,11 @@ export const accessTokenState = atom({
 });
 
 
+export const isLoadedState = atom({
+  key: "isLoadedState",
+  default: "",
+});
+
 export const userInfoState = atom({
   key: "userInfoState",
   default: {
