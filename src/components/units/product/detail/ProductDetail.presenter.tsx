@@ -1,5 +1,5 @@
 import * as S from "./ProductDetail.styles";
-import ReviewDetail from "./reviewDetail/ReviewDetail.container";
+import ReviewDetail from "./reviewDetail/ReviewList.container";
 
 // 키보드에 필요한 import
 import { Suspense, useRef, useState, useEffect } from "react";

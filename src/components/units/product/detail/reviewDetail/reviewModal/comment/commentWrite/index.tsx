@@ -1,10 +1,12 @@
 import styled from '@emotion/styled';
-import { useMutation, gql } from '@apollo/client';
+import { useMutation, gql, useQuery } from '@apollo/client';
 import { useState } from 'react';
 import { Modal } from 'antd';
 
 
 const ReviewCommentWriteWrapper = styled.div`
+width: 100%;
+
 display: flex;
 justify-content: space-between;
 padding-top: 50px;
@@ -15,9 +17,9 @@ const CommentInput = styled.input`
 width: 600px;
 height: 54px;
 padding-left: 20px;
-/* background-color: #dedede; */
+background: #DEDEDE;
 border-radius: 10px;
-/* border: 1px solid #dedede; */
+border: none;
 `
 
 const CommentBtn = styled.button`
@@ -27,6 +29,7 @@ font-weight: 700;
 font-size: 16px;
 line-height: 24px;
 color: #FFFFFF;
+background: #B150F2;
 `
 
 const CREATE_COMMENT = gql`
@@ -34,14 +37,30 @@ const CREATE_COMMENT = gql`
         createComment(createCommentInput:$createCommentInput){
             id
             commentContent
-            ParentId
+            parentId
+            createdAt
         }
 }
+`
+
+const FETCH_USER_LOGGED_IN = gql`
+    query fetchUserLoggedIn{
+        id
+        address
+        addressDetail
+        zipCode
+        createdAt
+        user{
+            email
+            name
+        }
+    }
 `
 
 
 export default function CommentWritePage(props:any){
     const [createComment]  = useMutation(CREATE_COMMENT)
+    const {data}  = useQuery(FETCH_USER_LOGGED_IN)
     const [commentContent, setCommentContent] = useState("")
      
 
@@ -58,8 +77,8 @@ export default function CommentWritePage(props:any){
                     createCommentInput:{
                         commentContent,
                         reviewId:props.selectedId,
-                        ParentId:"a24c30eb-f86d-49dc-b0d7-e4de7ef9197a"
-
+                        email:data.fetchUserLoggedIn.user.email
+                        
                     }
                 }
             })

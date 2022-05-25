@@ -44,9 +44,15 @@ export const globalStyles = css`
     color: #f1f1f1;
   }
 
-  button {
-    border: none;
+
+
+
+  button{
+    border: 1px solid #f1f1f1;
+
     border-radius: 6px;
+    background-color: #1b1b1b;
+
     cursor: pointer;
   }
 

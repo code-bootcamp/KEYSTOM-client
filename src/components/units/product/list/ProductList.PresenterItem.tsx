@@ -18,10 +18,11 @@ export default function ProductListPresenterItem(props: any) {
             )}
 
             <S.ProductBoxRightWrapper>
-                <S.ProductTitle>제목{props.el.title}</S.ProductTitle>
+                <S.ProductTitle>Title{props.el.title}</S.ProductTitle>
+                {/* <S.ProductTitle>&gt;</S.ProductTitle> */}
                 <S.ProductPrice>
                     {props.el.price?.toLocaleString()}
-                    <span>원</span>
+                    {/* <span>원</span> */}
                 </S.ProductPrice>
                 <S.ProductContents>
                     {props.el.description}
