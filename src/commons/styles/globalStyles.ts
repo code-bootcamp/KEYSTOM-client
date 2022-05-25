@@ -43,8 +43,10 @@ export const globalStyles = css`
 
 
   button{
-    border: none;
+    border: 1px solid #f1f1f1;
     border-radius: 6px;
+    background-color: #1b1b1b;
+
     cursor: pointer;
   }
 `;

@@ -12,9 +12,10 @@ export const ModalDiv = styled.div`
 display: flex;
 flex-direction: column;
 background-color: #f3f3f3;
-width: 900px;
+width:900px;
 border-radius:30px ;
 padding-bottom: 150px;
+overflow: hidden;
 `
 
 export const ReviewImageDiv = styled.div`
@@ -30,7 +31,11 @@ border-radius:30px 30px 0px 0px ;
 
 export const ReviewImageWrapper = styled.div`
 width: 100%;
-height: auto;
+/* height:498px; */
+`
+
+export const ReviewImage = styled.img`
+width: 100%;
 `
 
 export const ModalCancelBtn = styled.img`
@@ -53,9 +58,7 @@ justify-content: space-between;
 width:440px;
 padding-bottom: 36px;
 `
-export const ReviewImage = styled.img`
-width: 100%;
-`
+
 
 export const ImagePreview = styled.img`
 width: 80px;

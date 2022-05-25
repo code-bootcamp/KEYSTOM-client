@@ -5,14 +5,10 @@ export const FETCH_REVIEW = gql`
 query fetchReview($reviewId: String! ){
     fetchReview(reviewId: $reviewId){
         id
-        reviewTitle
-        reviewContent
+        title
+        description
         like
         createdAt
-        user{
-            name
-            profileImage
-        }
     }
 }
 `

@@ -1,6 +1,6 @@
-import ReviewDetailPresenter from "./ReviewDetail.presenter";
+import ReviewDetailPresenter from "./ReviewList.presenter";
 import { useQuery } from '@apollo/client';
-import { FETCH_REVIEWS } from './ReviewDetail.queries';
+import { FETCH_REVIEWS } from './ReviewList.queries';
 import { useRouter } from 'next/router';
 
 

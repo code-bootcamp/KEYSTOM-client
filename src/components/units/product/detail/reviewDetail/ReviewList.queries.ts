@@ -8,10 +8,6 @@ export const FETCH_REVIEWS = gql`
       description
       like
       createdAt
-
-      user {
-        name
-      }
     }
   }
 `;
