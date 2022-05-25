@@ -5,12 +5,12 @@ export default function SignUpPresenter(props: any) {
         <form onSubmit={props.handleSubmit(props.onClickSignUp)}>
             <S.Container>
                 <S.SignUpContainer>
-                    <S.SignUpTitle>회원가입하기</S.SignUpTitle>
+                    <S.SignUpTitle>Sign Up</S.SignUpTitle>
                     <S.SignUpContentsWrapper>
-                        <S.InfoTitle>기본 정보 입력</S.InfoTitle>
+                        {/* <S.InfoTitle>기본 정보 입력</S.InfoTitle> */}
 
                         <S.InfoDiv>
-                            <S.InfoText>이름</S.InfoText>
+                            <S.InfoText>Name</S.InfoText>
                             <S.NameInfoInput
                                 placeholder="홍길동"
                                 {...props.register("name")}
@@ -21,9 +21,9 @@ export default function SignUpPresenter(props: any) {
                         </S.SignUpError>
 
                         <S.InfoDiv>
-                            <S.InfoText>메일</S.InfoText>
+                            <S.InfoText>Email</S.InfoText>
                             <S.IDInfoInput
-                                placeholder="HongilDong8093"
+                                placeholder="HongilDong8093@gmail.com"
                                 {...props.register("email")}
                             />
                         </S.InfoDiv>
@@ -32,7 +32,7 @@ export default function SignUpPresenter(props: any) {
                         </S.SignUpError>
 
                         <S.InfoDiv>
-                            <S.InfoText>비밀번호</S.InfoText>
+                            <S.InfoText>Password</S.InfoText>
                             <S.InfoInput
                                 type="password"
                                 placeholder="********"
@@ -48,7 +48,7 @@ export default function SignUpPresenter(props: any) {
                         </S.SignUpError>
 
                         <S.InfoDiv>
-                            <S.InfoText>비밀번호 확인</S.InfoText>
+                            <S.InfoText>Password Check</S.InfoText>
                             <S.InfoInput
                                 type="password"
                                 placeholder="영문 + 숫자 조합 8~16자리를 입력해주세요. "
@@ -64,13 +64,13 @@ export default function SignUpPresenter(props: any) {
                         </S.SignUpError>
 
                         <S.InfoDiv>
-                            <S.InfoText>배송 주소</S.InfoText>
+                            <S.InfoText>Address</S.InfoText>
                             <S.InfoInputWrapper>
                                 <S.InfoDiv>
                                     <S.ZoncodeWrapper>
                                         <S.ZoncodeInput placeholder="14600" />
                                         <S.ZoncodeButton>
-                                            우편 번호 찾기
+                                            Find Address
                                         </S.ZoncodeButton>
                                     </S.ZoncodeWrapper>
                                 </S.InfoDiv>
@@ -99,9 +99,9 @@ export default function SignUpPresenter(props: any) {
                 </S.SignUpContainer>
                 <S.SignUpBtnWrapper>
                     <S.SignUpCancelButton onClick={props.moveToHome}>
-                        취소하기
+                        Cancel
                     </S.SignUpCancelButton>
-                    <S.SignUpButton>가입하기</S.SignUpButton>
+                    <S.SignUpButton>Sign Up</S.SignUpButton>
                 </S.SignUpBtnWrapper>
             </S.Container>
         </form>

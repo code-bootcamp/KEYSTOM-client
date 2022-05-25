@@ -19,6 +19,7 @@ export const SignUpContainer = styled.div`
 export const SignUpTitle = styled.div`
     display: flex;
     flex-direction: column;
+    align-items: center;
     width: 100%;
 
     font-weight: 700;
@@ -34,6 +35,7 @@ export const SignUpContentsWrapper = styled.div`
     flex-direction: column;
     width: 666px;
     justify-content: space-between;
+    padding-top: 40px;
     padding-bottom: 40px;
 `;
 
@@ -159,6 +161,7 @@ export const ZoncodeInput = styled.input`
 
 export const ZoncodeButton = styled.button`
     background-color: transparent;
+    width: 150px;
 
     border: 1px solid #ffffff;
     border-radius: 6px;
@@ -175,11 +178,11 @@ export const SignUpBtnWrapper = styled.div`
     justify-content: center;
 
     padding-top: 60px;
-    padding-bottom: 500px;
+    padding-bottom: 300px;
 `;
 
 export const SignUpCancelButton = styled.button`
-    width: 560px;
+    width: 350px;
     height: 120px;
     background: #1b1b1b;
     border: 1px solid #b150f2;
@@ -190,7 +193,7 @@ export const SignUpCancelButton = styled.button`
     margin-right: 40px;
 `;
 export const SignUpButton = styled.button`
-    width: 560px;
+    width: 350px;
     height: 120px;
     background: #b150f2;
     border: none;
