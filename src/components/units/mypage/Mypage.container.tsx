@@ -4,53 +4,56 @@ import { gql, useQuery } from "@apollo/client";
 import { useEffect, useState } from "react";
 
 const FETCH_USER_LOGGED_IN = gql`
-    query fetchUserLoggedIn {
-        fetchUserLoggedIn {
-            email
-            name
-            nickName
-            isAdmin
-        }
+  query fetchUserLoggedIn {
+    fetchUserLoggedIn {
+      address
+      addressDetail
+      user {
+        email
+        name
+        nickName
+      }
     }
+  }
 `;
 
 export default function MypageContainer() {
-    const [baskets, setBaskets] = useState("");
-    const [isBasket, setIsBasket] = useState(false);
+  const [baskets, setBaskets] = useState("");
+  const [isBasket, setIsBasket] = useState(false);
 
-    const router = useRouter();
-    const { data } = useQuery(FETCH_USER_LOGGED_IN);
+  const router = useRouter();
+  const { data } = useQuery(FETCH_USER_LOGGED_IN);
 
-    console.log("로그인 유저", data);
+  console.log("로그인 유저", data);
 
-    useEffect(() => {
-        const basketsArr = JSON.parse(localStorage.getItem("baskets") || "[]");
-        setBaskets(basketsArr);
-    }, [isBasket]);
+  useEffect(() => {
+    const basketsArr = JSON.parse(localStorage.getItem("baskets") || "[]");
+    setBaskets(basketsArr);
+  }, [isBasket]);
 
-    console.log(baskets);
+  console.log(baskets);
 
-    const moveToReviewWrite = () => {
-        router.push("/review");
-    };
+  const moveToReviewWrite = () => {
+    router.push("/review");
+  };
 
-    const onClickDeleteBasket = (e: any) => {
-        console.log(e.target.id);
+  const onClickDeleteBasket = (e: any) => {
+    console.log(e.target.id);
 
-        const basketsArr = JSON.parse(localStorage.getItem("baskets") || "[]");
-        const newBasketsArr = basketsArr.filter(
-            (basketEl: any) => basketEl.id !== e.target.id
-        );
-        localStorage.setItem("baskets", JSON.stringify(newBasketsArr));
-        setIsBasket((prev) => !prev);
-    };
-
-    return (
-        <MypagePresenter
-            data={data}
-            moveToReviewWrite={moveToReviewWrite}
-            onClickDeleteBasket={onClickDeleteBasket}
-            baskets={baskets}
-        />
+    const basketsArr = JSON.parse(localStorage.getItem("baskets") || "[]");
+    const newBasketsArr = basketsArr.filter(
+      (basketEl: any) => basketEl.id !== e.target.id
     );
+    localStorage.setItem("baskets", JSON.stringify(newBasketsArr));
+    setIsBasket((prev) => !prev);
+  };
+
+  return (
+    <MypagePresenter
+      data={data}
+      moveToReviewWrite={moveToReviewWrite}
+      onClickDeleteBasket={onClickDeleteBasket}
+      baskets={baskets}
+    />
+  );
 }
