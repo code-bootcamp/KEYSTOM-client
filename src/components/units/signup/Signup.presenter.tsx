@@ -28,7 +28,10 @@ export default function SignUpPresenter(props: any) {
                             <S.IDInfoInput
                                 placeholder="HongilDong8093@gmail.com"
                                 {...props.register("email")}
+                                onChange={props.onChangeEmail}
                             />
+
+                            <S.EmailCheckButton type="button" onClick={props.CheckEmail}>Check Email</S.EmailCheckButton>
                         </S.InfoDiv>
                         <S.SignUpError>
                             {props.formState.errors.email?.message}

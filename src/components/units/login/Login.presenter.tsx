@@ -60,7 +60,7 @@ export default function LoginPresenter(props: ILoginPresenterProps) {
 
                     <S.StringWrapper>
                         <S.StringDiv>아직 회원이 아니신가요?</S.StringDiv>
-                        <S.SignUpBtn onClick={moveToSignup}>
+                        <S.SignUpBtn onClick={moveToSignup} type="button">
                             회원가입하기
                         </S.SignUpBtn>
                     </S.StringWrapper>

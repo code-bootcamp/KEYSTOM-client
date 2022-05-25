@@ -81,9 +81,23 @@ export const InfoInput = styled.input`
     }
 `;
 
+export const EmailCheckButton = styled.button`
+    background-color: transparent;
+    width: 150px;
+    height: 54px;
+
+    border: 1px solid #ffffff;
+    border-radius: 6px;
+
+    cursor: pointer;
+    :hover {
+        border: 1px solid #b150f2;
+        color: #b150f2;
+    }
+`
+
 export const PasswordWatch = styled.div`
     background-color: transparent;
-    /* background-color: red; */
 `;
 
 export const EyeIcon = styled(EyeOutlined)<{ isWrite: boolean }>`
