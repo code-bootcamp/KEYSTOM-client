@@ -1,23 +1,12 @@
 import SignUpPresenter from "./Signup.presenter";
 import { useRouter } from "next/router";
-import { gql, useMutation } from "@apollo/client";
+import { useMutation } from "@apollo/client";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useState } from "react";
-
-const CREATE_USER = gql`
-    mutation createUser($createUserInput: CreateUserInput!) {
-        createUser(createUserInput: $createUserInput) {
-            email
-            name
-            nickName
-            profileImage
-            isAdmin
-            address
-        }
-    }
-`;
+import { CREATE_USER, CHECK_EMAIL } from './Signup.queries';
+import { Modal } from "antd";
 
 const schema = yup.object({
     name: yup
@@ -61,12 +50,14 @@ interface IFormValues {
 export default function SignUpContainer() {
     const [password, setPassword] = useState("");
     const [passwordCheck, setPasswordCheck] = useState("");
+    const [email, setEmail] = useState("");
     const [isWrite, setIsWrite] = useState(false);
     const [isWrite2, setIsWrite2] = useState(false);
     const [passwordType, setPasswordType] = useState("password")
     const [passwordCheckType, setPasswordCheckType] = useState("password")
     const router = useRouter();
     const [createUser] = useMutation(CREATE_USER);
+    const [checkEmail] = useMutation(CHECK_EMAIL);
 
     const [isOpen, setIsOpen] = useState(false);
     const [zipCode, setZipCode] = useState("")
@@ -77,6 +68,10 @@ export default function SignUpContainer() {
         resolver: yupResolver(schema),
         mode: "onChange",
     });
+
+    const onChangeEmail = (event:any) => {
+        setEmail(event.target.value)
+    } 
 
     const onClickSignUp = async (data: IFormValues) => {
         try {
@@ -102,7 +97,21 @@ export default function SignUpContainer() {
             alert("실패");
             console.log(JSON.stringify(error, null, 2));
         }
-    };
+    }
+
+
+    const CheckEmail = async() => {
+        try{
+           const result = await checkEmail({variables:{email}})
+            
+           console.log(result,"result check email")
+            Modal.success({content:"사용가능한 이메일입니다."})
+        }catch(e){
+            Modal.error({content:"이미 사용중인 이메일입니다!"})
+        }
+    }
+
+
 
     const togglePassword = () => {
         if(passwordType === "password"){
@@ -184,6 +193,9 @@ export default function SignUpContainer() {
             passwordCheckType={passwordCheckType}
             togglePassword={togglePassword}
             togglePasswordCheck={togglePasswordCheck}
+
+            onChangeEmail={onChangeEmail}
+            CheckEmail={CheckEmail}
 
             onChangeAddressDetail={onChangeAddressDetail}
             handleOk={handleOk}
