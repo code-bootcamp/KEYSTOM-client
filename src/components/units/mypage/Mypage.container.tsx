@@ -17,14 +17,51 @@ const FETCH_USER_LOGGED_IN = gql`
   }
 `;
 
+const FETCH_COUPONS = gql`
+  query fetchCoupons {
+    fetchCoupons {
+      id
+      discountPrice
+      couponName
+    }
+  }
+`;
+
+const FETCH_COUPON = gql`
+  query fetchCoupon($couponId: String!) {
+    fetchCoupon(couponId: $couponId) {
+      id
+      discountPrice
+      couponName
+    }
+  }
+`;
+
+const FETCH_USER_ORDER = gql`
+  query fetchUserOrder {
+    fetchUserOrder {
+      id
+      count
+      price
+      receiverName
+      receiverPhone
+      createdAt
+    }
+  }
+`;
+
 export default function MypageContainer() {
   const [baskets, setBaskets] = useState("");
   const [isBasket, setIsBasket] = useState(false);
 
   const router = useRouter();
   const { data } = useQuery(FETCH_USER_LOGGED_IN);
+  const { data: couponsData } = useQuery(FETCH_COUPONS);
+  const { data: couponData } = useQuery(FETCH_COUPON);
+  const { data: orderData } = useQuery(FETCH_USER_ORDER);
 
-  console.log("로그인 유저", data);
+  //   console.log("로그인 유저", data);
+  console.log("쿠폰데이터", couponsData);
 
   useEffect(() => {
     const basketsArr = JSON.parse(localStorage.getItem("baskets") || "[]");
@@ -48,12 +85,29 @@ export default function MypageContainer() {
     setIsBasket((prev) => !prev);
   };
 
+  const onClickSeeCoupon = async (e) => {
+    try {
+      const result = await couponData({
+        variables: {
+          couponId: String(e.target.id),
+        },
+      });
+
+      console.log(result);
+    } catch (error) {
+      alert(error instanceof Error);
+    }
+  };
+
   return (
     <MypagePresenter
       data={data}
+      couponsData={couponsData}
+      orderData={orderData}
       moveToReviewWrite={moveToReviewWrite}
       onClickDeleteBasket={onClickDeleteBasket}
       baskets={baskets}
+      onClickSeeCoupon={onClickSeeCoupon}
     />
   );
 }
