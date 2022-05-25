@@ -131,14 +131,9 @@ export default function StorePresenter() {
         <S.PreloaderWrapper>
           <Preloader timeline={tl}>
             <S.PreloaderChild>
-              <ScrollAnimation
-                animateIn="slideInLeft"
-                animateOut="slideOutLeft"
-              >
-                <HideTitleFunc timeline={tl}>
-                  당신만의 키보드를 만들어 보세요
-                </HideTitleFunc>
-              </ScrollAnimation>
+              <HideTitleFunc timeline={tl}>
+                당신만의 키보드를 만들어 보세요
+              </HideTitleFunc>
               <HideTopContentsFunc timeline={tl}>
                 취향은 내맘대로, 색상은 자유자재로.
               </HideTopContentsFunc>
