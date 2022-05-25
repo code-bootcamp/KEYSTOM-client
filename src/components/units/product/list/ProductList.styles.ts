@@ -11,8 +11,7 @@ export const Wrapper = styled.div`
 
 export const ListBannerWrapper = styled.div`
 width: 100%;
-height: 480px;
-/* background-color: aliceblue; */
+height: 360px;
 `
 
 export const ListBanner = styled.img`
@@ -21,14 +20,13 @@ height: 100%;
 `
 export const SearchWrapper = styled.div`
     width: 100%;
-    padding-top: 50px;
-    padding-bottom: 50px;
+    padding: 50px 340px;
 
     border-bottom: 1px solid #b1b1b1; ;
 `;
 
 export const SearchInputIconWrapper = styled.div`
-    width: 1500px;
+    width: 1240px;
     height: 70px;
 
     padding: 20px;
@@ -78,39 +76,38 @@ export const SearchInput = styled.input`
 `;
 
 export const SearchText = styled.div`
-    width: 1500px;
+    width: 100%;
     font-weight: 400;
-    font-size: 24px;
+    font-size: 32px;
+line-height: 38px;
 
-    padding-top: 50px;
+    padding: 50px 340px;
+
 `;
 
 export const ProductListWrapper = styled.div`
-    width: 1500px;
-    padding-top: 50px;
+    width: 1240px;
     padding-bottom: 460px;
-
     display: flex;
     flex-direction: row;
 `;
 
 export const ProductBox = styled.div`
-    width: 730px;
-    height: 366px;
+    width: 610px;
+    height: 270px;
 
     /* background: yellow; */
     display: flex;
     flex-direction: row;
 
     background-color: #c4c4c4;
-
-    margin-bottom: 40px;
-    border-radius: 30px;
+    margin-bottom: 30px;
+    border-radius: 10px;
 `;
 
 export const ProductImage = styled.div<{ src?: string }>`
-    width: 366px;
-    height: 366px;
+    width: 292px;
+    height: 270px;
 
     background-color: #ffffff;
     cursor: pointer;
@@ -122,20 +119,21 @@ export const ProductImage = styled.div<{ src?: string }>`
 `;
 
 export const ProductBoxRightWrapper = styled.div`
-    width: 364px;
-    height: 366px;
+    width: 318px;
+    height: 270px;
     display: flex;
     flex-direction: column;
     color: #fff;
     background-color: #2c2c2c;
     border-radius: 0px 10px 10px 0px;
 
-    padding: 90px 30px 30px 40px;
+    padding: 50px 30px 30px 40px;
 `;
 
 export const ProductTitle = styled.div`
     font-weight: 700;
     font-size: 24px;
+line-height: 28px;
 
     margin-bottom: 40px;
 `;
@@ -143,14 +141,16 @@ export const ProductTitle = styled.div`
 export const ProductPrice = styled.div`
     font-weight: 700;
     font-size: 32px;
+line-height: 38px;
 
     margin-bottom: 24px;
 `;
 
 export const ProductContents = styled.div`
     font-weight: 400;
-    font-size: 18px;
-    color: #b1b1b1;
+    font-size: 14px;
+line-height: 20px;
+color: #B1B1B1;
 
     /* white-space: nowrap; */
     overflow: hidden;

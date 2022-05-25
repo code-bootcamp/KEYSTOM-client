@@ -8,18 +8,18 @@ import AppLayout from "../src/components/commons/appLayout";
 import ApolloSetting from "../src/components/commons/apollo";
 
 function MyApp({ Component, pageProps }: AppProps) {
-    return (
-        <RecoilRoot>
-            <ApolloSetting>
-                <Global styles={globalStyles} />
-                <Layout>
-                    <AppLayout>
-                        <Component {...pageProps} />
-                    </AppLayout>
-                </Layout>
-            </ApolloSetting>
-        </RecoilRoot>
-    );
+  return (
+    <RecoilRoot>
+      <ApolloSetting>
+        <Global styles={globalStyles} />
+        <Layout>
+          <AppLayout>
+            <Component {...pageProps} />
+          </AppLayout>
+        </Layout>
+      </ApolloSetting>
+    </RecoilRoot>
+  );
 }
 
 export default MyApp;

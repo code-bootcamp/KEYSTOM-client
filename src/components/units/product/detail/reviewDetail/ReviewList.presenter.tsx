@@ -55,7 +55,7 @@ export default function ReviewDetailPresenter(props: any) {
                     <A.BottomText>
                       <A.Reviewer>
                         <A.ReviewSmallTitle>리뷰어</A.ReviewSmallTitle>
-                        <A.ReviewSmallText>{el.user.name}</A.ReviewSmallText>
+                        {/* <A.ReviewSmallText>{el.user.name}</A.ReviewSmallText> */}
                       </A.Reviewer>
                       <A.ReviewDate>
                         <A.ReviewSmallTitle>작성날짜</A.ReviewSmallTitle>
@@ -80,9 +80,13 @@ export default function ReviewDetailPresenter(props: any) {
                   el={el}
                   selectedId={selectedId}
                   commentData={props.commentData}
+                  // isOpen={isOpen}
                   // id={selectedId}
                 />
               )}
+              {/* {!isOpen &&(
+                <></>
+              )} */}
             </A.ReviewDiv>
           ))}
         </A.ReviewWrapper>

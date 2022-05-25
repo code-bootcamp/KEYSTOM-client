@@ -4,18 +4,14 @@ import { FETCH_REVIEW } from './ReviewModal.queries';
 import { FETCH_REVIEW_COMMENTS } from './comment/commentList/CommentList.queries';
 
 export default function ReviewModalContainer(props:any){
-    
-    const {data:commentData} = useQuery(FETCH_REVIEW_COMMENTS,{
-        variables:{
-            reviewId:String(props.selectedId)
-        }
-    })
-    console.log("commentData", commentData)
-  
+
+
 
     const {data : reviewData} = useQuery(FETCH_REVIEW,{
         variables:{
             reviewId:String(props.selectedId)
+            // reviewId:"c3148468-f723-49bd-a6d7-2d226bd0ab8e"
+
             // reviewId:String(props.id)
             // reviewId:JSON.stringify(props.el.id)
             // reviewId:String(event.target as HTMLButtonElement).id
@@ -23,6 +19,17 @@ export default function ReviewModalContainer(props:any){
     })
 
     console.log("reviewData", reviewData)
+
+        
+    const {data:commentData} = useQuery(FETCH_REVIEW_COMMENTS,{
+        variables:{
+            reviewId:String(props.selectedId)
+            // reviewId:"c3148468-f723-49bd-a6d7-2d226bd0ab8e"
+        }
+    })
+    console.log("commentData", commentData)
+  
+
 
 
     return<ReviewModalPresenter
@@ -35,6 +42,6 @@ export default function ReviewModalContainer(props:any){
     selectedId={props.selectedId}
     reviewData={reviewData}
     commentData={commentData}
-
+    // isOpen={true}
     />
 }
