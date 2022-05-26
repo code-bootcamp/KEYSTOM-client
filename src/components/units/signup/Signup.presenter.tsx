@@ -14,10 +14,11 @@ export default function SignUpPresenter(props: any) {
 
                         <S.InfoDiv>
                             <S.InfoText>Name</S.InfoText>
-                            <S.NameInfoInput
+                            <S.InfoInput
+                                // style={{width:"200px"}}
                                 placeholder="홍길동"
                                 {...props.register("name")}
-                            ></S.NameInfoInput>
+                            />
                         </S.InfoDiv>
                         <S.SignUpError>
                             {props.formState.errors.name?.message}
@@ -25,13 +26,16 @@ export default function SignUpPresenter(props: any) {
 
                         <S.InfoDiv>
                             <S.InfoText>Email</S.InfoText>
-                            <S.IDInfoInput
+                            <S.InfoInput
                                 placeholder="HongilDong8093@gmail.com"
                                 {...props.register("email")}
                                 onChange={props.onChangeEmail}
                             />
 
-                            <S.EmailCheckButton type="button" onClick={props.CheckEmail}>Check Email</S.EmailCheckButton>
+                            <S.EmailCheckButton
+                             isWriteEmail={props.isWriteEmail} 
+                            type="button" 
+                            onClick={props.onClickCheckEmail}>Check Email</S.EmailCheckButton>
                         </S.InfoDiv>
                         <S.SignUpError>
                             {props.formState.errors.email?.message}
@@ -39,9 +43,10 @@ export default function SignUpPresenter(props: any) {
 
                         <S.InfoDiv>
                             <S.InfoText>NickName</S.InfoText>
-                            <S.IDInfoInput
-                                placeholder="Gill"
-                                {...props.register("nickName")}
+                            <S.InfoInput
+                            // style={{width:"200px"}}
+                            placeholder="Gill"
+                            {...props.register("nickName")}
                             />
                         </S.InfoDiv>
                         <S.SignUpError>
@@ -86,7 +91,7 @@ export default function SignUpPresenter(props: any) {
                                 <S.InfoDiv>
                                     <S.ZoncodeWrapper>
                                         <S.ZoncodeInput readOnly placeholder="14600"  type="text" id="zipCode" 
-                                        value={props.zipCode ||""} />
+                                        value={props.zipCode || ""} />
                                         <S.ZoncodeButton onClick={props.showModal} type="button">
                                             Find Address
                                         </S.ZoncodeButton>
@@ -120,9 +125,31 @@ export default function SignUpPresenter(props: any) {
                         <S.InfoDiv>
                             <S.InfoText>Phone</S.InfoText>
                             <S.InfoInput type="number"
-                            placeholder="010-1234-5678"
-                            {...props.register("phone")} />
+                            placeholder="숫자만 입력해주세요."
+                            // style={{width:"200px"}}
+                            onChange={props.onChangePhone}
+                            // {...props.register("phone")} 
+                            />
+
+                            <S.PhoneCheckButton 
+                            type="button" 
+                            isWritePhone={props.isWritePhone}
+                            onClick={props.onClickSendToken}
+
+                            >Send Token</S.PhoneCheckButton>
                         </S.InfoDiv>
+                        <S.InfoDiv>
+                            <S.Timer>{props.time}</S.Timer>
+                            <S.InfoInput 
+                            placeholder="인증번호를 입력해주세요."
+                            onChange={props.onChangeToken}
+                            />
+                            <S.CheckTokenButton 
+                            isWriteToken={props.isWriteToken} 
+                            onClick={props.onClickCheckToken}>
+                            Check Token
+                            </S.CheckTokenButton>
+                            </S.InfoDiv>
                         <S.SignUpError>
                             {props.formState.errors.phone?.message}
                         </S.SignUpError>
@@ -134,7 +161,9 @@ export default function SignUpPresenter(props: any) {
                     <S.SignUpCancelButton onClick={props.moveToHome}>
                         Cancel
                     </S.SignUpCancelButton>
-                    <S.SignUpButton>Sign Up</S.SignUpButton>
+                    <S.SignUpButton 
+                    disabled={props.isDisabled}
+                   >Sign Up</S.SignUpButton>
                 </S.SignUpBtnWrapper>
             </S.Container>
         </form>

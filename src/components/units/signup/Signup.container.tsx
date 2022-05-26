@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useState } from "react";
-import { CREATE_USER, CHECK_EMAIL } from './Signup.queries';
+import { CREATE_USER, CHECK_EMAIL, SEND_TOKEN, CHECK_TOKEN } from './Signup.queries';
 import { Modal } from "antd";
 
 const schema = yup.object({
@@ -33,10 +33,10 @@ const schema = yup.object({
         .oneOf([yup.ref("password"), null], "비밀번호가 일치하지 않습니다.")
         .required("비밀번호는 필수 입력 사항입니다."),
 
-    phone: yup
-        .string()
-        .matches(/^\d{3}\d{3,4}\d{4}$/, "'-'를 제외한 숫자만 입력해주세요.")
-        .required("전화번호는 필수 입력 사항입니다."),
+    // phone: yup
+    //     .string()
+    //     .matches(/^\d{3}\d{3,4}\d{4}$/, "'-'를 제외한 숫자만 입력해주세요.")
+    //     .required("전화번호는 필수 입력 사항입니다."),
 });
 
 interface IFormValues {
@@ -51,18 +51,31 @@ export default function SignUpContainer() {
     const [password, setPassword] = useState("");
     const [passwordCheck, setPasswordCheck] = useState("");
     const [email, setEmail] = useState("");
+    const [phone, setPhone] = useState("");
+    const [token, setToken] = useState("");
     const [isWrite, setIsWrite] = useState(false);
     const [isWrite2, setIsWrite2] = useState(false);
+    const [isWriteEmail, setIsWriteEmail] = useState(false);
+    const [isWritePhone, setIsWritePhone] = useState(false);
+    const [isWriteToken, setIsWriteToken] = useState(false);
+
     const [passwordType, setPasswordType] = useState("password")
     const [passwordCheckType, setPasswordCheckType] = useState("password")
     const router = useRouter();
     const [createUser] = useMutation(CREATE_USER);
     const [checkEmail] = useMutation(CHECK_EMAIL);
+    const [sendToken] = useMutation(SEND_TOKEN);
+    const [checkToken] = useMutation(CHECK_TOKEN);
 
     const [isOpen, setIsOpen] = useState(false);
     const [zipCode, setZipCode] = useState("")
     const [address, setAddress] = useState("")
     const [addressDetail, setAddressDetail] = useState("")
+
+    const [isStarted, setIsStarted] = useState(false)
+    const [isDisabled, setIsDisabled] = useState(true)
+    const [time, setTime] = useState(60)
+    const [timer, setTimer] = useState(null)
 
     const { register, handleSubmit, formState } = useForm({
         resolver: yupResolver(schema),
@@ -70,8 +83,52 @@ export default function SignUpContainer() {
     });
 
     const onChangeEmail = (event:any) => {
-        setEmail(event.target.value)
+        if(event.target.value){
+            setIsWriteEmail(true)
+        }else{
+            setIsWriteEmail(false)
+        }
+        // setEmail(event.target.value)
     } 
+
+    const onChangePassword = (e: any) => {
+        if (e.target.value) {
+            setIsWrite(true);
+        } else {
+            setIsWrite(false);
+        }
+    };
+    const onChangePasswordCheck = (e: any) => {
+        if (e.target.value) {
+            setIsWrite2(true);
+        } else {
+            setIsWrite2(false);
+        }
+    };
+
+      const onChangePhone = (event:any) => {
+            setPhone(event.target.value)
+        //   console.log(event.target.value)
+        //   console.log(phone)
+        if(event.target.value){
+            setIsWritePhone(true)
+        }else{
+            setIsWritePhone(false)
+        }
+    } 
+
+    const onChangeAddressDetail = (event: any) => {
+        setAddressDetail(event.target.value)
+      }
+
+    const onChangeToken = (event:any) => {
+        setToken(event.target.value)
+        if(event.target.value){
+            setIsWriteToken(true)
+        }else{
+            setIsWriteToken(false)
+        }
+    }
 
     const onClickSignUp = async (data: IFormValues) => {
         try {
@@ -99,19 +156,56 @@ export default function SignUpContainer() {
         }
     }
 
-
-    const CheckEmail = async() => {
+    const onClickCheckEmail = async() => {
         try{
            const result = await checkEmail({variables:{email}})
             
            console.log(result,"result check email")
             Modal.success({content:"사용가능한 이메일입니다."})
-        }catch(e){
-            Modal.error({content:"이미 사용중인 이메일입니다!"})
+        }catch(error:any){
+            Modal.error({content:"사용할 수 없는 이메일입니다."})
         }
     }
 
+    const onClickSendToken = async() => {
+        try{
+            await sendToken({variables:{phone}})
 
+            if(!isStarted){
+                setIsStarted(true)
+                setInterval(function(){
+                    if(time >= 0){
+                        setTime((prev)=>(prev-1))
+                        setIsDisabled(false)
+                    }else{
+                      setIsDisabled(true)
+                      setIsStarted(false)
+                      clearInterval()
+                    }
+                },1000)
+                Modal.success({content:"인증번호를 전송하였습니다!"})
+
+            }else{
+                Modal.error({content:"타이머가 이미 동작중입니다."})
+            }
+        }catch(error:any){
+            Modal.error({content:error.message})
+        }
+    }
+
+    const onClickCheckToken = async () =>{
+        try{
+            const result = await checkToken({variables:{token}})
+            console.log("result token",result)
+            Modal.success({content:"인증을 성공하였습니다!"})
+            setIsDisabled(true)
+            setIsStarted(false)
+            clearInterval()
+
+        }catch(error:any){
+            Modal.error({content:error.message})
+        }
+    }
 
     const togglePassword = () => {
         if(passwordType === "password"){
@@ -129,30 +223,6 @@ export default function SignUpContainer() {
         setPasswordCheckType("password")
     }
 
-    const onChangePassword = (e: any) => {
-        console.log(e.target.value);
-        console.log(password);
-
-        if (e.target.value) {
-            setIsWrite(true);
-        } else {
-            setIsWrite(false);
-        }
-    };
-    const onChangePasswordCheck = (e: any) => {
-        console.log(e.target.value);
-        console.log(passwordCheck);
-        if (e.target.value) {
-            setIsWrite2(true);
-        } else {
-            setIsWrite2(false);
-        }
-    };
-
-
-    const onChangeAddressDetail = (event: any) => {
-        setAddressDetail(event.target.value)
-      }
 
     // 주소 모달
     const showModal = () => {
@@ -169,14 +239,19 @@ export default function SignUpContainer() {
     
     
       const handleComplete = (data: any) => {
-        setZipCode(data.zipCode)
+          console.log(data,"address data")
+        setZipCode(data.zonecode)
         setAddress(data.address)
         setIsOpen(false);
       }
+
       
       const moveToHome = () => {
         router.push("/");
     };
+
+
+    
 
     return (
         <SignUpPresenter
@@ -189,13 +264,19 @@ export default function SignUpContainer() {
             onChangePasswordCheck={onChangePasswordCheck}
             isWrite={isWrite}
             isWrite2={isWrite2}
+            isWriteEmail={isWriteEmail}
+            isWritePhone={isWritePhone}
+            isWriteToken={isWriteToken}
+
             passwordType={passwordType}
             passwordCheckType={passwordCheckType}
             togglePassword={togglePassword}
             togglePasswordCheck={togglePasswordCheck}
 
             onChangeEmail={onChangeEmail}
-            CheckEmail={CheckEmail}
+            onClickCheckEmail={onClickCheckEmail}
+            onChangePhone={onChangePhone}
+            onClickSendToken={onClickSendToken}
 
             onChangeAddressDetail={onChangeAddressDetail}
             handleOk={handleOk}
@@ -207,6 +288,12 @@ export default function SignUpContainer() {
             zipCode={zipCode}
             address={address}
             addressDetail={addressDetail}
+
+            onChangeToken={onChangeToken}
+            onClickCheckToken={onClickCheckToken}
+
+            isDisabled={isDisabled}
+            time={time}
         />
     );
 }

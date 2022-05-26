@@ -8,6 +8,7 @@
         "mypurchaselist",
         "reviewimg",
         "uuidv",
-        "zipcode"
+        "zipcode",
+        "zonecode"
     ]
 }
