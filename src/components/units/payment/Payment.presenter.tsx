@@ -1,5 +1,8 @@
+import { Modal } from "antd";
 import Head from "next/head";
+import { useState } from "react";
 import * as S from "./Payment.styles";
+import DaumPostcode from 'react-daum-postcode';
 
 // const arr = [
 //   { optionCode: 1, optionNumber: 1, optionPrice: 100000 },
@@ -8,6 +11,46 @@ import * as S from "./Payment.styles";
 // ];
 
 export default function PaymentPresenter(props:any) {
+    const [isOpen, setIsOpen] = useState(false);
+    const [zipCode, setZipCode] = useState("")
+    const [address, setAddress] = useState("")
+    const [addressDetail, setAddressDetail] = useState("")
+    const [receiverName, setReceiverName] = useState("")
+    const [receiverPhone, setReceiverPhone] = useState("")
+
+     // 주소 모달
+     const showModal = () => {
+        setIsOpen(true);
+      };
+    
+      const handleOk = () => {
+        setIsOpen(false);
+      };
+    
+      const handleCancel = () => {
+        setIsOpen(false);
+      };
+    
+    
+      const handleComplete = (data: any) => {
+        console.log(data,"address data")
+        setZipCode(data.zonecode)
+        setAddress(data.address)
+        setIsOpen(false);
+      }
+
+      const onChangeAddressDetail = (event:any) => {
+        setAddressDetail(event.target.value)
+      }
+
+      const onChangeReceiverName = (event:any) => {
+        setReceiverName(event.target.value)
+      }
+
+      const onChangeReceiverPhone = (event:any) => {
+        setReceiverPhone(event.target.value)
+      }
+
     return (
         <S.Wrapper>
             <Head>
@@ -21,66 +64,68 @@ export default function PaymentPresenter(props:any) {
                 ></script>
             </Head>
             <S.PaymentWrapper>
-                <S.PaymentText>결제하기</S.PaymentText>
+                <S.PaymentText>Payment</S.PaymentText>
                 <S.PaymentMainWrapper>
-                    <S.PaymentMainImage></S.PaymentMainImage>
+                    <S.PaymentMainImage>
+                    </S.PaymentMainImage>
 
                     <S.PaymentPriceWrapper>
+                        <S.PaymentSmallTitle>Product name</S.PaymentSmallTitle>
                         <S.PaymentPriceTitle>
-                            컬러풀 키보드 포 디자이너
+                            Product Title
                         </S.PaymentPriceTitle>
 
                         <S.PaymentPriceTableWrapper>
-                            <S.PaymentPriceTableText>
-                                적용한 커스텀 옵션
-                            </S.PaymentPriceTableText>
+                            <S.PaymentPriceTableText>Options</S.PaymentPriceTableText>
                             <S.Row>
-                                <S.ColumnTitle>옵션명</S.ColumnTitle>
-                                <S.ColumnNumber>수량</S.ColumnNumber>
-                                <S.ColumnPrice>가격</S.ColumnPrice>
+                                <S.ColumnTitle>Option</S.ColumnTitle>
+                                <S.ColumnTitle>Qty</S.ColumnTitle>
+                                <S.ColumnTitle>Price</S.ColumnTitle>
                             </S.Row>
                             <S.Row2>
-                                <S.ColumnTitle>기본 키보드</S.ColumnTitle>
-                                <S.ColumnNumber>1</S.ColumnNumber>
-                                <S.ColumnPrice
-                                    style={{
-                                        textAlign: "right",
-                                        paddingRight: "30px",
-                                    }}
-                                >
-                                    20,000
+                                <S.ColumnOption>Origin</S.ColumnOption>
+                                <S.ColumnOty>1</S.ColumnOty>
+                                <S.ColumnPrice>
+                                    60,000
                                 </S.ColumnPrice>
                             </S.Row2>
                             <S.Row2>
-                                <S.ColumnTitle>스페이스 색 변경</S.ColumnTitle>
-                                <S.ColumnNumber>1</S.ColumnNumber>
-                                <S.ColumnPrice
-                                    style={{
-                                        textAlign: "right",
-                                        paddingRight: "30px",
-                                    }}
-                                >
-                                    20,000
+                                <S.ColumnOption>Spacebar</S.ColumnOption>
+                                <S.ColumnOty>1</S.ColumnOty>
+                                <S.ColumnPrice>
+                                    10,000
                                 </S.ColumnPrice>
                             </S.Row2>
                             <S.Row2>
-                                <S.ColumnTitle>자판 색 변경</S.ColumnTitle>
-                                <S.ColumnNumber>1</S.ColumnNumber>
-                                <S.ColumnPrice
-                                    style={{
-                                        textAlign: "right",
-                                        paddingRight: "30px",
-                                    }}
-                                >
+                                <S.ColumnOption>Esc</S.ColumnOption>
+                                <S.ColumnOty>1</S.ColumnOty>
+                                <S.ColumnPrice>
+                                    20,000
+                                </S.ColumnPrice>
+                            </S.Row2>
+
+                            <S.Row2>
+                                <S.ColumnOption>Keypad</S.ColumnOption>
+                                <S.ColumnOty>2</S.ColumnOty>
+                                <S.ColumnPrice>
+                                    30,000
+                                </S.ColumnPrice>
+                            </S.Row2>
+
+                            <S.Row2>
+                                <S.ColumnOption>Enter</S.ColumnOption>
+                                <S.ColumnOty>1</S.ColumnOty>
+                                <S.ColumnPrice>
                                     20,000
                                 </S.ColumnPrice>
                             </S.Row2>
                         </S.PaymentPriceTableWrapper>
 
                         <S.PaymentPriceTotalWrapper>
-                            <S.PaymentPriceTotal>합계</S.PaymentPriceTotal>
+                            <S.PaymentPriceTotal>Total</S.PaymentPriceTotal>
                             <S.PaymentPriceTotalNumber>
-                                120,000<span>원</span>
+                                180,000
+                                {/* <span>원</span> */}
                             </S.PaymentPriceTotalNumber>
                         </S.PaymentPriceTotalWrapper>
                     </S.PaymentPriceWrapper>
@@ -89,93 +134,72 @@ export default function PaymentPresenter(props:any) {
                 <S.PaymentSubWrapper>
                     <S.PaymentSubLeftWrapper>
                         <S.PaymentSubAddressText>
-                            배송지 정보
+                            Shipping Information
                         </S.PaymentSubAddressText>
                         <S.PaymentSubTextWrapper>
-                            <S.Label>수령인</S.Label>
+                            <S.Label>Receiver</S.Label>
                             <S.InputBox
                                 type="text"
                                 placeholder="홍길동"
                                 style={{ width: 379 }}
+                                onChange={onChangeReceiverName}
                             ></S.InputBox>
                         </S.PaymentSubTextWrapper>
 
                         <S.PaymentSubTextWrapper>
-                            <S.Label>연락처</S.Label>
+                            <S.Label>Receiver Phone</S.Label>
                             <S.InputBox
                                 type="text"
-                                placeholder="010"
-                                style={{
-                                    width: 80,
-                                    textAlign: "center",
-                                    padding: "0px",
-                                }}
-                            ></S.InputBox>
-                            <div
-                                style={{
-                                    width: "16px",
-                                    borderBottom: "2px solid #c4c4c4",
-                                    margin: "10px",
-                                }}
-                            />
-                            <S.InputBox
-                                type="text"
-                                placeholder="1234"
-                                style={{
-                                    width: 113,
-                                    textAlign: "center",
-                                    padding: "0px",
-                                }}
-                            ></S.InputBox>
-
-                            <div
-                                style={{
-                                    width: "16px",
-                                    borderBottom: "2px solid #c4c4c4",
-                                    margin: "10px",
-                                }}
-                            />
-                            <S.InputBox
-                                type="text"
-                                placeholder="5678"
-                                style={{
-                                    width: 113,
-                                    textAlign: "center",
-                                    padding: "0px",
-                                }}
+                                placeholder="01012345678"
+                                onChange={onChangeReceiverPhone}
                             ></S.InputBox>
                         </S.PaymentSubTextWrapper>
 
                         <S.PaymentSubTextWrapper>
-                            <S.Label>배송지명</S.Label>
+                            <S.Label>Shipping Address</S.Label>
                             <S.InputBox
                                 type="text"
                                 placeholder="우리집"
-                                style={{ width: 262 }}
                             ></S.InputBox>
                         </S.PaymentSubTextWrapper>
 
                         <S.PaymentSubTextWrapper>
-                            <S.Label>배송 주소</S.Label>
+                            <S.Label>Address</S.Label>
 
                             <S.InputBox
                                 type="text"
                                 placeholder="15338"
                                 style={{ width: 116 }}
+                                value={zipCode}
                             ></S.InputBox>
 
-                            <S.ZipCodeSearchButton>
-                                우편 번호 찾기
+                            <S.ZipCodeSearchButton
+                            onClick={showModal}
+                            >
+                                Find Address
                             </S.ZipCodeSearchButton>
                         </S.PaymentSubTextWrapper>
 
+                        
+                        {isOpen &&
+                            <Modal 
+                                visible={true}     
+                                onOk={handleOk} 
+                                onCancel={handleCancel}
+                                closable={false}
+                                >
+
+                                <DaumPostcode onComplete={handleComplete} />
+                            </Modal>
+                        }
+
                         <S.PaymentSubTextWrapper>
                             <S.Label>{""}</S.Label>
 
                             <S.InputBox
                                 type="text"
-                                placeholder="경기도 안산시 단원구"
-                                style={{ width: 541 }}
+                                placeholder="서울시 행복구 낙원동 1004로"
+                                value={address}
                             ></S.InputBox>
                         </S.PaymentSubTextWrapper>
                         <S.PaymentSubTextWrapper>
@@ -183,76 +207,65 @@ export default function PaymentPresenter(props:any) {
 
                             <S.InputBox
                                 type="text"
-                                placeholder="당곡2로 29"
-                                style={{ width: 541 }}
+                                placeholder="B동 1202호"
+                                defaultValue={addressDetail}
+                                onChange={onChangeAddressDetail}
                             ></S.InputBox>
                         </S.PaymentSubTextWrapper>
                     </S.PaymentSubLeftWrapper>
 
                     <S.PaymentSubRightWrapper>
                         <S.PaymentSubResultText>
-                            결제 상세
+                            Payment Details
                         </S.PaymentSubResultText>
-                        <S.OrderPriceWrapper
-                            style={{
-                                marginBottom: "61px",
-                            }}
-                        >
-                            <S.Label
-                                style={{ fontWeight: "700", fontSize: "20px" }}
-                            >
-                                주문금액
-                            </S.Label>
-                            <S.LabelText
-                                style={{ fontWeight: "700", fontSize: "32px" }}
-                            >
-                                120,000
-                            </S.LabelText>
-                        </S.OrderPriceWrapper>
+                            <S.PaymentSubDiv>
+                                <S.OrderPriceWrapper
+                                    style={{
+                                        padding:"30px 40px",
+                                        borderBottom:"1px solid #fff",
+                                        background:"#2C2C2C",
+                                        borderRadius:"10px 10px 0 0 "
+                                    }}
+                                >
+                                    <S.LabelDetail>
+                                        Total Price
+                                    </S.LabelDetail>
+                                    <S.LabelText>
+                                        180,000
+                                    </S.LabelText>
+                                </S.OrderPriceWrapper>
 
-                        <S.OrderPriceWrapper>
-                            <S.Label
-                                style={{
-                                    fontWeight: "400",
-                                    fontSize: "18px",
-                                    paddingLeft: "30px",
-                                }}
-                            >
-                                상품금액
-                            </S.Label>
-                            <S.LabelText>120,000</S.LabelText>
-                        </S.OrderPriceWrapper>
-                        <S.OrderPriceWrapper>
-                            <S.Label
-                                style={{
-                                    fontWeight: "400",
-                                    fontSize: "18px",
-                                    paddingLeft: "30px",
-                                }}
-                            >
-                                할인
-                            </S.Label>
-                            <S.LabelText>0</S.LabelText>
-                        </S.OrderPriceWrapper>
-                        <S.OrderPriceWrapper style={{ marginBottom: "46px" }}>
-                            <S.Label
-                                style={{
-                                    fontWeight: "400",
-                                    fontSize: "18px",
-                                    paddingLeft: "30px",
-                                }}
-                            >
-                                배송비
-                            </S.Label>
-                            <S.LabelText>무료</S.LabelText>
-                        </S.OrderPriceWrapper>
-                        {/* <S.Line></S.Line> */}
+                                <S.PriceInner>
+                                    <S.OrderPriceWrapper>
+                                        <S.PaymentLabel>
+                                            Product price
+                                        </S.PaymentLabel>
+                                        <S.LabelContent>180,000</S.LabelContent>
+                                    </S.OrderPriceWrapper>
+                                    <S.OrderPriceWrapper>
+                                        
+                                        <S.PaymentLabel>
+                                            Discount
+                                        </S.PaymentLabel>
+                                        <S.CouponDiv>
+                                            <S.Coupon>Available Coupon</S.Coupon>
+                                            <S.LabelContent>0</S.LabelContent>
+                                        </S.CouponDiv>
+                                    </S.OrderPriceWrapper>
+                                    <S.OrderPriceWrapper style={{ border:"none" }}>
+                                        <S.PaymentLabel>
+                                            Shipping Fee
+                                        </S.PaymentLabel>
+                                        <S.LabelContent>Free</S.LabelContent>
+                                    </S.OrderPriceWrapper>
+                                </S.PriceInner>
+                            </S.PaymentSubDiv>
+                                {/* <S.Line></S.Line> */}
+                        <S.PaymentSubmitButton onClick={props.requestPayment}>Payment</S.PaymentSubmitButton>
+                        <S.PaymentCancelButton>Cancel</S.PaymentCancelButton>
+                    
                     </S.PaymentSubRightWrapper>
                 </S.PaymentSubWrapper>
-                <S.ButtonWrapper>
-                    <S.PaymentSubmitButton onClick={props.requestPayment}>결제하기</S.PaymentSubmitButton>
-                    <S.PaymentSubmitButton>돌아가기</S.PaymentSubmitButton>
-                </S.ButtonWrapper>
             </S.PaymentWrapper>
         </S.Wrapper>
     );

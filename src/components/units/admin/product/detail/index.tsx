@@ -1,6 +1,7 @@
-import { gql, useQuery } from "@apollo/client";
+import { gql, useQuery, useMutation } from '@apollo/client';
 import styled from "@emotion/styled";
 import { useRouter } from "next/router";
+import { FETCH_PRODUCTS } from '../../../product/list/ProductList.queries';
 
 const ProductWriteWrapper = styled.div`
     width: 100%;
@@ -99,6 +100,13 @@ const FETCH_PRODUCT = gql`
     }
 `;
 
+const DELETE_PRODUCT = gql`
+    mutation deleteProduct($productId: String!) {
+        deleteProduct(productId: $productId)
+    }
+`;
+
+
 export default function AdminProductDetail() {
     const router = useRouter();
     console.log(router.query.productId,"router");
@@ -107,14 +115,38 @@ export default function AdminProductDetail() {
             productId: router.query.productId,
         },
     });
-    console.log(data);
 
-    const onClickDeleteProduct = () => {
+    const [deleteProduct] = useMutation(DELETE_PRODUCT, {
+        variables: {},
+    });
 
-    }
+    
+    const onClickDeleteProduct = async (e: any) => {
+        console.log("삭제하려고 누른 상품 아이디는?", e.target.id);
 
+        try {
+            await deleteProduct({
+                variables: {
+                    productId: e.target.id,
+                },
+                refetchQueries: [
+                    {
+                        query: FETCH_PRODUCTS,
+                        variables: {
+                            page: 1,
+                        },
+                    },
+                ],
+            });
+            alert("삭제 성공");
+            router.push("/admin/product/")
+
+        } catch (error: any) {
+            alert(error.message);
+        }
+    };
     const moveToEditProduct = () => {
-        console.log(router,"router")
+        // console.log(router,"router")
         router.push(`/admin/product/${router.query.productId}/edit`)
     }
 
