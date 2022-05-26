@@ -1,8 +1,8 @@
 import styled from "@emotion/styled";
 import { EyeOutlined } from "@ant-design/icons";
 
-interface IPropsIsActive{
-    isActive : boolean
+interface IPropsIsActive {
+    isActive: boolean;
 }
 
 export const Container = styled.div`
@@ -84,7 +84,7 @@ export const InfoInput = styled.input`
     }
 `;
 
-export const EmailCheckButton = styled.button<{isWriteEmail:boolean}>`
+export const EmailCheckButton = styled.button<{ isWriteEmail: boolean }>`
     background-color: transparent;
     width: 150px;
     height: 54px;
@@ -92,36 +92,38 @@ export const EmailCheckButton = styled.button<{isWriteEmail:boolean}>`
     /* border: 1px solid #ffffff; */
     border-radius: 6px;
     color: ${(props) => (props.isWriteEmail ? "#b150f2" : " #ffffff")};
-    border: 1px solid ${(props) => (props.isWriteEmail ? "#b150f2" : " #ffffff")};
+    border: 1px solid
+        ${(props) => (props.isWriteEmail ? "#b150f2" : " #ffffff")};
 
     cursor: pointer;
     /* :hover {
         border: 1px solid #b150f2;
         color: #b150f2;
     } */
-`
-
+`;
 
 export const PasswordWatch = styled.div`
     background-color: transparent;
 `;
 
-export const EyeIcon = styled(EyeOutlined)<{ isWrite: boolean }>`
+export const EyeIcon = styled(EyeOutlined)`
     font-size: 20px;
     /* padding-top: 10px; */
 
     cursor: pointer;
 
-    color: ${(props) => (props.isWrite ? "#b150f2" : " #ffffff")};
+    color: ${(props) =>
+        props["data-is-write-password"] ? "#b150f2" : " #ffffff"};
 `;
 
-export const EyeIcon2 = styled(EyeOutlined)<{ isWrite2: boolean }>`
+export const EyeIcon2 = styled(EyeOutlined)`
     font-size: 20px;
     /* padding-top: 10px; */
 
     cursor: pointer;
 
-    color: ${(props) => (props.isWrite2 ? "#b150f2" : " #ffffff")};
+    color: ${(props) =>
+        props["data-is-write-password-check"] ? "#b150f2" : " #ffffff"};
 `;
 
 // export const IDInfoInput = styled.input`
@@ -207,7 +209,7 @@ export const SignUpCancelButton = styled.button`
     line-height: 32px;
     color: #f1f1f1;
     margin-right: 40px;
-     :hover {
+    :hover {
         border: 1px solid #b150f2;
         color: #b150f2;
     }
@@ -215,17 +217,16 @@ export const SignUpCancelButton = styled.button`
 export const SignUpButton = styled.button`
     width: 350px;
     height: 100px;
-    background: #b150f2 ;
+    background: #b150f2;
     border: none;
     font-weight: 700;
     font-size: 32px;
     line-height: 32px;
     /* color: #f1f1f1; */
-    color:  #f1f1f1;
-
+    color: #f1f1f1;
 `;
 
-export const PhoneCheckButton = styled.button<{isWritePhone:boolean}>`
+export const PhoneCheckButton = styled.button<{ isWritePhone: boolean }>`
     background-color: transparent;
     width: 150px;
     height: 54px;
@@ -233,23 +234,24 @@ export const PhoneCheckButton = styled.button<{isWritePhone:boolean}>`
     /* border: 1px solid #ffffff; */
     border-radius: 6px;
     color: ${(props) => (props.isWritePhone ? "#b150f2" : " #f1f1f1")};
-    border: 1px solid ${(props) => (props.isWritePhone ? "#b150f2" : " #f1f1f1")};
+    border: 1px solid
+        ${(props) => (props.isWritePhone ? "#b150f2" : " #f1f1f1")};
 
     cursor: pointer;
     /* :hover {
         border: 1px solid #b150f2;
         color: #b150f2;
     } */
-`
+`;
 
 export const Timer = styled.div`
     width: 150px;
     font-size: 20px;
 
     margin-right: 50px;
-`
+`;
 
-export const CheckTokenButton = styled.button<{isWriteToken:boolean}>`
+export const CheckTokenButton = styled.button<{ isWriteToken: boolean }>`
     background-color: transparent;
     width: 150px;
     height: 54px;
@@ -257,7 +259,8 @@ export const CheckTokenButton = styled.button<{isWriteToken:boolean}>`
     /* border: 1px solid #ffffff; */
     border-radius: 6px;
     color: ${(props) => (props.isWriteToken ? "#b150f2" : " #f1f1f1")};
-    border: 1px solid ${(props) => (props.isWriteToken ? "#b150f2" : " #f1f1f1")};
+    border: 1px solid
+        ${(props) => (props.isWriteToken ? "#b150f2" : " #f1f1f1")};
 
     cursor: pointer;
-`
+`;

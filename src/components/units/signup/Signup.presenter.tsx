@@ -1,7 +1,6 @@
 import { Modal } from "antd";
 import * as S from "./Signup.styles";
-import DaumPostcode from 'react-daum-postcode';
-
+import DaumPostcode from "react-daum-postcode";
 
 export default function SignUpPresenter(props: any) {
     return (
@@ -33,9 +32,12 @@ export default function SignUpPresenter(props: any) {
                             />
 
                             <S.EmailCheckButton
-                             isWriteEmail={props.isWriteEmail} 
-                            type="button" 
-                            onClick={props.onClickCheckEmail}>Check Email</S.EmailCheckButton>
+                                isWriteEmail={props.isWriteEmail}
+                                type="button"
+                                onClick={props.onClickCheckEmail}
+                            >
+                                Check Email
+                            </S.EmailCheckButton>
                         </S.InfoDiv>
                         <S.SignUpError>
                             {props.formState.errors.email?.message}
@@ -44,9 +46,9 @@ export default function SignUpPresenter(props: any) {
                         <S.InfoDiv>
                             <S.InfoText>NickName</S.InfoText>
                             <S.InfoInput
-                            // style={{width:"200px"}}
-                            placeholder="Gill"
-                            {...props.register("nickName")}
+                                // style={{width:"200px"}}
+                                placeholder="Gill"
+                                {...props.register("nickName")}
                             />
                         </S.InfoDiv>
                         <S.SignUpError>
@@ -62,7 +64,12 @@ export default function SignUpPresenter(props: any) {
                                 onChange={props.onChangePassword}
                             />
                             <S.PasswordWatch>
-                                <S.EyeIcon isWrite={props.isWrite} onClick={props.togglePassword}/>
+                                <S.EyeIcon
+                                    data-is-write-password={
+                                        props.isWritePassword
+                                    }
+                                    onClick={props.togglePassword}
+                                />
                             </S.PasswordWatch>
                         </S.InfoDiv>
                         <S.SignUpError>
@@ -78,7 +85,12 @@ export default function SignUpPresenter(props: any) {
                                 onChange={props.onChangePasswordCheck}
                             />
                             <S.PasswordWatch>
-                                <S.EyeIcon2 isWrite2={props.isWrite2} onClick={props.togglePasswordCheck}/>
+                                <S.EyeIcon2
+                                    data-is-write-password-check={
+                                        props.isWritePasswordCheck
+                                    }
+                                    onClick={props.togglePasswordCheck}
+                                />
                             </S.PasswordWatch>
                         </S.InfoDiv>
                         <S.SignUpError>
@@ -90,9 +102,17 @@ export default function SignUpPresenter(props: any) {
                             <S.InfoInputWrapper>
                                 <S.InfoDiv>
                                     <S.ZoncodeWrapper>
-                                        <S.ZoncodeInput readOnly placeholder="14600"  type="text" id="zipCode" 
-                                        value={props.zipCode || ""} />
-                                        <S.ZoncodeButton onClick={props.showModal} type="button">
+                                        <S.ZoncodeInput
+                                            readOnly
+                                            placeholder="14600"
+                                            type="text"
+                                            id="zipCode"
+                                            value={props.zipCode || ""}
+                                        />
+                                        <S.ZoncodeButton
+                                            onClick={props.showModal}
+                                            type="button"
+                                        >
                                             Find Address
                                         </S.ZoncodeButton>
                                     </S.ZoncodeWrapper>
@@ -105,53 +125,59 @@ export default function SignUpPresenter(props: any) {
                                     />
                                 </S.InfoDiv>
                                 <S.InfoDiv>
-                                    <S.InfoInput 
-                                    placeholder="B동 1202호" 
-                                    onChange={props.onChangeAddressDetail}/>
+                                    <S.InfoInput
+                                        placeholder="B동 1202호"
+                                        onChange={props.onChangeAddressDetail}
+                                    />
                                 </S.InfoDiv>
                             </S.InfoInputWrapper>
 
-                            {props.isOpen &&
-                                <Modal 
-                                    visible={true}     
-                                    onOk={props.handleOk} 
-                                    onCancel={props.handleCancel}>
-
-                                    <DaumPostcode onComplete={props.handleComplete} />
+                            {props.isOpen && (
+                                <Modal
+                                    visible={true}
+                                    onOk={props.handleOk}
+                                    onCancel={props.handleCancel}
+                                >
+                                    <DaumPostcode
+                                        onComplete={props.handleComplete}
+                                    />
                                 </Modal>
-                            }
+                            )}
                         </S.InfoDiv>
 
                         <S.InfoDiv>
                             <S.InfoText>Phone</S.InfoText>
-                            <S.InfoInput type="number"
-                            placeholder="숫자만 입력해주세요."
-                            // style={{width:"200px"}}
-                            onChange={props.onChangePhone}
-                            // {...props.register("phone")} 
+                            <S.InfoInput
+                                type="number"
+                                placeholder="숫자만 입력해주세요."
+                                // style={{width:"200px"}}
+                                onChange={props.onChangePhone}
+                                // {...props.register("phone")}
                             />
 
-                            <S.PhoneCheckButton 
-                            type="button" 
-                            isWritePhone={props.isWritePhone}
-                            onClick={props.onClickSendToken}
-
-                            >Send Token</S.PhoneCheckButton>
+                            <S.PhoneCheckButton
+                                type="button"
+                                isWritePhone={props.isWritePhone}
+                                onClick={props.onClickSendToken}
+                            >
+                                Send Token
+                            </S.PhoneCheckButton>
                         </S.InfoDiv>
                         <S.InfoDiv>
                             <S.Timer>
                                 {props.min}:{props.sec}
                             </S.Timer>
-                            <S.InfoInput 
-                            placeholder="인증번호를 입력해주세요."
-                            onChange={props.onChangeToken}
+                            <S.InfoInput
+                                placeholder="인증번호를 입력해주세요."
+                                onChange={props.onChangeToken}
                             />
-                            <S.CheckTokenButton 
-                            isWriteToken={props.isWriteToken} 
-                            onClick={props.onClickCheckToken}>
-                            Check Token
+                            <S.CheckTokenButton
+                                isWriteToken={props.isWriteToken}
+                                onClick={props.onClickCheckToken}
+                            >
+                                Check Token
                             </S.CheckTokenButton>
-                            </S.InfoDiv>
+                        </S.InfoDiv>
                         <S.SignUpError>
                             {props.formState.errors.phone?.message}
                         </S.SignUpError>
@@ -163,9 +189,9 @@ export default function SignUpPresenter(props: any) {
                     <S.SignUpCancelButton onClick={props.moveToHome}>
                         Cancel
                     </S.SignUpCancelButton>
-                    <S.SignUpButton 
-                    disabled={props.isDisabled}
-                   >Sign Up</S.SignUpButton>
+                    <S.SignUpButton disabled={props.isDisabled}>
+                        Sign Up
+                    </S.SignUpButton>
                 </S.SignUpBtnWrapper>
             </S.Container>
         </form>
