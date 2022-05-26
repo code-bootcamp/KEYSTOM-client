@@ -741,7 +741,9 @@ export default function ProductDetailPresenter(props: any) {
               </S.OptionLine>
             </S.OptionTableWrapper>
             <S.AddToCartButton>Add to Cart</S.AddToCartButton>
-            <S.PayNowButton>Pay Now</S.PayNowButton>
+            <S.PayNowButton onClick={props.onClickPayNow}>
+              Pay Now
+            </S.PayNowButton>
           </S.PriceWrapper>
         </S.ProductWrapper>
       </S.Wrapper>
