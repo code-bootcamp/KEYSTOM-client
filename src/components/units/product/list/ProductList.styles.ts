@@ -8,16 +8,15 @@ export const Wrapper = styled.div`
     align-items: center;
 `;
 
-
 export const ListBannerWrapper = styled.div`
-width: 100%;
-height: 360px;
-`
+    width: 100%;
+    height: 360px;
+`;
 
 export const ListBanner = styled.img`
-width: 100%;
-height: 100%;
-`
+    width: 100%;
+    height: 100%;
+`;
 export const SearchWrapper = styled.div`
     width: 100%;
     padding: 50px 340px;
@@ -73,16 +72,19 @@ export const SearchInput = styled.input`
     padding-left: 20px;
     margin-left: 20px;
     color: #ffffff;
+
+    :focus {
+        outline: none;
+    }
 `;
 
 export const SearchText = styled.div`
     width: 100%;
     font-weight: 400;
     font-size: 32px;
-line-height: 38px;
+    line-height: 38px;
 
     padding: 50px 340px;
-
 `;
 
 export const ProductListWrapper = styled.div`
@@ -133,7 +135,7 @@ export const ProductBoxRightWrapper = styled.div`
 export const ProductTitle = styled.div`
     font-weight: 700;
     font-size: 24px;
-line-height: 28px;
+    line-height: 28px;
 
     margin-bottom: 40px;
 `;
@@ -141,7 +143,7 @@ line-height: 28px;
 export const ProductPrice = styled.div`
     font-weight: 700;
     font-size: 32px;
-line-height: 38px;
+    line-height: 38px;
 
     margin-bottom: 24px;
 `;
@@ -149,10 +151,14 @@ line-height: 38px;
 export const ProductContents = styled.div`
     font-weight: 400;
     font-size: 14px;
-line-height: 20px;
-color: #B1B1B1;
+    line-height: 20px;
+    color: #b1b1b1;
 
     /* white-space: nowrap; */
     overflow: hidden;
     text-overflow: ellipsis;
+`;
+
+export const TextToken = styled.span<{ isMatched?: boolean }>`
+    color: ${(props) => (props.isMatched ? "#b150f2" : "#fff")};
 `;
