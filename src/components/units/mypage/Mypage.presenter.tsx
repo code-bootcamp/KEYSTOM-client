@@ -17,7 +17,12 @@ export default function MypagePresenter(props: any) {
           onOk={props.handleOk}
           onCancel={props.handleCancel}
           width={"auto"}
-          bodyStyle={{ width: "900px", padding: "0px", borderRadius: "30px" }}
+          bodyStyle={{
+            width: "503px",
+            padding: "0px",
+            borderRadius: "30px",
+            overflow: "hidden",
+          }}
           cancelButtonProps={{ style: { display: "none" } }}
           okButtonProps={{ style: { display: "none" } }}
           style={{
@@ -33,29 +38,43 @@ export default function MypagePresenter(props: any) {
           keyboard={true}
           closable={true}
         >
-          <S.ModalDiv>
-            <S.MyCouponWrapper>
-              <S.MyCoupon>
-                내 쿠폰 보유함({props.couponsData?.fetchCoupons.length})
-              </S.MyCoupon>
-              <S.MyCouponDesc>
-                한 상품에 한 쿠폰만 적용할 수 있습니다.
-              </S.MyCouponDesc>
-            </S.MyCouponWrapper>
-            <S.MyCouponListWrapper>
-              {props.couponsData?.fetchCoupons.map((el) => (
-                <S.MyCouponList>
-                  <S.MyCouponName>{el.couponName}</S.MyCouponName>
-                  <S.MyCouponDisCount>
-                    {el.discountPrice}원 할인쿠폰
-                  </S.MyCouponDisCount>
-                </S.MyCouponList>
-              ))}
-            </S.MyCouponListWrapper>
-          </S.ModalDiv>
+          {props.couponsData?.fetchCoupons ? (
+            <S.ModalDiv>
+              <S.MyCouponWrapper>
+                <S.MyCoupon>
+                  내 쿠폰 보유함({props.couponsData?.fetchCoupons.length})
+                </S.MyCoupon>
+                <S.MyCouponDesc>
+                  한 상품에 한 쿠폰만 적용할 수 있습니다.
+                </S.MyCouponDesc>
+              </S.MyCouponWrapper>
+              <S.MyCouponListWrapper>
+                {props.couponsData?.fetchCoupons.map((el) => (
+                  <S.MyCouponList>
+                    <S.MyCouponName>{el.couponName}</S.MyCouponName>
+                    <S.MyCouponDisCount>
+                      {el.discountPrice}원 할인쿠폰
+                    </S.MyCouponDisCount>
+                  </S.MyCouponList>
+                ))}
+              </S.MyCouponListWrapper>
+            </S.ModalDiv>
+          ) : (
+            <S.ModalDiv>
+              <S.MyCouponWrapper>
+                <S.MyCoupon>
+                  내 쿠폰 보유함({props.couponsData?.fetchCoupons.length})
+                </S.MyCoupon>
+                <S.MyCouponDesc>
+                  한 상품에 한 쿠폰만 적용할 수 있습니다.
+                </S.MyCouponDesc>
+              </S.MyCouponWrapper>
+              <S.MyCouponList>쿠폰이 없습니다.</S.MyCouponList>
+            </S.ModalDiv>
+          )}
         </Modal>
       ) : (
-        <div>쿠폰 목록이 없습니다.</div>
+        <div></div>
       )}
       <S.Wrapper>
         <S.WrapperContainer>

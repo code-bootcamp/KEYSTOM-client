@@ -653,7 +653,7 @@ function Picker() {
   );
 }
 
-export default function ProductDetailPresenter(props:any) {
+export default function ProductDetailPresenter(props: any) {
   const snap = useSnapshot(state);
 
   return (
@@ -661,7 +661,9 @@ export default function ProductDetailPresenter(props:any) {
       <S.Wrapper>
         <S.ProductWrapper>
           <S.ProductLeftWrapper>
-            <S.AllForDesigner>{props.data?.fetchProduct.title}</S.AllForDesigner>
+            <S.AllForDesigner>
+              {props.data?.fetchProduct.title}
+            </S.AllForDesigner>
             <S.ProductSelectWrapper>
               <S.TwoDColorWrapper>
                 <S.TwoDImage />
@@ -725,12 +727,17 @@ export default function ProductDetailPresenter(props:any) {
                   </S.Option1Count>
                   <S.Option1Price>{length * 6000}</S.Option1Price>
                 </S.Option1Wrapper>
-                <S.TotalAccount>
-                  {length * 6000 +
-                    escLength * 7000 +
-                    spacebarLength * 8000 +
-                    enterLength * 10000}
-                </S.TotalAccount>
+                <S.TotalPriceWrapper>
+                  <S.CouponApplyButton onClick={props.onClickCouponApply}>
+                    쿠폰적용하기
+                  </S.CouponApplyButton>
+                  <S.TotalAccount>
+                    {length * 6000 +
+                      escLength * 7000 +
+                      spacebarLength * 8000 +
+                      enterLength * 10000}
+                  </S.TotalAccount>
+                </S.TotalPriceWrapper>
               </S.OptionLine>
             </S.OptionTableWrapper>
             <S.AddToCartButton>Add to Cart</S.AddToCartButton>
