@@ -237,6 +237,25 @@ export const BoughtListInfo = styled.div`
   border-radius: 10px;
 `;
 
+export const NoBouhtListInfo = styled.div`
+  width: 1240px;
+  height: 104px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  background-color: #2c2c2c;
+  border-radius: 10px;
+
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+
+  color: #ffffff;
+`;
+
 export const BoughtImage = styled.img`
   width: 104px;
   height: 104px;
@@ -500,4 +519,75 @@ export const ProductBuyButton = styled.button`
 
   margin-top: 82px;
   margin-left: 312px;
+`;
+
+export const ModalDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  background-color: #f3f3f3;
+  width: 900px;
+  border-radius: 30px;
+  padding-bottom: 150px;
+  overflow: hidden;
+`;
+
+export const MyCouponWrapper = styled.div`
+  height: 180px;
+  background: #ffffff;
+`;
+
+export const MyCoupon = styled.div`
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 28px;
+
+  color: #1b1b1b;
+
+  margin-top: 100px;
+  margin-left: 40px;
+  margin-bottom: 12px;
+`;
+
+export const MyCouponDesc = styled.div`
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+
+  color: #000000;
+
+  margin-left: 40px;
+  margin-bottom: 20px;
+`;
+
+export const MyCouponListWrapper = styled.div`
+  height: 558px;
+`;
+
+export const MyCouponList = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 443px;
+  height: 60px;
+`;
+
+export const MyCouponName = styled.div`
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 24px;
+
+  color: #ffffff;
+
+  margin-left: 20px;
+`;
+
+export const MyCouponDisCount = styled.div`
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+
+  color: #ffffff;
 `;
