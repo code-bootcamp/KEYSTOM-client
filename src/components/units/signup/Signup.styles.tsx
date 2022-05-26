@@ -1,19 +1,23 @@
 import styled from "@emotion/styled";
 import { EyeOutlined } from "@ant-design/icons";
 
+interface IPropsIsActive{
+    isActive : boolean
+}
+
 export const Container = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
 `;
 export const SignUpContainer = styled.div`
-    width: 1236px;
+    width: 1000px;
     display: flex;
     flex-direction: column;
     /* justify-content: center; */
     align-items: center;
 
-    border-bottom: 2px solid #b1b1b1;
+    border-bottom: 0.1px solid #b1b1b1;
 `;
 
 export const SignUpTitle = styled.div`
@@ -27,13 +31,13 @@ export const SignUpTitle = styled.div`
 
     padding-top: 60px;
     padding-bottom: 60px;
-    border-bottom: 2px solid #b1b1b1;
+    border-bottom: 0.1px solid #b1b1b1;
 `;
 
 export const SignUpContentsWrapper = styled.div`
     display: flex;
     flex-direction: column;
-    width: 666px;
+    width: 750px;
     justify-content: space-between;
     padding-top: 40px;
     padding-bottom: 40px;
@@ -55,53 +59,55 @@ export const InfoDiv = styled.div`
     padding-bottom: 20px;
 `;
 
-export const NameInfoInput = styled.input`
-    width: 379px;
-    height: 54px;
+// export const NameInfoInput = styled.input`
+//     width: 379px;
+//     height: 54px;
 
-    border: none;
-    border-bottom: 1px solid #ffffff;
-    background-color: transparent;
+//     border: none;
+//     border-bottom: 1px solid #ffffff;
+//     background-color: transparent;
 
-    :focus {
-        outline: none;
-    }
-`;
+//     :focus {
+//         outline: none;
+//     }
+// `;
 
 export const InfoInput = styled.input`
-    width: 400px;
+    width: 340px;
     height: 54px;
-
+    font-size: 16px;
     border: none;
     border-bottom: 1px solid #ffffff;
     background-color: transparent;
-
     :focus {
         outline: none;
     }
 `;
 
-export const EmailCheckButton = styled.button`
+export const EmailCheckButton = styled.button<{isWriteEmail:boolean}>`
     background-color: transparent;
     width: 150px;
     height: 54px;
-
-    border: 1px solid #ffffff;
+    margin-left: 20px;
+    /* border: 1px solid #ffffff; */
     border-radius: 6px;
+    color: ${(props) => (props.isWriteEmail ? "#b150f2" : " #ffffff")};
+    border: 1px solid ${(props) => (props.isWriteEmail ? "#b150f2" : " #ffffff")};
 
     cursor: pointer;
-    :hover {
+    /* :hover {
         border: 1px solid #b150f2;
         color: #b150f2;
-    }
+    } */
 `
+
 
 export const PasswordWatch = styled.div`
     background-color: transparent;
 `;
 
 export const EyeIcon = styled(EyeOutlined)<{ isWrite: boolean }>`
-    font-size: 24px;
+    font-size: 20px;
     /* padding-top: 10px; */
 
     cursor: pointer;
@@ -110,7 +116,7 @@ export const EyeIcon = styled(EyeOutlined)<{ isWrite: boolean }>`
 `;
 
 export const EyeIcon2 = styled(EyeOutlined)<{ isWrite2: boolean }>`
-    font-size: 24px;
+    font-size: 20px;
     /* padding-top: 10px; */
 
     cursor: pointer;
@@ -118,18 +124,18 @@ export const EyeIcon2 = styled(EyeOutlined)<{ isWrite2: boolean }>`
     color: ${(props) => (props.isWrite2 ? "#b150f2" : " #ffffff")};
 `;
 
-export const IDInfoInput = styled.input`
-    width: 379px;
-    height: 54px;
+// export const IDInfoInput = styled.input`
+//     width: 379px;
+//     height: 54px;
 
-    border: none;
-    border-bottom: 1px solid #ffffff;
-    background-color: transparent;
+//     border: none;
+//     border-bottom: 1px solid #ffffff;
+//     background-color: transparent;
 
-    :focus {
-        outline: none;
-    }
-`;
+//     :focus {
+//         outline: none;
+//     }
+// `;
 
 export const InfoText = styled.div`
     width: 150px;
@@ -195,20 +201,63 @@ export const SignUpCancelButton = styled.button`
     width: 350px;
     height: 100px;
     background: #1b1b1b;
-    border: 1px solid #b150f2;
-    font-weight: 700;
-    font-size: 32px;
-    line-height: 32px;
-    color: #b150f2;
-    margin-right: 40px;
-`;
-export const SignUpButton = styled.button`
-    width: 350px;
-    height: 100px;
-    background: #b150f2;
-    border: none;
+    border: 1px solid #f1f1f1;
     font-weight: 700;
     font-size: 32px;
     line-height: 32px;
     color: #f1f1f1;
+    margin-right: 40px;
+     :hover {
+        border: 1px solid #b150f2;
+        color: #b150f2;
+    }
 `;
+export const SignUpButton = styled.button`
+    width: 350px;
+    height: 100px;
+    background: #b150f2 ;
+    border: none;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 32px;
+    /* color: #f1f1f1; */
+    color:  #f1f1f1;
+
+`;
+
+export const PhoneCheckButton = styled.button<{isWritePhone:boolean}>`
+    background-color: transparent;
+    width: 150px;
+    height: 54px;
+    margin-left: 20px;
+    /* border: 1px solid #ffffff; */
+    border-radius: 6px;
+    color: ${(props) => (props.isWritePhone ? "#b150f2" : " #f1f1f1")};
+    border: 1px solid ${(props) => (props.isWritePhone ? "#b150f2" : " #f1f1f1")};
+
+    cursor: pointer;
+    /* :hover {
+        border: 1px solid #b150f2;
+        color: #b150f2;
+    } */
+`
+
+export const Timer = styled.div`
+    width: 150px;
+    font-size: 20px;
+
+    margin-right: 50px;
+`
+
+export const CheckTokenButton = styled.button<{isWriteToken:boolean}>`
+    background-color: transparent;
+    width: 150px;
+    height: 54px;
+    margin-left: 20px;
+    /* border: 1px solid #ffffff; */
+    border-radius: 6px;
+    color: ${(props) => (props.isWriteToken ? "#b150f2" : " #f1f1f1")};
+    border: 1px solid ${(props) => (props.isWriteToken ? "#b150f2" : " #f1f1f1")};
+
+    cursor: pointer;
+`

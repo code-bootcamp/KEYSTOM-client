@@ -18,3 +18,15 @@ export const CHECK_EMAIL = gql`
         checkEmail(email: $email)
     }
 `
+
+export const SEND_TOKEN = gql`
+    mutation sendToken($phone: String! ){
+        sendToken(phone:$phone)
+    }
+`
+
+export const CHECK_TOKEN = gql`
+    mutation checkToken($token: String! ){
+        checkToken(token: $token)
+    }
+`
