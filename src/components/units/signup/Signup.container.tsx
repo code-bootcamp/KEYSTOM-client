@@ -4,7 +4,7 @@ import { useMutation } from "@apollo/client";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { useState } from "react";
+import { useState, useEffect } from 'react';
 import { CREATE_USER, CHECK_EMAIL, SEND_TOKEN, CHECK_TOKEN } from './Signup.queries';
 import { Modal } from "antd";
 
@@ -72,10 +72,10 @@ export default function SignUpContainer() {
     const [address, setAddress] = useState("")
     const [addressDetail, setAddressDetail] = useState("")
 
-    const [isStarted, setIsStarted] = useState(false)
     const [isDisabled, setIsDisabled] = useState(true)
-    const [time, setTime] = useState(60)
-    const [timer, setTimer] = useState(null)
+    // const [time, setTime] = useState(120)
+    // const [timer, setTimer] = useState(null)
+
 
     const { register, handleSubmit, formState } = useForm({
         resolver: yupResolver(schema),
@@ -108,8 +108,6 @@ export default function SignUpContainer() {
 
       const onChangePhone = (event:any) => {
             setPhone(event.target.value)
-        //   console.log(event.target.value)
-        //   console.log(phone)
         if(event.target.value){
             setIsWritePhone(true)
         }else{
@@ -167,27 +165,25 @@ export default function SignUpContainer() {
         }
     }
 
+    let time = 180
+    let min = String(Math.floor(time/60)).padStart(2, "0")
+    let sec = String(time % 60).padStart(2, "0")
+
+    const Timer = () => {
+         setInterval(function() {
+            if (time >= 0) {
+                console.log(min + ":" + sec)
+                time = time - 1
+            }
+        }, 1000)
+    }
+
     const onClickSendToken = async() => {
+        Timer()
         try{
             await sendToken({variables:{phone}})
-
-            if(!isStarted){
-                setIsStarted(true)
-                setInterval(function(){
-                    if(time >= 0){
-                        setTime((prev)=>(prev-1))
-                        setIsDisabled(false)
-                    }else{
-                      setIsDisabled(true)
-                      setIsStarted(false)
-                      clearInterval()
-                    }
-                },1000)
-                Modal.success({content:"인증번호를 전송하였습니다!"})
-
-            }else{
-                Modal.error({content:"타이머가 이미 동작중입니다."})
-            }
+            // Timer()
+            
         }catch(error:any){
             Modal.error({content:error.message})
         }
@@ -199,7 +195,6 @@ export default function SignUpContainer() {
             console.log("result token",result)
             Modal.success({content:"인증을 성공하였습니다!"})
             setIsDisabled(true)
-            setIsStarted(false)
             clearInterval()
 
         }catch(error:any){
@@ -293,7 +288,8 @@ export default function SignUpContainer() {
             onClickCheckToken={onClickCheckToken}
 
             isDisabled={isDisabled}
-            time={time}
+            min={min}
+            sec={sec}
         />
     );
 }

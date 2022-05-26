@@ -139,7 +139,9 @@ export default function SignUpPresenter(props: any) {
                             >Send Token</S.PhoneCheckButton>
                         </S.InfoDiv>
                         <S.InfoDiv>
-                            <S.Timer>{props.time}</S.Timer>
+                            <S.Timer>
+                                {props.min}:{props.sec}
+                            </S.Timer>
                             <S.InfoInput 
                             placeholder="인증번호를 입력해주세요."
                             onChange={props.onChangeToken}
