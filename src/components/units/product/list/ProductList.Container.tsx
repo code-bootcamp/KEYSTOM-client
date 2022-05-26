@@ -1,17 +1,22 @@
 import { useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
+import { useState } from "react";
 import ProductListPresenter from "./ProductList.Presenter";
-import { FETCH_PRODUCTS } from './ProductList.queries';
-
-
+import { FETCH_PRODUCTS, FETCH_PRODUCT_ROW_COUNT } from "./ProductList.queries";
 
 export default function ProductListContainer() {
-    const { data, fetchMore } = useQuery(FETCH_PRODUCTS,{
-        variables:{
-            page:1
-        }
-    });
     const router = useRouter();
+    const [keyword, setKeyword] = useState("");
+
+    const { data, fetchMore, refetch } = useQuery(FETCH_PRODUCTS, {
+        variables: {
+            page: 1,
+        },
+    });
+
+    const { data: productCount, refetch: refetchProductCount } = useQuery(
+        FETCH_PRODUCT_ROW_COUNT
+    );
 
     const onLoadMore = () => {
         if (!data) return;
@@ -30,15 +35,22 @@ export default function ProductListContainer() {
             },
         });
     };
-    console.log(data);
-    console.log(router);
     const onClickMoveToDetail = (e: any) => {
         router.push(`/store/${e.target.id}`);
+    };
+
+    const onChangeKeyword = (value: string) => {
+        setKeyword(value);
     };
 
     return (
         <ProductListPresenter
             data={data}
+            refetch={refetch}
+            productCount={productCount}
+            refetchProductCount={refetchProductCount}
+            onChangeKeyword={onChangeKeyword}
+            keyword={keyword}
             onLoadMore={onLoadMore}
             onClickMoveToDetail={onClickMoveToDetail}
         ></ProductListPresenter>

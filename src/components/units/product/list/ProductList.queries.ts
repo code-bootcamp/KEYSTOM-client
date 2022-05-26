@@ -1,19 +1,24 @@
-import { gql } from '@apollo/client';
-
+import { gql } from "@apollo/client";
 
 export const FETCH_PRODUCTS = gql`
-query fetchProducts($page: Float) {
-    fetchProducts(page: $page) {
-        id
-        title
-        description
-        price
-        like
-        createdAt
-        productTags {
+    query fetchProducts($page: Float) {
+        fetchProducts(page: $page) {
             id
-            tag
+            title
+            description
+            price
+            like
+            createdAt
+            productTags {
+                id
+                tag
+            }
         }
     }
-}
+`;
+
+export const FETCH_PRODUCT_ROW_COUNT = gql`
+    query fetchProductRowCount {
+        fetchProductRowCount
+    }
 `;

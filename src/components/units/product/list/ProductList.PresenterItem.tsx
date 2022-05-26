@@ -1,4 +1,5 @@
 import * as S from "./ProductList.styles";
+import { v4 as uuidv4 } from "uuid";
 
 export default function ProductListPresenterItem(props: any) {
     return (
@@ -18,14 +19,47 @@ export default function ProductListPresenterItem(props: any) {
             )}
 
             <S.ProductBoxRightWrapper>
-                <S.ProductTitle>Title{props.el.title}</S.ProductTitle>
+                <S.ProductTitle>
+                    {props.el.title
+                        .replaceAll(props.keyword, `#$%${props.keyword}#$%`)
+                        .split("#$%")
+                        .map((el: any) => (
+                            <S.TextToken
+                                key={uuidv4()}
+                                isMatched={props.keyword === el}
+                            >
+                                {el}
+                            </S.TextToken>
+                        ))}
+                </S.ProductTitle>
                 {/* <S.ProductTitle>&gt;</S.ProductTitle> */}
                 <S.ProductPrice>
-                    {props.el.price?.toLocaleString()}
+                    {props.el.price
+                        ?.toLocaleString()
+                        .replaceAll(props.keyword, `#$%${props.keyword}#$%`)
+                        .split("#$%")
+                        .map((el: any) => (
+                            <S.TextToken
+                                key={uuidv4()}
+                                isMatched={props.keyword === el}
+                            >
+                                {el}
+                            </S.TextToken>
+                        ))}
                     {/* <span>원</span> */}
                 </S.ProductPrice>
                 <S.ProductContents>
-                    {props.el.description}
+                    {props.el.description
+                        .replaceAll(props.keyword, `#$%${props.keyword}#$%`)
+                        .split("#$%")
+                        .map((el: any) => (
+                            <S.TextToken
+                                key={uuidv4()}
+                                isMatched={props.keyword === el}
+                            >
+                                {el}
+                            </S.TextToken>
+                        ))}
                 </S.ProductContents>
             </S.ProductBoxRightWrapper>
         </S.ProductBox>
