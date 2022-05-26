@@ -62,6 +62,7 @@ const FooterBottomSpan = styled.span`
   font-size: 18px;
 line-height: 24px;
 padding-right: 74px;
+cursor:pointer;
 `
 
 
@@ -116,7 +117,7 @@ export default function LayoutFooter() {
 
               <FooterMidDiv>
                 <FooterMidTitle>Email</FooterMidTitle>
-                <FooterMidContent>F12developers@gmail.com</FooterMidContent>
+                <FooterMidContent>Keystom@gmail.com</FooterMidContent>
               </FooterMidDiv>
 
               <FooterMidDiv>

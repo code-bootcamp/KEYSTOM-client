@@ -115,7 +115,7 @@ export default function AdminProductList() {
         },
     });
 
-    console.log("fetchdata", data?.fetchProducts[0]);
+    console.log("fetchdata", data?.fetchProducts);
 
     const moveToDetail = (event: any) => {
         router.push(`/admin/product/${event.target.id}`);
@@ -146,7 +146,7 @@ export default function AdminProductList() {
     };
 
     const moveToEdit = () => {
-        router.push("/admin/product/write/edit")
+        router.push(`/admin/product/${router.query.productId}/edit`)
     }
 
     return (
@@ -163,9 +163,11 @@ export default function AdminProductList() {
                     >
                         {idx + 1}
                     </ListItemTitle>
-                    <ListItemInner onClick={moveToDetail} id={el.id}>
+                    <ListItemInner >
                         <ListItemDiv>
                             <ListItemImage
+                            onClick={moveToDetail}
+                            id={el.id}
                                 src={
                                     el.thumbnail
                                         ? `https://storage.googleapis.com/${el.thumbnail}`
@@ -176,8 +178,14 @@ export default function AdminProductList() {
 
                         <ListItemDivWrapper>
                             <ListItemDiv>
-                                <ListItemTitle>Title</ListItemTitle>
-                                <ListItemContents>{el.title}</ListItemContents>
+                                <ListItemTitle 
+                                onClick={moveToDetail}
+                                id={el.id}
+                                >Title</ListItemTitle>
+                                <ListItemContents 
+                                onClick={moveToDetail}
+                                id={el.id}
+                                >{el.title}</ListItemContents>
                             </ListItemDiv>
                             <ListItemDiv>
                                 <ListItemTitle>Description</ListItemTitle>
@@ -197,7 +205,7 @@ export default function AdminProductList() {
                                 <ListItemDiv style={{ paddingRight: "40px" }}>
                                     <ListItemTitle>Created At</ListItemTitle>
                                     <ListItemContents>
-                                        {el.createdAt}
+                                        {el.createdAt.slice(0,10)}
                                     </ListItemContents>
                                 </ListItemDiv>
                                 <ListItemDiv>

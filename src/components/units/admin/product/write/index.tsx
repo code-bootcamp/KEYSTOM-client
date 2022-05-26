@@ -1,8 +1,10 @@
-import { gql, useMutation } from "@apollo/client";
+import { gql, useMutation, useQuery } from '@apollo/client';
 import styled from '@emotion/styled';
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import { v4 as uuidv4 } from "uuid";
 import UploadFileAdminPage from "../../../../commons/uploadfile-admin";
+import { useRouter } from 'next/router';
+import { Modal } from 'antd';
 
 const ProductWriteWrapper = styled.div`
 width: 100%;
@@ -71,7 +73,7 @@ const Tag = styled.div`
 
 const SmallInput = styled.input`
     width: 200px;
-    height: 30px;
+    height: 50px;
     border-radius: 10px;
     line-height: 30px;
     padding: 10px;
@@ -121,9 +123,24 @@ const CREATE_PRODUCT = gql`
     }
 `;
 
-const FETCH_PRODUCT = gql`
-    query fetchProduct()
+const UPDATE_PRODUCT = gql`
+    mutation updateProduct($productId: String! $updateProductInput: UpdateProductInput!){
+        updateProduct(productId: $productId updateProductInput:$updateProductInput){
+            id
+            title
+            description
+            price
+            like
+            createdAt
+            thumbnail
+            productTags{
+                id
+                tag
+            }
+        }
+    }
 `
+
 
 export default function AdminProductWrite(props:any) {
     const [title, setTitle] = useState("")
@@ -133,6 +150,9 @@ export default function AdminProductWrite(props:any) {
     const [imageUrls, setImageUrls] = useState(["","",""])
 
     const [createProduct] = useMutation(CREATE_PRODUCT);
+    const [updateProduct] = useMutation(UPDATE_PRODUCT);
+
+    const router = useRouter()
 
 
     const onChangeTitle = (event:any) => {
@@ -154,9 +174,6 @@ export default function AdminProductWrite(props:any) {
         setImageUrls(newFile)
     }
 
-
-
-
     const onKeyUpHash = (event: any) => {
         if (event.keyCode === 32 && event.target.value !== "") {
           setHashArr([...hashArr, "#" + event.target.value]);
@@ -169,6 +186,19 @@ export default function AdminProductWrite(props:any) {
         hashArr.splice(Number(event.target.id), 1);
         setHashArr([...hashArr]);
       };
+
+      useEffect(() => {
+        if (props.data?.fetchProduct?.productTags?.tag.length) {
+          setHashArr([...props.data?.fetchProduct?.productTags?.tag]);
+        }
+      }, [props.data]);
+
+      useEffect(()=>{
+        if(props.data?.fetchProduct.thumbnail?.length){
+            setImageUrls([...props.data?.fetchProduct.thumbnail])
+        }
+      },[props.data?.fetchProduct.thumbnail])
+  
 
 
     const onClickSubmit = async () => {
@@ -191,13 +221,37 @@ export default function AdminProductWrite(props:any) {
         }
     };
 
+    
+    const onClickUpdateProduct = async() => {
+        try{
+            await updateProduct({
+                variables:{
+                    productId:router.query.id,
+                    updateProductInput:{
+                        title,
+                        description,
+                        price:Number(price),
+                        imageUrls,
+                        productTags:hashArr
+                    }
+                }
+            })
+            Modal.success({content:"업데이트 완료"})
+            router.push("/admin/product")
+
+        }catch(error:any){
+            Modal.error({content:error.message})
+        }
+     
+    }
+
     return (
         <ProductWriteWrapper>
             <Title>{props.isEdit ?"Edit" : "Create"} Product</Title>
             <InputWrapper>
-                <Inputs placeholder="title" onChange={onChangeTitle} type="text" />
-                <Inputs placeholder="description" onChange={onChangeDescription} type="text"/>
-                <Inputs placeholder="price" onChange={onChangePrice} type="number"/>
+               Title <Inputs placeholder="title" onChange={onChangeTitle} type="text" defaultValue={props.data?.fetchProduct.title}/>
+               Description <Inputs placeholder="description" onChange={onChangeDescription} type="text" defaultValue={props.data?.fetchProduct.description}/>
+               Price <Inputs placeholder="price" onChange={onChangePrice} type="number" defaultValue={props.data?.fetchProduct.price}/>
             </InputWrapper>
                 <InputWrapper>
                     <SmallTitle>ProductTags</SmallTitle>
@@ -226,7 +280,7 @@ export default function AdminProductWrite(props:any) {
                 ))}
             </ImageWrapper>
 
-            <SubmitButton onClick={onClickSubmit}>{props.isEdit ? "Edit" : "Submit"}</SubmitButton>
+            <SubmitButton onClick={props.isEdit ? onClickUpdateProduct : onClickSubmit}>{props.isEdit ? "Edit" : "Submit"}</SubmitButton>
         </ProductWriteWrapper>
     );
 }
