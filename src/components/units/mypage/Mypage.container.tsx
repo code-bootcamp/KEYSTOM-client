@@ -53,15 +53,30 @@ const FETCH_USER_ORDER = gql`
 export default function MypageContainer() {
   const [baskets, setBaskets] = useState("");
   const [isBasket, setIsBasket] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const router = useRouter();
   const { data } = useQuery(FETCH_USER_LOGGED_IN);
   const { data: couponsData } = useQuery(FETCH_COUPONS);
-  const { data: couponData } = useQuery(FETCH_COUPON);
+  const { data: couponData } = useQuery(FETCH_COUPON, {
+    variables: {
+      couponId: String(router.query.couponId),
+    },
+  });
   const { data: orderData } = useQuery(FETCH_USER_ORDER);
 
+  const [isSeeCoupon, setIsSeeCoupon] = useState(false);
+
+  const handleOK = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
+
   //   console.log("로그인 유저", data);
-  console.log("쿠폰데이터", couponsData);
+  //   console.log("쿠폰데이터", couponsData);
 
   useEffect(() => {
     const basketsArr = JSON.parse(localStorage.getItem("baskets") || "[]");
@@ -85,18 +100,8 @@ export default function MypageContainer() {
     setIsBasket((prev) => !prev);
   };
 
-  const onClickSeeCoupon = async (e) => {
-    try {
-      const result = await couponData({
-        variables: {
-          couponId: String(e.target.id),
-        },
-      });
-
-      console.log(result);
-    } catch (error) {
-      alert(error instanceof Error);
-    }
+  const onClickSeeCoupon = () => {
+    setIsModalOpen(true);
   };
 
   return (
@@ -108,6 +113,10 @@ export default function MypageContainer() {
       onClickDeleteBasket={onClickDeleteBasket}
       baskets={baskets}
       onClickSeeCoupon={onClickSeeCoupon}
+      isSeeCoupon={isSeeCoupon}
+      handleOK={handleOK}
+      handleCancel={handleCancel}
+      isModalOpen={isModalOpen}
     />
   );
 }
