@@ -563,6 +563,7 @@ export const MyCouponDesc = styled.div`
 
 export const MyCouponListWrapper = styled.div`
   height: 558px;
+  margin-top: 30px;
 `;
 
 export const MyCouponList = styled.div`
@@ -570,17 +571,26 @@ export const MyCouponList = styled.div`
   flex-direction: row;
   width: 443px;
   height: 60px;
+
+  background: #ffffff;
+  border: 1px solid #b1b1b1;
+  border-radius: 6px;
+
+  margin-left: 30px;
+  margin-bottom: 10px;
 `;
 
 export const MyCouponName = styled.div`
   font-style: normal;
-  font-weight: 700;
+  font-weight: 400;
   font-size: 18px;
   line-height: 24px;
 
-  color: #ffffff;
+  color: #b1b1b1;
 
   margin-left: 20px;
+  margin-top: auto;
+  margin-bottom: auto;
 `;
 
 export const MyCouponDisCount = styled.div`
@@ -589,5 +599,9 @@ export const MyCouponDisCount = styled.div`
   font-size: 14px;
   line-height: 20px;
 
-  color: #ffffff;
+  color: #b1b1b1;
+
+  margin-left: 148px;
+  margin-top: auto;
+  margin-bottom: auto;
 `;

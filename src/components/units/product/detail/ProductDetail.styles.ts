@@ -193,6 +193,15 @@ export const Option1Wrapper = styled.div`
   border-bottom: 1px solid #ffffff;
 `;
 
+export const TotalPriceWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const CouponApplyButton = styled.button`
+  margin-top: 10px;
+`;
+
 export const Option1Name = styled.div`
   width: 70px;
 

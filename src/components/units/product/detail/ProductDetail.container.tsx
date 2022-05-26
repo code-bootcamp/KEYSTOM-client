@@ -16,11 +16,17 @@ const FETCH_PRODUCT = gql`
   }
 `;
 
+const FETCH_USER_COUPON = gql`
+  query fetchUserCoupons($email: String!) {
+    fetchUserCoupons(email: $email) {
+      id
+    }
+  }
+`;
+
 export default function ProductDetailContainer() {
   const router = useRouter();
   const [isBasket, setIsBasket] = useState(false);
-
-  console.log("여기" + router.query.productId);
 
   const { data } = useQuery(FETCH_PRODUCT, {
     variables: {
@@ -74,10 +80,14 @@ export default function ProductDetailContainer() {
     setIsBasket((prev) => !prev);
   };
 
+  // 쿠폰 적용
+  const onClickCouponApply = () => {};
+
   return (
     <ProductDetailPresenter
       onClickBasket={onClickBasket}
       onClickDelete={onClickDelete}
+      onClickCouponApply={onClickCouponApply}
       isBasket={isBasket}
       data={data}
     />
