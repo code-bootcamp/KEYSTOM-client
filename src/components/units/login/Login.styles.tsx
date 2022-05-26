@@ -8,12 +8,12 @@ export const LoginWrapper = styled.div`
 `;
 
 export const Wrapper = styled.div`
-    width: 503px;
+    /* width: 503px; */
     display: flex;
     flex-direction: column;
     margin: 0 auto;
     background: #ffffff;
-    box-shadow: 0px 5px 7px rgba(0, 0, 0, 0.07);
+    /* box-shadow: 0px 5px 7px rgba(0, 0, 0, 0.07); */
     border-radius: 30px;
     padding: 20px 60px 47px 60px;
 `;
