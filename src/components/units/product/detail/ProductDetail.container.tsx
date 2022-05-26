@@ -83,11 +83,17 @@ export default function ProductDetailContainer() {
   // 쿠폰 적용
   const onClickCouponApply = () => {};
 
+  // 결제하기
+  const onClickPayNow = () => {
+    router.push("/payment");
+  };
+
   return (
     <ProductDetailPresenter
       onClickBasket={onClickBasket}
       onClickDelete={onClickDelete}
       onClickCouponApply={onClickCouponApply}
+      onClickPayNow={onClickPayNow}
       isBasket={isBasket}
       data={data}
     />

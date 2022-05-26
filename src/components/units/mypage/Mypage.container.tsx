@@ -37,14 +37,15 @@ const FETCH_COUPON = gql`
   }
 `;
 
-const FETCH_USER_ORDER = gql`
-  query fetchUserOrder {
-    fetchUserOrder {
+const FETCH_ORDERS = gql`
+  query fetchOrders {
+    fetchOrders {
       id
-      count
       price
-      receiverName
-      receiverPhone
+      product {
+        title
+        thumbnail
+      }
       createdAt
     }
   }
@@ -63,7 +64,9 @@ export default function MypageContainer() {
       couponId: String(router.query.couponId),
     },
   });
-  const { data: orderData } = useQuery(FETCH_USER_ORDER);
+  const { data: orderData } = useQuery(FETCH_ORDERS);
+
+  console.log("주문데이터", orderData?.fetchOrders);
 
   const [isSeeCoupon, setIsSeeCoupon] = useState(false);
 

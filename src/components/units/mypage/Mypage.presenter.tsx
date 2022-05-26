@@ -133,10 +133,12 @@ export default function MypagePresenter(props: any) {
 
           <S.MiddleWrapper>
             <S.BoughtList>My Order History</S.BoughtList>
-            {props.orderData?.fetchUserOrder ? (
-              props.orderData?.fetchUserOrder.map((el) => (
-                <S.BoughtListInfo>
-                  <S.BoughtImage src="./images/mypurchaselist_img1.png" />
+            {props.orderData?.fetchOrders.length !== 0 ? (
+              props.orderData?.fetchOrders.map((el) => (
+                <S.BoughtListInfo key={el.id}>
+                  <S.BoughtImage
+                    src={`https://storage.googleapis.com/${el.product.thumbnail}`}
+                  />
                   <S.BoughtName></S.BoughtName>
 
                   <S.BoughtDateWrapper>
