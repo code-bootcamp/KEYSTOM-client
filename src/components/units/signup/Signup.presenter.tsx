@@ -1,6 +1,7 @@
 import { Modal } from "antd";
 import * as S from "./Signup.styles";
 import DaumPostcode from "react-daum-postcode";
+import TimerPage from "./timer";
 
 export default function SignUpPresenter(props: any) {
     return (
@@ -164,13 +165,20 @@ export default function SignUpPresenter(props: any) {
                             </S.PhoneCheckButton>
                         </S.InfoDiv>
                         <S.InfoDiv>
-                            <S.Timer>
+                            {/* <S.Timer>
                                 {String(Math.floor(props.sec / 60)).padStart(
                                     2,
                                     "0"
                                 )}
                                 :{String(props.sec % 60).padStart(2, "0")}
-                            </S.Timer>
+                            </S.Timer> */}
+                            {props.timerStart ? (
+                                <TimerPage
+                                    setTimerStart={props.setTimerStart}
+                                ></TimerPage>
+                            ) : (
+                                <S.Timer></S.Timer>
+                            )}
                             <S.InfoInput
                                 placeholder="인증번호를 입력해주세요."
                                 onChange={props.onChangeToken}
@@ -178,6 +186,7 @@ export default function SignUpPresenter(props: any) {
                                 disabled={true}
                             />
                             <S.CheckTokenButton
+                                type="button"
                                 isWriteToken={props.isWriteToken}
                                 onClick={props.onClickCheckToken}
                             >

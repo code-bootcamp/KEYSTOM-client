@@ -66,6 +66,8 @@ export default function SignUpContainer() {
     const [isWriteEmail, setIsWriteEmail] = useState(false);
     const [isWritePhone, setIsWritePhone] = useState(false);
     const [isWriteToken, setIsWriteToken] = useState(false);
+    const [timerStart, setTimerStart] = useState(false);
+    const [tokenStatus, setTokenStatus] = useState(false);
 
     const [passwordType, setPasswordType] = useState("password");
     const [passwordCheckType, setPasswordCheckType] = useState("password");
@@ -100,7 +102,7 @@ export default function SignUpContainer() {
         } else {
             setIsWriteEmail(false);
         }
-        // setEmail(event.target.value)
+        setEmail(event.target.value);
     };
 
     const onChangePassword = (e: any) => {
@@ -133,7 +135,7 @@ export default function SignUpContainer() {
     };
 
     const onChangeToken = (event: any) => {
-        setToken(event.target.value);
+        setToken(String(event.target.value));
         if (event.target.value) {
             setIsWriteToken(true);
         } else {
@@ -162,7 +164,7 @@ export default function SignUpContainer() {
             alert("성공");
             router.push("/");
         } catch (error: any) {
-            alert("실패");
+            alert("가입 실패");
             console.log(JSON.stringify(error, null, 2));
         }
     };
@@ -197,26 +199,14 @@ export default function SignUpContainer() {
     // },[sec])
     // console.log(sec);
 
-    const Timer = () => {
-        const timer = setInterval(() => {
-            if (sec >= 0) {
-                setSec((prev) => prev - 1);
-                console.log("in", sec);
-            } else if (sec === -1) {
-                clearInterval(timer);
-            }
-        }, 1000);
-    };
-    console.log("out", sec);
-
     const onClickSendToken = async () => {
         try {
             await sendToken({ variables: { phone } });
-            // Timer()
             alert("휴대폰 번호 전송!");
             if (tokenInputRef.current) tokenInputRef.current.disabled = false;
             if (tokenInputRef.current) tokenInputRef.current.focus();
-            Timer();
+            setTimerStart(true);
+            // Timer();
         } catch (error: any) {
             Modal.error({ content: error.message });
         }
@@ -227,7 +217,9 @@ export default function SignUpContainer() {
             const result = await checkToken({ variables: { token } });
             console.log("result token", result);
             Modal.success({ content: "인증을 성공하였습니다!" });
-            setIsDisabled(true);
+            if (tokenInputRef.current) tokenInputRef.current.disabled = true;
+            setTokenStatus(true);
+            setIsDisabled(false);
             clearInterval();
         } catch (error: any) {
             Modal.error({ content: error.message });
@@ -309,8 +301,10 @@ export default function SignUpContainer() {
             onClickCheckToken={onClickCheckToken}
             isDisabled={isDisabled}
             // min={min}
-            sec={sec}
+            // sec={sec}
             tokenInputRef={tokenInputRef}
+            timerStart={timerStart}
+            setTimerStart={setTimerStart}
         />
     );
 }
