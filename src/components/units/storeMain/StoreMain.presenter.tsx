@@ -74,22 +74,22 @@ function HideBottomContentsFunc({ children, timeline }) {
   return <S.HideBottomContents ref={el}>{children}</S.HideBottomContents>;
 }
 
-// 시작하기 버튼
-function HideButtonFunc({ children, timeline }) {
-  const el = useRef();
+// // 시작하기 버튼
+// function HideButtonFunc({ children, timeline }) {
+//   const el = useRef();
 
-  useEffect(() => {
-    timeline &&
-      timeline.from(el.current, {
-        duration: 0.5,
-        x: "0%",
-        opacity: 0,
-        delay: 0.5,
-      });
-  });
+//   useEffect(() => {
+//     timeline &&
+//       timeline.from(el.current, {
+//         duration: 0.5,
+//         x: "0%",
+//         opacity: 0,
+//         delay: 0.5,
+//       });
+//   });
 
-  return <S.HideButton ref={el}>{children}</S.HideButton>;
-}
+//   return <S.HideButton ref={el}>{children}</S.HideButton>;
+// }
 
 const ReviewArr = [
   {
@@ -140,7 +140,7 @@ export default function StorePresenter() {
               <HideBottomContentsFunc timeline={tl}>
                 F12에서 진정한 자유를 만나보세요.
               </HideBottomContentsFunc>
-              <HideButtonFunc timeline={tl}>시작하기</HideButtonFunc>
+              {/* <HideButtonFunc timeline={tl}>시작하기</HideButtonFunc> */}
             </S.PreloaderChild>
           </Preloader>
         </S.PreloaderWrapper>
@@ -176,7 +176,9 @@ export default function StorePresenter() {
                         />
                     </div> */}
           <S.ImageWrapper>
-            <S.MainImage></S.MainImage>
+            <S.MainImage>
+              <LayoutHeader></LayoutHeader>
+            </S.MainImage>
           </S.ImageWrapper>
 
           <S.ImageWrapper>

@@ -7,7 +7,6 @@ export const accessTokenState = atom({
   default: "",
 });
 
-
 export const isLoadedState = atom({
   key: "isLoadedState",
   default: "",
@@ -21,11 +20,6 @@ export const userInfoState = atom({
   },
 });
 
-// export const visitedPageState = atom({
-//   key: "visitedPageState",
-//   default: "/",
-// });
-
 export const restoreAccessTokenLoadable = selector({
   key: "restoreAccessTokenLoadable",
   get: async () => {
@@ -34,8 +28,19 @@ export const restoreAccessTokenLoadable = selector({
   },
 });
 
+export const paymentProductId = atom({
+  key: "paymentProductId",
+  default: {
+    productId: "",
+  },
+});
+
+// export const visitedPageState = atom({
+//   key: "visitedPageState",
+//   default: "/",
+// });
+
 // export const recentItemList = atom({
 //   key: "TodayItemList",
 //   default: false,
 // });
-
