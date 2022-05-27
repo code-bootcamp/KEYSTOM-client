@@ -48,3 +48,22 @@ export const FETCH_ORDERS = gql`
     }
   }
 `;
+
+export const FETCH_USER_HAVE_COUPONS = gql`
+  query fetchUserHaveCoupons {
+    fetchUserHaveCoupons {
+      id
+      email {
+        email
+        name
+        nickName
+      }
+      coupon {
+        id
+        discountPrice
+        couponName
+      }
+      createdAt
+    }
+  }
+`;

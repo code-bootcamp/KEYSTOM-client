@@ -1,7 +1,12 @@
 import PaymentPresenter from "./Payment.presenter";
 import { useMutation, useQuery } from "@apollo/client";
-import { PAYMENT, FETCH_ORDERS } from "./Payment.queries";
+import {
+  PAYMENT,
+  FETCH_ORDERS,
+  FETCH_USER_HAVE_COUPONS,
+} from "./Payment.queries";
 import { Modal } from "antd";
+import { useState } from "react";
 
 declare const window: typeof globalThis & {
   IMP: any;
@@ -10,6 +15,22 @@ declare const window: typeof globalThis & {
 export default function PaymentContainer() {
   const [payment] = useMutation(PAYMENT);
   const { data } = useQuery(FETCH_ORDERS);
+  const { data: couponData } = useQuery(FETCH_USER_HAVE_COUPONS);
+  const [isClickedModal, setIsClickedModal] = useState(false);
+
+  console.log("쿠폰데이터2", couponData?.fetchUserHaveCoupons.length);
+
+  const handleOK = () => {
+    setIsClickedModal(false);
+  };
+
+  const handleCancel = () => {
+    setIsClickedModal(false);
+  };
+
+  const onClickAvailableCoupon = () => {
+    setIsClickedModal(true);
+  };
 
   const requestPayment = () => {
     const IMP = window.IMP;
@@ -57,5 +78,15 @@ export default function PaymentContainer() {
       }
     );
   };
-  return <PaymentPresenter requestPayment={requestPayment} />;
+  return (
+    <PaymentPresenter
+      requestPayment={requestPayment}
+      onClickAvailableCoupon={onClickAvailableCoupon}
+      data={data}
+      couponData={couponData}
+      isClickedModal={isClickedModal}
+      handleOK={handleOK}
+      handleCancel={handleCancel}
+    />
+  );
 }
