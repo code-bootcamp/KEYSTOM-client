@@ -8,10 +8,12 @@ const FETCH_USER_LOGGED_IN = gql`
     fetchUserLoggedIn {
       address
       addressDetail
+      zipCode
       user {
         email
         name
         nickName
+        profileImage
       }
     }
   }
@@ -69,6 +71,8 @@ export default function MypageContainer() {
   console.log("주문데이터", orderData?.fetchOrders);
 
   const [isSeeCoupon, setIsSeeCoupon] = useState(false);
+
+  console.log("loggedInUser", data)
 
   const handleOK = () => {
     setIsModalOpen(false);
