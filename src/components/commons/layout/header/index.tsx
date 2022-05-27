@@ -100,7 +100,8 @@ const IconWrapper = styled.div`
 `;
 
 const UserIcon = styled.img`
-  width: 100%;
+  width: 22px;
+  height: 22px;
   cursor: pointer;
 `;
 const BasketWrapper = styled.div`

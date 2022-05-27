@@ -20,35 +20,6 @@ export const FETCH_USER = gql`
   }
 `;
 
-export const FETCH_ORDERS = gql`
-  query fetchOrders {
-    fetchOrders {
-      id
-      count
-      price
-      receiverName
-      receiverPhone
-      address {
-        address
-        addressDetail
-        zipCode
-      }
-
-      user {
-        email
-        name
-      }
-
-      product {
-        id
-        title
-        description
-        price
-      }
-    }
-  }
-`;
-
 export const FETCH_USER_HAVE_COUPONS = gql`
   query fetchUserHaveCoupons {
     fetchUserHaveCoupons {
@@ -64,6 +35,33 @@ export const FETCH_USER_HAVE_COUPONS = gql`
         couponName
       }
       createdAt
+    }
+  }
+`;
+
+export const FETCH_PRODUCT = gql`
+  query fetchProduct($productId: String!) {
+    fetchProduct(productId: $productId) {
+      id
+      title
+      price
+      thumbnail
+    }
+  }
+`;
+
+export const FETCH_USER_LOGGED_IN = gql`
+  query fetchUserLoggedIn {
+    fetchUserLoggedIn {
+      id
+      address
+      addressDetail
+      zipCode
+      user {
+        email
+        name
+        nickName
+      }
     }
   }
 `;

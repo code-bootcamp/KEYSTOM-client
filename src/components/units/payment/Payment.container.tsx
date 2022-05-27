@@ -2,34 +2,83 @@ import PaymentPresenter from "./Payment.presenter";
 import { useMutation, useQuery } from "@apollo/client";
 import {
   PAYMENT,
-  FETCH_ORDERS,
+  FETCH_PRODUCT,
   FETCH_USER_HAVE_COUPONS,
+  FETCH_USER_LOGGED_IN,
 } from "./Payment.queries";
 import { Modal } from "antd";
 import { useState } from "react";
+import { useRecoilState } from "recoil";
+import { paymentProductId } from "../../commons/store";
 
 declare const window: typeof globalThis & {
   IMP: any;
 };
 
 export default function PaymentContainer() {
-  const [payment] = useMutation(PAYMENT);
-  const { data } = useQuery(FETCH_ORDERS);
-  const { data: couponData } = useQuery(FETCH_USER_HAVE_COUPONS);
+  const [productId, setProductId] = useRecoilState(paymentProductId);
   const [isClickedModal, setIsClickedModal] = useState(false);
 
-  console.log("쿠폰데이터2", couponData?.fetchUserHaveCoupons.length);
+  const [isOpen, setIsOpen] = useState(false);
+  const [zipCode, setZipCode] = useState("");
+  const [address, setAddress] = useState("");
+  const [addressDetail, setAddressDetail] = useState("");
+  const [receiverName, setReceiverName] = useState("");
+  const [receiverPhone, setReceiverPhone] = useState("");
 
-  const handleOK = () => {
+  const [payment] = useMutation(PAYMENT);
+  const { data: couponData } = useQuery(FETCH_USER_HAVE_COUPONS);
+  const { data: productData } = useQuery(FETCH_PRODUCT, {
+    variables: {
+      productId: productId,
+    },
+  });
+  const { data: userData } = useQuery(FETCH_USER_LOGGED_IN);
+
+  console.log("프로덕트데이터", productData);
+
+  const couponHandleOK = () => {
     setIsClickedModal(false);
   };
 
-  const handleCancel = () => {
+  const couponHandleCancel = () => {
     setIsClickedModal(false);
   };
 
   const onClickAvailableCoupon = () => {
     setIsClickedModal(true);
+  };
+
+  // 주소 모달
+  const showModal = () => {
+    setIsOpen(true);
+  };
+
+  const handleOk = () => {
+    setIsOpen(false);
+  };
+
+  const handleCancel = () => {
+    setIsOpen(false);
+  };
+
+  const handleComplete = (data: any) => {
+    console.log(data, "address data");
+    setZipCode(data.zonecode);
+    setAddress(data.address);
+    setIsOpen(false);
+  };
+
+  const onChangeAddressDetail = (event: any) => {
+    setAddressDetail(event.target.value);
+  };
+
+  const onChangeReceiverName = (event: any) => {
+    setReceiverName(event.target.value);
+  };
+
+  const onChangeReceiverPhone = (event: any) => {
+    setReceiverPhone(event.target.value);
   };
 
   const requestPayment = () => {
@@ -39,10 +88,10 @@ export default function PaymentContainer() {
       {
         pg: "html5_inicis",
         pay_method: "card",
-        name: data?.fetchOrders?.product?.title,
-        amount: data?.fetchOrders?.product?.price,
-        buyer_email: data?.fetchOrders?.user?.email,
-        buyer_name: data?.fetchOrders?.user?.name,
+        name: productData?.fetchProduct?.title,
+        amount: productData?.fetchProduct?.price,
+        buyer_email: userData?.fetchUserLoggedIn?.user?.email,
+        buyer_name: userData?.fetchUserLoggedIn?.user?.name,
         m_redirect_url: "http://localhost:3000/myPage",
       },
       (rsp: any) => {
@@ -51,19 +100,20 @@ export default function PaymentContainer() {
           payment({
             variables: {
               createPaymentInput: {
-                price: data?.fetchOrders?.product?.price,
+                price: productData?.fetchProduct?.price,
                 impUid: rsp.imp_uid,
                 order: {
-                  count: data?.fetchOrders?.count,
-                  price: data?.fetchOrders?.product?.price,
+                  count: 1,
+                  price: productData?.fetchProduct?.price,
                   address: {
-                    address: data?.fetchOrders?.address?.address,
-                    addressDetail: data?.fetchOrders?.address?.addressDetail,
-                    zipcode: data?.fetchOrders?.address?.zipCode,
+                    address: address,
+                    addressDetail: addressDetail,
+                    zipCode: zipCode,
+                    email: String(userData?.fetchUserLoggedIn?.user?.email),
                   },
-                  receiverName: data?.fetchOrders?.receiverName,
-                  receiverPhone: data?.fetchOrders?.receiverPhone,
-                  productId: data?.fetchOrders?.product?.id,
+                  receiverName: receiverName,
+                  receiverPhone: receiverPhone,
+                  productId: productId,
                 },
               },
             },
@@ -81,12 +131,22 @@ export default function PaymentContainer() {
   return (
     <PaymentPresenter
       requestPayment={requestPayment}
-      onClickAvailableCoupon={onClickAvailableCoupon}
-      data={data}
+      productData={productData}
       couponData={couponData}
+      couponHandleOK={couponHandleOK}
+      couponHandleCancel={couponHandleCancel}
+      onClickAvailableCoupon={onClickAvailableCoupon}
       isClickedModal={isClickedModal}
-      handleOK={handleOK}
+      showModal={showModal}
+      handleOK={handleOk}
       handleCancel={handleCancel}
+      handleComplete={handleComplete}
+      onChangeAddressDetail={onChangeAddressDetail}
+      onChangeReceiverName={onChangeReceiverName}
+      onChangeReceiverPhone={onChangeReceiverPhone}
+      isOpen={isOpen}
+      zipCode={zipCode}
+      address={address}
     />
   );
 }
