@@ -1,381 +1,464 @@
 import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 export const PaymentWrapper = styled.div`
-    width: 1240px;
+  width: 1240px;
 
-    padding-top: 100px;
-    /* padding-bottom: 200px; */
+  padding-top: 100px;
+  /* padding-bottom: 200px; */
 `;
 
 export const PaymentText = styled.div`
-    width: 100%;
+  width: 100%;
 
-    font-weight: 700;
-    font-size: 32px;
+  font-weight: 700;
+  font-size: 32px;
 
-    margin-bottom: 22px;
+  margin-bottom: 22px;
 `;
 
 export const PaymentMainWrapper = styled.div`
-    width: 100%;
+  width: 100%;
 
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 
-    padding-bottom: 60px;
-    border-bottom: 1px solid #c4c4c4;
+  padding-bottom: 60px;
+  border-bottom: 1px solid #c4c4c4;
 `;
 
 export const PaymentMainImage = styled.div`
-    width: 640px;
-    height: 556px;
-    background-image: url("/images/payment/payment-img.png");
-    background-position: center;
-    background-size: cover;
+  width: 640px;
+  height: 556px;
+  background-image: url("/images/payment/payment-img.png");
+  background-position: center;
+  background-size: cover;
 
-    border-radius: 10px;
+  border-radius: 10px;
 
-    margin-right: 40px;
+  margin-right: 40px;
 `;
 
 export const PaymentPriceWrapper = styled.div`
-    width: 570px;
-    display: flex;
-    flex-direction: column;
+  width: 570px;
+  display: flex;
+  flex-direction: column;
 `;
 
 export const PaymentSmallTitle = styled.div`
-font-size: 18px;
-line-height: 24px;
-color: #B1B1B1;
-`
+  font-size: 18px;
+  line-height: 24px;
+  color: #b1b1b1;
+`;
 
 export const PaymentPriceTitle = styled.div`
-    font-weight: 700;
-    font-size: 32px;
+  font-weight: 700;
+  font-size: 32px;
 
-    margin-bottom: 39px;
+  margin-bottom: 39px;
 `;
 
 export const PaymentPriceTableWrapper = styled.div`
-    /* height: 300px; */
+  /* height: 300px; */
 
-    font-weight: 400;
-    font-size: 24px;
+  font-weight: 400;
+  font-size: 24px;
 `;
 
 export const PaymentPriceTableText = styled.div`
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 24px;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
 
-    margin-bottom: 20px;
-    color: #B1B1B1;
+  margin-bottom: 20px;
+  color: #b1b1b1;
 
-    /* border-bottom: 2px solid #c4c4c4; */
+  /* border-bottom: 2px solid #c4c4c4; */
 `;
 
 export const Row = styled.div`
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    height: 49px;
-    align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 49px;
+  align-items: center;
 
-    text-align: center;
+  text-align: center;
 
-    border-top: 0.5px solid #B1B1B1;
-    border-bottom: 0.5px solid #B1B1B1;
+  border-top: 0.5px solid #b1b1b1;
+  border-bottom: 0.5px solid #b1b1b1;
 
-    padding-top: 14px;
-    padding-bottom: 14px;
-    background: #2C2C2C;
+  padding-top: 14px;
+  padding-bottom: 14px;
+  background: #2c2c2c;
 `;
 
 export const Row2 = styled.div`
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    height: 61px;
-    align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 61px;
+  align-items: center;
 
-    text-align: center;
+  text-align: center;
 
-    border-bottom: 0.5px solid #B1B1B1;
+  border-bottom: 0.5px solid #b1b1b1;
 
-    padding-top: 14px;
-    padding-bottom: 14px;
+  padding-top: 14px;
+  padding-bottom: 14px;
 `;
 
 export const ColumnTitle = styled.div`
-    width: 140px;
-    font-weight: 700;
-    font-size: 14px;
-    line-height: 20px;
-    padding-top: 16px;
-    padding-bottom: 16px;
-    text-align: center;
+  width: 140px;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 20px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  text-align: center;
 `;
 
 export const ColumnOption = styled.div`
-width: 200px;
-font-size: 14px;
-line-height: 20px;
-text-align: left;
-padding-left: 50px;
-`
+  width: 200px;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: left;
+  padding-left: 50px;
+`;
 
 export const ColumnOty = styled.div`
-width: 50px;
-text-align: center;
-font-size: 14px;
-line-height: 20px;
-`
+  width: 50px;
+  text-align: center;
+  font-size: 14px;
+  line-height: 20px;
+`;
 
 export const ColumnPrice = styled.div`
-width: 200px;
-text-align: right;
-padding-right: 50px;
-font-size: 18px;
-line-height: 24px;
-`
+  width: 200px;
+  text-align: right;
+  padding-right: 50px;
+  font-size: 18px;
+  line-height: 24px;
+`;
 
 export const PaymentPriceTotalWrapper = styled.div`
-    /* width: 100%; */
+  /* width: 100%; */
 
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
 
-    margin-right: 28px;
+  margin-right: 28px;
 
-    align-items: center;
-    margin-top: 19px;
+  align-items: center;
+  margin-top: 19px;
 `;
 
 export const PaymentPriceTotal = styled.div`
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 24px;
-    padding-right: 10px;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  padding-right: 10px;
 `;
 
 export const PaymentPriceTotalNumber = styled.div`
-    font-size: 28px;
-    line-height: 41px;
-    text-align: right;
+  font-size: 28px;
+  line-height: 41px;
+  text-align: right;
 `;
 
 export const PaymentSubWrapper = styled.div`
-    width: 100%;
+  width: 100%;
 
-    display: flex;
-    flex-direction: row;
-    /* border-bottom: 1px solid #c4c4c4; */
+  display: flex;
+  flex-direction: row;
+  /* border-bottom: 1px solid #c4c4c4; */
 `;
 
 export const PaymentSubLeftWrapper = styled.div`
-    width: 800px;
+  width: 800px;
 
-    /* height: 665px; */
+  /* height: 665px; */
 
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 
-    border-right: 1px solid #c4c4c4;
+  border-right: 1px solid #c4c4c4;
 
-    padding: 60px 60px 250px 0;
+  padding: 60px 60px 250px 0;
 `;
 
 export const PaymentSubAddressText = styled.div`
-    width: 100%;
+  width: 100%;
 
-    font-weight: 700;
-    font-size: 32px;
+  font-weight: 700;
+  font-size: 32px;
 
-    margin-bottom: 50px;
+  margin-bottom: 50px;
 `;
 
 export const PaymentSubTextWrapper = styled.div`
-    width: 100%;
+  width: 100%;
 
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 `;
 
 export const Label = styled.div`
-    width: 200px;
-    font-size: 20px;
-    line-height: 24px;
-    padding-bottom: 30px;
+  width: 200px;
+  font-size: 20px;
+  line-height: 24px;
+  padding-bottom: 30px;
 `;
 
 export const InputBox = styled.input`
-    width: 379px;
-    height: 50px;
-    font-size: 18px;
-    line-height: 24px;
-    background-color: #1b1b1b;
-    border-bottom: 1px solid #f1f1f1;
-    border-top: none;
-    border-left: none;
-    border-right: none;
-    margin-bottom: 20px;
-    color: #f1f1f1;
-
+  width: 379px;
+  height: 50px;
+  font-size: 18px;
+  line-height: 24px;
+  background-color: #1b1b1b;
+  border-bottom: 1px solid #f1f1f1;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  margin-bottom: 20px;
+  color: #f1f1f1;
 `;
 
 export const PhoneHyphen = styled.div`
-    width: 14px;
-    border-bottom: 0.5px solid #c4c4c4;
-    margin: 10px;
-
-`
+  width: 14px;
+  border-bottom: 0.5px solid #c4c4c4;
+  margin: 10px;
+`;
 
 export const InputBoxTextWrapper = styled.div`
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 `;
 
 export const ZipCodeSearchButton = styled.button`
-    width: 160px;
-    height: 50px;
+  width: 160px;
+  height: 50px;
 
-    background-color: #1b1b1b;
-    border: 1px solid #f1f1f1;
-    color: #f1f1f1;
+  background-color: #1b1b1b;
+  border: 1px solid #f1f1f1;
+  color: #f1f1f1;
 
-    font-size: 20px;
+  font-size: 20px;
 
-    margin-left: 20px;
+  margin-left: 20px;
 
+  :hover {
+    border: 1px solid #b150f2;
+    color: #b150f2;
+  }
 
-    :hover {
-        border: 1px solid #B150F2;
-        color: #B150F2;
-    }
-
-    cursor: pointer;
+  cursor: pointer;
 `;
 
 export const PaymentSubRightWrapper = styled.div`
-    width: 500px;
-    padding: 50px;
-
+  width: 500px;
+  padding: 50px;
 `;
 
 export const PaymentSubResultText = styled.div`
-    width: 100%;
-    font-weight: 700;
-    font-size: 24px;
-    line-height: 28px;
+  width: 100%;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 28px;
 
-    margin-bottom: 50px;
+  margin-bottom: 50px;
 `;
 
 export const PaymentSubDiv = styled.div`
-    width: 400px;
-    border: 1px solid #FFFFFF;
-    border-radius: 10px;
-    margin-bottom: 40px;
-
-
-`
+  width: 400px;
+  border: 1px solid #ffffff;
+  border-radius: 10px;
+  margin-bottom: 40px;
+`;
 
 export const OrderPriceWrapper = styled.div`
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 
-    padding-top: 23px;
-    padding-bottom: 23px;
-    border-bottom: 0.5px solid #f1f1f1;
+  padding-top: 23px;
+  padding-bottom: 23px;
+  border-bottom: 0.5px solid #f1f1f1;
 `;
 
 export const PriceInner = styled.div`
-padding-left: 40px;
-padding-right: 40px;
-`
+  padding-left: 40px;
+  padding-right: 40px;
+`;
 
 export const PaymentLabel = styled.div`
-font-size: 18px;
-`
+  font-size: 18px;
+`;
 
 export const CouponDiv = styled.div`
-display: flex;
-justify-content: space-between;
-width: 150px;
-`
+  display: flex;
+  justify-content: space-between;
+  width: 150px;
+`;
 
 export const Coupon = styled.div`
-display: flex;
-align-items: center;
-justify-content: center;
-width: 130px;
-height: 30px;
-background: #B150F2;
-border-radius: 4px;
-text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 130px;
+  height: 30px;
+  background: #b150f2;
+  border-radius: 4px;
+  text-align: center;
 
-font-size: 14px;
-line-height: 20px;
+  font-size: 14px;
+  line-height: 20px;
 
-cursor: pointer;
-`
+  cursor: pointer;
+`;
 
 export const LabelContent = styled.div`
-    font-size: 16px;
-    line-height: 24px;
-`
+  font-size: 16px;
+  line-height: 24px;
+`;
 export const LabelDetail = styled.div`
-    font-weight: 700;
-    font-size: 22px;
-`
+  font-weight: 700;
+  font-size: 22px;
+`;
 
 export const LabelText = styled.div`
-    font-weight: 700;
-    font-size: 32px;
-    line-height: 47px;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 47px;
 `;
 
 export const Line = styled.div`
-    font-weight: 400;
-    font-size: 20px;
+  font-weight: 400;
+  font-size: 20px;
 
-    /* margin-top: 30px; */
-    border-bottom: 1px solid #c4c4c4; ;
+  /* margin-top: 30px; */
+  border-bottom: 1px solid #c4c4c4; ;
 `;
 
 export const PaymentSubmitButton = styled.button`
-    width: 100%;
-    height: 80px;
+  width: 100%;
+  height: 80px;
 
-    font-weight: 700;
-    font-size: 24px;
-    line-height: 28px;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 28px;
 
-    margin-bottom: 20px;
-    border: none;
+  margin-bottom: 20px;
+  border: none;
 
-    background: #B150F2;
-
+  background: #b150f2;
 `;
 
 export const PaymentCancelButton = styled.button`
-    width: 100%;
-    height: 80px;
-    font-weight: 700;
-    font-size: 24px;
-    line-height: 28px;
-`
+  width: 100%;
+  height: 80px;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 28px;
+`;
+
+export const ModalDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  background-color: #f3f3f3;
+  width: 900px;
+  border-radius: 30px;
+  padding-bottom: 150px;
+  overflow: hidden;
+`;
+
+export const MyCouponWrapper = styled.div`
+  height: 180px;
+  background: #ffffff;
+`;
+
+export const MyCoupon = styled.div`
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 28px;
+
+  color: #1b1b1b;
+
+  margin-top: 100px;
+  margin-left: 40px;
+  margin-bottom: 12px;
+`;
+
+export const MyCouponDesc = styled.div`
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+
+  color: #000000;
+
+  margin-left: 40px;
+  margin-bottom: 20px;
+`;
+
+export const MyCouponListWrapper = styled.div`
+  height: 558px;
+  margin-top: 30px;
+`;
+
+export const MyCouponList = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 443px;
+  height: 60px;
+
+  background: #ffffff;
+  border: 1px solid #b1b1b1;
+  border-radius: 6px;
+
+  margin-left: 30px;
+  margin-bottom: 10px;
+`;
+
+export const MyCouponName = styled.div`
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+
+  color: #b1b1b1;
+
+  margin-left: 20px;
+  margin-top: auto;
+  margin-bottom: auto;
+`;
+
+export const MyCouponDisCount = styled.div`
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+
+  color: #b1b1b1;
+
+  margin-left: 148px;
+  margin-top: auto;
+  margin-bottom: auto;
+`;
+
+export const NoCouponList = styled.div`
+  margin-left: 200px;
+  margin-top: 200px;
+`;
