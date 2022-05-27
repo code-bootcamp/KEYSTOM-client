@@ -4,7 +4,7 @@ import { useMutation } from "@apollo/client";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import {
     CREATE_USER,
     CHECK_EMAIL,
@@ -83,6 +83,11 @@ export default function SignUpContainer() {
     const [isDisabled, setIsDisabled] = useState(true);
     // const [time, setTime] = useState(120)
     // const [timer, setTimer] = useState(null)
+
+    // const [min, setMin] = useState();
+    const [sec, setSec] = useState(5);
+
+    const tokenInputRef = useRef<HTMLInputElement>();
 
     const { register, handleSubmit, formState } = useForm({
         resolver: yupResolver(schema),
@@ -173,24 +178,44 @@ export default function SignUpContainer() {
         }
     };
 
-    let time = 180;
-    let min = String(Math.floor(time / 60)).padStart(2, "0");
-    let sec = String(time % 60).padStart(2, "0");
+    // let min = String(Math.floor(time / 60)).padStart(2, "0");
+    // let sec = String(time % 60).padStart(2, "0");
+
+    // const Timer = () => {
+    //     const timer = setInterval(() => {
+    //         if (sec > 0) {
+    //             setSec((prev) => prev - 1);
+    //             console.log(sec);
+    //         }
+    //     }, 1000);
+    // };
+
+    // useEffect(() => {
+    //     if(sec === 0)
+    //     clearInterval();
+
+    // },[sec])
+    // console.log(sec);
 
     const Timer = () => {
-        setInterval(function () {
-            if (time >= 0) {
-                console.log(min + ":" + sec);
-                time = time - 1;
+        const timer = setInterval(() => {
+            if (sec >= 0) {
+                setSec((prev) => prev - 1);
+                console.log("in", sec);
+            } else if (sec === -1) {
+                clearInterval(timer);
             }
         }, 1000);
     };
+    console.log("out", sec);
 
     const onClickSendToken = async () => {
         try {
             await sendToken({ variables: { phone } });
             // Timer()
             alert("휴대폰 번호 전송!");
+            if (tokenInputRef.current) tokenInputRef.current.disabled = false;
+            if (tokenInputRef.current) tokenInputRef.current.focus();
             Timer();
         } catch (error: any) {
             Modal.error({ content: error.message });
@@ -283,8 +308,9 @@ export default function SignUpContainer() {
             onChangeToken={onChangeToken}
             onClickCheckToken={onClickCheckToken}
             isDisabled={isDisabled}
-            min={min}
+            // min={min}
             sec={sec}
+            tokenInputRef={tokenInputRef}
         />
     );
 }
