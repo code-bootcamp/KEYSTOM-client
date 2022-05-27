@@ -133,10 +133,10 @@ const UPDATE_PRODUCT = gql`
             like
             createdAt
             thumbnail
-            productTags{
-                id
-                tag
-            }
+            # productTags{
+            #     id
+            #     tag
+            # }
         }
     }
 `
@@ -194,7 +194,7 @@ export default function AdminProductWrite(props:any) {
       }, [props.data]);
 
       useEffect(()=>{
-        if(props.data?.fetchProduct.thumbnail?.length){
+        if(props.data?.fetchProduct.thumbnail){
             setImageUrls([...props.data?.fetchProduct.thumbnail])
         }
       },[props.data?.fetchProduct.thumbnail])
@@ -226,7 +226,7 @@ export default function AdminProductWrite(props:any) {
         try{
             await updateProduct({
                 variables:{
-                    productId:router.query.id,
+                    productId:router.query.productId,
                     updateProductInput:{
                         title,
                         description,
