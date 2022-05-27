@@ -8,10 +8,12 @@ const FETCH_USER_LOGGED_IN = gql`
     fetchUserLoggedIn {
       address
       addressDetail
+      zipCode
       user {
         email
         name
         nickName
+        profileImage
       }
     }
   }
