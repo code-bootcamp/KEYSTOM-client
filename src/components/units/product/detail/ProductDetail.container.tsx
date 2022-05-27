@@ -1,7 +1,10 @@
-import { gql, useQuery } from "@apollo/client";
+import { gql, useMutation, useQuery } from "@apollo/client";
+import { Modal } from "antd";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import ProductDetailPresenter from "../detail/ProductDetail.presenter";
+import { paymentProductId } from "../../../commons/store";
+import { useRecoilState } from "recoil";
 
 const FETCH_PRODUCT = gql`
   query fetchProduct($productId: String!) {
@@ -24,9 +27,20 @@ const FETCH_USER_COUPON = gql`
   }
 `;
 
+const CREATE_EVENT_COUPON = gql`
+  mutation createEventCoupon {
+    createEventCoupon {
+      id
+    }
+  }
+`;
+
 export default function ProductDetailContainer() {
   const router = useRouter();
   const [isBasket, setIsBasket] = useState(false);
+  const [productId, setProductId] = useRecoilState(paymentProductId);
+
+  const [getCoupon] = useMutation(CREATE_EVENT_COUPON);
 
   const { data } = useQuery(FETCH_PRODUCT, {
     variables: {
@@ -84,8 +98,20 @@ export default function ProductDetailContainer() {
   const onClickCouponApply = () => {};
 
   // 결제하기
-  const onClickPayNow = () => {
+  const onClickPayNow = (e) => {
+    setProductId(e.target.id);
     router.push("/payment");
+  };
+
+  const onClickGetCoupon = async () => {
+    try {
+      const result = await getCoupon({});
+      console.log("쿠폰리절트", result);
+    } catch (error) {
+      Modal.error({
+        content: "이미 쿠폰을 발급받았습니다.",
+      });
+    }
   };
 
   return (
@@ -94,6 +120,7 @@ export default function ProductDetailContainer() {
       onClickDelete={onClickDelete}
       onClickCouponApply={onClickCouponApply}
       onClickPayNow={onClickPayNow}
+      onClickGetCoupon={onClickGetCoupon}
       isBasket={isBasket}
       data={data}
     />

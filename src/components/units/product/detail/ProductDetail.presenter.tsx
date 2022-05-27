@@ -731,6 +731,7 @@ export default function ProductDetailPresenter(props: any) {
                   <S.CouponApplyButton onClick={props.onClickCouponApply}>
                     쿠폰적용하기
                   </S.CouponApplyButton>
+                  <button onClick={props.onClickGetCoupon}>쿠폰발급받기</button>
                   <S.TotalAccount>
                     {length * 6000 +
                       escLength * 7000 +
@@ -741,7 +742,10 @@ export default function ProductDetailPresenter(props: any) {
               </S.OptionLine>
             </S.OptionTableWrapper>
             <S.AddToCartButton>Add to Cart</S.AddToCartButton>
-            <S.PayNowButton onClick={props.onClickPayNow}>
+            <S.PayNowButton
+              onClick={props.onClickPayNow}
+              id={props.data?.fetchProduct?.id}
+            >
               Pay Now
             </S.PayNowButton>
           </S.PriceWrapper>

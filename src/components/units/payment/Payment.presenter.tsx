@@ -1,55 +1,9 @@
 import { Modal } from "antd";
 import Head from "next/head";
-import { useState } from "react";
 import * as S from "./Payment.styles";
 import DaumPostcode from "react-daum-postcode";
 
-// const arr = [
-//   { optionCode: 1, optionNumber: 1, optionPrice: 100000 },
-//   { optionCode: 2, optionNumber: 1, optionPrice: 10000 },
-//   { optionCode: 3, optionNumber: 5, optionPrice: 10000 },
-// ];
-
 export default function PaymentPresenter(props: any) {
-  const [isOpen, setIsOpen] = useState(false);
-  const [zipCode, setZipCode] = useState("");
-  const [address, setAddress] = useState("");
-  const [addressDetail, setAddressDetail] = useState("");
-  const [receiverName, setReceiverName] = useState("");
-  const [receiverPhone, setReceiverPhone] = useState("");
-
-  // 주소 모달
-  const showModal = () => {
-    setIsOpen(true);
-  };
-
-  const handleOk = () => {
-    setIsOpen(false);
-  };
-
-  const handleCancel = () => {
-    setIsOpen(false);
-  };
-
-  const handleComplete = (data: any) => {
-    console.log(data, "address data");
-    setZipCode(data.zonecode);
-    setAddress(data.address);
-    setIsOpen(false);
-  };
-
-  const onChangeAddressDetail = (event: any) => {
-    setAddressDetail(event.target.value);
-  };
-
-  const onChangeReceiverName = (event: any) => {
-    setReceiverName(event.target.value);
-  };
-
-  const onChangeReceiverPhone = (event: any) => {
-    setReceiverPhone(event.target.value);
-  };
-
   return (
     <>
       <S.Wrapper>
@@ -86,36 +40,38 @@ export default function PaymentPresenter(props: any) {
                 <S.Row2>
                   <S.ColumnOption>Origin</S.ColumnOption>
                   <S.ColumnOty>1</S.ColumnOty>
-                  <S.ColumnPrice>60,000</S.ColumnPrice>
+                  <S.ColumnPrice>
+                    {props.productData?.fetchProduct?.price}
+                  </S.ColumnPrice>
                 </S.Row2>
                 <S.Row2>
                   <S.ColumnOption>Spacebar</S.ColumnOption>
-                  <S.ColumnOty>1</S.ColumnOty>
-                  <S.ColumnPrice>10,000</S.ColumnPrice>
+                  <S.ColumnOty></S.ColumnOty>
+                  <S.ColumnPrice></S.ColumnPrice>
                 </S.Row2>
                 <S.Row2>
                   <S.ColumnOption>Esc</S.ColumnOption>
-                  <S.ColumnOty>1</S.ColumnOty>
-                  <S.ColumnPrice>20,000</S.ColumnPrice>
+                  <S.ColumnOty></S.ColumnOty>
+                  <S.ColumnPrice></S.ColumnPrice>
                 </S.Row2>
 
                 <S.Row2>
                   <S.ColumnOption>Keypad</S.ColumnOption>
-                  <S.ColumnOty>2</S.ColumnOty>
-                  <S.ColumnPrice>30,000</S.ColumnPrice>
+                  <S.ColumnOty></S.ColumnOty>
+                  <S.ColumnPrice></S.ColumnPrice>
                 </S.Row2>
 
                 <S.Row2>
                   <S.ColumnOption>Enter</S.ColumnOption>
-                  <S.ColumnOty>1</S.ColumnOty>
-                  <S.ColumnPrice>20,000</S.ColumnPrice>
+                  <S.ColumnOty></S.ColumnOty>
+                  <S.ColumnPrice></S.ColumnPrice>
                 </S.Row2>
               </S.PaymentPriceTableWrapper>
 
               <S.PaymentPriceTotalWrapper>
                 <S.PaymentPriceTotal>Total</S.PaymentPriceTotal>
                 <S.PaymentPriceTotalNumber>
-                  180,000
+                  {`${props.productData?.fetchProduct?.price}`}
                   {/* <span>원</span> */}
                 </S.PaymentPriceTotalNumber>
               </S.PaymentPriceTotalWrapper>
@@ -133,7 +89,7 @@ export default function PaymentPresenter(props: any) {
                   type="text"
                   placeholder="홍길동"
                   style={{ width: 379 }}
-                  onChange={onChangeReceiverName}
+                  onChange={props.onChangeReceiverName}
                 >
                   {props.data?.fetchOrders?.receiverName}
                 </S.InputBox>
@@ -144,7 +100,7 @@ export default function PaymentPresenter(props: any) {
                 <S.InputBox
                   type="text"
                   placeholder="01012345678"
-                  onChange={onChangeReceiverPhone}
+                  onChange={props.onChangeReceiverPhone}
                 >
                   {props.data?.fetchOrders?.receiverPhone}
                 </S.InputBox>
@@ -157,31 +113,30 @@ export default function PaymentPresenter(props: any) {
 
               <S.PaymentSubTextWrapper>
                 <S.Label>Address</S.Label>
+                {props.isOpen && (
+                  <Modal
+                    visible={true}
+                    onOk={props.handleOk}
+                    onCancel={props.handleCancel}
+                    closable={false}
+                  >
+                    <DaumPostcode onComplete={props.handleComplete} />
+                  </Modal>
+                )}
 
                 <S.InputBox
                   type="text"
                   placeholder="15338"
                   style={{ width: 116 }}
-                  value={zipCode}
+                  value={props.zipCode}
                 >
                   {props.data?.fetchOrders?.address?.zipCode}
                 </S.InputBox>
 
-                <S.ZipCodeSearchButton onClick={showModal}>
+                <S.ZipCodeSearchButton onClick={props.showModal}>
                   Find Address
                 </S.ZipCodeSearchButton>
               </S.PaymentSubTextWrapper>
-
-              {isOpen && (
-                <Modal
-                  visible={true}
-                  onOk={handleOk}
-                  onCancel={handleCancel}
-                  closable={false}
-                >
-                  <DaumPostcode onComplete={handleComplete} />
-                </Modal>
-              )}
 
               <S.PaymentSubTextWrapper>
                 <S.Label>{""}</S.Label>
@@ -189,7 +144,7 @@ export default function PaymentPresenter(props: any) {
                 <S.InputBox
                   type="text"
                   placeholder="서울시 행복구 낙원동 1004로"
-                  value={address}
+                  value={props.address}
                 >
                   {props.data?.fetchOrders?.address?.address}
                 </S.InputBox>
@@ -200,8 +155,7 @@ export default function PaymentPresenter(props: any) {
                 <S.InputBox
                   type="text"
                   placeholder="B동 1202호"
-                  defaultValue={addressDetail}
-                  onChange={onChangeAddressDetail}
+                  onChange={props.onChangeAddressDetail}
                 >
                   {props.data?.fetchOrders?.address?.addressDetail}
                 </S.InputBox>
@@ -253,8 +207,8 @@ export default function PaymentPresenter(props: any) {
                 <Modal
                   visible={true}
                   centered
-                  onOk={props.handleOk}
-                  onCancel={props.handleCancel}
+                  onOk={props.couponHandleOk}
+                  onCancel={props.couponHandleCancel}
                   width={"auto"}
                   bodyStyle={{
                     width: "503px",
@@ -281,7 +235,7 @@ export default function PaymentPresenter(props: any) {
                   keyboard={true}
                   closable={true}
                 >
-                  {props.couponsData?.fetchUserHaveCoupons ? (
+                  {props.couponsData?.fetchUserHaveCoupons.length !== 0 ? (
                     <S.ModalDiv>
                       <S.MyCouponWrapper>
                         <S.MyCoupon>
@@ -293,16 +247,18 @@ export default function PaymentPresenter(props: any) {
                         </S.MyCouponDesc>
                       </S.MyCouponWrapper>
                       <S.MyCouponListWrapper>
-                        {props.couponsData?.fetchUserHaveCoupons.map((el) => (
-                          <S.MyCouponList>
-                            <S.MyCouponName>
-                              {el?.coupon?.couponName}
-                            </S.MyCouponName>
-                            <S.MyCouponDisCount>
-                              {el?.coupon?.discountPrice}원 할인쿠폰
-                            </S.MyCouponDisCount>
-                          </S.MyCouponList>
-                        ))}
+                        {props.couponData?.fetchUserHaveCoupons.map(
+                          (el: any) => (
+                            <S.MyCouponList>
+                              <S.MyCouponName>
+                                {el?.coupon?.couponName}
+                              </S.MyCouponName>
+                              <S.MyCouponDisCount>
+                                {el?.coupon?.discountPrice}원 할인쿠폰
+                              </S.MyCouponDisCount>
+                            </S.MyCouponList>
+                          )
+                        )}
                       </S.MyCouponListWrapper>
                     </S.ModalDiv>
                   ) : (

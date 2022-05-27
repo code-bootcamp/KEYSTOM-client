@@ -127,7 +127,7 @@ export const Text = styled.div`
 
 export const BestReviewWrapper = styled.div`
   width: 100%;
-  padding: 228px 340px 500px 340px;
+  padding: 228px 340px 300px 340px;
 `;
 
 export const BestProductWrapper = styled.div`

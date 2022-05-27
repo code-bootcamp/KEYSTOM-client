@@ -38,22 +38,23 @@ export default function MypagePresenter(props: any) {
           keyboard={true}
           closable={true}
         >
-          {props.couponsData?.fetchCoupons ? (
+          {props.userHaveCouponData?.fetchUserHaveCoupons ? (
             <S.ModalDiv>
               <S.MyCouponWrapper>
                 <S.MyCoupon>
-                  내 쿠폰 보유함({props.couponsData?.fetchCoupons.length})
+                  내 쿠폰 보유함(
+                  {props.userHaveCouponData?.fetchUserHaveCoupons.length})
                 </S.MyCoupon>
                 <S.MyCouponDesc>
                   한 상품에 한 쿠폰만 적용할 수 있습니다.
                 </S.MyCouponDesc>
               </S.MyCouponWrapper>
               <S.MyCouponListWrapper>
-                {props.couponsData?.fetchCoupons.map((el) => (
+                {props.userHaveCouponData?.fetchUserHaveCoupons.map((el) => (
                   <S.MyCouponList>
-                    <S.MyCouponName>{el.couponName}</S.MyCouponName>
+                    <S.MyCouponName>{el.coupon?.couponName}</S.MyCouponName>
                     <S.MyCouponDisCount>
-                      {el.discountPrice}원 할인쿠폰
+                      {el.coupon?.discountPrice}원 할인쿠폰
                     </S.MyCouponDisCount>
                   </S.MyCouponList>
                 ))}
@@ -63,7 +64,8 @@ export default function MypagePresenter(props: any) {
             <S.ModalDiv>
               <S.MyCouponWrapper>
                 <S.MyCoupon>
-                  내 쿠폰 보유함({props.couponsData?.fetchCoupons.length})
+                  내 쿠폰 보유함(
+                  {props.userHaveCouponData?.fetchUserHaveCoupons.length})
                 </S.MyCoupon>
                 <S.MyCouponDesc>
                   한 상품에 한 쿠폰만 적용할 수 있습니다.
@@ -116,7 +118,8 @@ export default function MypagePresenter(props: any) {
                 <S.DeliveryAddress>Coupons</S.DeliveryAddress>
                 <S.VerticalLine src="./images/Rectangle97.png" />
                 <S.UserDeliveryAddress>
-                  사용가능한 쿠폰이 {props.couponsData?.fetchCoupons.length}개
+                  사용가능한 쿠폰이{" "}
+                  {props.userHaveCouponData?.fetchUserHaveCoupons.length}개
                   있습니다.
                 </S.UserDeliveryAddress>
                 <S.SeeCoupon onClick={props.onClickSeeCoupon}>

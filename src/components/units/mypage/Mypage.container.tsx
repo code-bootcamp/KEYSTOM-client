@@ -17,26 +17,6 @@ const FETCH_USER_LOGGED_IN = gql`
   }
 `;
 
-const FETCH_COUPONS = gql`
-  query fetchCoupons {
-    fetchCoupons {
-      id
-      discountPrice
-      couponName
-    }
-  }
-`;
-
-const FETCH_COUPON = gql`
-  query fetchCoupon($couponId: String!) {
-    fetchCoupon(couponId: $couponId) {
-      id
-      discountPrice
-      couponName
-    }
-  }
-`;
-
 const FETCH_ORDERS = gql`
   query fetchOrders {
     fetchOrders {
@@ -51,6 +31,27 @@ const FETCH_ORDERS = gql`
   }
 `;
 
+const FETCH_USER_HAVE_COUPONS = gql`
+  query fetchUserHaveCoupons {
+    fetchUserHaveCoupons {
+      id
+      email {
+        email
+        name
+        nickName
+      }
+
+      coupon {
+        id
+        discountPrice
+        couponName
+      }
+
+      createdAt
+    }
+  }
+`;
+
 export default function MypageContainer() {
   const [baskets, setBaskets] = useState("");
   const [isBasket, setIsBasket] = useState(false);
@@ -58,17 +59,10 @@ export default function MypageContainer() {
 
   const router = useRouter();
   const { data } = useQuery(FETCH_USER_LOGGED_IN);
-  const { data: couponsData } = useQuery(FETCH_COUPONS);
-  const { data: couponData } = useQuery(FETCH_COUPON, {
-    variables: {
-      couponId: String(router.query.couponId),
-    },
-  });
   const { data: orderData } = useQuery(FETCH_ORDERS);
+  const { data: userHaveCouponData } = useQuery(FETCH_USER_HAVE_COUPONS);
 
   console.log("주문데이터", orderData?.fetchOrders);
-
-  const [isSeeCoupon, setIsSeeCoupon] = useState(false);
 
   const handleOK = () => {
     setIsModalOpen(false);
@@ -110,13 +104,12 @@ export default function MypageContainer() {
   return (
     <MypagePresenter
       data={data}
-      couponsData={couponsData}
       orderData={orderData}
+      userHaveCouponData={userHaveCouponData}
       moveToReviewWrite={moveToReviewWrite}
       onClickDeleteBasket={onClickDeleteBasket}
       baskets={baskets}
       onClickSeeCoupon={onClickSeeCoupon}
-      isSeeCoupon={isSeeCoupon}
       handleOK={handleOK}
       handleCancel={handleCancel}
       isModalOpen={isModalOpen}
