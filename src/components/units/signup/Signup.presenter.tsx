@@ -165,11 +165,17 @@ export default function SignUpPresenter(props: any) {
                         </S.InfoDiv>
                         <S.InfoDiv>
                             <S.Timer>
-                                {props.min}:{props.sec}
+                                {String(Math.floor(props.sec / 60)).padStart(
+                                    2,
+                                    "0"
+                                )}
+                                :{String(props.sec % 60).padStart(2, "0")}
                             </S.Timer>
                             <S.InfoInput
                                 placeholder="인증번호를 입력해주세요."
                                 onChange={props.onChangeToken}
+                                ref={props.tokenInputRef}
+                                disabled={true}
                             />
                             <S.CheckTokenButton
                                 isWriteToken={props.isWriteToken}
