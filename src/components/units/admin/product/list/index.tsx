@@ -8,7 +8,7 @@ const ProductListWrapper = styled.div`
     flex-direction: column;
     align-items: center;
     width: 100%;
-    padding: 100px 340px 300px 340px;
+    padding: 100px 150px 300px 150px;
     color: #f1f1f1;
 `;
 const Title = styled.div`
@@ -61,7 +61,7 @@ const ListItemTag = styled.span`
     width: 50px;
     padding-right: 15px;
     color: #f1f1f1;
-    font-size: 17px;
+    font-size: 12px;
     line-height: 20px;
     text-align: center;
 `;
@@ -75,7 +75,6 @@ const ButtonWrapper = styled.div``;
 const DeleteButton = styled.button`
     width: 100px;
     height: 50px;
-    margin-right: 10px;
 `;
 
 export const FETCH_PRODUCTS = gql`
@@ -85,13 +84,13 @@ export const FETCH_PRODUCTS = gql`
             title
             description
             price
-            like
+            # like
             createdAt
             thumbnail
-            productTags {
-                id
-                tag
-            }
+            # productTags {
+            #     id
+            #     tag
+            # }
         }
     }
 `;
@@ -115,12 +114,9 @@ export default function AdminProductList() {
         },
     });
 
-    console.log("fetchdata", data?.fetchProducts);
+    console.log("fetchproductsdata", data);
 
-    const moveToDetail = (event: any) => {
-        router.push(`/admin/product/${event.target.id}`);
-    };
-
+ 
     const onClickDelete = async (e: any) => {
         console.log("삭제하려고 누른 상품 아이디는?", e.target.id);
 
@@ -145,8 +141,13 @@ export default function AdminProductList() {
         }
     };
 
-    const moveToEdit = () => {
-        router.push(`/admin/product/${router.query.productId}/edit`)
+    const moveToDetail = (event: any) => {
+        router.push(`/admin/product/${event.target.id}`);
+    };
+
+
+    const moveToEdit = (event:any) => {
+        router.push(`/admin/product/${event.target.id}/edit`)
     }
 
     return (
@@ -210,19 +211,21 @@ export default function AdminProductList() {
                                 </ListItemDiv>
                                 <ListItemDiv>
                                     <ListItemTitle>Tags</ListItemTitle>
-                                    {el.productTags.map(
-                                        (el: any, idx: number) => (
+                                    {/* {el.productTags.map(
+                                        (tagEl: any, idx: number) => (
                                             <ListItemTag key={idx}>
-                                                {el.tag}
+                                                {tagEl.tag}
                                             </ListItemTag>
                                         )
-                                    )}
+                                    )} */}
                                 </ListItemDiv>
                             </ListBottom>
                         </ListItemDivWrapper>
                     </ListItemInner>
                     <ButtonWrapper>
-                        <DeleteButton id={el.id} onClick={onClickDelete}>
+                        <DeleteButton 
+                        style={{marginRight:"15px"}}
+                        id={el.id} onClick={onClickDelete}>
                             Delete
                         </DeleteButton>
                         <DeleteButton id={el.id} onClick={moveToEdit}>

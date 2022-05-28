@@ -21,8 +21,8 @@ const Wrapper = styled.div`
 `
 
 const UploadDiv = styled.div`
-    width: 300px;
-    height: 300px;
+    width: 200px;
+    height: 200px;
     border: 1px solid #bdbdbd;
     border-radius: 10px;
     cursor: pointer;

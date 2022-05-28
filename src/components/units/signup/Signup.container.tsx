@@ -17,12 +17,13 @@ const schema = yup.object({
     name: yup
         .string()
         // .matches(/^[a-zA-Z0-9]/, "형식에 맞지 않습니다.")
+        .max(8, "이름은 8글자 이내여야 합니다.")
         .required("이름은 필수 입력 사항입니다."),
 
     email: yup
         .string()
         .email("이메일 형식에 맞지 않습니다.")
-        .required("이메일을 필수 입력 사항입니다."),
+        .required("이메일은 필수 입력 사항입니다."),
 
     nickName: yup
         .string()
@@ -33,7 +34,7 @@ const schema = yup.object({
         .string()
         .matches(
             /^[A-Za-z\d$@$!%*#?&]{8,20}$/,
-            "비밀번호는 영문, 숫자, 특수문자를 포함한 16자리 이내 문자열이어야 합니다"
+            "비밀번호는 영문, 숫자, 특수문자를 포함한 8자리 이상, 16자리 이내 문자열이어야 합니다"
         )
         .required("비밀번호는 필수 입력 사항입니다."),
     passwordCheck: yup
