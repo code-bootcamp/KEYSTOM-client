@@ -11,8 +11,9 @@ import { LOGIN, LOGIN_TEST } from "../../../units/login/Login.queries";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { Modal } from "antd";
+import MovingText from "react-moving-text";
 import Link from "next/link";
-
+        
 export const LOG_OUT = gql`
     mutation logout {
         logout
@@ -46,6 +47,16 @@ const Logo = styled.div`
     text-align: center;
     cursor: pointer;
 `;
+
+const MovingText2 = styled(MovingText)`
+  font-family: "Orbitron-bold";
+  font-size: 24px;
+  line-height: 100%;
+  width: 100%;
+  text-align: center;
+  cursor: pointer;
+`;
+
 const MenuWrapper = styled.div`
     display: flex;
     justify-content: space-between;
@@ -136,6 +147,8 @@ export default function LayoutHeader() {
     const [login] = useMutation(LOGIN);
     const [logintest] = useMutation(LOGIN_TEST);
     const client = useApolloClient();
+    const [isHovered, setIsHovered] = useState(false);
+
 
     const { register, formState, handleSubmit } = useForm({
         resolver: yupResolver(schema),
@@ -315,9 +328,30 @@ export default function LayoutHeader() {
                 <div></div>
             )}
             <Wrapper>
-                <LogoDiv>
-                    <Logo onClick={moveToHome}>KEYSTOM</Logo>
-                </LogoDiv>
+              <LogoDiv>
+                  <Logo
+                      onClick={moveToHome}
+                      onMouseOver={() => setIsHovered(true)}
+                      onMouseOut={() => setIsHovered(false)}
+                    >
+                      {isHovered ? (
+                        <MovingText2
+                          type="bounce"
+                          duration="1000ms"
+                          delay="0s"
+                          direction="normal"
+                          timing="ease"
+                          iteration="1"
+                          fillMode="none"
+                        >
+                          KEYSTOM
+                        </MovingText2>
+                      ) : (
+                        <Logo>KEYSTOM</Logo>
+                      )}
+                      {/* KEYSTOM */}
+                    </Logo>
+                  </LogoDiv>
                 <MenuWrapper>
                     <MenuDiv>
                         <Menu onClick={moveToStore}>STORE</Menu>

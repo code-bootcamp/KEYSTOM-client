@@ -7,15 +7,13 @@ import { paymentProductId } from "../../../commons/store";
 import { useRecoilState } from "recoil";
 
 const FETCH_PRODUCT = gql`
-    query fetchProduct($productId: String!) {
-        fetchProduct(productId: $productId) {
-            id
-            title
-            description
-            price
-            like
-            createdAt
-        }
+  query fetchProduct($productId: String!) {
+    fetchProduct(productId: $productId) {
+      id
+      title
+      description
+      price
+      createdAt
     }
 `;
 

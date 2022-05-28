@@ -230,7 +230,7 @@ export const BoughtListInfo = styled.div`
   height: 104px;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  /* justify-content: space-around; */
 
   background-color: #2c2c2c;
   margin-bottom: 30px;
@@ -264,6 +264,7 @@ export const BoughtImage = styled.img`
 `;
 
 export const BoughtName = styled.div`
+  width: 280px;
   font-style: normal;
   font-weight: 400;
   font-size: 20px;
@@ -273,6 +274,7 @@ export const BoughtName = styled.div`
 
   margin-bottom: auto;
 
+  text-align: center;
   color: #ffffff;
 `;
 
@@ -282,6 +284,7 @@ export const BoughtDateWrapper = styled.div`
 
   margin-top: auto;
   margin-bottom: auto;
+  margin-left: 40px;
 `;
 
 export const BoughtDateText = styled.div`
@@ -310,6 +313,7 @@ export const BoughtPriceWrapper = styled.div`
 
   margin-top: auto;
   margin-bottom: auto;
+  margin-left: 40px;
 `;
 
 export const BoughtPriceText = styled.div`
@@ -338,6 +342,7 @@ export const BoughtStatusWrapper = styled.div`
 
   margin-top: auto;
   margin-bottom: auto;
+  margin-left: 40px;
 `;
 
 export const BoughtStatusText = styled.div`
@@ -367,11 +372,13 @@ export const BoughtStatus = styled.div`
 `;
 
 export const BoughtReviewWrapper = styled.div`
+  width: 110px;
   display: flex;
   flex-direction: column;
 
   margin-top: auto;
   margin-bottom: auto;
+  margin-left: auto;
 `;
 
 export const BoughtReviewText = styled.div`
@@ -408,6 +415,8 @@ export const BoughtReviewIcon = styled.button`
 
   margin-top: auto;
   margin-bottom: auto;
+  margin-left: auto;
+  margin-right: 30px;
 
   font-weight: 700;
   font-size: 14px;

@@ -89,7 +89,9 @@ export default function MypagePresenter(props: any) {
             <S.TopRightContainer>
               <S.NameContainer>
                 <S.Name>Name</S.Name>
-                <S.VerticalLine src={props.data?.fetchUserLoggedIn.user.profileImage} />
+                <S.VerticalLine
+                  src={props.data?.fetchUserLoggedIn.user.profileImage}
+                />
                 {props.data?.fetchUserLoggedIn.user.profileImage}
                 <S.UserName>
                   {props.data?.fetchUserLoggedIn.user.name}
@@ -137,22 +139,24 @@ export default function MypagePresenter(props: any) {
 
           <S.MiddleWrapper>
             <S.BoughtList>My Order History</S.BoughtList>
-            {props.orderData?.fetchOrders.length !== 0 ? (
+            {props.orderData?.fetchOrders?.length !== 0 ? (
               props.orderData?.fetchOrders.map((el) => (
                 <S.BoughtListInfo key={el.id}>
                   <S.BoughtImage
-                    src={`https://storage.googleapis.com/${el.product.thumbnail}`}
+                    src={`https://storage.googleapis.com/${el?.product?.thumbnail}`}
                   />
-                  <S.BoughtName></S.BoughtName>
+                  <S.BoughtName>{el?.product?.title}</S.BoughtName>
 
                   <S.BoughtDateWrapper>
                     <S.BoughtDateText>Date</S.BoughtDateText>
-                    <S.BoughtDateNum>{el.createdAt}</S.BoughtDateNum>
+                    <S.BoughtDateNum>
+                      {el?.createdAt.slice(0, 4)}.{el?.createdAt.slice(5, 9)}
+                    </S.BoughtDateNum>
                   </S.BoughtDateWrapper>
 
                   <S.BoughtPriceWrapper>
                     <S.BoughtPriceText>Price</S.BoughtPriceText>
-                    <S.BoughtPriceNum>{el.price}</S.BoughtPriceNum>
+                    <S.BoughtPriceNum>{el?.price}</S.BoughtPriceNum>
                   </S.BoughtPriceWrapper>
 
                   <S.BoughtStatusWrapper>

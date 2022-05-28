@@ -10,12 +10,14 @@ import { Modal } from "antd";
 import { useState } from "react";
 import { useRecoilState } from "recoil";
 import { paymentProductId } from "../../commons/store";
+import { useRouter } from "next/router";
 
 declare const window: typeof globalThis & {
   IMP: any;
 };
 
 export default function PaymentContainer() {
+  const router = useRouter();
   const [productId, setProductId] = useRecoilState(paymentProductId);
   const [isClickedModal, setIsClickedModal] = useState(false);
 
@@ -80,6 +82,7 @@ export default function PaymentContainer() {
   const onChangeReceiverPhone = (event: any) => {
     setReceiverPhone(event.target.value);
   };
+  console.log("유저데이터이다", userData?.fetchUserLoggedIn);
 
   const requestPayment = () => {
     const IMP = window.IMP;
@@ -92,6 +95,7 @@ export default function PaymentContainer() {
         amount: productData?.fetchProduct?.price,
         buyer_email: userData?.fetchUserLoggedIn?.user?.email,
         buyer_name: userData?.fetchUserLoggedIn?.user?.name,
+        // buyer_name: "영훈",
         m_redirect_url: "http://localhost:3000/myPage",
       },
       (rsp: any) => {
@@ -99,22 +103,19 @@ export default function PaymentContainer() {
           console.log(rsp);
           payment({
             variables: {
-              createPaymentInput: {
+              price: productData?.fetchProduct?.price,
+              impUid: rsp.imp_uid,
+              createAddressInput: {
+                address: address,
+                addressDetail: addressDetail,
+                zipCode: zipCode,
+              },
+              createOrderInput: {
+                count: 1,
                 price: productData?.fetchProduct?.price,
-                impUid: rsp.imp_uid,
-                order: {
-                  count: 1,
-                  price: productData?.fetchProduct?.price,
-                  address: {
-                    address: address,
-                    addressDetail: addressDetail,
-                    zipCode: zipCode,
-                    email: String(userData?.fetchUserLoggedIn?.user?.email),
-                  },
-                  receiverName: receiverName,
-                  receiverPhone: receiverPhone,
-                  productId: productId,
-                },
+                receiverName: receiverName,
+                receiverPhone: receiverPhone,
+                productId: productId,
               },
             },
             // refetchQueries:[{
@@ -122,6 +123,7 @@ export default function PaymentContainer() {
             // }]
           });
           Modal.success({ content: "결제를 성공하였습니다. 감사합니다!" });
+          router.push("/mypage");
         } else {
           Modal.error({ content: "결제를 실패했습니다! 다시 시도해주세요." });
         }
