@@ -26,9 +26,11 @@ export const LoginDiv = styled.div`
 `;
 
 export const LogoDiv = styled.div`
-    width: 120px;
-    height: 120px;
-    margin-bottom: 30px;
+    width: 137px;
+    height: 24px;
+    /* height: 120px; */
+    margin-top: 50px;
+    margin-bottom: 50px;
 `;
 
 export const Logo = styled.img`
@@ -101,6 +103,8 @@ export const SocialLoginBtn = styled.img`
     width: 54px;
     height: 54px;
     border-radius: 30px;
+
+    cursor: pointer;
 `;
 export const StringWrapper = styled.div`
     display: flex;

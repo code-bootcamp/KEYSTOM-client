@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import * as S from "./Signup.styles";
 
 export default function TimerPage(props: any) {
-    const [sec, setSec] = useState(5);
+    const [sec, setSec] = useState(180);
     //     const secTime = useRef(5)
     //     const secRef = useRef();
 
