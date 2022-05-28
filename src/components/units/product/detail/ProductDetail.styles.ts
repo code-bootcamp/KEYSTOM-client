@@ -20,6 +20,11 @@ export const ProductWrapper = styled.div`
   margin-left: 210px;
 `;
 
+export const TitleWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
 export const ProductLeftWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -36,6 +41,13 @@ export const AllForDesigner = styled.div`
   margin-bottom: 23px;
 `;
 
+export const SeeImage = styled.img`
+  width: 38px;
+  height: 38px;
+
+  margin-top: 5px;
+`;
+
 export const ProductSelectWrapper = styled.div`
   width: 1180px;
   height: 800px;
@@ -48,7 +60,7 @@ export const ProductSelectWrapper = styled.div`
 `;
 
 export const TwoDColorWrapper = styled.div`
-  height: 462px;
+  height: 320px;
   display: flex;
   flex-direction: column;
 

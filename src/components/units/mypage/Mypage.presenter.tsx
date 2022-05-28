@@ -83,16 +83,15 @@ export default function MypagePresenter(props: any) {
           <S.BoughtList>My Profile</S.BoughtList>
           <S.TopWrapper>
             <S.TopLeftContainer>
-              <S.ProfileImage />
+              <S.ProfileImage
+                src={props.data?.fetchUserLoggedIn?.user?.profileImage}
+              />
             </S.TopLeftContainer>
 
             <S.TopRightContainer>
               <S.NameContainer>
                 <S.Name>Name</S.Name>
-                <S.VerticalLine
-                  src={props.data?.fetchUserLoggedIn.user.profileImage}
-                />
-                {props.data?.fetchUserLoggedIn.user.profileImage}
+                <S.VerticalLine src="./images/Rectangle97.png" />
                 <S.UserName>
                   {props.data?.fetchUserLoggedIn.user.name}
                 </S.UserName>

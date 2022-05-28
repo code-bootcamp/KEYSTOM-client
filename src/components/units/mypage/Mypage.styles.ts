@@ -25,14 +25,14 @@ export const TopLeftContainer = styled.div`
   flex-direction: column;
 `;
 
-export const ProfileImage = styled.div`
+export const ProfileImage = styled.img`
   width: 200px;
   height: 200px;
 
   border-radius: 30px;
 
-  background: #d9d9d9;
-  background-image: url("images/mypage/profilePic.png");
+  /* background: #d9d9d9; */
+  /* background-image: url("images/mypage/profilePic.png"); */
   border-radius: 10px;
 `;
 
