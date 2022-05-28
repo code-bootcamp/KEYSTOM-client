@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import LayoutFooter from "./footer";
 import LayoutHeader from "./header";
 import styled from "@emotion/styled";
+import LayoutAdminSideBar from './admin/index';
 
 interface ILayoutProps {
   children: ReactNode;
@@ -28,19 +29,32 @@ const Body = styled.div`
   height: auto;
 `;
 
+const Inner = styled.div`
+  width: 100%;
+  display: flex;
+  
+`
+
+
 const HIDDEN_HEADER = ["/"];
+const HIDDEN_ADMIN_SIDEBAR = ["/", "/store", "/event", "/mypage", "product"];
+
 
 export default function Layout(props: ILayoutProps) {
   const router = useRouter();
 
   let isHidden = HIDDEN_HEADER.includes(router.asPath);
+      isHidden = HIDDEN_ADMIN_SIDEBAR.includes(router.asPath);
 
   return (
     <Wrapper>
       {!isHidden && <LayoutHeader />}
-      <BodyWrapper>
-        <Body>{props.children}</Body>
-      </BodyWrapper>
+      <Inner>
+        {!isHidden && <LayoutAdminSideBar />}
+        <BodyWrapper>
+          <Body>{props.children}</Body>
+        </BodyWrapper>
+      </Inner>
       <LayoutFooter />
     </Wrapper>
   );
