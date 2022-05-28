@@ -8,6 +8,7 @@ import { useApolloClient, useMutation } from "@apollo/client";
 import { useRecoilState } from "recoil";
 import { LOGIN, LOGIN_TEST } from "./Login.queries";
 import { ILogin } from "./Login.types";
+import { Modal } from "antd";
 
 const schema = yup.object({
     email: yup.string().required("아이디를 입력해주세요."),
@@ -60,11 +61,10 @@ export default function LoginContainer() {
             //   });
             //   const userInfo = resultUserInfo.data.fetchUserLoggedIn;
             //   setUserInfo(userInfo);
-
-            alert("로그인에 성공했습니다!.");
             router.push("/");
-        } catch (error) {
-            alert(error instanceof Error);
+            Modal.success({content:"로그인 성공하였습니다."})
+        } catch (error:any) {
+            Modal.error({content:error.message})
         }
     };
 

@@ -11,24 +11,13 @@ import { gql, useMutation } from '@apollo/client';
 
 type HookCallback = (url: string, text?: string) => void;
 
-type HookMap = {
-  addImageBlobHook?: (blob: Blob | File, callback: HookCallback) => void;
-};
+// type HookMap = {
+//   addImageBlobHook?: (blob: Blob | File, callback: HookCallback) => void;
+// };
+
+
 
 export default function PostEditor(props:any):JSX.Element{
-  // const [description, setDescription] = useState("")  
-
-  // const onChangeDescription = () => {
-  //   if(props.editorRef.current){
-  //     setDescription(props.editorRef.current.getInstance().getMarkdown())
-
-  //     console.log(description)
-  //   }
-  // }
-
-//   const onChangeDescription = (event:any) => {
-//     setDescription(event.target.value)
-// }
 
 
   return(
@@ -38,7 +27,7 @@ export default function PostEditor(props:any):JSX.Element{
         onChange={props.onChangeDescription}
         previewStyle='vertical'
         height='600px'
-        initialEditType='wysiwyg'
+        initialEditType='markdown'
         useCommandShortcut={true}
         hideModeSwitch={false}
         ref={props.editorRef}
@@ -51,18 +40,16 @@ export default function PostEditor(props:any):JSX.Element{
           ['link', 'table'],
           ['scrollSync'],
         ]}
-        language='ko-KR'
         theme='dark'
         hooks={{
-          addImageBlobHook: async(blob:Blob | File, callback) => {
-            console.log('blob', blob)
+          addImageBlobHook: async(blob:Blob | File, callback:HookCallback) => {
+            console.log('blob', blob, typeof blob)
             // const files = URL.createObjectURL(blob);
             const uploadedImageURL = await props.uploadFile({variables:{files:blob}});
-            console.log('uploadedImageURL', uploadedImageURL?.data.uploadFile)
-
-            callback(`https://storage.googleapis.com/${uploadedImageURL?.data.uploadFile}`, "product image");
-            props.onChangeFileUrl(uploadedImageURL?.data.uploadFile)
-            return false;
+            // console.log('uploadedImageURL', uploadedImageURL?.data.uploadFile[0] )
+            callback(`https://storage.googleapis.com/${uploadedImageURL?.data.uploadFile[0]}`);
+            props.onChangeFileUrl(uploadedImageURL?.data.uploadFile[0])
+            return;
           }
         }}
         // placeholder= 'Please enter text.'

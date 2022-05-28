@@ -123,7 +123,7 @@ export default function SignUpContainer() {
 
     const onChangePhone = (event: any) => {
         setPhone(event.target.value);
-        console.log(event.target.value);
+        // console.log(event.target.value);
         if (event.target.value) {
             setIsWritePhone(true);
         } else {
@@ -146,6 +146,7 @@ export default function SignUpContainer() {
 
     const onClickSignUp = async (data: IFormValues) => {
         try {
+         
             const result = await createUser({
                 variables: {
                     createUserInput: {
@@ -161,11 +162,15 @@ export default function SignUpContainer() {
                     },
                 },
             });
-            console.log(result);
-            alert("성공");
+            console.log("==================================")
+            console.log("==================================")
+            console.log("==================================")
+            console.log("==================================")
+            console.log("회원가입",result);
+            Modal.success({content:"회원가입에 성공하였습니다"})
             router.push("/");
         } catch (error: any) {
-            alert("가입 실패");
+            Modal.error({content:error.message})
             console.log(JSON.stringify(error, null, 2));
         }
     };
@@ -174,7 +179,7 @@ export default function SignUpContainer() {
         try {
             const result = await checkEmail({ variables: { email } });
 
-            console.log(result, "result check email");
+            // console.log(result, "result check email");
             Modal.success({ content: "사용가능한 이메일입니다." });
         } catch (error: any) {
             Modal.error({ content: "사용할 수 없는 이메일입니다." });
@@ -203,7 +208,7 @@ export default function SignUpContainer() {
     const onClickSendToken = async () => {
         try {
             await sendToken({ variables: { phone } });
-            alert("휴대폰 번호 전송!");
+            Modal.success({content:"인증번호를 전송하였습니다!"})
             if (tokenInputRef.current) tokenInputRef.current.disabled = false;
             if (tokenInputRef.current) tokenInputRef.current.focus();
             setTimerStart(true);

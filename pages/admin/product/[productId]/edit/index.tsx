@@ -9,7 +9,7 @@ const FETCH_PRODUCT = gql`
             title
             description
             price
-            like
+            # like
             createdAt
             thumbnail
             # productTags{
