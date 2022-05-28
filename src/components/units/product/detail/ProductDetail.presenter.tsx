@@ -673,7 +673,7 @@ export default function ProductDetailPresenter(props: any) {
               </S.TwoDColorWrapper>
               <S.ThreeDWrapper>
                 <Canvas
-                  style={{ width: "950px" }}
+                  style={{ width: "950px", backgroundColor: "none" }}
                   camera={{ fov: 35, near: 0.2, position: [0, 0.7, 0.6] }}
                 >
                   <Suspense fallback={null}>

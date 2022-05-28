@@ -1,10 +1,22 @@
 import { gql } from "@apollo/client";
 
 export const PAYMENT = gql`
-  mutation payment($createPaymentInput: CreatePaymentInput!) {
-    payment(createPaymentInput: $createPaymentInput) {
+  mutation payment(
+    $price: Float!
+    $impUid: String!
+    $createAddressInput: CreateAddressInput!
+    $createOrderInput: CreateOrderInput!
+  ) {
+    payment(
+      price: $price
+      impUid: $impUid
+      createAddressInput: $createAddressInput
+      createOrderInput: $createOrderInput
+    ) {
       price
-      impUid
+      order
+      user
+      createdAt
     }
   }
 `;

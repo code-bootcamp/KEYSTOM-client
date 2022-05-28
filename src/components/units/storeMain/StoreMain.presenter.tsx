@@ -6,73 +6,75 @@ import TypeWriter from "typewriter-effect";
 import ScrollAnimation from "react-animate-on-scroll";
 import "animate.css/animate.compat.css";
 import LayoutHeader from "../../commons/layout/header/index";
+import { AnimatePresence } from "framer-motion";
+import LandingAnimation from "./LandingAnimation";
 
-// 키보드 배경
-function Preloader({ children, timeline }) {
-  const el = useRef();
+// // 키보드 배경
+// function Preloader({ children, timeline }) {
+//   const el = useRef();
 
-  useEffect(() => {
-    timeline &&
-      timeline.to(el.current, {
-        duration: 1,
-        y: "-100%",
-        opacity: 0,
-        delay: 0,
-      });
-  });
+//   useEffect(() => {
+//     timeline &&
+//       timeline.to(el.current, {
+//         duration: 1,
+//         y: "-100%",
+//         opacity: 0,
+//         delay: 0,
+//       });
+//   });
 
-  return <S.PreloaderDiv ref={el}>{children}</S.PreloaderDiv>;
-}
+//   return <S.PreloaderDiv ref={el}>{children}</S.PreloaderDiv>;
+// }
 
-// 당신만의 키보드를 만들어 보세요.
-function HideTitleFunc({ children, timeline }) {
-  const el = useRef();
+// // 당신만의 키보드를 만들어 보세요.
+// function HideTitleFunc({ children, timeline }) {
+//   const el = useRef();
 
-  useEffect(() => {
-    timeline &&
-      timeline.from(el.current, {
-        duration: 0.5,
-        x: "0%",
-        opacity: 0,
-        delay: 0.5,
-      });
-  });
+//   useEffect(() => {
+//     timeline &&
+//       timeline.from(el.current, {
+//         duration: 0.5,
+//         x: "0%",
+//         opacity: 0,
+//         delay: 0.5,
+//       });
+//   });
 
-  return <S.HideTitle ref={el}>{children}</S.HideTitle>;
-}
+//   return <S.HideTitle ref={el}>{children}</S.HideTitle>;
+// }
 
-// 취향은 내맘대로, 색상은 자유자재로
-function HideTopContentsFunc({ children, timeline }) {
-  const el = useRef();
+// // 취향은 내맘대로, 색상은 자유자재로
+// function HideTopContentsFunc({ children, timeline }) {
+//   const el = useRef();
 
-  useEffect(() => {
-    timeline &&
-      timeline.from(el.current, {
-        duration: 0.5,
-        x: "0%",
-        opacity: 0,
-        delay: 0.5,
-      });
-  });
+//   useEffect(() => {
+//     timeline &&
+//       timeline.from(el.current, {
+//         duration: 0.5,
+//         x: "0%",
+//         opacity: 0,
+//         delay: 0.5,
+//       });
+//   });
 
-  return <S.HideTopContents ref={el}>{children}</S.HideTopContents>;
-}
+//   return <S.HideTopContents ref={el}>{children}</S.HideTopContents>;
+// }
 
-function HideBottomContentsFunc({ children, timeline }) {
-  const el = useRef();
+// function HideBottomContentsFunc({ children, timeline }) {
+//   const el = useRef();
 
-  useEffect(() => {
-    timeline &&
-      timeline.from(el.current, {
-        duration: 0.5,
-        x: "0%",
-        opacity: 0,
-        delay: 1,
-      });
-  });
+//   useEffect(() => {
+//     timeline &&
+//       timeline.from(el.current, {
+//         duration: 0.5,
+//         x: "0%",
+//         opacity: 0,
+//         delay: 1,
+//       });
+//   });
 
-  return <S.HideBottomContents ref={el}>{children}</S.HideBottomContents>;
-}
+//   return <S.HideBottomContents ref={el}>{children}</S.HideBottomContents>;
+// }
 
 // // 시작하기 버튼
 // function HideButtonFunc({ children, timeline }) {
@@ -128,23 +130,6 @@ export default function StorePresenter() {
   return (
     <>
       <S.Wrapper>
-        <S.PreloaderWrapper>
-          <Preloader timeline={tl}>
-            <S.PreloaderChild>
-              <HideTitleFunc timeline={tl}>
-                당신만의 키보드를 만들어 보세요
-              </HideTitleFunc>
-              <HideTopContentsFunc timeline={tl}>
-                취향은 내맘대로, 색상은 자유자재로.
-              </HideTopContentsFunc>
-              <HideBottomContentsFunc timeline={tl}>
-                F12에서 진정한 자유를 만나보세요.
-              </HideBottomContentsFunc>
-              {/* <HideButtonFunc timeline={tl}>시작하기</HideButtonFunc> */}
-            </S.PreloaderChild>
-          </Preloader>
-        </S.PreloaderWrapper>
-
         <S.MainWrapper>
           {/* <div style={{ color: "white", fontSize: "36px" }}>
                         <span>F12는</span>
@@ -237,42 +222,6 @@ export default function StorePresenter() {
               </S.TextWrapper2>
             </S.MainImage3>
           </S.ImageWrapper>
-
-          {/* 
-                    <ScrollAnimation
-                        animateIn="fadeInDownBig"
-                        animateOut="fadeOut"
-                    >
-                        <S.Text>Best Products</S.Text>
-                    </ScrollAnimation>
-                    <ScrollAnimation
-                        animateIn="backInRight"
-                        animateOut="bounceOutRight"
-                    >
-                        <S.BestProductWrapper>
-                            {ProductArr.map((el) => (
-                                <S.BestProductBox>
-                                    <S.ReviewImage
-                                        src={`${el.image}`}
-                                    ></S.ReviewImage>
-                                    <S.ReviewDownWrapper>
-                                        <S.ReviewTitleWrapper>
-                                            <S.ReviewTitle>
-                                                {el.title}
-                                            </S.ReviewTitle>
-                                            <S.ProductsPrice>
-                                                {el.price.toLocaleString()}
-                                                <span>원</span>
-                                            </S.ProductsPrice>
-                                        </S.ReviewTitleWrapper>
-                                        <S.ReviewContents>
-                                            {el.contents}
-                                        </S.ReviewContents>
-                                    </S.ReviewDownWrapper>
-                                </S.BestProductBox>
-                            ))}
-                        </S.BestProductWrapper>
-                    </ScrollAnimation> */}
 
           <ScrollAnimation
             animateIn="lightSpeedInRight"

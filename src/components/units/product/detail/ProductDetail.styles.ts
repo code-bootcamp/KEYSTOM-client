@@ -41,7 +41,8 @@ export const ProductSelectWrapper = styled.div`
   height: 800px;
   display: flex;
 
-  background: #c4c4c4;
+  background: none;
+  border: 1px solid #f1f1f1;
 
   border-radius: 10px;
 `;
@@ -58,11 +59,13 @@ export const TwoDImage = styled.img`
   width: 231px;
   height: 177px;
   background-color: #c4c4c4;
+  margin-left: 30px;
 `;
 
 export const PickerWrapper = styled.div`
-  width: 230px;
-  background-color: #c4c4c4;
+  width: 250px;
+  background-color: none;
+  padding-left: 20px;
   border-radius: 0px 0px 0px 10px;
 `;
 
@@ -73,8 +76,8 @@ export const HexColorPickerWrapper = styled.div`
 `;
 
 export const HexColorPick = styled(HexColorPicker)`
-  width: "200px";
-  height: "200px";
+  width: 200px;
+  height: 200px;
   margin: 0px auto;
   margin-top: 20px;
   margin-bottom: 20px;
@@ -95,15 +98,15 @@ export const HexColorCode = styled.span`
   margin-top: auto;
   margin-bottom: auto;
 
-  color: black;
+  color: #f1f1f1;
 `;
 
 export const HexColorPickInput = styled(HexColorInput)`
   width: 128px;
-  background-color: #c4c4c4;
-  border-bottom: 1px solid #1b1b1b;
-
-  color: #b150f2;
+  background-color: #1b1b1b;
+  border: none;
+  border-bottom: 1px solid #f1f1f1;
+  text-align: center;
 `;
 
 export const ThreeDWrapper = styled.div`
