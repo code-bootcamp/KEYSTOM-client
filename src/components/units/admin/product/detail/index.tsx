@@ -2,6 +2,14 @@ import { gql, useQuery, useMutation } from '@apollo/client';
 import styled from "@emotion/styled";
 import { useRouter } from "next/router";
 import { FETCH_PRODUCTS } from '../../../product/list/ProductList.queries';
+import dynamic from 'next/dynamic';
+import '@toast-ui/editor/dist/toastui-editor.css';
+
+
+const PostViewer = dynamic(
+    ()=> import('../detail/Viewer'),
+    {ssr:false}
+  )
 
 const ProductWriteWrapper = styled.div`
     width: 100%;
@@ -21,7 +29,7 @@ const InputWrapper = styled.div`
     padding-bottom: 20px;
 `;
 
-const Inputs = styled.div`
+const ContentDiv = styled.div`
     border-radius: 10px;
     width: 800px;
     height: 50px;
@@ -60,11 +68,6 @@ const TagWrapper = styled.div`
 `;
 
 
-const Tag = styled.div`
-    letter-spacing: 2px;
-`;
-
-
 const ImageWrapper = styled.div`
     display: flex;
     padding-left: 20px;
@@ -93,9 +96,13 @@ const FETCH_PRODUCT = gql`
             title
             description
             price
-            like
+            # like
             createdAt
             thumbnail
+            # productTags{
+            #     id
+            #     tag
+            # }
         }
     }
 `;
@@ -107,20 +114,23 @@ const DELETE_PRODUCT = gql`
 `;
 
 
+
+
 export default function AdminProductDetail() {
     const router = useRouter();
-    console.log(router.query.productId,"router");
+    console.log("router", router)
     const { data } = useQuery(FETCH_PRODUCT, {
         variables: {
-            productId: router.query.productId,
+            productId: String(router.query.productId)
         },
     });
+
+    console.log("fetchproductdata", data)
 
     const [deleteProduct] = useMutation(DELETE_PRODUCT, {
         variables: {},
     });
 
-    
     const onClickDeleteProduct = async (e: any) => {
         console.log("삭제하려고 누른 상품 아이디는?", e.target.id);
 
@@ -146,7 +156,6 @@ export default function AdminProductDetail() {
         }
     };
     const moveToEditProduct = () => {
-        // console.log(router,"router")
         router.push(`/admin/product/${router.query.productId}/edit`)
     }
 
@@ -154,20 +163,42 @@ export default function AdminProductDetail() {
         <ProductWriteWrapper>
             <Title>Fetch Product</Title>
             <InputWrapper>
-                Title<Inputs>{data?.fetchProduct.title}</Inputs>
-                Description<Inputs>{data?.fetchProduct.description}</Inputs>
-                Price<Inputs>{data?.fetchProduct.price}</Inputs>
+                Title
+                <ContentDiv 
+                // defaultValue={data?.fetchProduct.title}
+                >{data?.fetchProduct.title}</ContentDiv>
+                Description
+                <ContentDiv>
+                    <PostViewer data={data}/>
+                    {/* {data?.fetchProduct.description} */}
+                </ContentDiv>
+                Price<ContentDiv>{data?.fetchProduct.price}</ContentDiv>
             </InputWrapper>
             <InputWrapper>
                 <SmallTitle>ProductTags</SmallTitle>
                 <TagDivWrapper>
                     <TagWrapper>
-                        <Tag>{data?.fetchProduct.description}</Tag>
+                        {/* {data?.fetchProduct.productTags.map((el:any)=>(
+                        <Tag key={el.id}>{el.tag}</Tag>
+                        ))} */}
                     </TagWrapper>
                 </TagDivWrapper>
             </InputWrapper>
 
-            <ImageWrapper></ImageWrapper>
+            <ImageWrapper>
+                {data?.fetchProduct.thumbnail ? (
+                    <img src={`https://storage.googleapis.com/${data?.fetchProduct.thumbnail}`} 
+                    style={{width:"300px", height:"auto"}}
+                    />
+                    )
+                
+                        :
+                    (
+                        <div></div>
+                    )            
+                }
+                
+            </ImageWrapper>
 
             <SubmitButton onClick={onClickDeleteProduct}>Delete</SubmitButton>
             <SubmitButton onClick={moveToEditProduct}>Edit</SubmitButton>
