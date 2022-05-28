@@ -31,8 +31,8 @@ export const ProfileImage = styled.img`
 
   border-radius: 30px;
 
-  background: #d9d9d9;
-  background-image: url("images/mypage/profilePic.png");
+  /* background: #d9d9d9; */
+  /* background-image: url("images/mypage/profilePic.png"); */
   border-radius: 10px;
 `;
 
