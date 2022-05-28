@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import { FETCH_PRODUCTS } from '../../../product/list/ProductList.queries';
 import dynamic from 'next/dynamic';
 import '@toast-ui/editor/dist/toastui-editor.css';
+import { Modal } from 'antd';
 
 
 const PostViewer = dynamic(
@@ -132,7 +133,7 @@ export default function AdminProductDetail() {
     });
 
     const onClickDeleteProduct = async (e: any) => {
-        console.log("삭제하려고 누른 상품 아이디는?", e.target.id);
+        // console.log("삭제하려고 누른 상품 아이디는?", e.target.id);
 
         try {
             await deleteProduct({
@@ -148,11 +149,11 @@ export default function AdminProductDetail() {
                     },
                 ],
             });
-            alert("삭제 성공");
+            Modal.success({content:"삭제 성공하였습니다!"})
             router.push("/admin/product/")
 
         } catch (error: any) {
-            alert(error.message);
+            Modal.error({content:error.message})
         }
     };
     const moveToEditProduct = () => {
@@ -163,29 +164,30 @@ export default function AdminProductDetail() {
         <ProductWriteWrapper>
             <Title>Fetch Product</Title>
             <InputWrapper>
-                Title
-                <ContentDiv 
-                // defaultValue={data?.fetchProduct.title}
-                >{data?.fetchProduct.title}</ContentDiv>
-                Description
-                <ContentDiv>
+                <SmallTitle>Title</SmallTitle>
+                <ContentDiv>{data?.fetchProduct.title}</ContentDiv>
+                <SmallTitle>Description</SmallTitle>
+                <ContentDiv
+                    style={{width:"100%", height:"auto"}}
+                >
                     <PostViewer data={data}/>
-                    {/* {data?.fetchProduct.description} */}
+                    {data?.fetchProduct.description}
                 </ContentDiv>
-                Price<ContentDiv>{data?.fetchProduct.price}</ContentDiv>
+                <SmallTitle>Price</SmallTitle>
+                <ContentDiv>{data?.fetchProduct.price}</ContentDiv>
             </InputWrapper>
             <InputWrapper>
                 <SmallTitle>ProductTags</SmallTitle>
                 <TagDivWrapper>
-                    <TagWrapper>
+                    {/* <TagWrapper> */}
                         {/* {data?.fetchProduct.productTags.map((el:any)=>(
                         <Tag key={el.id}>{el.tag}</Tag>
                         ))} */}
-                    </TagWrapper>
+                    {/* </TagWrapper> */}
                 </TagDivWrapper>
             </InputWrapper>
 
-            <ImageWrapper>
+            {/* <ImageWrapper>
                 {data?.fetchProduct.thumbnail ? (
                     <img src={`https://storage.googleapis.com/${data?.fetchProduct.thumbnail}`} 
                     style={{width:"300px", height:"auto"}}
@@ -198,7 +200,7 @@ export default function AdminProductDetail() {
                     )            
                 }
                 
-            </ImageWrapper>
+            </ImageWrapper> */}
 
             <SubmitButton onClick={onClickDeleteProduct}>Delete</SubmitButton>
             <SubmitButton onClick={moveToEditProduct}>Edit</SubmitButton>

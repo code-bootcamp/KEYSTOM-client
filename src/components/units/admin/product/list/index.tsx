@@ -2,6 +2,15 @@ import { useMutation, useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
 import { gql } from "@apollo/client";
 import styled from "@emotion/styled";
+import dynamic from 'next/dynamic';
+import { Modal } from "antd";
+
+
+const PostViewer = dynamic(
+    ()=> import('../detail/Viewer'),
+    {ssr:false}
+  )
+
 
 const ProductListWrapper = styled.div`
     display: flex;
@@ -107,19 +116,18 @@ export default function AdminProductList() {
         variables: {},
     });
 
-    console.log(router, "router");
+    // console.log(router, "router");
     const { data, refetch } = useQuery(FETCH_PRODUCTS, {
         variables: {
             page: 1,
         },
     });
 
-    console.log("fetchproductsdata", data);
+
+    // console.log("패치데이터", data);
 
  
     const onClickDelete = async (e: any) => {
-        console.log("삭제하려고 누른 상품 아이디는?", e.target.id);
-
         try {
             const result = await deleteProduct({
                 variables: {
@@ -134,10 +142,10 @@ export default function AdminProductList() {
                     },
                 ],
             });
-            alert("삭제 성공");
+            Modal.success({content:"삭제 성공하였습니다"});
             console.log(result);
         } catch (error: any) {
-            alert(error.message);
+            Modal.error({content:error.message})
         }
     };
 
@@ -175,6 +183,8 @@ export default function AdminProductList() {
                                         : "/images/no-image/no-image.png"
                                 }
                             />
+                            <PostViewer 
+                            style={{width:"100px"}}/>
                         </ListItemDiv>
 
                         <ListItemDivWrapper>

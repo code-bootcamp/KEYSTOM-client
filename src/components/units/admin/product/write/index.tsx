@@ -7,11 +7,13 @@ import { useRouter } from 'next/router';
 import { Modal } from 'antd';
 import dynamic from 'next/dynamic';
 import '@toast-ui/editor/dist/toastui-editor.css';
+import { IUpdateVariables } from './productWrite.types';
 
 const PostEditor = dynamic(
     ()=> import('../write/EditorLoader'),
     {ssr:false}
   )
+
 const ProductWriteWrapper = styled.div`
 display: flex;
 flex-direction: column;
@@ -30,7 +32,7 @@ const InputWrapper = styled.div`
     width: 100%;
     display: flex;
     flex-direction: column;
-
+    padding-top: 20px;
     padding-bottom: 20px;
 `
 
@@ -142,10 +144,10 @@ const UPDATE_PRODUCT = gql`
             # like
             createdAt
             thumbnail
-            # productTags{
-            #     id
-            #     tag
-            # }
+            productTags{
+                id
+                tag
+            }
         }
     }
 `
@@ -176,7 +178,7 @@ export default function AdminProductWrite(props:any):JSX.Element {
 
     const onChangeDescription = () => {
         if(editorRef.current){
-            setDescription(editorRef.current.getInstance())
+            setDescription(editorRef.current.getInstance().getMarkdown())
           }
     }
 
@@ -220,10 +222,12 @@ export default function AdminProductWrite(props:any):JSX.Element {
         if(props.data?.fetchProduct.thumbnail){
             setImageUrls([...props.data?.fetchProduct.thumbnail])
         }
-      },[props.data?.fetchProduct.thumbnail])
+    //   },[props.data?.fetchProduct.thumbnail])
+    },[props.data])
 
 
     const onClickSubmit = async () => {
+        console.log("imgUrls123@@", imageUrls)
         try {
             const result = await createProduct({
                 variables: {
@@ -231,7 +235,7 @@ export default function AdminProductWrite(props:any):JSX.Element {
                         title,
                         description,
                         price:Number(price),
-                        imageUrls,
+                        imageUrls:[imageUrls],
                         productTags: hashArr,
                     },
                 },
@@ -251,6 +255,12 @@ export default function AdminProductWrite(props:any):JSX.Element {
         const defaultFile = JSON.stringify(props.data?.fetchProduct.imageUrls)
         const isChangeFile = currentFile !== defaultFile
         try{
+            const updateVariables:IUpdateVariables={productId:router.query.productId}
+            if(title) updateVariables.title = title
+            if(description) updateVariables.description = description
+            if(price) updateVariables.price = price
+            if(isChangeFile) updateVariables.thumbnail = imageUrls[0];
+
             await updateProduct({
                 variables:{
                     productId:router.query.productId,
@@ -276,32 +286,44 @@ export default function AdminProductWrite(props:any):JSX.Element {
         <ProductWriteWrapper>
             <Title>{props.isEdit ?"Edit" : "Create"} Product</Title>
             <InputWrapper>
-               Title<br/> 
-               <Inputs placeholder="title" onChange={onChangeTitle} type="text" defaultValue={props.data?.fetchProduct.title}/>
-               Description<br/> 
+                <SmallTitle>Title</SmallTitle> 
+               <Inputs 
+               placeholder="title" 
+               onChange={onChangeTitle} 
+               type="text" 
+               defaultValue={props.data?.fetchProduct.title}/>
+            </InputWrapper>
+            <InputWrapper>
+                <SmallTitle>Description</SmallTitle>
                 <PostEditor 
                 onChangeDescription={onChangeDescription} 
                 editorRef={editorRef} 
                 data={props.data} 
                 uploadFile={uploadFile}
-                imageUrls={imageUrls}
                 onChangeFileUrl={onChangeFileUrl}
                 description={description}
                 />
 
-                <ImageWrapper>
+                {/* <ImageWrapper>
                     {imageUrls?.map((el:any, index:any)=>(
                         <div key={uuidv4()}>
                             <UploadFileAdminPage onChangeFileUrl={onChangeFileUrl} fileUrl={el} index={index}/>
                         </div>
                     ))}
-                </ImageWrapper>
+                </ImageWrapper> */}
                {/* <Inputs placeholder="description" onChange={onChangeDescription} type="text" defaultValue={props.data?.fetchProduct.description}/> */}
-               Price<br/> 
-               <Inputs placeholder="price" onChange={onChangePrice} type="number" defaultValue={props.data?.fetchProduct.price}/>
             </InputWrapper>
+               
+            <InputWrapper>
+                <SmallTitle>Price</SmallTitle>
+               <Inputs 
+               placeholder="price" 
+               onChange={onChangePrice} 
+               type="number" 
+               defaultValue={props.data?.fetchProduct.price}/>
                 <InputWrapper>
-                    <SmallTitle>ProductTags</SmallTitle>
+            </InputWrapper>
+                <SmallTitle>ProductTags</SmallTitle>
                     <TagInputWrapper>
                     # {"  "}
                     <SmallInput
@@ -320,7 +342,7 @@ export default function AdminProductWrite(props:any):JSX.Element {
                 </InputWrapper>
               
 
-            <SubmitButton onClick={props.isEdit ? onClickUpdateProduct : onClickSubmit}>{props.isEdit ? "Edit" : "Submit"}</SubmitButton>
+            <SubmitButton type='button' onClick={props.isEdit ? onClickUpdateProduct : onClickSubmit}>{props.isEdit ? "Edit" : "Submit"}</SubmitButton>
         </ProductWriteWrapper>
     );
 }

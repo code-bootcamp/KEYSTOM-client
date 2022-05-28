@@ -179,10 +179,11 @@ export default function LayoutHeader() {
       //   const userInfo = resultUserInfo.data.fetchUserLoggedIn;
       //   setUserInfo(userInfo);
 
-      alert("로그인에 성공했습니다!.");
+      Modal.success({content:"로그인 성공하였습니다."})
       location.reload();
-    } catch (error) {
-      alert(error instanceof Error);
+    } catch (error:any) {
+      Modal.error({content:error.message})
+
     }
   };
 
