@@ -150,7 +150,8 @@ export default function MypagePresenter(props: any) {
                   <S.BoughtDateWrapper>
                     <S.BoughtDateText>Date</S.BoughtDateText>
                     <S.BoughtDateNum>
-                      {el?.createdAt.slice(0, 4)}.{el?.createdAt.slice(5, 9)}
+                      {el?.createdAt.slice(0, 4)}.{el?.createdAt.slice(5, 7)}.
+                      {el?.createdAt.slice(8, 10)}
                     </S.BoughtDateNum>
                   </S.BoughtDateWrapper>
 

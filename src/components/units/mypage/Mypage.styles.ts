@@ -308,12 +308,15 @@ export const BoughtDateNum = styled.div`
 `;
 
 export const BoughtPriceWrapper = styled.div`
+  width: 80px;
   display: flex;
   flex-direction: column;
 
   margin-top: auto;
   margin-bottom: auto;
   margin-left: 40px;
+
+  /* text-align: center; */
 `;
 
 export const BoughtPriceText = styled.div`
