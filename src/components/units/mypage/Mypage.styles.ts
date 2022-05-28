@@ -25,7 +25,7 @@ export const TopLeftContainer = styled.div`
   flex-direction: column;
 `;
 
-export const ProfileImage = styled.div`
+export const ProfileImage = styled.img`
   width: 200px;
   height: 200px;
 
@@ -47,17 +47,25 @@ export const TopRightContainer = styled.div`
 export const NameContainer = styled.div`
   display: flex;
   flex-direction: row;
+  align-items: center;
 `;
 
-export const Name = styled.div`
+export const UserTitle = styled.div`
+  display: flex;
+  align-items: center;
   font-style: normal;
 
   width: 100px;
   font-weight: 700;
-  font-size: 20px;
+  font-size: 18px;
 `;
 
-export const VerticalLine = styled.img``;
+export const VerticalLine = styled.div`
+height: 25px;
+border-right: 2px solid #f1f1f1;
+margin-left: 20px;
+margin-right: 20px;
+`;
 
 export const UserName = styled.div`
   font-style: normal;
@@ -132,6 +140,7 @@ export const UserPoint = styled.div`
 export const DeliverWrapper = styled.div`
   display: flex;
   flex-direction: row;
+  align-items: center;
 `;
 
 export const DeliveryAddress = styled.div`
@@ -144,26 +153,32 @@ export const DeliveryAddress = styled.div`
 export const UserDeliveryAddress = styled.div`
   font-style: normal;
   font-weight: 400;
-  font-size: 20px;
+  font-size: 18px;
 
   margin-left: 20px;
 `;
 
 export const SeeCoupon = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin-left: 16px;
-
-  border: 1px solid #ffffff;
+  width: 150px;
+  height: 35px;
+  border: 1px solid #B150F2;
   border-radius: 4px;
 
-  padding: 4px 17px 4px 17px;
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
   line-height: 20px;
 
-  color: #ffffff;
+  color: #B150F2;
 
   cursor: pointer;
+  :hover{
+    font-weight: 700;
+  }
 `;
 
 export const ButtonWrapper = styled.div`

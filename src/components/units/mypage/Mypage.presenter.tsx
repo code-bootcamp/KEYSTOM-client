@@ -50,7 +50,7 @@ export default function MypagePresenter(props: any) {
                 </S.MyCouponDesc>
               </S.MyCouponWrapper>
               <S.MyCouponListWrapper>
-                {props.userHaveCouponData?.fetchUserHaveCoupons.map((el) => (
+                {props.userHaveCouponData?.fetchUserHaveCoupons.map((el:any) => (
                   <S.MyCouponList>
                     <S.MyCouponName>{el.coupon?.couponName}</S.MyCouponName>
                     <S.MyCouponDisCount>
@@ -83,43 +83,41 @@ export default function MypagePresenter(props: any) {
           <S.BoughtList>My Profile</S.BoughtList>
           <S.TopWrapper>
             <S.TopLeftContainer>
-              <S.ProfileImage />
+              <S.ProfileImage src={props.data?.fetchUserLoggedIn.user.profileImage}/>
             </S.TopLeftContainer>
 
             <S.TopRightContainer>
               <S.NameContainer>
-                <S.Name>Name</S.Name>
-                <S.VerticalLine
-                  src={props.data?.fetchUserLoggedIn.user.profileImage}
-                />
+                <S.UserTitle>Name</S.UserTitle>
+                <S.VerticalLine/>
                 {props.data?.fetchUserLoggedIn.user.profileImage}
                 <S.UserName>
                   {props.data?.fetchUserLoggedIn.user.name}
                 </S.UserName>
               </S.NameContainer>
               <S.IdContainer>
-                <S.Id>ID</S.Id>
-                <S.VerticalLine src="./images/Rectangle97.png" />
+                <S.UserTitle>ID</S.UserTitle>
+                <S.VerticalLine/>
                 <S.UserId>{props.data?.fetchUserLoggedIn.user.email}</S.UserId>
               </S.IdContainer>
               <S.NickNameContainer>
-                <S.NickName>NickName</S.NickName>
-                <S.VerticalLine src="./images/Rectangle97.png" />
+                <S.UserTitle>NickName</S.UserTitle>
+                <S.VerticalLine/>
                 <S.UserNickName>
                   {props.data?.fetchUserLoggedIn.user.nickName}
                 </S.UserNickName>
               </S.NickNameContainer>
               <S.PointWrapper>
-                <S.Point>Address</S.Point>
-                <S.VerticalLine src="./images/Rectangle97.png" />
+                <S.UserTitle>Address</S.UserTitle>
+                <S.VerticalLine />
                 <S.UserPoint>
                   {props.data?.fetchUserLoggedIn.address}{" "}
                   {props.data?.fetchUserLoggedIn.addressDetail}
                 </S.UserPoint>
               </S.PointWrapper>
               <S.DeliverWrapper>
-                <S.DeliveryAddress>Coupons</S.DeliveryAddress>
-                <S.VerticalLine src="./images/Rectangle97.png" />
+                <S.UserTitle>Coupons</S.UserTitle>
+                <S.VerticalLine />
                 <S.UserDeliveryAddress>
                   사용가능한 쿠폰이{" "}
                   {props.userHaveCouponData?.fetchUserHaveCoupons.length}개
@@ -140,7 +138,7 @@ export default function MypagePresenter(props: any) {
           <S.MiddleWrapper>
             <S.BoughtList>My Order History</S.BoughtList>
             {props.orderData?.fetchOrders?.length !== 0 ? (
-              props.orderData?.fetchOrders.map((el) => (
+              props.orderData?.fetchOrders.map((el:any) => (
                 <S.BoughtListInfo key={el.id}>
                   <S.BoughtImage
                     src={`https://storage.googleapis.com/${el?.product?.thumbnail}`}
