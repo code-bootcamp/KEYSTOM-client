@@ -112,8 +112,8 @@ const IconWrapper = styled.div`
 `;
 
 const UserIcon = styled.img`
-  width: 22px;
-  height: 22px;
+  width: 24px;
+  height: 24px;
   cursor: pointer;
 `;
 const BasketWrapper = styled.div`
@@ -360,7 +360,7 @@ export default function LayoutHeader() {
             ) : (
               <IconWrapper>
                 <UserIcon
-                  src="/images/header/delete.png"
+                  src="/images/header/logout.png"
                   onClick={onClickLogout}
                 />
               </IconWrapper>
