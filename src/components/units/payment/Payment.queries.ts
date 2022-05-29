@@ -89,3 +89,13 @@ export const FETCH_CUSTOM = gql`
     }
   }
 `;
+
+export const FETCH_COUPON = gql`
+  query fetchCoupon($couponId: String!) {
+    fetchCoupon(couponId: $couponId) {
+      id
+      discountPrice
+      couponName
+    }
+  }
+`;
