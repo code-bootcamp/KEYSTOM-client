@@ -50,14 +50,16 @@ export default function MypagePresenter(props: any) {
                 </S.MyCouponDesc>
               </S.MyCouponWrapper>
               <S.MyCouponListWrapper>
-                {props.userHaveCouponData?.fetchUserHaveCoupons.map((el:any) => (
-                  <S.MyCouponList>
-                    <S.MyCouponName>{el.coupon?.couponName}</S.MyCouponName>
-                    <S.MyCouponDisCount>
-                      {el.coupon?.discountPrice}원 할인쿠폰
-                    </S.MyCouponDisCount>
-                  </S.MyCouponList>
-                ))}
+                {props.userHaveCouponData?.fetchUserHaveCoupons.map(
+                  (el: any) => (
+                    <S.MyCouponList>
+                      <S.MyCouponName>{el.coupon?.couponName}</S.MyCouponName>
+                      <S.MyCouponDisCount>
+                        {el.coupon?.discountPrice}원 할인쿠폰
+                      </S.MyCouponDisCount>
+                    </S.MyCouponList>
+                  )
+                )}
               </S.MyCouponListWrapper>
             </S.ModalDiv>
           ) : (
@@ -90,7 +92,7 @@ export default function MypagePresenter(props: any) {
 
             <S.TopRightContainer>
               <S.NameContainer>
-                <S.Name>Name</S.Name>
+                <div>Name</div>
                 <S.VerticalLine src="./images/Rectangle97.png" />
                 <S.UserName>
                   {props.data?.fetchUserLoggedIn.user.name}
@@ -98,12 +100,12 @@ export default function MypagePresenter(props: any) {
               </S.NameContainer>
               <S.IdContainer>
                 <S.UserTitle>ID</S.UserTitle>
-                <S.VerticalLine/>
+                <S.VerticalLine />
                 <S.UserId>{props.data?.fetchUserLoggedIn.user.email}</S.UserId>
               </S.IdContainer>
               <S.NickNameContainer>
                 <S.UserTitle>NickName</S.UserTitle>
-                <S.VerticalLine/>
+                <S.VerticalLine />
                 <S.UserNickName>
                   {props.data?.fetchUserLoggedIn.user.nickName}
                 </S.UserNickName>
@@ -139,7 +141,7 @@ export default function MypagePresenter(props: any) {
           <S.MiddleWrapper>
             <S.BoughtList>My Order History</S.BoughtList>
             {props.orderData?.fetchOrders?.length !== 0 ? (
-              props.orderData?.fetchOrders.map((el:any) => (
+              props.orderData?.fetchOrders.map((el: any) => (
                 <S.BoughtListInfo key={el.id}>
                   <S.BoughtImage
                     src={`https://storage.googleapis.com/${el?.product?.thumbnail}`}

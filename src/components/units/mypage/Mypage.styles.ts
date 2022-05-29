@@ -60,11 +60,11 @@ export const UserTitle = styled.div`
   font-size: 18px;
 `;
 
-export const VerticalLine = styled.div`
-height: 25px;
-border-right: 2px solid #f1f1f1;
-margin-left: 20px;
-margin-right: 20px;
+export const VerticalLine = styled.img`
+  height: 25px;
+  border-right: 2px solid #f1f1f1;
+  margin-left: 20px;
+  margin-right: 20px;
 `;
 
 export const UserName = styled.div`
@@ -165,7 +165,7 @@ export const SeeCoupon = styled.div`
   margin-left: 16px;
   width: 150px;
   height: 35px;
-  border: 1px solid #B150F2;
+  border: 1px solid #b150f2;
   border-radius: 4px;
 
   font-style: normal;
@@ -173,10 +173,10 @@ export const SeeCoupon = styled.div`
   font-size: 14px;
   line-height: 20px;
 
-  color: #B150F2;
+  color: #b150f2;
 
   cursor: pointer;
-  :hover{
+  :hover {
     font-weight: 700;
   }
 `;

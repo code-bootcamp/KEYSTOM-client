@@ -4,15 +4,18 @@ import ReviewDetail from "./reviewDetail/ReviewList.container";
 // 키보드에 필요한 import
 import { Suspense, useRef, useState, useEffect } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import {
-  ContactShadows,
-  Environment,
-  useGLTF,
-  OrbitControls,
-} from "@react-three/drei";
-import { HexColorPicker, HexColorInput } from "react-colorful";
+import { Environment, useGLTF, OrbitControls } from "@react-three/drei";
 import { proxy, useSnapshot } from "valtio";
-import { snap } from "gsap";
+import { snap, Expo } from "gsap";
+import { motion } from "framer-motion";
+import useMousePosition from "./useMousePosition";
+import { useRecoilState } from "recoil";
+import {
+  recoilLength,
+  recoilSpaceLength,
+  recoilEnterLength,
+  recoilEscLength,
+} from "../../../commons/store";
 
 // 키보드 색상 state
 const state = proxy({
@@ -89,6 +92,8 @@ let enterLength = 0;
 let escLength = 0;
 
 function ChangeKey() {
+  const [recoilLength2, setRecoilLength] = useRecoilState(recoilLength);
+
   useEffect(() => {
     if (
       Object.values(state.items)[14] !== "#ffffff" ||
@@ -103,6 +108,10 @@ function ChangeKey() {
         length =
           Object.values(state.items).filter((el) => el !== "#ffffff").length -
           3;
+
+        setRecoilLength(
+          Object.values(state.items).filter((el) => el !== "#ffffff").length - 3
+        );
       } else if (
         Object.values(state.items)[14] !== "#ffffff" &&
         Object.values(state.items)[33] !== "#ffffff"
@@ -110,6 +119,9 @@ function ChangeKey() {
         length =
           Object.values(state.items).filter((el) => el !== "#ffffff").length -
           2;
+        setRecoilLength(
+          Object.values(state.items).filter((el) => el !== "#ffffff").length - 2
+        );
       } else if (
         Object.values(state.items)[33] !== "#ffffff" &&
         Object.values(state.items)[47] !== "#ffffff"
@@ -117,6 +129,9 @@ function ChangeKey() {
         length =
           Object.values(state.items).filter((el) => el !== "#ffffff").length -
           2;
+        setRecoilLength(
+          Object.values(state.items).filter((el) => el !== "#ffffff").length - 2
+        );
       } else if (
         Object.values(state.items)[14] !== "#ffffff" &&
         Object.values(state.items)[47] !== "#ffffff"
@@ -124,15 +139,24 @@ function ChangeKey() {
         length =
           Object.values(state.items).filter((el) => el !== "#ffffff").length -
           2;
+        setRecoilLength(
+          Object.values(state.items).filter((el) => el !== "#ffffff").length - 2
+        );
       } else {
         length =
           Object.values(state.items).filter((el) => el !== "#ffffff").length -
           1;
+        setRecoilLength(
+          Object.values(state.items).filter((el) => el !== "#ffffff").length - 1
+        );
       }
     } else {
       length = Object.values(state.items).filter(
         (el) => el !== "#ffffff"
       ).length;
+      setRecoilLength(
+        Object.values(state.items).filter((el) => el !== "#ffffff").length
+      );
     }
   });
 
@@ -141,8 +165,12 @@ function ChangeKey() {
 
 // esc 색상 바꼈을 때
 function EscChangeKey() {
+  const [recoilEscLength2, setRecoilEscLength] =
+    useRecoilState(recoilEscLength);
+
   useEffect(() => {
     escLength = Object.values(state.items)[47] !== "#ffffff" ? 1 : 0;
+    setRecoilEscLength(Object.values(state.items)[47] !== "#ffffff" ? 1 : 0);
   });
 
   return <div>{escLength}</div>;
@@ -150,8 +178,11 @@ function EscChangeKey() {
 
 // 스페이스바 색상 바꼈을 때
 function SpaceBarChangeKey() {
+  const [recoilSpaceLength2, setRecoilSpaceLength] =
+    useRecoilState(recoilSpaceLength);
   useEffect(() => {
     spacebarLength = Object.values(state.items)[33] !== "#ffffff" ? 1 : 0;
+    setRecoilSpaceLength(Object.values(state.items)[33] !== "#ffffff" ? 1 : 0);
   });
 
   return <div>{spacebarLength}</div>;
@@ -159,8 +190,11 @@ function SpaceBarChangeKey() {
 
 // 엔터 색상 바꼈을 때
 function EnterChangeKey() {
+  const [recoilEnterLength2, setRecoilEnterLength] =
+    useRecoilState(recoilEnterLength);
   useEffect(() => {
     enterLength = Object.values(state.items)[14] !== "#ffffff" ? 1 : 0;
+    setRecoilEnterLength(Object.values(state.items)[14] !== "#ffffff" ? 1 : 0);
   });
 
   return <div>{enterLength}</div>;
@@ -171,9 +205,6 @@ function Keyboard(props: any) {
   const ref = useRef();
   const snap = useSnapshot(state);
   const { nodes, materials } = useGLTF("/images/keyboard_fix.glb");
-
-  console.log(escLength);
-  console.log(length);
 
   return (
     <>
@@ -656,6 +687,23 @@ function Picker() {
 export default function ProductDetailPresenter(props: any) {
   const snap = useSnapshot(state);
 
+  const [seeImageHover, setSeeImageHover] = useState(false);
+
+  let list = useRef();
+  const { x, y } = useMousePosition();
+
+  const [listPosition, setListPosition] = useState({
+    top: 0,
+    left: 0,
+  });
+
+  useEffect(() => {
+    setListPosition({
+      top: list?.current?.getBoundingClientRect().top,
+      left: list?.current?.getBoundingClientRect().left,
+    });
+  }, []);
+
   return (
     <>
       <S.Wrapper>
@@ -665,7 +713,32 @@ export default function ProductDetailPresenter(props: any) {
               <S.AllForDesigner>
                 {props.data?.fetchProduct?.title}
               </S.AllForDesigner>
-              <S.SeeImage src="/images/see.png" />
+              <S.SeeImage
+                src="/images/see.png"
+                onMouseOver={() => setSeeImageHover(true)}
+                onMouseOut={() => setSeeImageHover(false)}
+              />
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{
+                  opacity: seeImageHover ? 1 : 0,
+                  x: x - listPosition.left,
+                  y: y - listPosition.top,
+                }}
+                transition={{
+                  ease: Expo.easeOut,
+                  duration: 0.8,
+                }}
+              >
+                <img
+                  src={`https://storage.googleapis.com/${props.data?.fetchProduct?.thumbnail}`}
+                  style={{
+                    position: "absolute",
+                    width: "800px",
+                    zIndex: "10",
+                  }}
+                />
+              </motion.div>
             </S.TitleWrapper>
             <S.ProductSelectWrapper>
               <S.TwoDColorWrapper>
@@ -703,7 +776,9 @@ export default function ProductDetailPresenter(props: any) {
                 <S.Option1Wrapper>
                   <S.Option1Name>Origin</S.Option1Name>
                   <S.Option1Count>1</S.Option1Count>
-                  <S.Option1Price>60000</S.Option1Price>
+                  <S.Option1Price>
+                    {props.data?.fetchProduct?.price}
+                  </S.Option1Price>
                 </S.Option1Wrapper>
                 <S.Option1Wrapper>
                   <S.Option1Name>ESC</S.Option1Name>
@@ -739,10 +814,14 @@ export default function ProductDetailPresenter(props: any) {
                   </S.CouponApplyButton>
                   <button onClick={props.onClickGetCoupon}>쿠폰발급받기</button>
                   <S.TotalAccount>
-                    {length * 6000 +
+                    {`${
+                      props.data?.fetchProduct?.price +
+                      length * 6000 +
                       escLength * 7000 +
                       spacebarLength * 8000 +
-                      enterLength * 10000}
+                      enterLength * 10000
+                    } 
+                 `}
                   </S.TotalAccount>
                 </S.TotalPriceWrapper>
               </S.OptionLine>

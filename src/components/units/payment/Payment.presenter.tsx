@@ -46,32 +46,54 @@ export default function PaymentPresenter(props: any) {
                 </S.Row2>
                 <S.Row2>
                   <S.ColumnOption>Spacebar</S.ColumnOption>
-                  <S.ColumnOty></S.ColumnOty>
-                  <S.ColumnPrice></S.ColumnPrice>
+                  <S.ColumnOty>
+                    {props.customData?.fetchCustom?.space}
+                  </S.ColumnOty>
+                  <S.ColumnPrice>
+                    {props.customData?.fetchCustom?.space * 8000}
+                  </S.ColumnPrice>
                 </S.Row2>
                 <S.Row2>
                   <S.ColumnOption>Esc</S.ColumnOption>
-                  <S.ColumnOty></S.ColumnOty>
-                  <S.ColumnPrice></S.ColumnPrice>
+                  <S.ColumnOty>
+                    {props.customData?.fetchCustom?.esc}
+                  </S.ColumnOty>
+                  <S.ColumnPrice>
+                    {props.customData?.fetchCustom?.esc * 7000}
+                  </S.ColumnPrice>
                 </S.Row2>
 
                 <S.Row2>
                   <S.ColumnOption>Keypad</S.ColumnOption>
-                  <S.ColumnOty></S.ColumnOty>
-                  <S.ColumnPrice></S.ColumnPrice>
+                  <S.ColumnOty>
+                    {props.customData?.fetchCustom?.rest}
+                  </S.ColumnOty>
+                  <S.ColumnPrice>
+                    {props.customData?.fetchCustom?.rest * 6000}
+                  </S.ColumnPrice>
                 </S.Row2>
 
                 <S.Row2>
                   <S.ColumnOption>Enter</S.ColumnOption>
-                  <S.ColumnOty></S.ColumnOty>
-                  <S.ColumnPrice></S.ColumnPrice>
+                  <S.ColumnOty>
+                    {props.customData?.fetchCustom?.enter}
+                  </S.ColumnOty>
+                  <S.ColumnPrice>
+                    {props.customData?.fetchCustom?.enter * 10000}
+                  </S.ColumnPrice>
                 </S.Row2>
               </S.PaymentPriceTableWrapper>
 
               <S.PaymentPriceTotalWrapper>
                 <S.PaymentPriceTotal>Total</S.PaymentPriceTotal>
                 <S.PaymentPriceTotalNumber>
-                  {`${props.productData?.fetchProduct?.price}`}
+                  {`${
+                    props.productData?.fetchProduct?.price +
+                    props.customData?.fetchCustom?.space * 8000 +
+                    props.customData?.fetchCustom?.esc * 7000 +
+                    props.customData?.fetchCustom?.rest * 6000 +
+                    props.customData?.fetchCustom?.enter * 10000
+                  }`}
                   {/* <span>원</span> */}
                 </S.PaymentPriceTotalNumber>
               </S.PaymentPriceTotalWrapper>
@@ -174,14 +196,20 @@ export default function PaymentPresenter(props: any) {
                   }}
                 >
                   <S.LabelDetail>Total Price</S.LabelDetail>
-                  <S.LabelText>180,000</S.LabelText>
+                  <S.LabelText>{`${
+                    props.productData?.fetchProduct?.price +
+                    props.customData?.fetchCustom?.space * 8000 +
+                    props.customData?.fetchCustom?.esc * 7000 +
+                    props.customData?.fetchCustom?.rest * 6000 +
+                    props.customData?.fetchCustom?.enter * 10000
+                  }`}</S.LabelText>
                 </S.OrderPriceWrapper>
 
                 <S.PriceInner>
                   <S.OrderPriceWrapper>
                     <S.PaymentLabel>Product price</S.PaymentLabel>
                     <S.LabelContent>
-                      {props.data?.fetchOrders?.product?.price}
+                      {props.productData?.fetchProduct?.price}
                     </S.LabelContent>
                   </S.OrderPriceWrapper>
                   <S.OrderPriceWrapper>

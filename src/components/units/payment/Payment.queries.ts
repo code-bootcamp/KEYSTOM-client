@@ -77,3 +77,15 @@ export const FETCH_USER_LOGGED_IN = gql`
     }
   }
 `;
+
+export const FETCH_CUSTOM = gql`
+  query fetchCustom($productId: String!) {
+    fetchCustom(productId: $productId) {
+      id
+      space
+      enter
+      esc
+      rest
+    }
+  }
+`;
