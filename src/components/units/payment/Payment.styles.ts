@@ -430,6 +430,8 @@ export const MyCouponList = styled.div`
 
   margin-left: 30px;
   margin-bottom: 10px;
+
+  cursor: pointer;
 `;
 
 export const MyCouponName = styled.div`

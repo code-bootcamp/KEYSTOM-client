@@ -735,7 +735,7 @@ export default function ProductDetailPresenter(props: any) {
                   style={{
                     position: "absolute",
                     width: "800px",
-                    zIndex: "10",
+                    zIndex: "9999",
                   }}
                 />
               </motion.div>
@@ -748,7 +748,11 @@ export default function ProductDetailPresenter(props: any) {
               </S.TwoDColorWrapper>
               <S.ThreeDWrapper>
                 <Canvas
-                  style={{ width: "950px", backgroundColor: "none" }}
+                  style={{
+                    width: "950px",
+                    backgroundColor: "none",
+                    zIndex: "3",
+                  }}
                   camera={{
                     fov: 35,
                     near: 0.2,

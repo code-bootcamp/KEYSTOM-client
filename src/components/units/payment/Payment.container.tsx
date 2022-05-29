@@ -6,6 +6,7 @@ import {
   FETCH_USER_HAVE_COUPONS,
   FETCH_USER_LOGGED_IN,
   FETCH_CUSTOM,
+  FETCH_COUPON,
 } from "./Payment.queries";
 import { Modal } from "antd";
 import { useState } from "react";
@@ -20,6 +21,7 @@ declare const window: typeof globalThis & {
 export default function PaymentContainer() {
   const router = useRouter();
   const [productId, setProductId] = useRecoilState(paymentProductId);
+  const [couponId, setCouponId] = useState("");
   const [isClickedModal, setIsClickedModal] = useState(false);
 
   const [isOpen, setIsOpen] = useState(false);
@@ -33,15 +35,20 @@ export default function PaymentContainer() {
   const { data: couponData } = useQuery(FETCH_USER_HAVE_COUPONS);
   const { data: productData } = useQuery(FETCH_PRODUCT, {
     variables: {
-      productId: productId,
+      productId: String(productId),
     },
   });
   const { data: customData } = useQuery(FETCH_CUSTOM, {
     variables: {
-      productId: productId,
+      productId: String(productId),
     },
   });
   const { data: userData } = useQuery(FETCH_USER_LOGGED_IN);
+  const { data: couponDetailData } = useQuery(FETCH_COUPON, {
+    variables: {
+      couponId: couponId,
+    },
+  });
 
   const couponHandleOK = () => {
     setIsClickedModal(false);
@@ -53,6 +60,10 @@ export default function PaymentContainer() {
 
   const onClickAvailableCoupon = () => {
     setIsClickedModal(true);
+  };
+
+  const onClickCoupon = (e) => {
+    setCouponId(e.target.id);
   };
 
   // 주소 모달
@@ -86,7 +97,6 @@ export default function PaymentContainer() {
   const onChangeReceiverPhone = (event: any) => {
     setReceiverPhone(event.target.value);
   };
-  console.log("유저데이터이다", userData?.fetchUserLoggedIn);
 
   const requestPayment = () => {
     const IMP = window.IMP;
@@ -153,6 +163,7 @@ export default function PaymentContainer() {
       couponHandleOK={couponHandleOK}
       couponHandleCancel={couponHandleCancel}
       onClickAvailableCoupon={onClickAvailableCoupon}
+      onClickCoupon={onClickCoupon}
       isClickedModal={isClickedModal}
       showModal={showModal}
       handleOK={handleOk}
