@@ -62,7 +62,7 @@ export default function PaymentContainer() {
     setIsClickedModal(true);
   };
 
-  const onClickCoupon = (e) => {
+  const onClickCoupon = (e:any) => {
     setCouponId(e.target.id);
   };
 
@@ -160,6 +160,7 @@ export default function PaymentContainer() {
       productData={productData}
       couponData={couponData}
       customData={customData}
+      userData={userData}
       couponHandleOK={couponHandleOK}
       couponHandleCancel={couponHandleCancel}
       onClickAvailableCoupon={onClickAvailableCoupon}

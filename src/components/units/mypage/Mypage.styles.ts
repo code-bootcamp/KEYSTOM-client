@@ -278,10 +278,8 @@ export const BoughtImage = styled.img`
 `;
 
 export const BoughtName = styled.div`
-  width: 280px;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 20px;
+  width: 250px;
+  font-size: 18px;
 
   margin-top: auto;
   margin-left: 30px;
@@ -293,6 +291,7 @@ export const BoughtName = styled.div`
 `;
 
 export const BoughtDateWrapper = styled.div`
+  width: 100px;
   display: flex;
   flex-direction: column;
 
@@ -313,22 +312,20 @@ export const BoughtDateText = styled.div`
 `;
 
 export const BoughtDateNum = styled.div`
-  font-style: normal;
-  font-weight: 400;
-  font-size: 24px;
+  font-size: 20px;
   line-height: 36px;
 
   color: #ffffff; ;
 `;
 
 export const BoughtPriceWrapper = styled.div`
-  width: 80px;
+  width: 100px;
   display: flex;
   flex-direction: column;
 
   margin-top: auto;
   margin-bottom: auto;
-  margin-left: 40px;
+  margin-left: 60px;
 
   /* text-align: center; */
 `;
@@ -345,9 +342,7 @@ export const BoughtPriceText = styled.div`
 `;
 
 export const BoughtPriceNum = styled.div`
-  font-style: normal;
-  font-weight: 400;
-  font-size: 24px;
+  font-size: 20px;
   line-height: 36px;
 
   color: #ffffff; ;
@@ -379,9 +374,6 @@ export const BoughtStatus = styled.div`
   display: flex;
   align-items: center;
 
-  font-style: normal;
-
-  font-weight: 400;
   font-size: 18px;
   line-height: 24px;
 
@@ -389,7 +381,7 @@ export const BoughtStatus = styled.div`
 `;
 
 export const BoughtReviewWrapper = styled.div`
-  width: 110px;
+  width: 100px;
   display: flex;
   flex-direction: column;
 
@@ -415,10 +407,7 @@ export const BoughtReviewStatus = styled.div`
   display: flex;
   align-items: center;
 
-  font-style: normal;
-
-  font-weight: 400;
-  font-size: 24px;
+  font-size: 18px;
   line-height: 36px;
 
   color: #ffffff; ;
@@ -433,7 +422,7 @@ export const BoughtReviewIcon = styled.button`
   margin-top: auto;
   margin-bottom: auto;
   margin-left: auto;
-  margin-right: 30px;
+  margin-right: 40px;
 
   font-weight: 700;
   font-size: 14px;
@@ -476,6 +465,7 @@ export const BasketProductImage = styled.img`
   height: 350px;
   border-radius: 10px 10px 0 0;
   background-color:#b1b1b1;
+  cursor: pointer;
 `;
 
 export const BasketProductInfoWrapper = styled.div`
