@@ -44,3 +44,23 @@ export const paymentProductId = atom({
 //   key: "TodayItemList",
 //   default: false,
 // });
+
+export let recoilLength = atom({
+  key: "recoilLength",
+  default: 0,
+});
+
+export let recoilSpaceLength = atom({
+  key: "recoilSpaceLength",
+  default: 0,
+});
+
+export let recoilEnterLength = atom({
+  key: "recoilEnterLength",
+  default: 0,
+});
+
+export let recoilEscLength = atom({
+  key: "recoilEscLength",
+  default: 0,
+});

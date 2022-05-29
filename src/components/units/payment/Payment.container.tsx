@@ -5,6 +5,7 @@ import {
   FETCH_PRODUCT,
   FETCH_USER_HAVE_COUPONS,
   FETCH_USER_LOGGED_IN,
+  FETCH_CUSTOM,
 } from "./Payment.queries";
 import { Modal } from "antd";
 import { useState } from "react";
@@ -35,9 +36,12 @@ export default function PaymentContainer() {
       productId: productId,
     },
   });
+  const { data: customData } = useQuery(FETCH_CUSTOM, {
+    variables: {
+      productId: productId,
+    },
+  });
   const { data: userData } = useQuery(FETCH_USER_LOGGED_IN);
-
-  console.log("프로덕트데이터", productData);
 
   const couponHandleOK = () => {
     setIsClickedModal(false);
@@ -92,7 +96,12 @@ export default function PaymentContainer() {
         pg: "html5_inicis",
         pay_method: "card",
         name: productData?.fetchProduct?.title,
-        amount: productData?.fetchProduct?.price,
+        amount:
+          productData?.fetchProduct?.price +
+          customData?.fetchCustom?.space * 8000 +
+          customData?.fetchCustom?.esc * 7000 +
+          customData?.fetchCustom?.rest * 6000 +
+          customData?.fetchCustom?.enter * 10000,
         buyer_email: userData?.fetchUserLoggedIn?.user?.email,
         buyer_name: userData?.fetchUserLoggedIn?.user?.name,
         // buyer_name: "영훈",
@@ -103,7 +112,12 @@ export default function PaymentContainer() {
           console.log(rsp);
           payment({
             variables: {
-              price: productData?.fetchProduct?.price,
+              price:
+                productData?.fetchProduct?.price +
+                customData?.fetchCustom?.space * 8000 +
+                customData?.fetchCustom?.esc * 7000 +
+                customData?.fetchCustom?.rest * 6000 +
+                customData?.fetchCustom?.enter * 10000,
               impUid: rsp.imp_uid,
               createAddressInput: {
                 address: address,
@@ -135,6 +149,7 @@ export default function PaymentContainer() {
       requestPayment={requestPayment}
       productData={productData}
       couponData={couponData}
+      customData={customData}
       couponHandleOK={couponHandleOK}
       couponHandleCancel={couponHandleCancel}
       onClickAvailableCoupon={onClickAvailableCoupon}

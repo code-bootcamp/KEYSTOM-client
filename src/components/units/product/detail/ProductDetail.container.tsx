@@ -5,6 +5,12 @@ import { useEffect, useState } from "react";
 import ProductDetailPresenter from "../detail/ProductDetail.presenter";
 import { paymentProductId } from "../../../commons/store";
 import { useRecoilState } from "recoil";
+import {
+  recoilLength,
+  recoilSpaceLength,
+  recoilEnterLength,
+  recoilEscLength,
+} from "../../../commons/store";
 
 const FETCH_PRODUCT = gql`
   query fetchProduct($productId: String!) {
@@ -14,6 +20,7 @@ const FETCH_PRODUCT = gql`
       description
       price
       createdAt
+      thumbnail
     }
   }
 `;
@@ -34,12 +41,32 @@ const CREATE_EVENT_COUPON = gql`
   }
 `;
 
+const CREATE_CUSTOM = gql`
+  mutation createCustom($createCustomInput: CreateCustomInput!) {
+    createCustom(createCustomInput: $createCustomInput) {
+      id
+      space
+      enter
+      esc
+      rest
+    }
+  }
+`;
+
 export default function ProductDetailContainer() {
   const router = useRouter();
   const [isBasket, setIsBasket] = useState(false);
   const [productId, setProductId] = useRecoilState(paymentProductId);
+  const [recoilLength2, setRecoilLength2] = useRecoilState(recoilLength);
+  const [recoilSpaceLength2, setRecoilSpaceLength2] =
+    useRecoilState(recoilSpaceLength);
+  const [recoilEnterLength2, setRecoilEnterLength2] =
+    useRecoilState(recoilEnterLength);
+  const [recoilEscLength2, setRecoilEscLength2] =
+    useRecoilState(recoilEscLength);
 
   const [getCoupon] = useMutation(CREATE_EVENT_COUPON);
+  const [createCustom] = useMutation(CREATE_CUSTOM);
 
   const { data } = useQuery(FETCH_PRODUCT, {
     variables: {
@@ -101,15 +128,31 @@ export default function ProductDetailContainer() {
   const onClickCouponApply = () => {};
 
   // 결제하기
-  const onClickPayNow = (e) => {
-    setProductId(e.target.id);
-    router.push("/payment");
+  const onClickPayNow = async (e) => {
+    try {
+      const payResult = await createCustom({
+        variables: {
+          createCustomInput: {
+            space: recoilSpaceLength2,
+            enter: recoilEnterLength2,
+            esc: recoilEscLength2,
+            rest: recoilLength2,
+            productId: String(router.query.productId),
+          },
+        },
+      });
+      console.log(payResult);
+      setProductId(e.target.id);
+      router.push("/payment");
+    } catch (error) {
+      alert(error instanceof Error);
+    }
   };
 
   const onClickGetCoupon = async () => {
     try {
       const result = await getCoupon({});
-      console.log("쿠폰리절트", result);
+      // console.log("쿠폰리절트", result);
     } catch (error) {
       Modal.error({
         content: "이미 쿠폰을 발급받았습니다.",
