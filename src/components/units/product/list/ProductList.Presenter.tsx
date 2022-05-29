@@ -4,6 +4,7 @@ import * as S from "./ProductList.styles";
 import InfiniteScroll from "react-infinite-scroller";
 import _ from "lodash";
 
+
 export default function ProductListPresenter(props: any) {
     if (!props.data) return <div></div>;
 
@@ -40,6 +41,7 @@ export default function ProductListPresenter(props: any) {
         <S.Wrapper>
             <S.ListBannerWrapper>
                 <S.ListBanner src="/images/list/list-banner.png" />
+                <S.ListBannerText>Meet Your Own Keyboard</S.ListBannerText>
             </S.ListBannerWrapper>
             <S.SearchWrapper>
                 <S.SearchInputWrapper>
@@ -47,13 +49,18 @@ export default function ProductListPresenter(props: any) {
                         <S.SearchIcon></S.SearchIcon>
                         <S.SearchInput
                             onChange={onChangeSearchbar}
-                            placeholder="검색어를 입력해주세요."
+                            placeholder="Please enter your keyword to search."
                         ></S.SearchInput>
                         {/* <Searchbars01></Searchbars01> */}
                     </S.SearchInputIconWrapper>
                 </S.SearchInputWrapper>
+                <S.SearchTextWrapper>
+                    <S.SearchText>Products</S.SearchText>
+                    <S.SearchText>Tags</S.SearchText>
+                    <S.SearchText>Price</S.SearchText>
+                </S.SearchTextWrapper>
             </S.SearchWrapper>
-            <S.SearchText>검색 결과</S.SearchText>
+           
 
             <S.ProductListWrapper>
                 <InfiniteScroll

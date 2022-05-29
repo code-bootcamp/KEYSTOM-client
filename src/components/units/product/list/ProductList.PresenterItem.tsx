@@ -1,21 +1,38 @@
 import * as S from "./ProductList.styles";
 import { v4 as uuidv4 } from "uuid";
+import dynamic from 'next/dynamic';
+
+
+const PostViewer = dynamic(
+    ()=> import('../../admin/product/detail/Viewer'),
+    {ssr:false}
+  )
 
 export default function ProductListPresenterItem(props: any) {
     return (
         <S.ProductBox>
+            {/* <S.ProductImageDiv>
+                {props.el.thumbnail &&(
+                        <PostViewer 
+                        style={{width:"100px"}}/>
+                )}
+            </S.ProductImageDiv>
+         */}
             {props.el.image === null ? (
                 <S.ProductImage
                     onClick={props.onClickMoveToDetail}
                     src={`${props.el.image}`}
                     id={props.el.id}
                 ></S.ProductImage>
+                
             ) : (
                 <S.ProductImage
                     onClick={props.onClickMoveToDetail}
                     style={{ backgroundColor: "gray" }}
                     id={props.el.id}
                 ></S.ProductImage>
+                // <PostViewer 
+                // style={{width:"100px"}}/>
             )}
 
             <S.ProductBoxRightWrapper>

@@ -21,7 +21,7 @@ export const MainImage = styled.div`
   width: 100%;
   height: 1080px;
   /* background-color: Red; */
-  background-image: url("/images/main/carousel_1.png");
+  background-image: url("/images/main/main-banner1.png");
   background-position: center;
   background-size: cover;
 `;
@@ -30,7 +30,7 @@ export const MainImage2 = styled.div`
   width: 100%;
   height: 1080px;
   /* background-color: Red; */
-  background-image: url("/images/main/main_2.png");
+  background-image: url("/images/main/main-2.png");
   background-position: center;
   background-size: cover;
 `;
@@ -39,7 +39,7 @@ export const MainImage3 = styled.div`
   width: 100%;
   height: 1080px;
   /* background-color: Red; */
-  background-image: url("/images/main/main_3.png");
+  background-image: url("/images/main/main-3-1.png");
   background-position: center;
   background-size: cover;
 `;
@@ -82,7 +82,7 @@ export const Text2 = styled.div`
 `;
 
 export const Text3 = styled.div`
-  font-weight: 400;
+  font-weight: 700;
   font-size: 24px;
 
   margin-bottom: 29px;
@@ -95,7 +95,7 @@ export const MoveButton = styled.button`
   border-radius: 10px;
   font-weight: 700;
   font-size: 24px;
-
+  border: none;
   margin-top: 130px;
 `;
 
@@ -134,18 +134,18 @@ export const BestProductWrapper = styled.div`
   width: 100%;
   display: flex;
   flex-direction: row;
-
+  padding-top: 20px;
   justify-content: space-between;
 `;
 
 export const BestProductBox = styled.div`
   width: 400px;
-  border-radius: 30px 30px 0px 0px;
 `;
 
 export const ReviewImage = styled.img<{ src: string }>`
   width: 400px;
   height: 291px;
+  border-radius: 10px 10px 0 0 ;
 
   /* background-color: blue; */
 
@@ -153,7 +153,6 @@ export const ReviewImage = styled.img<{ src: string }>`
   background-position: center;
   background-size: cover;
 
-  border-radius: 10px 10px 0px 0px;
 `;
 
 export const ReviewDownWrapper = styled.div`

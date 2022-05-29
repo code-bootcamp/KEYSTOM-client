@@ -221,7 +221,7 @@ export const PasswordFind = styled.button`
 export const Line = styled.div`
   width: 100%;
   border: none;
-  border-top: 1px solid #b1b1b1;
+  border-top: 0.5px solid #666;
 
   margin-top: 60px;
   margin-bottom: 60px;
@@ -252,7 +252,7 @@ export const BoughtListInfo = styled.div`
   border-radius: 10px;
 `;
 
-export const NoBouhtListInfo = styled.div`
+export const NoBoughtListInfo = styled.div`
   width: 1240px;
   height: 104px;
   display: flex;
@@ -264,7 +264,6 @@ export const NoBouhtListInfo = styled.div`
   border-radius: 10px;
 
   font-style: normal;
-  font-weight: 700;
   font-size: 20px;
   line-height: 24px;
 
@@ -383,8 +382,8 @@ export const BoughtStatus = styled.div`
   font-style: normal;
 
   font-weight: 400;
-  font-size: 24px;
-  line-height: 36px;
+  font-size: 18px;
+  line-height: 24px;
 
   color: #ffffff; ;
 `;
@@ -451,7 +450,7 @@ export const BoughtReviewIcon = styled.button`
 `;
 
 export const BottomMapWrapper = styled.div`
-  width: 1500px;
+  width: 1300px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -476,26 +475,32 @@ export const BasketList = styled.div`
 export const BasketProductImageWrapper = styled.div``;
 
 export const BasketProductImage = styled.img`
-  width: 730px;
+  width: 400px;
   height: 366px;
+  border-radius: 10px 10px 0 0;
+  background-color:#b1b1b1;
 `;
 
 export const BasketProductInfoWrapper = styled.div`
-  width: 730px;
-  height: 326px;
+  padding: 46px 30px;
 
-  background-color: #f1f1f1;
-  border-radius: 0px 0px 30px 30px;
+  display: flex;
+  width: 400px;
+  height: 235px;
+
+  background-color: #2c2c2c;
+  border-radius: 0px 0px 10px 10px;
 `;
 
 export const BasketProductInfoWrapper2 = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction:column;
 `;
 
 export const ProductInfoWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  color: #f1f1f1;
 `;
 
 export const ProductName = styled.div`
@@ -504,26 +509,30 @@ export const ProductName = styled.div`
   font-size: 24px;
   line-height: 28px;
 
-  color: #000000;
+  color: #f1f1f1;
 
-  margin-top: 50px;
-  margin-left: 40px;
 `;
 
 export const ProductContents = styled.div`
   font-style: normal;
   font-weight: 400;
-  font-size: 20px;
-  line-height: 24px;
-  color: #000000;
+  font-size: 14px;
+  line-height: 20px;
+  color: #b1b1b1;
 
-  margin-top: 30px;
-  margin-left: 40px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 `;
 
+export const ProductPrice = styled.div`
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 24px;
+`
+
 export const ProductDelete = styled.img`
-  width: 54px;
-  height: 54px;
+  width: 24px;
+  height: 24px;
 
   margin-top: 60px;
   margin-left: auto;
@@ -533,19 +542,23 @@ export const ProductDelete = styled.img`
 `;
 
 export const ProductBuyButton = styled.button`
-  width: 378px;
-  height: 80px;
-  background-color: #c4c4c4;
-
+  width: 140px;
+  height: 44px;
   font-style: normal;
   font-weight: 700;
-  font-size: 24px;
-  line-height: 28px;
+  font-size: 14px;
+  line-height: 20px;
   color: #ffffff;
-  background-color: #b150f2;
-
+  border: 1px solid #f1f1f1;
+  background-color: none;
   margin-top: 82px;
   margin-left: 312px;
+  cursor: pointer;
+  :hover{
+    border: none;
+    background-color: #B150F2;
+    
+  }
 `;
 
 export const ModalDiv = styled.div`

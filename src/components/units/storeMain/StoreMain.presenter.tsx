@@ -95,22 +95,22 @@ import LandingAnimation from "./LandingAnimation";
 
 const ReviewArr = [
   {
-    title: "키보드 1호",
-    contents: "리뷰 상세, 1줄 이상은 생략하게 해주세요.(...)",
-    image: "/images/main/best_review_1.png",
-    like: 15,
+    title: "My Best Choice This Year",
+    contents: "I just needed one!",
+    image: "/images/review/best-review1.png",
+    like: 287,
   },
   {
-    title: "키보드 2호",
-    contents: "리뷰 상세, 1줄 이상은 생략하게 해주세요.(...)",
-    image: "/images/main/best_review_2.png",
-    like: 10,
+    title: "I recommend to my friends",
+    contents: "Call me as missionary...",
+    image: "/images/review/best-review2.png",
+    like: 126,
   },
   {
-    title: "키보드 3호",
-    contents: "리뷰 상세, 1줄 이상은 생략하게 해주세요.(...)",
-    image: "/images/main/best_review_3.png",
-    like: 5,
+    title: "Thanks for quick delivery",
+    contents: "I ordered yesterday but already here",
+    image: "/images/review/best-review3.png",
+    like: 79,
   },
 ];
 
@@ -214,7 +214,7 @@ export default function StorePresenter() {
                 <S.Text3>
                   It is very simple way to get your own customized keyboard !{" "}
                 </S.Text3>
-                <S.Text3>Enjoy ! : )</S.Text3>
+                <S.Text3>Enjoy : )</S.Text3>
 
                 <S.MoveButton onClick={MoveToStore}>
                   Go to customize
@@ -228,7 +228,7 @@ export default function StorePresenter() {
             animateOut="slideOutLeft"
           >
             <S.BestReviewWrapper>
-              <S.Text>Best Review</S.Text>
+              <S.Text>Best Reviews</S.Text>
 
               <ScrollAnimation animateIn="fadeIn" animateOut="fadeOut">
                 <S.BestProductWrapper>

@@ -84,7 +84,6 @@ export const LoginBtn = styled.button`
     border-radius: 10px;
     border: none;
     margin-bottom: 20px;
-    font-weight: 700;
     font-size: 20px;
 `;
 
@@ -99,7 +98,7 @@ export const SocialLogin = styled.div`
     border-bottom: 1px solid #c4c4c4;
 `;
 
-export const SocialLoginBtn = styled.img`
+export const SocialLoginImg = styled.img`
     width: 54px;
     height: 54px;
     border-radius: 30px;
@@ -137,6 +136,5 @@ export const SignUpBtn = styled.button`
     border-radius: 10px;
     border: none;
     margin-bottom: 20px;
-    font-weight: 700;
     font-size: 20px;
 `;

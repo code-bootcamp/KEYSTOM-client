@@ -92,8 +92,8 @@ export default function MypagePresenter(props: any) {
 
             <S.TopRightContainer>
               <S.NameContainer>
-                <div>Name</div>
-                <S.VerticalLine src="./images/Rectangle97.png" />
+                <S.UserTitle>Name</S.UserTitle>
+                <S.VerticalLine />
                 <S.UserName>
                   {props.data?.fetchUserLoggedIn.user.name}
                 </S.UserName>
@@ -122,12 +122,12 @@ export default function MypagePresenter(props: any) {
                 <S.UserTitle>Coupons</S.UserTitle>
                 <S.VerticalLine />
                 <S.UserDeliveryAddress>
-                  사용가능한 쿠폰이{" "}
-                  {props.userHaveCouponData?.fetchUserHaveCoupons.length}개
-                  있습니다.
+                  {" "}
+                  {props.userHaveCouponData?.fetchUserHaveCoupons.length} coupons
+                  available
                 </S.UserDeliveryAddress>
                 <S.SeeCoupon onClick={props.onClickSeeCoupon}>
-                  쿠폰함 보기
+                  View coupons
                 </S.SeeCoupon>
               </S.DeliverWrapper>
 
@@ -176,7 +176,8 @@ export default function MypagePresenter(props: any) {
                 </S.BoughtListInfo>
               ))
             ) : (
-              <S.NoBouhtListInfo>구매 이력이 없습니다.</S.NoBouhtListInfo>
+              <S.NoBoughtListInfo>
+              No purchase history</S.NoBoughtListInfo>
             )}
           </S.MiddleWrapper>
 
@@ -189,24 +190,27 @@ export default function MypagePresenter(props: any) {
               props.baskets.map((el: any) => (
                 <S.BottomWrapper>
                   <S.BasketProductImageWrapper>
-                    <S.BasketProductImage src="/images/mybasket_img1.png" />
+                    <S.BasketProductImage src={`https://storage.googleapis.com/${el?.thumbnail}`} />
                   </S.BasketProductImageWrapper>
 
                   <S.BasketProductInfoWrapper>
-                    <S.BasketProductInfoWrapper2>
                       <S.ProductInfoWrapper>
-                        <S.ProductName>{el.name}</S.ProductName>
+                      <S.BasketProductInfoWrapper2>
+                          <S.ProductName>{el.title}</S.ProductName>
+                          <S.ProductDelete
+                            onClick={props.onClickDeleteBasket}
+                            src="./images/delete/delete.png"
+                            id={el.id}
+                          />
+                         </S.BasketProductInfoWrapper2>
                         <S.ProductContents>{el.description}</S.ProductContents>
+                        <S.BasketProductInfoWrapper2>
+                          <S.ProductPrice>{el.price}</S.ProductPrice>
+                          <S.ProductBuyButton onClick={onClickMoveToPayment}>
+                            Pay Now
+                          </S.ProductBuyButton>
+                        </S.BasketProductInfoWrapper2>
                       </S.ProductInfoWrapper>
-                      <S.ProductDelete
-                        onClick={props.onClickDeleteBasket}
-                        src="./images/delete.png"
-                        id={el.id}
-                      />
-                    </S.BasketProductInfoWrapper2>
-                    <S.ProductBuyButton onClick={onClickMoveToPayment}>
-                      결제하기
-                    </S.ProductBuyButton>
                   </S.BasketProductInfoWrapper>
                 </S.BottomWrapper>
               ))

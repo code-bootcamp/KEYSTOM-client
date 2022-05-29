@@ -693,8 +693,8 @@ export default function ProductDetailPresenter(props: any) {
   const { x, y } = useMousePosition();
 
   const [listPosition, setListPosition] = useState({
-    top: 0,
-    left: 0,
+    top: -100,
+    left: 130,
   });
 
   useEffect(() => {
@@ -710,11 +710,11 @@ export default function ProductDetailPresenter(props: any) {
         <S.ProductWrapper>
           <S.ProductLeftWrapper>
             <S.TitleWrapper>
-              <S.AllForDesigner>
+              <S.ProductTitle>
                 {props.data?.fetchProduct?.title}
-              </S.AllForDesigner>
-              <S.SeeImage
-                src="/images/see.png"
+              </S.ProductTitle>
+              <S.SeeIcon
+                src="/images/detail/see.png"
                 onMouseOver={() => setSeeImageHover(true)}
                 onMouseOut={() => setSeeImageHover(false)}
               />
@@ -727,15 +727,16 @@ export default function ProductDetailPresenter(props: any) {
                 }}
                 transition={{
                   ease: Expo.easeOut,
-                  duration: 0.8,
+                  duration: 0,
                 }}
               >
                 <img
                   src={`https://storage.googleapis.com/${props.data?.fetchProduct?.thumbnail}`}
                   style={{
                     position: "absolute",
-                    width: "800px",
-                    zIndex: "9999",
+                    width: "400px",
+                    zIndex: "100",
+                    borderRadius:"10px"
                   }}
                 />
               </motion.div>
@@ -769,7 +770,7 @@ export default function ProductDetailPresenter(props: any) {
             </S.ProductSelectWrapper>
           </S.ProductLeftWrapper>
           <S.PriceWrapper>
-            <S.ApllyedOptions>Options</S.ApllyedOptions>
+            <S.Options>Options</S.Options>
             <S.OptionTableWrapper>
               <S.OptionHeader>
                 <S.OptionName>Option</S.OptionName>
@@ -813,10 +814,6 @@ export default function ProductDetailPresenter(props: any) {
                   <S.Option1Price>{length * 6000}</S.Option1Price>
                 </S.Option1Wrapper>
                 <S.TotalPriceWrapper>
-                  <S.CouponApplyButton onClick={props.onClickCouponApply}>
-                    쿠폰적용하기
-                  </S.CouponApplyButton>
-                  <button onClick={props.onClickGetCoupon}>쿠폰발급받기</button>
                   <S.TotalAccount>
                     {`${
                       props.data?.fetchProduct?.price +
@@ -830,21 +827,31 @@ export default function ProductDetailPresenter(props: any) {
                 </S.TotalPriceWrapper>
               </S.OptionLine>
             </S.OptionTableWrapper>
-            <S.AddToCartButton
-              onClick={
-                props.isBasket
-                  ? props.onClickDelete(props.data?.fetchProduct)
-                  : props.onClickBasket(props.data?.fetchProduct)
-              }
-            >
-              {props.isBasket ? "Add Cancel" : "Add to Cart"}
-            </S.AddToCartButton>
-            <S.PayNowButton
-              onClick={props.onClickPayNow}
-              id={props.data?.fetchProduct?.id}
-            >
-              Pay Now
-            </S.PayNowButton>
+              {/* <S.CouponApplyButton onClick={props.onClickCouponApply}>
+                쿠폰적용하기
+              </S.CouponApplyButton> */}
+            <S.ButtonsWrapper>
+              <S.GetCouponButton onClick={props.onClickGetCoupon}>
+                Get Coupons
+                <S.GetCouponImg  src="/images/coupon/get-coupon.png"/>
+              </S.GetCouponButton>
+              <S.PayNowButton
+                onClick={props.onClickPayNow}
+                id={props.data?.fetchProduct?.id}
+              >
+                Pay Now
+              </S.PayNowButton>
+              <S.AddToCartButton
+                onClick={
+                  props.isBasket
+                    ? props.onClickDelete(props.data?.fetchProduct)
+                    : props.onClickBasket(props.data?.fetchProduct)
+                }
+              >
+                {props.isBasket ? "Add Cancel" : "Add to Cart"}
+              </S.AddToCartButton>
+         
+            </S.ButtonsWrapper>
           </S.PriceWrapper>
         </S.ProductWrapper>
       </S.Wrapper>
