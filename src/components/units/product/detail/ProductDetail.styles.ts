@@ -30,7 +30,7 @@ export const ProductLeftWrapper = styled.div`
   flex-direction: column;
 `;
 
-export const AllForDesigner = styled.div`
+export const ProductTitle = styled.div`
   font-style: normal;
   font-weight: 700;
   font-size: 32px;
@@ -41,7 +41,7 @@ export const AllForDesigner = styled.div`
   margin-bottom: 23px;
 `;
 
-export const SeeImage = styled.img`
+export const SeeIcon = styled.img`
   width: 38px;
   height: 38px;
 
@@ -130,11 +130,12 @@ export const PriceWrapper = styled.div`
   margin-left: 20px;
 `;
 
-export const ApllyedOptions = styled.div`
+export const Options = styled.div`
   font-style: normal;
   font-weight: 700;
   font-size: 24px;
   line-height: 28px;
+  padding-top: 10px;
 
   color: #ffffff;
 `;
@@ -213,9 +214,7 @@ export const TotalPriceWrapper = styled.div`
   flex-direction: column;
 `;
 
-export const CouponApplyButton = styled.button`
-  margin-top: 10px;
-`;
+
 
 export const Option1Name = styled.div`
   width: 70px;
@@ -264,20 +263,42 @@ export const TotalAccount = styled.div`
   color: #ffffff;
 `;
 
-export const AddToCartButton = styled.button`
-  width: 300px;
-  height: 80px;
+export const ButtonsWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+`
 
-  border: 1px solid #ffffff;
-  border-radius: 10px;
-  margin-top: 51px;
+export const GetCouponButton = styled.button`
+  background-color: #f1f1f1;
+  color: #B150F2;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  height: 60px;
+  font-size: 20px;
+  padding-left: 80px;
 `;
 
-export const PayNowButton = styled.button`
-  width: 300px;
-  height: 80px;
+export const GetCouponImg = styled.img`
+  width: 24px;
+  height: 24px;
+  margin-left: 40px;
+`
 
+export const PayNowButton = styled.button`
+  height: 60px;
+  background: #B150F2;
+  border: none;
+  border-radius: 10px;
+  color: #f1f1f1;
+  font-size: 20px;
+  margin-bottom: 10px;
+
+`;
+
+export const AddToCartButton = styled.button`
+  height: 60px;
+  font-size: 20px;
   border: 1px solid #ffffff;
   border-radius: 10px;
-  margin-top: 16px;
 `;

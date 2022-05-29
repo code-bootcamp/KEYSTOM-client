@@ -28,10 +28,12 @@ const schema = yup.object({
 
 const Wrapper = styled.div`
   display: flex;
+  height: 80px;
   width: 100%;
   background-color: transparent;
   padding: 25px 340px;
   color: #fff;
+  z-index: 10;
 `;
 
 const LogoDiv = styled.div`
@@ -45,6 +47,9 @@ const Logo = styled.div`
   line-height: 100%;
   width: 100%;
   text-align: center;
+  color: #f1f1f1;
+  /* color: #B150F2; */
+
   cursor: pointer;
 `;
 
@@ -54,6 +59,8 @@ const MovingText2 = styled(MovingText)`
   line-height: 100%;
   width: 100%;
   text-align: center;
+  color: #B150F2;
+
   cursor: pointer;
 `;
 
@@ -70,14 +77,14 @@ const MenuDiv = styled.div`
 `;
 const Menu = styled.div`
   /* color: #B150F2; */
-  color: #fff;
+  color: #f1f1f1;
   padding-left: 50px;
   font-weight: 300;
   font-size: 20px;
   line-height: 24px;
   cursor: pointer;
   :hover {
-    font-weight: 600;
+    /* font-weight: 500; */
     color: #b150f2;
   }
 
@@ -284,31 +291,37 @@ export default function LayoutHeader() {
               </S.LoginDiv>
 
               <S.BtnWrapper>
-                <S.LoginBtn>로그인하기</S.LoginBtn>
+                <S.LoginBtn>Login</S.LoginBtn>
                 <S.SocialLogin>
-                  <Link href="https://antipiebse.shop/login/kakao">
-                    <S.SocialLoginBtn src="/images//KakaoLogin_img.png" />
+                  <Link href="https://delifarm.site/login/kakao" >
+                    <a target="_blank"  rel="noopener noreferrer">
+                      <S.SocialLoginImg src="/images/login/social-login-kakao.png" />
+                    </a>
                   </Link>
 
-                  <Link href="https://antipiebse.shop/login/naver">
-                    <S.SocialLoginBtn src="/images/NaverLogin_img.png" />
+                  <Link href="https://delifarm.site/login/naver">
+                    <a target="_blank"  rel="noopener noreferrer">
+                      <S.SocialLoginImg src="/images/login/social-login-naver.png" />
+                    </a>
                   </Link>
 
-                  <Link href="https://antipiebse.shop/login/google">
-                    <S.SocialLoginBtn src="/images/GoogleLogin_img.png" />
+                  <Link href="https://delifarm.site/login/google">
+                    <a target="_blank"  rel="noopener noreferrer">
+                      <S.SocialLoginImg src="/images/login/social-login-google.png" />
+                    </a>
                   </Link>
                 </S.SocialLogin>
               </S.BtnWrapper>
 
               <S.StringWrapper>
-                <S.StringDiv>비밀번호를 잊으셨나요?</S.StringDiv>
-                <S.FindPassBtn>비밀번호 찾기</S.FindPassBtn>
+                <S.StringDiv>Forgot Password?</S.StringDiv>
+                <S.FindPassBtn>Find Password</S.FindPassBtn>
               </S.StringWrapper>
 
               <S.StringWrapper>
-                <S.StringDiv>아직 회원이 아니신가요?</S.StringDiv>
+                <S.StringDiv>Not a member yet?</S.StringDiv>
                 <S.SignUpBtn onClick={moveToSignup} type="button">
-                  회원가입하기
+                  Sign Up
                 </S.SignUpBtn>
               </S.StringWrapper>
             </S.Wrapper>
@@ -345,9 +358,9 @@ export default function LayoutHeader() {
         </LogoDiv>
         <MenuWrapper>
           <MenuDiv>
-            <Menu onClick={moveToStore}>STORE</Menu>
-            <Menu onClick={moveToEventPage}>EVENT</Menu>
-            <Menu onClick={moveToMyPage}>MY PAGE</Menu>
+            <Menu onClick={moveToStore}>Store</Menu>
+            <Menu onClick={moveToEventPage}>Event</Menu>
+            <Menu onClick={moveToMyPage}>My Page</Menu>
           </MenuDiv>
           <MenuIconDiv>
             {nowLogin === undefined ? (
