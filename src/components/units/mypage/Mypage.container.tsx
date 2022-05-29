@@ -10,7 +10,7 @@ const FETCH_USER_LOGGED_IN = gql`
       addressDetail
       zipCode
       user {
-        email
+        # email
         name
         nickName
         profileImage
@@ -25,6 +25,7 @@ const FETCH_ORDERS = gql`
       id
       price
       product {
+        id
         title
         thumbnail
       }
@@ -64,7 +65,7 @@ export default function MypageContainer() {
   const { data: orderData } = useQuery(FETCH_ORDERS);
   const { data: userHaveCouponData } = useQuery(FETCH_USER_HAVE_COUPONS);
 
-  console.log("주문데이터", orderData?.fetchOrders);
+  console.log("주문데이터", orderData);
 
   const handleOK = () => {
     setIsModalOpen(false);
@@ -84,9 +85,20 @@ export default function MypageContainer() {
 
   console.log(baskets);
 
-  const moveToReviewWrite = () => {
-    router.push("/review");
+  const moveToReviewWrite = (event:any) => {
+
+    router.push(`/mypage/${event.target.id}`);
   };
+
+  const onClickSeeCoupon = () => {
+    setIsModalOpen(true);
+  };
+
+  const moveToProductDetail = (event:any) => {
+    router.push(`/store/${event.target.id}`)
+  }
+
+
 
   const onClickDeleteBasket = (e: any) => {
     console.log(e.target.id);
@@ -99,9 +111,6 @@ export default function MypageContainer() {
     setIsBasket((prev) => !prev);
   };
 
-  const onClickSeeCoupon = () => {
-    setIsModalOpen(true);
-  };
 
   return (
     <MypagePresenter
@@ -115,6 +124,7 @@ export default function MypageContainer() {
       handleOK={handleOK}
       handleCancel={handleCancel}
       isModalOpen={isModalOpen}
+      moveToProductDetail={moveToProductDetail}
     />
   );
 }

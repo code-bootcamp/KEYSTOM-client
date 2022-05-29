@@ -41,11 +41,8 @@ margin-right: 20px;
 `
 
 interface IUploadFilePage{
-    // onChangeImageURL:(imageUrl:string, idx:number) => void
-    // imageUrl:string
-    // idx:number
-    setImageFile:any
-    imageFile:string[]
+    setImageUrls:any
+    imageUrls:string[]
 }
 
 export default function UploadFilePage(props:IUploadFilePage){
@@ -58,7 +55,7 @@ export default function UploadFilePage(props:IUploadFilePage){
     }
 
     const onChangeFile = async(event: ChangeEvent<HTMLInputElement>) => {
-        if(props.imageFile.length > 6){
+        if(props.imageUrls.length > 6){
             return Modal.error({content:"이미지는 7개까지 업로드 하실 수 있습니다!"})
         }
         const file:any | null = event.target.files
@@ -73,8 +70,8 @@ export default function UploadFilePage(props:IUploadFilePage){
                     }
                 })
                 console.log("result!!!", result)
-                props.setImageFile((prev:string[])=>([...prev, result.data.uploadFile[0]]))
-                console.log("imageFile", props.imageFile)
+                props.setImageUrls((prev:string[])=>([...prev, result.data.uploadFile[0]]))
+                console.log("imageFile", props.imageUrls)
 
             }catch(error:any){
                 Modal.error({content:error.message})
@@ -95,8 +92,8 @@ export default function UploadFilePage(props:IUploadFilePage){
                     <span>Upload Image</span>
                 </ReviewUploadImage>
 
-                {props.imageFile.length >= 1 ?
-                props.imageFile.map((el)=>(
+                {props.imageUrls.length >= 1 ?
+                props.imageUrls.map((el)=>(
                 <Image
                 onClick={onClickUpload}
                 src={`https://storage.googleapis.com/${el}`}

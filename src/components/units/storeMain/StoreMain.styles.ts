@@ -97,6 +97,9 @@ export const MoveButton = styled.button`
   font-size: 24px;
   border: none;
   margin-top: 130px;
+  :hover{
+    border: 1px solid #f1f1f1;
+  }
 `;
 
 export const Player = styled.div`
@@ -105,10 +108,17 @@ export const Player = styled.div`
 
   background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
     #2c2c2c;
-  border: 1px solid #b150f2;
   box-shadow: 0px 4px 4px #1b1b1b;
-  border-radius: 10px;
 `;
+
+export const IframeVideo = styled.iframe`
+width: 100%;
+height: 100%;
+border: 1px solid #b150f2;
+border-radius: 10px;
+
+
+`
 
 export const ReviewWrapper = styled.div`
   width: 100%;

@@ -112,9 +112,9 @@ export default function PaymentPresenter(props: any) {
                   placeholder="홍길동"
                   style={{ width: 379 }}
                   onChange={props.onChangeReceiverName}
-                >
-                  {props.data?.fetchOrders?.receiverName}
-                </S.InputBox>
+                  defaultValue={props.userData?.fetchUserLoggedIn.user.name}
+                />
+                
               </S.PaymentSubTextWrapper>
 
               <S.PaymentSubTextWrapper>
@@ -123,9 +123,9 @@ export default function PaymentPresenter(props: any) {
                   type="text"
                   placeholder="01012345678"
                   onChange={props.onChangeReceiverPhone}
-                >
-                  {props.data?.fetchOrders?.receiverPhone}
-                </S.InputBox>
+                />
+                  
+               
               </S.PaymentSubTextWrapper>
 
               <S.PaymentSubTextWrapper>
@@ -150,10 +150,9 @@ export default function PaymentPresenter(props: any) {
                   type="text"
                   placeholder="15338"
                   style={{ width: 116 }}
-                  value={props.zipCode}
-                >
-                  {props.data?.fetchOrders?.address?.zipCode}
-                </S.InputBox>
+                  value={props.zipCode || props.userData?.fetchUserLoggedIn.zipCode}
+                />
+                
 
                 <S.ZipCodeSearchButton onClick={props.showModal}>
                   Find Address
@@ -166,10 +165,10 @@ export default function PaymentPresenter(props: any) {
                 <S.InputBox
                   type="text"
                   placeholder="서울시 행복구 낙원동 1004로"
-                  value={props.address}
-                >
-                  {props.data?.fetchOrders?.address?.address}
-                </S.InputBox>
+                  value={props.address || props.userData?.fetchUserLoggedIn?.address}
+                />
+                  
+                
               </S.PaymentSubTextWrapper>
               <S.PaymentSubTextWrapper>
                 <S.Label>{""}</S.Label>
@@ -178,9 +177,10 @@ export default function PaymentPresenter(props: any) {
                   type="text"
                   placeholder="B동 1202호"
                   onChange={props.onChangeAddressDetail}
-                >
-                  {props.data?.fetchOrders?.address?.addressDetail}
-                </S.InputBox>
+                  defaultValue={props.userData?.fetchUserLoggedIn.addressDetail}
+                />
+                  
+                
               </S.PaymentSubTextWrapper>
             </S.PaymentSubLeftWrapper>
 

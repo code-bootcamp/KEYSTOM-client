@@ -7,12 +7,12 @@ export default function ReviewWritePresenter(props: IReviewWritePresenter) {
   return (
     <S.Wrapper>
       <S.ReviewWrapper>
-        <S.ReviewTextWrapper>리뷰 쓰기</S.ReviewTextWrapper>
+        <S.ReviewTextWrapper>리뷰 작성하기</S.ReviewTextWrapper>
 
         <S.ReviewProductWrapper>
           <S.ReviewProductImage></S.ReviewProductImage>
           <S.ReviewProductTitleOptionWrapper>
-            <S.ReviewProductTitle>구매한 키보드 타이틀</S.ReviewProductTitle>
+            <S.ReviewProductTitle>{props.data?.fetchProduct.title}</S.ReviewProductTitle>
 
             <S.ReviewProductOptionWrapper>
               <S.ReviewProductOption>적용한 커스텀 옵션</S.ReviewProductOption>
@@ -35,20 +35,20 @@ export default function ReviewWritePresenter(props: IReviewWritePresenter) {
             onChange={props.onChangeReviewDescription}
             placeholder="리뷰를 작성해주세요!"
           ></S.ReviewContents>
-          <S.ReviewContentsMaxLength>0/1000</S.ReviewContentsMaxLength>
+          <S.ReviewContentsMaxLength>{props.description.length} / 1000</S.ReviewContentsMaxLength>
         </S.ReviewTitleContentsWrapper>
 
         <S.ReviewUploadWrapper>
           <UploadFilePage
-            imageFile={props.imageUrls}
-            setImageFile={props.setImageUrls}
+            imageUrls={props.imageUrls}
+            setImageUrls={props.setImageUrls}
           />
         </S.ReviewUploadWrapper>
 
         <S.ReviewButtonWrapper>
-          <S.ReviewCancelButton>작성취소</S.ReviewCancelButton>
+          <S.ReviewCancelButton>Cancel</S.ReviewCancelButton>
           <S.ReviewSubmitButton onClick={props.onClickSubmit}>
-            작성하기
+            Submit
           </S.ReviewSubmitButton>
         </S.ReviewButtonWrapper>
       </S.ReviewWrapper>

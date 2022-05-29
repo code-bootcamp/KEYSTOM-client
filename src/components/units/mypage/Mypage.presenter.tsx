@@ -101,7 +101,7 @@ export default function MypagePresenter(props: any) {
               <S.IdContainer>
                 <S.UserTitle>ID</S.UserTitle>
                 <S.VerticalLine />
-                <S.UserId>{props.data?.fetchUserLoggedIn.user.email}</S.UserId>
+                {/* <S.UserId>{props.data?.fetchUserLoggedIn.user.email}</S.UserId> */}
               </S.IdContainer>
               <S.NickNameContainer>
                 <S.UserTitle>NickName</S.UserTitle>
@@ -123,11 +123,10 @@ export default function MypagePresenter(props: any) {
                 <S.VerticalLine />
                 <S.UserDeliveryAddress>
                   {" "}
-                  {props.userHaveCouponData?.fetchUserHaveCoupons.length} coupons
-                  available
+                  {props.userHaveCouponData?.fetchUserHaveCoupons.length}개의 쿠폰이 있습니다
                 </S.UserDeliveryAddress>
                 <S.SeeCoupon onClick={props.onClickSeeCoupon}>
-                  View coupons
+                  쿠폰함 보기
                 </S.SeeCoupon>
               </S.DeliverWrapper>
 
@@ -158,20 +157,22 @@ export default function MypagePresenter(props: any) {
 
                   <S.BoughtPriceWrapper>
                     <S.BoughtPriceText>Price</S.BoughtPriceText>
-                    <S.BoughtPriceNum>{el?.price}</S.BoughtPriceNum>
+                    <S.BoughtPriceNum>￦{el?.price}</S.BoughtPriceNum>
                   </S.BoughtPriceWrapper>
 
                   <S.BoughtStatusWrapper>
                     <S.BoughtStatusText>State</S.BoughtStatusText>
-                    <S.BoughtStatus>배송 준비 중</S.BoughtStatus>
+                    <S.BoughtStatus>배송 준비중</S.BoughtStatus>
                   </S.BoughtStatusWrapper>
 
                   <S.BoughtReviewWrapper>
                     <S.BoughtReviewText>Review</S.BoughtReviewText>
                     <S.BoughtReviewStatus>작성 안함</S.BoughtReviewStatus>
                   </S.BoughtReviewWrapper>
-                  <S.BoughtReviewIcon onClick={props.moveToReviewWrite}>
-                    작성하기
+                  <S.BoughtReviewIcon
+                  id={el.id} 
+                  onClick={props.moveToReviewWrite}>
+                    리뷰 작성하기
                   </S.BoughtReviewIcon>
                 </S.BoughtListInfo>
               ))
@@ -190,7 +191,10 @@ export default function MypagePresenter(props: any) {
               props.baskets.map((el: any) => (
                 <S.BottomWrapper>
                   <S.BasketProductImageWrapper>
-                    <S.BasketProductImage src={`https://storage.googleapis.com/${el?.thumbnail}`} />
+                    <S.BasketProductImage 
+                    id={el.id}
+                    onClick={props.moveToProductDetail}
+                    src={`https://storage.googleapis.com/${el?.thumbnail}`} />
                   </S.BasketProductImageWrapper>
 
                   <S.BasketProductInfoWrapper>
@@ -205,9 +209,9 @@ export default function MypagePresenter(props: any) {
                          </S.BasketProductInfoWrapper2>
                         <S.ProductContents>{el.description.slice(84,el.description.length)}</S.ProductContents>
                         <S.BasketProductInfoWrapper3>
-                          <S.ProductPrice>{el.price}</S.ProductPrice>
+                          <S.ProductPrice>￦{el.price}</S.ProductPrice>
                           <S.ProductBuyButton onClick={onClickMoveToPayment}>
-                            Pay Now
+                            결제하기
                           </S.ProductBuyButton>
                         </S.BasketProductInfoWrapper3>
                       </S.ProductInfoWrapper>

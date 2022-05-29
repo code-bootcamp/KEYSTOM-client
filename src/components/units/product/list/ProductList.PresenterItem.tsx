@@ -51,7 +51,7 @@ export default function ProductListPresenterItem(props: any) {
                 </S.ProductTitle>
                 {/* <S.ProductTitle>&gt;</S.ProductTitle> */}
                 <S.ProductPrice>
-                    {props.el.price
+                ￦{props.el.price
                         ?.toLocaleString()
                         .replaceAll(props.keyword, `#$%${props.keyword}#$%`)
                         .split("#$%")

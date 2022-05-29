@@ -203,7 +203,9 @@ export default function StorePresenter() {
                     Order it!
                   </S.Text3>
                 </S.TextWrapper>
-                <S.Player>동영상</S.Player>
+                <S.Player>
+                  <S.IframeVideo src="/video/how-to-customize.mp4"></S.IframeVideo>
+                </S.Player>
               </S.ContentsWrapper>
             </S.MainImage2>
           </S.ImageWrapper>

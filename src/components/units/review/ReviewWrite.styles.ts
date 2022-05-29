@@ -8,10 +8,10 @@ export const Wrapper = styled.div`
 `;
 
 export const ReviewWrapper = styled.div`
-    width: 1500px;
+    width: 1240px;
 
     padding-top: 100px;
-    padding-bottom: 500px;
+    padding-bottom: 200px;
 
     display: flex;
     flex-direction: column;
@@ -106,9 +106,11 @@ export const ReviewTitle = styled.div`
 
 export const ReviewTitleInput = styled.input`
     width: 100%;
-    height: 24px;
+    height: 40px;
     background-color: #2c2c2c;
     color: #ffffff;
+    border: none;
+    font-size: 18px;
 `;
 
 export const ReviewContents = styled.textarea`
@@ -180,31 +182,36 @@ export const ReviewButtonWrapper = styled.div`
 `;
 
 export const ReviewSubmitButton = styled.button`
-    width: 360px;
-    height: 120px;
+    width: 300px;
+    height: 80px;
 
-    background-color: #2c2c2c;
+    background-color: #b150f2;
     border: none;
     border-radius: 10px;
+    font-size: 24px;
+
 
     cursor: pointer;
     :hover {
-        background-color: #b150f2;
+        font-weight: 700;
     }
 `;
 
 export const ReviewCancelButton = styled.button`
-    width: 360px;
-    height: 120px;
+    width: 300px;
+    height: 80px;
 
-    background-color: #2c2c2c;
-    border: none;
+    background-color: #1b1b1b;
+    border: 1px solid #f1f1f1;
+    color: #f1f1f1;
     border-radius: 10px;
+    font-size: 24px;
 
     margin-right: 27px;
 
     cursor: pointer;
     :hover {
-        background-color: #b150f2;
+        border: 1px solid #b150f2;
+        color: #b150f2;
     }
 `;
