@@ -46,7 +46,7 @@ export default function ProductListPresenter(props: any) {
             <S.SearchWrapper>
                 <S.SearchInputWrapper>
                     <S.SearchInputIconWrapper>
-                        <S.SearchIcon></S.SearchIcon>
+                        <S.SearchIcon src="/images/list/search.png"/>
                         <S.SearchInput
                             onChange={onChangeSearchbar}
                             placeholder="Please enter your keyword to search."

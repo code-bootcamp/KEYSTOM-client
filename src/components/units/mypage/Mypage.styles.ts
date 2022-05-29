@@ -8,7 +8,7 @@ export const Wrapper = styled.div`
   align-items: center;
 
   margin-top: 120px;
-  margin-bottom: 500px;
+  margin-bottom: 200px;
 `;
 
 export const WrapperContainer = styled.div`
@@ -61,8 +61,8 @@ export const UserTitle = styled.div`
 `;
 
 export const VerticalLine = styled.img`
-  height: 25px;
-  border-right: 2px solid #f1f1f1;
+  height: 23px;
+  border-right: 1px solid #666;
   margin-left: 20px;
   margin-right: 20px;
 `;
@@ -450,19 +450,16 @@ export const BoughtReviewIcon = styled.button`
 `;
 
 export const BottomMapWrapper = styled.div`
-  width: 1300px;
+  width: 1240px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
 `;
 
 export const BottomWrapper = styled.div`
-  width: 730px;
-  margin-bottom: 40px;
 `;
 
 export const BasketList = styled.div`
-  font-style: normal;
   font-weight: 700;
   font-size: 32px;
   line-height: 32px;
@@ -476,7 +473,7 @@ export const BasketProductImageWrapper = styled.div``;
 
 export const BasketProductImage = styled.img`
   width: 400px;
-  height: 366px;
+  height: 350px;
   border-radius: 10px 10px 0 0;
   background-color:#b1b1b1;
 `;
@@ -484,19 +481,28 @@ export const BasketProductImage = styled.img`
 export const BasketProductInfoWrapper = styled.div`
   padding: 46px 30px;
 
-  display: flex;
   width: 400px;
   height: 235px;
+
 
   background-color: #2c2c2c;
   border-radius: 0px 0px 10px 10px;
 `;
 
 export const BasketProductInfoWrapper2 = styled.div`
+  width: 100%;
   display: flex;
-  flex-direction:column;
+  justify-content: space-between;
+  padding-bottom: 20px;
 `;
 
+
+export const BasketProductInfoWrapper3 = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`
 export const ProductInfoWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -514,14 +520,12 @@ export const ProductName = styled.div`
 `;
 
 export const ProductContents = styled.div`
-  font-style: normal;
-  font-weight: 400;
   font-size: 14px;
   line-height: 20px;
   color: #b1b1b1;
 
   margin-top: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 37px;
 `;
 
 export const ProductPrice = styled.div`
@@ -533,26 +537,18 @@ export const ProductPrice = styled.div`
 export const ProductDelete = styled.img`
   width: 24px;
   height: 24px;
-
-  margin-top: 60px;
-  margin-left: auto;
-  margin-right: 40px;
-
   cursor: pointer;
 `;
 
 export const ProductBuyButton = styled.button`
   width: 140px;
   height: 44px;
-  font-style: normal;
   font-weight: 700;
   font-size: 14px;
   line-height: 20px;
   color: #ffffff;
   border: 1px solid #f1f1f1;
-  background-color: none;
-  margin-top: 82px;
-  margin-left: 312px;
+  background-color: #2c2c2c;
   cursor: pointer;
   :hover{
     border: none;

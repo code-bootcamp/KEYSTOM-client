@@ -10,14 +10,14 @@ export const Wrapper = styled.div`
 
 export const ListBannerWrapper = styled.div`
     width: 100%;
-    height: 280px;
+    height: 210px;
     position: relative;
     top: -80px;
 `;
 
 export const ListBanner = styled.img`
     width: 100%;
-    height: 360px;
+    height: 290px;
     position: absolute;
 `;
 
@@ -25,7 +25,7 @@ export const ListBannerText = styled.div`
     font-size: 18px;
     line-height: 24px;
     position: relative;
-    top: 62%;
+    top: 65%;
     left: 45%;
 
 `
@@ -63,10 +63,10 @@ export const SearchInputWrapper = styled.div`
     padding-bottom: 30px;
 `;
 
-export const SearchIcon = styled(SearchOutlined)`
-    color: #f1f1f1;
-    font-size: 30px;
-    cursor: pointer;
+export const SearchIcon = styled.img`
+    width: 24px;
+    
+    /* cursor: pointer; */
 
     :hover {
         color: #b150f2;

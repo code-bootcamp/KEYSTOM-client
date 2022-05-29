@@ -39,7 +39,7 @@ export const MainImage3 = styled.div`
   width: 100%;
   height: 1080px;
   /* background-color: Red; */
-  background-image: url("/images/main/main-3-1.png");
+  background-image: url("/images/main/main-6.png");
   background-position: center;
   background-size: cover;
 `;
