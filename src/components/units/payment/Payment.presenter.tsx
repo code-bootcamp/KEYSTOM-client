@@ -277,8 +277,11 @@ export default function PaymentPresenter(props: any) {
                       <S.MyCouponListWrapper>
                         {props.couponData?.fetchUserHaveCoupons.map(
                           (el: any) => (
-                            <S.MyCouponList>
-                              <S.MyCouponName>
+                            <S.MyCouponList
+                              key={el?.id}
+                              onClick={props.onClickCoupon}
+                            >
+                              <S.MyCouponName id={el?.coupon?.id}>
                                 {el?.coupon?.couponName}
                               </S.MyCouponName>
                               <S.MyCouponDisCount>
