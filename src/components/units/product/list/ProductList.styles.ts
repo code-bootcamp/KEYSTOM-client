@@ -15,7 +15,7 @@ export const ListBannerWrapper = styled.div`
 
 export const ListBanner = styled.img`
     width: 100%;
-    height: 100%;
+    height: 210px;
 `;
 export const SearchWrapper = styled.div`
     width: 100%;
