@@ -203,13 +203,13 @@ export default function MypagePresenter(props: any) {
                             id={el.id}
                           />
                          </S.BasketProductInfoWrapper2>
-                        <S.ProductContents>{el.description}</S.ProductContents>
-                        <S.BasketProductInfoWrapper2>
+                        <S.ProductContents>{el.description.slice(84,el.description.length)}</S.ProductContents>
+                        <S.BasketProductInfoWrapper3>
                           <S.ProductPrice>{el.price}</S.ProductPrice>
                           <S.ProductBuyButton onClick={onClickMoveToPayment}>
                             Pay Now
                           </S.ProductBuyButton>
-                        </S.BasketProductInfoWrapper2>
+                        </S.BasketProductInfoWrapper3>
                       </S.ProductInfoWrapper>
                   </S.BasketProductInfoWrapper>
                 </S.BottomWrapper>

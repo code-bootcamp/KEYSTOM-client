@@ -693,16 +693,16 @@ export default function ProductDetailPresenter(props: any) {
   const { x, y } = useMousePosition();
 
   const [listPosition, setListPosition] = useState({
-    top: -100,
-    left: 130,
+    top: 95,
+    left: 270,
   });
 
-  useEffect(() => {
-    setListPosition({
-      top: list?.current?.getBoundingClientRect().top,
-      left: list?.current?.getBoundingClientRect().left,
-    });
-  }, []);
+  // useEffect(() => {
+  //   setListPosition({
+  //     top: list?.current?.getBoundingClientRect().top,
+  //     left: list?.current?.getBoundingClientRect().left,
+  //   });
+  // }, []);
 
   return (
     <>
@@ -715,19 +715,19 @@ export default function ProductDetailPresenter(props: any) {
               </S.ProductTitle>
               <S.SeeIcon
                 src="/images/detail/see.png"
-                onMouseOver={() => setSeeImageHover(true)}
-                onMouseOut={() => setSeeImageHover(false)}
+                onClick={() => setSeeImageHover((prev)=>(!prev))}
+                // onMouseOut={() => setSeeImageHover(false)}
               />
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{
                   opacity: seeImageHover ? 1 : 0,
-                  x: x - listPosition.left,
-                  y: y - listPosition.top,
+                  x: listPosition.left,
+                  y: listPosition.top,
                 }}
                 transition={{
                   ease: Expo.easeOut,
-                  duration: 0,
+                  duration: 0.3,
                 }}
               >
                 <img
@@ -740,23 +740,27 @@ export default function ProductDetailPresenter(props: any) {
                   }}
                 />
               </motion.div>
+          
             </S.TitleWrapper>
+          
+            
             <S.ProductSelectWrapper>
-              <S.TwoDColorWrapper>
+              {/* <S.TwoDColorWrapper> */}
                 <S.PickerWrapper>
                   <Picker />
                 </S.PickerWrapper>
-              </S.TwoDColorWrapper>
+              {/* </S.TwoDColorWrapper> */}
+           
               <S.ThreeDWrapper>
                 <Canvas
                   style={{
-                    width: "950px",
+                    width: "100%",
                     backgroundColor: "none",
-                    zIndex: "3",
+                    // zIndex: "3",
                   }}
                   camera={{
                     fov: 35,
-                    near: 0.2,
+                    near: 0.1,
                     position: [0, 0.7, 0.6],
                   }}
                 >
@@ -832,7 +836,7 @@ export default function ProductDetailPresenter(props: any) {
               </S.CouponApplyButton> */}
             <S.ButtonsWrapper>
               <S.GetCouponButton onClick={props.onClickGetCoupon}>
-                Get Coupons
+                <S.CouponText>Get Coupons</S.CouponText>
                 <S.GetCouponImg  src="/images/coupon/get-coupon.png"/>
               </S.GetCouponButton>
               <S.PayNowButton

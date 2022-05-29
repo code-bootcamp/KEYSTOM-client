@@ -3,35 +3,34 @@ import { HexColorPicker, HexColorInput } from "react-colorful";
 
 export const Wrapper = styled.div`
   width: 1920px;
-  display: flex;
-
-  margin-left: auto;
-  margin-right: auto;
+  padding: 0 210px;
+  /* margin-left: auto; */
+  /* margin-right: auto; */
   margin-top: 50px;
   margin-bottom: 150px;
 `;
 
 export const ProductWrapper = styled.div`
   display: flex;
-  flex-direction: row;
-
-  margin-left: auto;
-  margin-right: auto;
-  margin-left: 210px;
+  /* flex-direction: column; */
+  justify-content: space-between;
+  align-items: center;
+  /* margin-left: auto;
+  margin-right: auto; */
 `;
 
 export const TitleWrapper = styled.div`
   display: flex;
-  flex-direction: row;
+  width: 100%;
 `;
 
 export const ProductLeftWrapper = styled.div`
+  width: 908px;
   display: flex;
   flex-direction: column;
 `;
 
 export const ProductTitle = styled.div`
-  font-style: normal;
   font-weight: 700;
   font-size: 32px;
   line-height: 47px;
@@ -46,6 +45,7 @@ export const SeeIcon = styled.img`
   height: 38px;
 
   margin-top: 5px;
+  cursor: pointer;
 `;
 
 export const ProductSelectWrapper = styled.div`
@@ -57,6 +57,7 @@ export const ProductSelectWrapper = styled.div`
   border: 1px solid #f1f1f1;
 
   border-radius: 10px;
+  /* position: relative; */
 `;
 
 export const TwoDColorWrapper = styled.div`
@@ -75,57 +76,67 @@ export const TwoDImage = styled.img`
 `;
 
 export const PickerWrapper = styled.div`
-  width: 250px;
-  background-color: none;
-  padding-left: 20px;
-  border-radius: 0px 0px 0px 10px;
+  width: 280px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  background-color: transparent;
+  padding: 25px 30px;
+  /* padding-left: 20px;
+  padding-right: 30px; */
+  position: absolute;
+  z-index: 10;
 `;
 
 export const HexColorPickerWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  margin-top: 30px;
+  /* margin-top: 30px; */
 `;
 
 export const HexColorPick = styled(HexColorPicker)`
   width: 200px;
   height: 200px;
-  margin: 0px auto;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  /* margin: 0px auto; */
+  /* margin-top: 25px; */
+   margin-bottom: 20px; 
 `;
 
 export const HexColorCodeWrapper = styled.div`
   display: flex;
-  margin-left: 10px;
-  margin-bottom: 20px;
+  padding: 0 20px;
+  justify-content: space-between;
+  /* margin-left: 30px; */
 `;
 
 export const HexColorCode = styled.span`
-  font-style: normal;
-  font-weight: 400;
   font-size: 14px;
   line-height: 21px;
   margin-right: 10px;
-  margin-top: auto;
-  margin-bottom: auto;
+  /* margin-top: auto;
+  margin-bottom: auto; */
 
   color: #f1f1f1;
 `;
 
 export const HexColorPickInput = styled(HexColorInput)`
-  width: 128px;
-  background-color: #1b1b1b;
+  width: 100px;
+  background-color: transparent;
   border: none;
   border-bottom: 1px solid #f1f1f1;
   text-align: center;
 `;
 
 export const ThreeDWrapper = styled.div`
-  width: auto;
+  /* width: auto; */
+  width: 100%;
+  margin-bottom: -200px;
+  /* background-color: beige; */
+  /* position: absolute; */
 `;
 
 export const PriceWrapper = styled.div`
+  width: 300px;
   margin-top: 66px;
   margin-left: 20px;
 `;
@@ -135,7 +146,6 @@ export const Options = styled.div`
   font-weight: 700;
   font-size: 24px;
   line-height: 28px;
-  padding-top: 10px;
 
   color: #ffffff;
 `;
@@ -267,22 +277,34 @@ export const ButtonsWrapper = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
+  padding-top: 10px;
 `
 
-export const GetCouponButton = styled.button`
-  background-color: #f1f1f1;
-  color: #B150F2;
+export const GetCouponButton = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-top: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 13px;
   height: 60px;
-  font-size: 20px;
-  padding-left: 80px;
+  padding-right: 18px;
+  background: url("/images/coupon/coupon.png") no-repeat ;
+  /* border-radius: 10px; */
+  cursor: pointer;
 `;
+
+export const CouponText = styled.span`
+  width: 240px;
+  color: #B150F2;
+  font-size: 20px;
+  text-align: center;
+  
+`
 
 export const GetCouponImg = styled.img`
   width: 24px;
   height: 24px;
-  margin-left: 40px;
+  /* margin-left: 60px; */
 `
 
 export const PayNowButton = styled.button`
@@ -292,7 +314,7 @@ export const PayNowButton = styled.button`
   border-radius: 10px;
   color: #f1f1f1;
   font-size: 20px;
-  margin-bottom: 10px;
+  margin-bottom: 13px;
 
 `;
 

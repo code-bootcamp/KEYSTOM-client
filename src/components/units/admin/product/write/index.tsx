@@ -235,7 +235,7 @@ export default function AdminProductWrite(props:any):JSX.Element {
                         title,
                         description,
                         price:Number(price),
-                        imageUrls:[imageUrls],
+                        imageUrls:["123"],
                         productTags: hashArr,
                     },
                 },
