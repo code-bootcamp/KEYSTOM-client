@@ -153,6 +153,7 @@ export default function ProductDetailContainer() {
     try {
       const result = await getCoupon({});
       // console.log("쿠폰리절트", result);
+      Modal.success({content:"쿠폰을 발급 받았습니다!"})
     } catch (error) {
       Modal.error({
         content: "이미 쿠폰을 발급받았습니다.",

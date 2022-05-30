@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import * as S from "./Mypage.styles";
 import Modal from "antd/lib/modal/Modal";
+import Paginations01 from "../../commons/paginations/01/Paginations01.container";
 
 export default function MypagePresenter(props: any) {
   const router = useRouter();
@@ -227,6 +228,7 @@ export default function MypagePresenter(props: any) {
             ) : (
               <div></div>
             )}
+
           </S.BottomMapWrapper>
         </S.WrapperContainer>
       </S.Wrapper>

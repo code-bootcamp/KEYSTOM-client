@@ -62,7 +62,7 @@ display: flex;
 `
 
 const TagWrapper = styled.div` 
-width: 100px;
+/* width: 100px; */
 margin-right: 10px;
 color: #f1f1f1;
 border-radius: 10px;
@@ -71,6 +71,8 @@ text-align: center;
 font-size: 15px;
 height: 50px;
 line-height: 50px;
+padding-left: 20px;
+padding-right: 20px;
 cursor: pointer;
 `
 
