@@ -7,13 +7,16 @@ import { useRouter } from 'next/router';
 export default function ReviewDetail() {
   const router = useRouter()
 
+  console.log("router", router)
+
 
   const {data} = useQuery(FETCH_REVIEWS,{
     variables:{
-      page:1
+      page:1,
+      productId:String(router.query.productId) 
     }
   })
-  console.log(data)
+  console.log("review-data", data)
 
 
   return <ReviewDetailPresenter

@@ -147,6 +147,8 @@ export default function MypagePresenter(props: any) {
               props.orderData?.fetchOrders.map((el: any) => (
                 <S.BoughtListInfo key={el.id}>
                   <S.BoughtImage
+                    id={el.product.id}
+                    onClick={props.moveToProductDetail}
                     src={`https://storage.googleapis.com/${el?.product?.thumbnail}`}
                   />
                   <S.BoughtName>{el?.product?.title}</S.BoughtName>

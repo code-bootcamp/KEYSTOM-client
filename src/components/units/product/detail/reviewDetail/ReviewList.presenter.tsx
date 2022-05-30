@@ -31,7 +31,7 @@ export default function ReviewDetailPresenter(props: any) {
     <>
       <A.Wrapper>
         <A.AllReviewsDiv>
-          <A.AllText>리뷰 수</A.AllText>
+          <A.AllText>Reviews</A.AllText>
           <A.AllNum>NN</A.AllNum>
         </A.AllReviewsDiv>
 
@@ -39,11 +39,23 @@ export default function ReviewDetailPresenter(props: any) {
           {props.data?.fetchReviews.map((el: any) => (
             <A.ReviewDiv key={el.id}>
               <A.ReviewImage
-                src="/images/reviewimg.png"
+                src={`https://storage.googleapis.com/${el.thumbnail}`}
                 onClick={showModal}
                 id={el.id}
               />
-              <A.ReviewRight>
+              <A.ReviewBottom>
+              <A.ReviewTop>
+                <A.LikeDiv>
+                  <A.ReviewLikeImage src="/images/review/like.png" />
+                  <A.ReviewLikeNum>123</A.ReviewLikeNum>
+                </A.LikeDiv>
+                <A.Reviewer>
+                  <A.ReviewSmallText>{el.user.nickName}</A.ReviewSmallText>
+                  <A.ReviewSmallText>
+                    {el.createdAt.slice(0, 10)}
+                  </A.ReviewSmallText>
+                </A.Reviewer>
+              </A.ReviewTop>
                 <A.ReviewTop>
                   <A.ReviewTopTop>
                     <A.ReviewTitle>{el.title}</A.ReviewTitle>
@@ -53,24 +65,14 @@ export default function ReviewDetailPresenter(props: any) {
                   <A.Contents>{el.description}</A.Contents>
                   <A.BottomDiv>
                     <A.BottomText>
-                      <A.Reviewer>
-                        <A.ReviewSmallTitle>리뷰어</A.ReviewSmallTitle>
-                        {/* <A.ReviewSmallText>{el.user.name}</A.ReviewSmallText> */}
-                      </A.Reviewer>
-                      <A.ReviewDate>
-                        <A.ReviewSmallTitle>작성날짜</A.ReviewSmallTitle>
-                        <A.ReviewSmallText>
-                          {el.createdAt.slice(0, 10)}
-                        </A.ReviewSmallText>
-                      </A.ReviewDate>
+                  
+            
                     </A.BottomText>
-                    <A.LikeDiv>
-                      <A.ReviewLikeImage src="/images/review-like.png" />
-                      <A.ReviewLikeNum>{el.like}</A.ReviewLikeNum>
-                    </A.LikeDiv>
+             
+              
                   </A.BottomDiv>
                 </A.ReviewBottom>
-              </A.ReviewRight>
+              </A.ReviewBottom>
               {isOpen && (
                 <ReviewModalContainer
                   showModal={showModal}

@@ -89,8 +89,8 @@ export default function ProductDetailContainer() {
 
   // 담기
   const onClickBasket = (el: any) => () => {
-    console.log(isBasket);
-    console.log(el);
+    // console.log(isBasket);
+    // console.log(el);
     // 1. 기존 장바구니 가져오기
     const baskets = JSON.parse(localStorage.getItem("baskets") || "[]");
 
@@ -115,7 +115,7 @@ export default function ProductDetailContainer() {
 
   // 담기 취소
   const onClickDelete = (el: any) => () => {
-    console.log(el);
+    // console.log(el);
 
     const baskets = JSON.parse(localStorage.getItem("baskets") || "[]");
 
@@ -141,7 +141,7 @@ export default function ProductDetailContainer() {
           },
         },
       });
-      console.log(payResult);
+      // console.log(payResult);
       setProductId(e.target.id);
       router.push("/payment");
     } catch (error) {
