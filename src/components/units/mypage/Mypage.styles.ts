@@ -388,8 +388,8 @@ export const BoughtStatus = styled.button`
     cursor: pointer;
 
     :hover {
-        border: 1px solid #B150F2;
-        color: #B150F2;
+        border: 1px solid #b150f2;
+        color: #b150f2;
     }
 `;
 
@@ -404,7 +404,6 @@ export const BoughtReviewWrapper = styled.div`
 `;
 
 export const BoughtReviewText = styled.div`
-
     font-size: 14px;
     line-height: 22px;
 
@@ -692,8 +691,4 @@ export const Button = styled.button`
     border-radius: 6px;
 
     cursor: pointer;
-
-  margin-left: 206px;
-  margin-top: auto;
-  margin-bottom: auto;
 `;

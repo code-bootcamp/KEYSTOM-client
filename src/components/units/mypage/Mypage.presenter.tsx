@@ -292,7 +292,9 @@ export default function MypagePresenter(props: any) {
                                                 : props.moveToReviewWrite
                                         }
                                     >
-                                       {el.isReview ? "리뷰 보러가기" : "리뷰 작성하기"}
+                                        {el.isReview
+                                            ? "리뷰 보러가기"
+                                            : "리뷰 작성하기"}
                                     </S.BoughtReviewIcon>
                                 </S.BoughtListInfo>
                             ))
