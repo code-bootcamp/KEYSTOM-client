@@ -270,7 +270,7 @@ export default function MypagePresenter(props: any) {
                                         <S.BoughtStatus
                                             onClick={props.onClickTracking}
                                         >
-                                            배송확인
+                                            배송확인하기
                                         </S.BoughtStatus>
                                     </S.BoughtStatusWrapper>
 
@@ -285,14 +285,14 @@ export default function MypagePresenter(props: any) {
                                         </S.BoughtReviewStatus>
                                     </S.BoughtReviewWrapper>
                                     <S.BoughtReviewIcon
-                                        id={el.id}
+                                        id={el.isReview ? el.product.id : el.id}
                                         onClick={
                                             el.isReview
-                                                ? props.moveToCancel
+                                                ? props.moveToProductDetail
                                                 : props.moveToReviewWrite
                                         }
                                     >
-                                        작성하기
+                                       {el.isReview ? "리뷰 보러가기" : "리뷰 작성하기"}
                                     </S.BoughtReviewIcon>
                                 </S.BoughtListInfo>
                             ))

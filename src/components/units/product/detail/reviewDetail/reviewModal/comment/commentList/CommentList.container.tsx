@@ -20,13 +20,13 @@ export default function CommentListPage(props:any){
                             </B.CommentTopDiv>
                             
                             <B.CommentBtns>
-                                <B.CommentEditBtn src="/images/edit.png"/>
-                                <B.CommentDeleteBtn src="/images/delete.png"/>
+                                <B.CommentEditBtn src="/images/comment/edit.png"/>
+                                <B.CommentDeleteBtn src="/images/comment/delete.png"/>
                             </B.CommentBtns>
                         </B.CommentTop>
                         <B.CommentContents>{props.el.commentContent}</B.CommentContents>
                         <B.ReplyBtn>
-                            <B.ReplyIcon src="/images/commentwrite.png"/>
+                            <B.ReplyIcon src="/images/comment/reply.png"/>
                         </B.ReplyBtn>
                     </B.CommentInner>
 

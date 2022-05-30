@@ -273,13 +273,13 @@ export const NoBoughtListInfo = styled.div`
 export const BoughtImage = styled.img`
     width: 104px;
     height: 104px;
-    background-color: white;
+    background-color: #494949;
     border-radius: 10px 0px 0px 10px;
     cursor: pointer;
 `;
 
 export const BoughtName = styled.div`
-    width: 250px;
+    width: 300px;
     font-size: 18px;
 
     margin-top: auto;
@@ -370,34 +370,26 @@ export const BoughtStatusText = styled.div`
 `;
 
 export const BoughtStatus = styled.button`
-    height: 36px;
+    height: 35px;
 
     display: flex;
     align-items: center;
 
-    font-size: 18px;
-    line-height: 24px;
-
+    /* line-height: 24px; */
     color: #ffffff;
-
     background-color: transparent;
-
-    margin-top: auto;
-    margin-bottom: auto;
-    margin-left: auto;
-    margin-right: 40px;
-
-    font-weight: 700;
-    font-size: 14px;
-
+    /* margin-right: 20px; */
+    padding: 0 10px;
+    font-size: 12px;
     border: 1px solid #ffffff;
-    border-radius: 6px;
+    /* border: none; */
+    /* border-radius: 6px; */
 
     cursor: pointer;
 
     :hover {
-        background-color: #b150f2;
-        border: none;
+        border: 1px solid #B150F2;
+        color: #B150F2;
     }
 `;
 
@@ -408,12 +400,11 @@ export const BoughtReviewWrapper = styled.div`
 
     margin-top: auto;
     margin-bottom: auto;
-    margin-left: auto;
+    margin-left: 40px;
 `;
 
 export const BoughtReviewText = styled.div`
-    font-style: normal;
-    font-weight: 400;
+
     font-size: 14px;
     line-height: 22px;
 
@@ -428,7 +419,7 @@ export const BoughtReviewStatus = styled.div`
     display: flex;
     align-items: center;
 
-    font-size: 18px;
+    font-size: 16px;
     line-height: 36px;
 
     color: #ffffff; ;
@@ -487,7 +478,7 @@ export const BasketProductImage = styled.img`
     width: 380px;
     height: 350px;
     border-radius: 10px 10px 0 0;
-    background-color: #b1b1b1;
+    background-color: #494949;
     cursor: pointer;
 `;
 

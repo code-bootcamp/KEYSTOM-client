@@ -1,7 +1,9 @@
 import styled from '@emotion/styled';
-import { useMutation, gql, useQuery } from '@apollo/client';
+import { useMutation, gql, useQuery, useApolloClient } from '@apollo/client';
 import { useState } from 'react';
 import { Modal } from 'antd';
+import { useRecoilState } from 'recoil';
+import { accessTokenState } from '../../../../../../../commons/store';
 
 
 const ReviewCommentWriteWrapper = styled.div`
@@ -55,22 +57,31 @@ const FETCH_USER_LOGGED_IN = gql`
         }
     }
 `
-
+// const LOGIN = gql`
+//     mutation login($email:String! $password:String!){
+//         login(email:$email password:$password)
+//     }
+// `
 
 export default function CommentWritePage(props:any){
     const [createComment]  = useMutation(CREATE_COMMENT)
+    // const [login]  = useMutation(LOGIN)
     const {data}  = useQuery(FETCH_USER_LOGGED_IN)
+    const [accessToken, setAccessToken] = useRecoilState(accessTokenState)
+
     const [commentContent, setCommentContent] = useState("")
+    const client = useApolloClient();
      
 
     const onChangeComment = (event:any) => {
         setCommentContent(event.target.value)
     }
 
+ 
+
     
     const onClickWriteComment = async() => {
         try{
-    
             await createComment({
                 variables:{
                     createCommentInput:{
@@ -81,6 +92,8 @@ export default function CommentWritePage(props:any){
                     }
                 }
             })
+            // console.log("댓글데이터",commentData)
+
            Modal.success({content:"댓글을 등록했습니다!"})
            setCommentContent("")
     
