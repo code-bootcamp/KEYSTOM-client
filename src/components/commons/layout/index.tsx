@@ -35,7 +35,7 @@ const Inner = styled.div`
 `;
 
 // const HIDDEN_HEADER = ["/"];
-const HIDDEN_ADMIN_SIDEBAR = ["/", "/store", "/event", "/mypage", "/product"];
+const HIDDEN_ADMIN_SIDEBAR = ["/admin", "/admin/product","/admin/user"];
 
 export default function Layout(props: ILayoutProps) {
   const router = useRouter();
@@ -48,7 +48,7 @@ export default function Layout(props: ILayoutProps) {
       {/* {!isHidden && <LayoutHeader />} */}
       <LayoutHeader />
       <Inner>
-      {!isHidden && <LayoutAdminSideBar />}
+      {isHidden && <LayoutAdminSideBar />}
       <BodyWrapper>
         <Body>{props.children}</Body>
       </BodyWrapper>
