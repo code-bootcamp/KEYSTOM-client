@@ -114,7 +114,6 @@ export default function PaymentPresenter(props: any) {
                   onChange={props.onChangeReceiverName}
                   defaultValue={props.userData?.fetchUserLoggedIn.user.name}
                 />
-                
               </S.PaymentSubTextWrapper>
 
               <S.PaymentSubTextWrapper>
@@ -124,8 +123,6 @@ export default function PaymentPresenter(props: any) {
                   placeholder="01012345678"
                   onChange={props.onChangeReceiverPhone}
                 />
-                  
-               
               </S.PaymentSubTextWrapper>
 
               <S.PaymentSubTextWrapper>
@@ -150,9 +147,10 @@ export default function PaymentPresenter(props: any) {
                   type="text"
                   placeholder="15338"
                   style={{ width: 116 }}
-                  value={props.zipCode || props.userData?.fetchUserLoggedIn.zipCode}
+                  value={
+                    props.zipCode || props.userData?.fetchUserLoggedIn.zipCode
+                  }
                 />
-                
 
                 <S.ZipCodeSearchButton onClick={props.showModal}>
                   Find Address
@@ -165,10 +163,10 @@ export default function PaymentPresenter(props: any) {
                 <S.InputBox
                   type="text"
                   placeholder="서울시 행복구 낙원동 1004로"
-                  value={props.address || props.userData?.fetchUserLoggedIn?.address}
+                  value={
+                    props.address || props.userData?.fetchUserLoggedIn?.address
+                  }
                 />
-                  
-                
               </S.PaymentSubTextWrapper>
               <S.PaymentSubTextWrapper>
                 <S.Label>{""}</S.Label>
@@ -179,8 +177,6 @@ export default function PaymentPresenter(props: any) {
                   onChange={props.onChangeAddressDetail}
                   defaultValue={props.userData?.fetchUserLoggedIn.addressDetail}
                 />
-                  
-                
               </S.PaymentSubTextWrapper>
             </S.PaymentSubLeftWrapper>
 
@@ -218,7 +214,11 @@ export default function PaymentPresenter(props: any) {
                       <S.Coupon onClick={props.onClickAvailableCoupon}>
                         Available Coupon
                       </S.Coupon>
-                      <S.LabelContent>0</S.LabelContent>
+                      <S.LabelContent>
+                        {props.isClickedCoupon
+                          ? props.couponDetailData?.fetchCoupon?.discountPrice
+                          : 0}
+                      </S.LabelContent>
                     </S.CouponDiv>
                   </S.OrderPriceWrapper>
                   <S.OrderPriceWrapper style={{ border: "none" }}>

@@ -23,6 +23,7 @@ export default function PaymentContainer() {
   const [productId, setProductId] = useRecoilState(paymentProductId);
   const [couponId, setCouponId] = useState("");
   const [isClickedModal, setIsClickedModal] = useState(false);
+  const [isClickedCoupon, setIsClickedCoupon] = useState(false);
 
   const [isOpen, setIsOpen] = useState(false);
   const [zipCode, setZipCode] = useState("");
@@ -62,8 +63,10 @@ export default function PaymentContainer() {
     setIsClickedModal(true);
   };
 
-  const onClickCoupon = (e:any) => {
+  const onClickCoupon = (e: any) => {
     setCouponId(e.target.id);
+    setIsClickedCoupon(true);
+    setIsClickedModal(false);
   };
 
   // 주소 모달
@@ -114,7 +117,6 @@ export default function PaymentContainer() {
           customData?.fetchCustom?.enter * 10000,
         buyer_email: userData?.fetchUserLoggedIn?.user?.email,
         buyer_name: userData?.fetchUserLoggedIn?.user?.name,
-        // buyer_name: "영훈",
         m_redirect_url: "http://localhost:3000/myPage",
       },
       (rsp: any) => {
@@ -159,6 +161,7 @@ export default function PaymentContainer() {
       requestPayment={requestPayment}
       productData={productData}
       couponData={couponData}
+      couponDetailData={couponDetailData}
       customData={customData}
       userData={userData}
       couponHandleOK={couponHandleOK}
@@ -176,6 +179,7 @@ export default function PaymentContainer() {
       isOpen={isOpen}
       zipCode={zipCode}
       address={address}
+      isClickedCoupon={isClickedCoupon}
     />
   );
 }
