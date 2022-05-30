@@ -25,38 +25,37 @@ const ContentDiv = styled.div`
 `;
 
 export default function AdminDescriptionPage(props: any) {
-    const [description, setDescription] = useState("");
-    const [newDescription, setNewDescription] = useState("");
-    console.log("확인?", props.data);
+    const [newDescription, setNewDescription] = useState(null);
 
     useEffect(() => {
-        setDescription(props.data?.description);
-        return;
-    }, [description]);
-    console.log("디스크립션?", description);
-
-    useEffect(() => {
-        if (description.indexOf("png)") !== -1) {
+        if (props.data?.description.indexOf("png)") !== -1) {
             setNewDescription(
-                description.substring(description.indexOf("png)") + 5)
+                props.data?.description.substring(
+                    props.data?.description.indexOf("png)") + 5
+                )
             );
             return;
         }
-        if (description.indexOf("jpg)") !== -1) {
+        if (props.data?.description.indexOf("jpg)") !== -1) {
             setNewDescription(
-                description.substring(description.indexOf("jpg)") + 5)
+                props.data?.description.substring(
+                    props.data?.description.indexOf("jpg)") + 5
+                )
             );
             return;
         }
-        if (description) setNewDescription(description);
+        if (props.data?.description) setNewDescription(props.data?.description);
+
         return;
-    }, [newDescription]);
+    }, [props.data?.description]);
+
+    console.log("new디스크립션?", newDescription);
 
     return (
         <ContentDiv style={{ width: "100%", height: "auto" }}>
             <PostViewer data={props.data} />
             {/* {data?.fetchProduct.description} */}
-            {description}
+            {newDescription}
         </ContentDiv>
     );
 }

@@ -1,32 +1,31 @@
-import { gql, useMutation, useQuery } from '@apollo/client';
-import styled from '@emotion/styled';
-import {useState, useEffect, useRef} from 'react';
+import { gql, useMutation, useQuery } from "@apollo/client";
+import styled from "@emotion/styled";
+import { useState, useEffect, useRef } from "react";
 import { v4 as uuidv4 } from "uuid";
 import UploadFileAdminPage from "../../../../commons/uploadfile-admin";
-import { useRouter } from 'next/router';
-import { Modal } from 'antd';
-import dynamic from 'next/dynamic';
-import '@toast-ui/editor/dist/toastui-editor.css';
-import { IUpdateVariables } from './productWrite.types';
+import { useRouter } from "next/router";
+import { Modal } from "antd";
+import dynamic from "next/dynamic";
+import "@toast-ui/editor/dist/toastui-editor.css";
+import { IUpdateVariables } from "./productWrite.types";
 
-const PostEditor = dynamic(
-    ()=> import('../write/EditorLoader'),
-    {ssr:false}
-  )
+const PostEditor = dynamic(() => import("../write/EditorLoader"), {
+    ssr: false,
+});
 
 const ProductWriteWrapper = styled.div`
-display: flex;
-flex-direction: column;
-align-items: center;
-width: 100%;
-padding: 100px 200px;
-color: #f1f1f1;
-`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 100px 200px;
+    color: #f1f1f1;
+`;
 const Title = styled.div`
-color: #f1f1f1;
-font-size: 26px;
-padding-bottom: 40px;
-`
+    color: #f1f1f1;
+    font-size: 26px;
+    padding-bottom: 40px;
+`;
 
 const InputWrapper = styled.div`
     width: 100%;
@@ -34,7 +33,7 @@ const InputWrapper = styled.div`
     flex-direction: column;
     padding-top: 20px;
     padding-bottom: 20px;
-`
+`;
 
 const Inputs = styled.input`
     border-radius: 10px;
@@ -44,45 +43,44 @@ const Inputs = styled.input`
     margin-bottom: 20px;
     padding-left: 20px;
     background-color: #1b1b1b;
-    ::placeholder{
+    ::placeholder {
         color: #666;
     }
-    
-`
+`;
 const SmallTitle = styled.div`
     color: #f1f1f1;
     font-size: 20px;
     padding-bottom: 20px;
-`
+`;
 const TagDivWrapper = styled.div`
-width: 100%;
-padding-left: 20px;
-margin-bottom: 30px;
-display: flex;
-`
+    width: 100%;
+    padding-left: 20px;
+    margin-bottom: 30px;
+    display: flex;
+`;
 
-const TagWrapper = styled.div` 
-/* width: 100px; */
-margin-right: 10px;
-color: #f1f1f1;
-border-radius: 10px;
-border: 1px solid #B150F2;
-text-align: center;
-font-size: 15px;
-height: 50px;
-line-height: 50px;
-padding-left: 20px;
-padding-right: 20px;
-cursor: pointer;
-`
+const TagWrapper = styled.div`
+    /* width: 100px; */
+    margin-right: 10px;
+    color: #f1f1f1;
+    border-radius: 10px;
+    border: 1px solid #b150f2;
+    text-align: center;
+    font-size: 15px;
+    height: 50px;
+    line-height: 50px;
+    padding-left: 20px;
+    padding-right: 20px;
+    cursor: pointer;
+`;
 
 const TagInputWrapper = styled.div`
-  padding-bottom: 20px;
+    padding-bottom: 20px;
 `;
 
 const Tag = styled.div`
     letter-spacing: 2px;
-`
+`;
 
 const SmallInput = styled.input`
     width: 200px;
@@ -93,8 +91,7 @@ const SmallInput = styled.input`
     margin-bottom: 20px;
     background-color: #1b1b1b;
     color: #f1f1f1;
-`
-
+`;
 
 const ImageWrapper = styled.div`
     display: flex;
@@ -102,7 +99,7 @@ const ImageWrapper = styled.div`
     width: 100%;
     margin-top: 20px;
     margin-bottom: 40px;
-`
+`;
 
 const SubmitButton = styled.button`
     width: 250px;
@@ -111,12 +108,11 @@ const SubmitButton = styled.button`
     margin: 80px 20px;
     text-align: center;
     font-size: 20px;
-    :hover{
-        border: 1px solid #B150F2;
-        color: #B150F2;
+    :hover {
+        border: 1px solid #b150f2;
+        color: #b150f2;
     }
-
-`
+`;
 
 const CREATE_PRODUCT = gql`
     mutation createProduct($createProductInput: CreateProductInput!) {
@@ -128,7 +124,7 @@ const CREATE_PRODUCT = gql`
             # like
             createdAt
             thumbnail
-            productTags{
+            productTags {
                 id
                 tag
             }
@@ -137,8 +133,14 @@ const CREATE_PRODUCT = gql`
 `;
 
 const UPDATE_PRODUCT = gql`
-    mutation updateProduct($productId: String! $updateProductInput: UpdateProductInput!){
-        updateProduct(productId: $productId updateProductInput:$updateProductInput){
+    mutation updateProduct(
+        $productId: String!
+        $updateProductInput: UpdateProductInput!
+    ) {
+        updateProduct(
+            productId: $productId
+            updateProductInput: $updateProductInput
+        ) {
             id
             title
             description
@@ -146,48 +148,47 @@ const UPDATE_PRODUCT = gql`
             # like
             createdAt
             thumbnail
-            productTags{
+            productTags {
                 id
                 tag
             }
         }
     }
-`
+`;
 
 const UPLOAD_FILE = gql`
-mutation uploadFile($files:[Upload!]!){
-    uploadFile(files: $files)
-}
-`
+    mutation uploadFile($files: [Upload!]!) {
+        uploadFile(files: $files)
+    }
+`;
 
-export default function AdminProductWrite(props:any):JSX.Element {
-    const [title, setTitle] = useState("")
-    const [description, setDescription] = useState("")
-    const [price, setPrice] = useState(0)
+export default function AdminProductWrite(props: any): JSX.Element {
+    const [title, setTitle] = useState("");
+    const [description, setDescription] = useState("");
+    const [price, setPrice] = useState(0);
     const [hashArr, setHashArr] = useState<string[]>([]);
-    const [imageUrls, setImageUrls] = useState([""])
+    const [imageUrls, setImageUrls] = useState([""]);
 
     const [createProduct] = useMutation(CREATE_PRODUCT);
     const [updateProduct] = useMutation(UPDATE_PRODUCT);
-    const [uploadFile] = useMutation(UPLOAD_FILE)
+    const [uploadFile] = useMutation(UPLOAD_FILE);
 
-    const router = useRouter()
-    const editorRef = useRef<any>()
+    const router = useRouter();
+    const editorRef = useRef<any>();
 
-    const onChangeTitle = (event:any) => {
-        setTitle(event.target.value)
-    }
+    const onChangeTitle = (event: any) => {
+        setTitle(event.target.value);
+    };
 
     const onChangeDescription = () => {
-        if(editorRef.current){
-            setDescription(editorRef.current.getInstance().getMarkdown())
-          }
-    }
+        if (editorRef.current) {
+            setDescription(editorRef.current.getInstance().getMarkdown());
+        }
+    };
 
-  
-    const onChangePrice = (event:any) => {
-        setPrice(event.target.value)
-    }
+    const onChangePrice = (event: any) => {
+        setPrice(event.target.value);
+    };
 
     // const onChangeFileUrl = (fileUrl:any, index:number) => {
     //     const newFile = [...imageUrls]
@@ -195,115 +196,113 @@ export default function AdminProductWrite(props:any):JSX.Element {
     //     setImageUrls(newFile)
     // }
 
-    const onChangeFileUrl = (fileUrl:any) => {
+    const onChangeFileUrl = (fileUrl: any) => {
         // const newFile = [...imageUrls]
         // newFile[index] = fileUrl;
-        setImageUrls(fileUrl)
-    }
+        setImageUrls(fileUrl);
+    };
 
     const onKeyUpHash = (event: any) => {
         if (event.keyCode === 32 && event.target.value !== "") {
-          setHashArr([...hashArr, "#" + event.target.value]);
-          event.target.value = "";
+            setHashArr([...hashArr, "#" + event.target.value]);
+            event.target.value = "";
         }
-      };
+    };
 
     const onClickTagDelete = (event: any) => {
         hashArr.splice(Number(event.target.id), 1);
         setHashArr([...hashArr]);
-      };
+    };
 
-      useEffect(() => {
+    useEffect(() => {
         if (props.data?.fetchProduct?.productTags?.tag.length) {
-          setHashArr([...props.data?.fetchProduct?.productTags?.tag]);
+            setHashArr([...props.data?.fetchProduct?.productTags?.tag]);
         }
-      }, [props.data]);
+    }, [props.data]);
 
-
-      useEffect(()=>{
-        if(props.data?.fetchProduct.thumbnail){
-            setImageUrls([...props.data?.fetchProduct.thumbnail])
+    useEffect(() => {
+        if (props.data?.fetchProduct.thumbnail) {
+            setImageUrls([...props.data?.fetchProduct.thumbnail]);
         }
-    //   },[props.data?.fetchProduct.thumbnail])
-    },[props.data])
-
+        //   },[props.data?.fetchProduct.thumbnail])
+    }, [props.data]);
 
     const onClickSubmit = async () => {
-        console.log("imgUrls123@@", imageUrls)
+        console.log("imgUrls123@@", imageUrls);
         try {
             const result = await createProduct({
                 variables: {
                     createProductInput: {
                         title,
                         description,
-                        price:Number(price),
-                        imageUrls:["123"],
+                        price: Number(price),
+                        // imageUrls:["123"],
                         productTags: hashArr,
                     },
                 },
             });
             console.log(result);
-            Modal.success({content:"상품을 등록하였습니다"})
-            router.push("/admin/product")
-        } catch (error:any) {
-            console.log("error",error)
-            Modal.error({content:error.message})
+            Modal.success({ content: "상품을 등록하였습니다" });
+            router.push("/admin/product");
+        } catch (error: any) {
+            console.log("error", error);
+            Modal.error({ content: error.message });
         }
     };
 
-    
-    const onClickUpdateProduct = async() => {
-        const currentFile = JSON.stringify(imageUrls)
-        const defaultFile = JSON.stringify(props.data?.fetchProduct.imageUrls)
-        const isChangeFile = currentFile !== defaultFile
-        try{
-            const updateVariables:IUpdateVariables={productId:router.query.productId}
-            if(title) updateVariables.title = title
-            if(description) updateVariables.description = description
-            if(price) updateVariables.price = price
-            if(isChangeFile) updateVariables.thumbnail = imageUrls[0];
+    const onClickUpdateProduct = async () => {
+        const currentFile = JSON.stringify(imageUrls);
+        const defaultFile = JSON.stringify(props.data?.fetchProduct.imageUrls);
+        const isChangeFile = currentFile !== defaultFile;
+        try {
+            const updateVariables: IUpdateVariables = {
+                productId: router.query.productId,
+            };
+            if (title) updateVariables.title = title;
+            if (description) updateVariables.description = description;
+            if (price) updateVariables.price = price;
+            if (isChangeFile) updateVariables.thumbnail = imageUrls[0];
 
             await updateProduct({
-                variables:{
-                    productId:router.query.productId,
-                    updateProductInput:{
+                variables: {
+                    productId: router.query.productId,
+                    updateProductInput: {
                         title,
                         description,
-                        price:Number(price),
+                        price: Number(price),
                         imageUrls,
-                        productTags:hashArr
-                    }
-                }
-            })
-            Modal.success({content:"업데이트 완료했습니다"})
-            router.push("/admin/product")
-
-        }catch(error:any){
-            Modal.error({content:error.message})
+                        productTags: hashArr,
+                    },
+                },
+            });
+            Modal.success({ content: "업데이트 완료했습니다" });
+            router.push("/admin/product");
+        } catch (error: any) {
+            Modal.error({ content: error.message });
         }
-     
-    }
+    };
 
     return (
         <ProductWriteWrapper>
-            <Title>{props.isEdit ?"Edit" : "Create"} Product</Title>
+            <Title>{props.isEdit ? "Edit" : "Create"} Product</Title>
             <InputWrapper>
-                <SmallTitle>Title</SmallTitle> 
-               <Inputs 
-               placeholder="title" 
-               onChange={onChangeTitle} 
-               type="text" 
-               defaultValue={props.data?.fetchProduct.title}/>
+                <SmallTitle>Title</SmallTitle>
+                <Inputs
+                    placeholder="title"
+                    onChange={onChangeTitle}
+                    type="text"
+                    defaultValue={props.data?.fetchProduct.title}
+                />
             </InputWrapper>
             <InputWrapper>
                 <SmallTitle>Description</SmallTitle>
-                <PostEditor 
-                onChangeDescription={onChangeDescription} 
-                editorRef={editorRef} 
-                data={props.data} 
-                uploadFile={uploadFile}
-                onChangeFileUrl={onChangeFileUrl}
-                description={description}
+                <PostEditor
+                    onChangeDescription={onChangeDescription}
+                    editorRef={editorRef}
+                    data={props.data}
+                    uploadFile={uploadFile}
+                    onChangeFileUrl={onChangeFileUrl}
+                    description={description}
                 />
 
                 {/* <ImageWrapper>
@@ -313,38 +312,44 @@ export default function AdminProductWrite(props:any):JSX.Element {
                         </div>
                     ))}
                 </ImageWrapper> */}
-               {/* <Inputs placeholder="description" onChange={onChangeDescription} type="text" defaultValue={props.data?.fetchProduct.description}/> */}
+                {/* <Inputs placeholder="description" onChange={onChangeDescription} type="text" defaultValue={props.data?.fetchProduct.description}/> */}
             </InputWrapper>
-               
+
             <InputWrapper>
                 <SmallTitle>Price</SmallTitle>
-               <Inputs 
-               placeholder="price" 
-               onChange={onChangePrice} 
-               type="number" 
-               defaultValue={props.data?.fetchProduct.price}/>
-                <InputWrapper>
-            </InputWrapper>
+                <Inputs
+                    placeholder="price"
+                    onChange={onChangePrice}
+                    type="number"
+                    defaultValue={props.data?.fetchProduct.price}
+                />
+                <InputWrapper></InputWrapper>
                 <SmallTitle>ProductTags</SmallTitle>
-                    <TagInputWrapper>
+                <TagInputWrapper>
                     # {"  "}
                     <SmallInput
                         type="text"
                         onKeyUp={onKeyUpHash}
                         placeholder="spacebar"
                     />
-                    </TagInputWrapper>
-                    <TagDivWrapper>
+                </TagInputWrapper>
+                <TagDivWrapper>
                     {hashArr.map((el: any, idx: any) => (
                         <TagWrapper key={idx}>
-                            <Tag onClick={onClickTagDelete} id={idx}>{el}</Tag>
+                            <Tag onClick={onClickTagDelete} id={idx}>
+                                {el}
+                            </Tag>
                         </TagWrapper>
                     ))}
-                    </TagDivWrapper>
-                </InputWrapper>
-              
+                </TagDivWrapper>
+            </InputWrapper>
 
-            <SubmitButton type='button' onClick={props.isEdit ? onClickUpdateProduct : onClickSubmit}>{props.isEdit ? "Edit" : "Submit"}</SubmitButton>
+            <SubmitButton
+                type="button"
+                onClick={props.isEdit ? onClickUpdateProduct : onClickSubmit}
+            >
+                {props.isEdit ? "Edit" : "Submit"}
+            </SubmitButton>
         </ProductWriteWrapper>
     );
 }

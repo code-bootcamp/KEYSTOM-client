@@ -140,7 +140,7 @@ export const ProductImage = styled.img<{ src?: string }>`
     width: 292px;
     height: 270px;
 
-    background-color: #ffffff;
+    background-color: gray;
     cursor: pointer;
 
     /* background-image: url("/images/keyboard-01.jpg"); */
