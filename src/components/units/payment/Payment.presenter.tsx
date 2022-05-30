@@ -193,11 +193,18 @@ export default function PaymentPresenter(props: any) {
                 >
                   <S.LabelDetail>Total Price</S.LabelDetail>
                   <S.LabelText>{`${
-                    props.productData?.fetchProduct?.price +
-                    props.customData?.fetchCustom?.space * 8000 +
-                    props.customData?.fetchCustom?.esc * 7000 +
-                    props.customData?.fetchCustom?.rest * 6000 +
-                    props.customData?.fetchCustom?.enter * 10000
+                    props.couponDetailData?.fetchCoupon?.discountPrice
+                      ? props.productData?.fetchProduct?.price +
+                        props.customData?.fetchCustom?.space * 8000 +
+                        props.customData?.fetchCustom?.esc * 7000 +
+                        props.customData?.fetchCustom?.rest * 6000 +
+                        props.customData?.fetchCustom?.enter * 10000 -
+                        props.couponDetailData?.fetchCoupon?.discountPrice
+                      : props.productData?.fetchProduct?.price +
+                        props.customData?.fetchCustom?.space * 8000 +
+                        props.customData?.fetchCustom?.esc * 7000 +
+                        props.customData?.fetchCustom?.rest * 6000 +
+                        props.customData?.fetchCustom?.enter * 10000
                   }`}</S.LabelText>
                 </S.OrderPriceWrapper>
 

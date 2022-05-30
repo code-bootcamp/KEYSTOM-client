@@ -309,7 +309,7 @@ export const PaymentLabel = styled.div`
 export const CouponDiv = styled.div`
   display: flex;
   justify-content: space-between;
-  width: 150px;
+  width: 180px;
 `;
 
 export const Coupon = styled.div`
@@ -324,6 +324,8 @@ export const Coupon = styled.div`
 
   font-size: 14px;
   line-height: 20px;
+
+  margin-right: 10px;
 
   cursor: pointer;
 `;
@@ -376,8 +378,8 @@ export const PaymentCancelButton = styled.button`
 export const ModalDiv = styled.div`
   display: flex;
   flex-direction: column;
-  background-color: #f3f3f3;
-  width: 900px;
+  width: 500px;
+  height: 730px;
   border-radius: 30px;
   padding-bottom: 150px;
   overflow: hidden;
@@ -415,7 +417,10 @@ export const MyCouponDesc = styled.div`
 
 export const MyCouponListWrapper = styled.div`
   height: 558px;
-  margin-top: 30px;
+  padding-top: 30px;
+  padding-left: 30px;
+
+  background-color: #dedede;
 `;
 
 export const MyCouponList = styled.div`
@@ -424,14 +429,20 @@ export const MyCouponList = styled.div`
   width: 443px;
   height: 60px;
 
-  background: #ffffff;
+  background-color: #ffffff;
   border: 1px solid #b1b1b1;
   border-radius: 6px;
 
-  margin-left: 30px;
   margin-bottom: 10px;
 
+  color: #b1b1b1;
+
   cursor: pointer;
+
+  &:hover {
+    background-color: #b150f2;
+    color: #ffffff;
+  }
 `;
 
 export const MyCouponName = styled.div`
@@ -439,8 +450,6 @@ export const MyCouponName = styled.div`
   font-weight: 400;
   font-size: 18px;
   line-height: 24px;
-
-  color: #b1b1b1;
 
   margin-left: 20px;
   margin-top: auto;
@@ -453,9 +462,7 @@ export const MyCouponDisCount = styled.div`
   font-size: 14px;
   line-height: 20px;
 
-  color: #b1b1b1;
-
-  margin-left: 148px;
+  margin-left: 200px;
   margin-top: auto;
   margin-bottom: auto;
 `;
