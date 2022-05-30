@@ -162,7 +162,7 @@ export default function StorePresenter() {
                     </div> */}
           <S.ImageWrapper>
             <S.MainImage>
-              <LayoutHeader></LayoutHeader>
+              {/* <LayoutHeader></LayoutHeader> */}
             </S.MainImage>
           </S.ImageWrapper>
 

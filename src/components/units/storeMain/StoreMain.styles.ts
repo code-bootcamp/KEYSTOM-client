@@ -10,6 +10,8 @@ export const Wrapper = styled.div`
 
 export const MainWrapper = styled.div`
   width: 1920px;
+  position: relative;
+  top: -80px;
   /* padding-top: 70px; */
 `;
 
@@ -137,7 +139,7 @@ export const Text = styled.div`
 
 export const BestReviewWrapper = styled.div`
   width: 100%;
-  padding: 228px 340px 300px 340px;
+  padding: 200px 340px 200px 340px;
 `;
 
 export const BestProductWrapper = styled.div`
