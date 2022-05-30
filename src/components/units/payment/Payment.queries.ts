@@ -98,3 +98,9 @@ export const FETCH_COUPON = gql`
     }
   }
 `;
+
+export const DELTETE_COUPON = gql`
+  mutation deleteCoupon($couponId: String!) {
+    deleteCoupon(couponId: $couponId)
+  }
+`;
