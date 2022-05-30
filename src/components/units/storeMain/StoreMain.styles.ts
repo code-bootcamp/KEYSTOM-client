@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
   width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -99,7 +100,7 @@ export const MoveButton = styled.button`
   font-size: 24px;
   border: none;
   margin-top: 130px;
-  :hover{
+  :hover {
     border: 1px solid #f1f1f1;
   }
 `;
@@ -114,13 +115,11 @@ export const Player = styled.div`
 `;
 
 export const IframeVideo = styled.iframe`
-width: 100%;
-height: 100%;
-border: 1px solid #b150f2;
-border-radius: 10px;
-
-
-`
+  width: 100%;
+  height: 100%;
+  border: 1px solid #b150f2;
+  border-radius: 10px;
+`;
 
 export const ReviewWrapper = styled.div`
   width: 100%;
@@ -157,14 +156,13 @@ export const BestProductBox = styled.div`
 export const ReviewImage = styled.img<{ src: string }>`
   width: 400px;
   height: 291px;
-  border-radius: 10px 10px 0 0 ;
+  border-radius: 10px 10px 0 0;
 
   /* background-color: blue; */
 
   /* background-image: url(); */
   background-position: center;
   background-size: cover;
-
 `;
 
 export const ReviewDownWrapper = styled.div`

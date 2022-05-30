@@ -65,6 +65,8 @@ export default function MypageContainer() {
   const { data: orderData } = useQuery(FETCH_ORDERS);
   const { data: userHaveCouponData } = useQuery(FETCH_USER_HAVE_COUPONS);
 
+  console.log("유저쿠폰개수", userHaveCouponData);
+
   const handleOK = () => {
     setIsModalOpen(false);
   };

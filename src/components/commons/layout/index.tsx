@@ -35,23 +35,23 @@ const Inner = styled.div`
 `;
 
 // const HIDDEN_HEADER = ["/"];
-const HIDDEN_ADMIN_SIDEBAR = ["/admin", "/admin/product","/admin/user"];
+const HIDDEN_ADMIN_SIDEBAR = ["/admin", "/admin/product", "/admin/user"];
 
 export default function Layout(props: ILayoutProps) {
   const router = useRouter();
 
-  // isHidden = HIDDEN_HEADER.includes(router.asPath);
-      let isHidden = HIDDEN_ADMIN_SIDEBAR.includes(router.asPath);
+  // let isHidden2 = HIDDEN_HEADER.includes(router.asPath);
+  let isHidden = HIDDEN_ADMIN_SIDEBAR.includes(router.asPath);
 
   return (
     <Wrapper>
       {/* {!isHidden && <LayoutHeader />} */}
       <LayoutHeader />
       <Inner>
-      {isHidden && <LayoutAdminSideBar />}
-      <BodyWrapper>
-        <Body>{props.children}</Body>
-      </BodyWrapper>
+        {isHidden && <LayoutAdminSideBar />}
+        <BodyWrapper>
+          <Body>{props.children}</Body>
+        </BodyWrapper>
       </Inner>
       <LayoutFooter />
     </Wrapper>
