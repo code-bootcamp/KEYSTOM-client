@@ -111,7 +111,7 @@ export default function MypageContainer() {
         setOrderId(event.target.id);
         console.log(orderId);
 
-        // router.push(`/mypage/${event.target.id}`);
+        router.push(`/mypage/${event.target.id}`);
     };
 
     const moveToCancel = (event: any) => {
@@ -131,7 +131,7 @@ export default function MypageContainer() {
     };
 
     const moveToProductDetail = (event: any) => {
-        console.log("event.id", event.target.id);
+        // console.log("event.id", event.target.id);
         router.push(`/store/${event.target.id}`);
     };
 
