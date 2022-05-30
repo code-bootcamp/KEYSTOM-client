@@ -4,6 +4,7 @@ import { gql } from "@apollo/client";
 import styled from "@emotion/styled";
 import dynamic from "next/dynamic";
 import { Modal } from "antd";
+import DescriptionPage from "./description";
 
 const PostViewer = dynamic(() => import("../detail/Viewer"), { ssr: false });
 
@@ -118,7 +119,7 @@ export default function AdminProductList() {
         },
     });
 
-    // console.log("패치데이터", data);
+    console.log("확인", data?.fetchProducts);
 
     const onClickDelete = async (e: any) => {
         try {
@@ -195,9 +196,7 @@ export default function AdminProductList() {
                             </ListItemDiv>
                             <ListItemDiv>
                                 <ListItemTitle>Description</ListItemTitle>
-                                <ListItemContents>
-                                    {el.description}
-                                </ListItemContents>
+                                <DescriptionPage el={el}></DescriptionPage>
                             </ListItemDiv>
 
                             <ListBottom>
