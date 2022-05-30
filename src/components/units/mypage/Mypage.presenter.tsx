@@ -125,8 +125,8 @@ export default function MypagePresenter(props: any) {
                 <S.VerticalLine />
                 <S.UserDeliveryAddress>
                   {" "}
-                  {props.userHaveCouponData?.fetchUserHaveCoupons.length}개의
-                  쿠폰이 있습니다
+                  {props.userHaveCouponData?.fetchUserHaveCoupons.length}
+                  개의 쿠폰이 있습니다
                 </S.UserDeliveryAddress>
                 <S.SeeCoupon onClick={props.onClickSeeCoupon}>
                   쿠폰함 보기

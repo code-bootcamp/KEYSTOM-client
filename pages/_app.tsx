@@ -9,15 +9,28 @@ import ApolloSetting from "../src/components/commons/apollo";
 import { useEffect, useState } from "react";
 import LandingAnimation from "../src/components/units/storeMain/LandingAnimation";
 import { AnimatePresence } from "framer-motion";
+import { useRouter } from "next/router";
+
+const HIDDEN_HEADER = ["/"];
 
 function MyApp({ Component, pageProps }: AppProps) {
+  const router = useRouter();
   const [loading, setLoding] = useState(true);
+  let loading2 = true;
 
-  useEffect(() => {
-    setTimeout(() => {
-      setLoding(false);
-    }, 4500);
-  }, []);
+  let isHidden = HIDDEN_HEADER.includes(router.asPath);
+
+  isHidden
+    ? useEffect(() => {
+        setTimeout(() => {
+          setLoding(false);
+        }, 4500);
+      }, [])
+    : useEffect(() => {
+        setTimeout(() => {
+          setLoding(false);
+        }, 0);
+      });
 
   return (
     <RecoilRoot>
@@ -25,13 +38,11 @@ function MyApp({ Component, pageProps }: AppProps) {
         <AnimatePresence>
           <Global styles={globalStyles} />
           {loading && <LandingAnimation />}
-          {!loading && (
-            <Layout>
-              <AppLayout>
-                <Component {...pageProps} />
-              </AppLayout>
-            </Layout>
-          )}
+          <Layout>
+            <AppLayout>
+              <Component {...pageProps} />
+            </AppLayout>
+          </Layout>
         </AnimatePresence>
       </ApolloSetting>
     </RecoilRoot>

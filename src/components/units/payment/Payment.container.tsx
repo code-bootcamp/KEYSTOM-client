@@ -7,6 +7,7 @@ import {
   FETCH_USER_LOGGED_IN,
   FETCH_CUSTOM,
   FETCH_COUPON,
+  DELTETE_COUPON,
 } from "./Payment.queries";
 import { Modal } from "antd";
 import { useState } from "react";
@@ -33,6 +34,7 @@ export default function PaymentContainer() {
   const [receiverPhone, setReceiverPhone] = useState("");
 
   const [payment] = useMutation(PAYMENT);
+  const [deleteCoupon] = useMutation(DELTETE_COUPON);
   const { data: couponData } = useQuery(FETCH_USER_HAVE_COUPONS);
   const { data: productData } = useQuery(FETCH_PRODUCT, {
     variables: {
@@ -113,7 +115,8 @@ export default function PaymentContainer() {
           customData?.fetchCustom?.space * 8000 +
           customData?.fetchCustom?.esc * 7000 +
           customData?.fetchCustom?.rest * 6000 +
-          customData?.fetchCustom?.enter * 10000,
+          customData?.fetchCustom?.enter * 10000 -
+          couponDetailData?.fetchCoupon?.discountPrice,
         buyer_email: userData?.fetchUserLoggedIn?.user?.email,
         buyer_name: userData?.fetchUserLoggedIn?.user?.name,
         m_redirect_url: "http://localhost:3000/myPage",
@@ -128,7 +131,8 @@ export default function PaymentContainer() {
                 customData?.fetchCustom?.space * 8000 +
                 customData?.fetchCustom?.esc * 7000 +
                 customData?.fetchCustom?.rest * 6000 +
-                customData?.fetchCustom?.enter * 10000,
+                customData?.fetchCustom?.enter * 10000 -
+                couponDetailData?.fetchCoupon?.discountPrice,
               impUid: rsp.imp_uid,
               createAddressInput: {
                 address: address,
@@ -145,6 +149,11 @@ export default function PaymentContainer() {
             },
           });
           Modal.success({ content: "결제를 성공하였습니다. 감사합니다!" });
+          deleteCoupon({
+            variables: {
+              couponId: couponId,
+            },
+          });
           router.push("/mypage");
         } else {
           Modal.error({ content: "결제를 실패했습니다! 다시 시도해주세요." });
