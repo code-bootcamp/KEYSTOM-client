@@ -21,14 +21,15 @@ export default function ReviewModalPresenter(props: any) {
         onOk={props.handleOk}
         onCancel={props.handleCancel}
         width={"auto"}
-        bodyStyle={{ width: "900px", padding: "0px", borderRadius: "10px" }}
+        bodyStyle={{ width: "900px", padding: "0px", borderRadius: "8px" , overflow:"auto"}}
         cancelButtonProps={{ style: { display: "none" } }}
         okButtonProps={{ style: { display: "none" } }}
         style={{
           width: "900px",
-          marginBottom: "100px",
+          marginBottom: "50px",
           overflow: "auto",
           borderRadius: "10px",
+          paddingTop:"30px"
         }}
         maskStyle={{ height: "100%", background: "#000", opacity: 0.15 }}
         footer={null}
@@ -47,7 +48,7 @@ export default function ReviewModalPresenter(props: any) {
             src="/images/review/close.png"
             onClick={props.onClickCloseModal}
           />
-          <B.PreviewWrapper>
+          {/* <B.PreviewWrapper> */}
             {/* <B.ImagePreviewWrapper>
                         <B.ImagePreview src='/images/review/review-thumb.png'/>
                         <B.ImagePreview src='/images/review/Product_img.png'/>
@@ -55,7 +56,7 @@ export default function ReviewModalPresenter(props: any) {
                         <B.ImagePreview src='/images/review/Product_img.png'/>
                         <B.ImagePreview src='/images/review/Product_img.png'/>
                     </B.ImagePreviewWrapper> */}
-          </B.PreviewWrapper>
+          {/* </B.PreviewWrapper> */}
 
           <B.ReviewWrapper>
             <B.ReviewTitleDiv>

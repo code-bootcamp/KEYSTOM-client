@@ -13,29 +13,29 @@ display: flex;
 flex-direction: column;
 background-color: #f3f3f3;
 width:900px;
-border-radius:30px ;
 padding-bottom: 150px;
 overflow: hidden;
 `
 
-export const ReviewImageDiv = styled.div`
-display: flex;
-flex-direction: column;
-justify-content: flex-end;
-align-items: center;
-width: 100%;
-height: 498px;
-background-color: #fff;
-border-radius:30px 30px 0px 0px ;
-`
+// export const ReviewImageDiv = styled.div`
+// display: flex;
+// flex-direction: column;
+// justify-content: flex-end;
+// align-items: center;
+// width: 100%;
+// height: 200px;
+// background-color: #fff;
+// border-radius:10px 10px 0px 0px ;
+// `
 
 export const ReviewImageWrapper = styled.div`
 width: 100%;
-/* height:498px; */
+height:300px;
 `
 
 export const ReviewImage = styled.img`
 width: 100%;
+height: 300px;
 `
 
 export const ModalCancelBtn = styled.img`
@@ -81,8 +81,11 @@ justify-content: space-between;
 
 export const ReviewModalTop = styled.div`
 display: flex;
+align-items: center;
 padding-bottom: 41px;
 justify-content: space-between;
+padding-top: 30px;
+
 
 `
 
@@ -104,7 +107,6 @@ export const ReviewTopWrapper = styled.div`
 display: flex;
 justify-content: space-between;
 align-items: center;
-font-weight: 400;
 font-size: 14px;
 line-height: 20px;
 color: #B1B1B1;

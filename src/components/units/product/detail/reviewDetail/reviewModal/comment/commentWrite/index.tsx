@@ -38,7 +38,7 @@ const CREATE_COMMENT = gql`
     mutation createComment($createCommentInput:CreateCommentInput!){
         createComment(createCommentInput:$createCommentInput){
             id
-            commentContent
+            content
             # parentId
             createdAt
         }
@@ -54,6 +54,7 @@ const FETCH_USER_LOGGED_IN = gql`
         user{
             email
             name
+            nickName
         }
     }
 `
@@ -67,10 +68,10 @@ export default function CommentWritePage(props:any){
     const [createComment]  = useMutation(CREATE_COMMENT)
     // const [login]  = useMutation(LOGIN)
     const {data}  = useQuery(FETCH_USER_LOGGED_IN)
-    const [accessToken, setAccessToken] = useRecoilState(accessTokenState)
+    // const [accessToken, setAccessToken] = useRecoilState(accessTokenState)
 
-    const [commentContent, setCommentContent] = useState("")
-    const client = useApolloClient();
+    const [content, setCommentContent] = useState("")
+    // const client = useApolloClient();
      
 
     const onChangeComment = (event:any) => {
@@ -85,9 +86,9 @@ export default function CommentWritePage(props:any){
             await createComment({
                 variables:{
                     createCommentInput:{
-                        commentContent,
+                        content,
                         reviewId:props.selectedId,
-                        email:String(data?.fetchUserLoggedIn.user.email)
+                        // email:String(data?.fetchUserLoggedIn.user.email)
                         
                     }
                 }

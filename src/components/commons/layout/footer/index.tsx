@@ -10,7 +10,7 @@ const FooterWrapper = styled.div`
   font-size: 18px;
   line-height: 24px;
   color: #c4c4c4;
-  border-top: 1px solid #c4c4c4;
+  border-top: 0.5px solid #666;
 `;
 
 const FooterLeftDiv = styled.div`
