@@ -2,15 +2,10 @@ import { useMutation, useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
 import { gql } from "@apollo/client";
 import styled from "@emotion/styled";
-import dynamic from 'next/dynamic';
+import dynamic from "next/dynamic";
 import { Modal } from "antd";
 
-
-const PostViewer = dynamic(
-    ()=> import('../detail/Viewer'),
-    {ssr:false}
-  )
-
+const PostViewer = dynamic(() => import("../detail/Viewer"), { ssr: false });
 
 const ProductListWrapper = styled.div`
     display: flex;
@@ -44,7 +39,7 @@ const ListItemWrapper = styled.div`
 `;
 const ListItemDivWrapper = styled.div`
     width: 700px;
-`
+`;
 const ListItemDiv = styled.div`
     display: flex;
     align-items: center;
@@ -123,10 +118,8 @@ export default function AdminProductList() {
         },
     });
 
-
     // console.log("패치데이터", data);
 
- 
     const onClickDelete = async (e: any) => {
         try {
             const result = await deleteProduct({
@@ -142,10 +135,10 @@ export default function AdminProductList() {
                     },
                 ],
             });
-            Modal.success({content:"삭제 성공하였습니다"});
+            Modal.success({ content: "삭제 성공하였습니다" });
             console.log(result);
         } catch (error: any) {
-            Modal.error({content:error.message})
+            Modal.error({ content: error.message });
         }
     };
 
@@ -153,10 +146,9 @@ export default function AdminProductList() {
         router.push(`/admin/product/${event.target.id}`);
     };
 
-
-    const moveToEdit = (event:any) => {
-        router.push(`/admin/product/${event.target.id}/edit`)
-    }
+    const moveToEdit = (event: any) => {
+        router.push(`/admin/product/${event.target.id}/edit`);
+    };
 
     return (
         <ProductListWrapper>
@@ -172,31 +164,34 @@ export default function AdminProductList() {
                     >
                         {idx + 1}
                     </ListItemTitle>
-                    <ListItemInner >
+                    <ListItemInner>
                         <ListItemDiv>
                             <ListItemImage
-                            onClick={moveToDetail}
-                            id={el.id}
+                                onClick={moveToDetail}
+                                id={el.id}
                                 src={
                                     el.thumbnail
                                         ? `https://storage.googleapis.com/${el.thumbnail}`
                                         : "/images/no-image/no-image.png"
                                 }
                             />
-                            <PostViewer 
-                            style={{width:"100px"}}/>
+                            <PostViewer style={{ width: "100px" }} />
                         </ListItemDiv>
 
                         <ListItemDivWrapper>
                             <ListItemDiv>
-                                <ListItemTitle 
-                                onClick={moveToDetail}
-                                id={el.id}
-                                >Title</ListItemTitle>
-                                <ListItemContents 
-                                onClick={moveToDetail}
-                                id={el.id}
-                                >{el.title}</ListItemContents>
+                                <ListItemTitle
+                                    onClick={moveToDetail}
+                                    id={el.id}
+                                >
+                                    Title
+                                </ListItemTitle>
+                                <ListItemContents
+                                    onClick={moveToDetail}
+                                    id={el.id}
+                                >
+                                    {el.title}
+                                </ListItemContents>
                             </ListItemDiv>
                             <ListItemDiv>
                                 <ListItemTitle>Description</ListItemTitle>
@@ -216,7 +211,7 @@ export default function AdminProductList() {
                                 <ListItemDiv style={{ paddingRight: "40px" }}>
                                     <ListItemTitle>Created At</ListItemTitle>
                                     <ListItemContents>
-                                        {el.createdAt.slice(0,10)}
+                                        {el.createdAt.slice(0, 10)}
                                     </ListItemContents>
                                 </ListItemDiv>
                                 <ListItemDiv>
@@ -233,9 +228,11 @@ export default function AdminProductList() {
                         </ListItemDivWrapper>
                     </ListItemInner>
                     <ButtonWrapper>
-                        <DeleteButton 
-                        style={{marginRight:"15px"}}
-                        id={el.id} onClick={onClickDelete}>
+                        <DeleteButton
+                            style={{ marginRight: "15px" }}
+                            id={el.id}
+                            onClick={onClickDelete}
+                        >
                             Delete
                         </DeleteButton>
                         <DeleteButton id={el.id} onClick={moveToEdit}>
