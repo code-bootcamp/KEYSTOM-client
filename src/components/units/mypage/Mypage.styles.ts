@@ -629,7 +629,7 @@ export const MyCouponDisCount = styled.div`
 
   color: #b1b1b1;
 
-  margin-left: 148px;
+  margin-left: 206px;
   margin-top: auto;
   margin-bottom: auto;
 `;
