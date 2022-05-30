@@ -92,10 +92,10 @@ export const FETCH_PRODUCTS = gql`
             # like
             createdAt
             thumbnail
-            # productTags {
-            #     id
-            #     tag
-            # }
+            productTags {
+                id
+                tag
+            }
         }
     }
 `;
@@ -215,13 +215,13 @@ export default function AdminProductList() {
                                 </ListItemDiv>
                                 <ListItemDiv>
                                     <ListItemTitle>Tags</ListItemTitle>
-                                    {/* {el.productTags.map(
+                                    {el.productTags.map(
                                         (tagEl: any, idx: number) => (
                                             <ListItemTag key={idx}>
                                                 {tagEl.tag}
                                             </ListItemTag>
                                         )
-                                    )} */}
+                                    )}
                                 </ListItemDiv>
                             </ListBottom>
                         </ListItemDivWrapper>
