@@ -7,8 +7,14 @@ query fetchReview($reviewId: String! ){
         id
         title
         description
+        thumbnail
         like
         createdAt
+        user{
+            email
+            nickName
+            name
+        }
     }
 }
 `

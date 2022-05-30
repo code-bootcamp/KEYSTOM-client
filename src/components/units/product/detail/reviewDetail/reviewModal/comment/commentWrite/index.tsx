@@ -37,7 +37,7 @@ const CREATE_COMMENT = gql`
         createComment(createCommentInput:$createCommentInput){
             id
             commentContent
-            parentId
+            # parentId
             createdAt
         }
 }
@@ -49,7 +49,6 @@ const FETCH_USER_LOGGED_IN = gql`
         address
         addressDetail
         zipCode
-        createdAt
         user{
             email
             name
@@ -77,7 +76,7 @@ export default function CommentWritePage(props:any){
                     createCommentInput:{
                         commentContent,
                         reviewId:props.selectedId,
-                        email:data.fetchUserLoggedIn.user.email
+                        email:String(data?.fetchUserLoggedIn.user.email)
                         
                     }
                 }
