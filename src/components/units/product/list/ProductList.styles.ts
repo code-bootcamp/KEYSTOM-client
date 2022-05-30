@@ -27,9 +27,7 @@ export const ListBannerText = styled.div`
     position: relative;
     top: 65%;
     left: 45%;
-
-`
-
+`;
 
 export const SearchWrapper = styled.div`
     width: 100%;
@@ -65,7 +63,7 @@ export const SearchInputWrapper = styled.div`
 
 export const SearchIcon = styled.img`
     width: 24px;
-    
+
     /* cursor: pointer; */
 
     :hover {
@@ -95,8 +93,7 @@ export const SearchTextWrapper = styled.div`
     width: 400px;
     display: flex;
     align-items: flex-start;
-
-`
+`;
 
 export const SearchText = styled.div`
     font-weight: 400;
@@ -106,7 +103,7 @@ export const SearchText = styled.div`
     padding-right: 27px;
     padding-bottom: 27px;
     color: #b1b1b1;
-    :hover{
+    :hover {
         color: #f1f1f1;
     }
 `;
@@ -137,10 +134,9 @@ export const ProductImageDiv = styled.div`
     height: 270px;
     border-radius: 10px 0px 0px 10px;
     background-color: aliceblue;
+`;
 
-`
-
-export const ProductImage = styled.div<{ src?: string }>`
+export const ProductImage = styled.img<{ src?: string }>`
     width: 292px;
     height: 270px;
 
