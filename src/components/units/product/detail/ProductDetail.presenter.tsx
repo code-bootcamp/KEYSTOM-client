@@ -706,8 +706,8 @@ export default function ProductDetailPresenter(props: any) {
     const { x, y } = useMousePosition();
 
     const [listPosition, setListPosition] = useState({
-        top: 95,
-        left: 270,
+        top: 0,
+        left: 0,
     });
 
     // useEffect(() => {
@@ -744,7 +744,7 @@ export default function ProductDetailPresenter(props: any) {
                                     ease: Expo.easeOut,
                                     duration: 0.3,
                                 }}
-                            >
+                            >   
                                 <img
                                     src={`https://storage.googleapis.com/${props.data?.fetchProduct?.thumbnail}`}
                                     style={{
@@ -772,8 +772,8 @@ export default function ProductDetailPresenter(props: any) {
                                         // zIndex: "3",
                                     }}
                                     camera={{
-                                        fov: 35,
-                                        near: 0.1,
+                                        fov: 45,
+                                        near: 0.2,
                                         position: [0, 0.7, 0.6],
                                     }}
                                 >

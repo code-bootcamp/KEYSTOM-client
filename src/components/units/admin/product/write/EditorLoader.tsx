@@ -48,9 +48,9 @@ export default function PostEditor(props: any): JSX.Element {
             });
             // console.log('uploadedImageURL', uploadedImageURL?.data.uploadFile[0] )
             callback(
-              `https://storage.googleapis.com/${uploadedImageURL?.data.uploadFile[0]}`
+              `https://storage.googleapis.com/${uploadedImageURL?.data?.uploadFile}`
             );
-            props.onChangeFileUrl(uploadedImageURL?.data.uploadFile[0]);
+            props.onChangeFileUrl(uploadedImageURL?.data.uploadFile);
             return;
           },
         }}

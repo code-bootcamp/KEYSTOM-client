@@ -5,7 +5,7 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-bottom: 506px;
+  padding-bottom: 250px;
   margin: 0px auto;
   background-color: #2c2c2c;
 `;
@@ -39,7 +39,7 @@ export const ReviewDiv = styled.div`
   display: flex;
   flex-direction: column;
   width: 390px;
-  height: 480px;
+  height: 450px;
   background: #1b1b1b;
   margin-right: 15px;
   margin-bottom: 50px;
@@ -50,7 +50,7 @@ export const ReviewDiv = styled.div`
 
 export const ReviewImage = styled.img`
   width: 100%;
-  height: 280px;
+  height: 250px;
   border-radius: 10px 10px 0 0 ;
 `;
 export const ReviewBottom = styled.div`
@@ -70,7 +70,7 @@ export const ReviewTopTop = styled.div`
 `;
 
 export const ReviewTitle = styled.div`
-  font-size: 24px;
+  font-size: 20px;
   line-height: 24px;
   padding-bottom: 20px;
   color: #fff;
@@ -89,10 +89,9 @@ export const BottomText = styled.div`
 
 export const Reviewer = styled.div`
   display: flex;
-  width: 200px;
+  align-items: center;
   color: #b1b1b1;
   font-size: 14px;
-  line-height: 20px;
 `;
 
 export const ReviewDate = styled.div`
@@ -108,14 +107,14 @@ export const ReviewSmallTitle = styled.div`
 `;
 
 export const ReviewSmallText = styled.div`
-  font-size: 18px;
-  line-height: 18px;
+  font-size: 12px;
+  line-height: 12px;
   padding-right: 10px;
 `;
 
 export const ReviewCreatedAt = styled.div`
-  font-size: 18px;
-  line-height: 18px;
+  font-size: 12px;
+  line-height: 12px;
   padding-left: 10px;
 `
 
@@ -123,8 +122,8 @@ export const ReviewCreatedAt = styled.div`
 export const Contents = styled.div`
   width: 100%;
   height: 50px;
-  font-size: 18px;
-  line-height: 24px;
+  font-size: 14px;
+  line-height: 20px;
   text-overflow: ellipsis;
   color: #b1b1b1;
 `;
@@ -140,7 +139,7 @@ export const ReviewLikeImage = styled.img`
 `;
 
 export const ReviewLikeNum = styled.div`
-  font-size: 18px;
+  font-size: 16px;
   line-height: 24px;
   color: #fff;
   padding-left: 10px;

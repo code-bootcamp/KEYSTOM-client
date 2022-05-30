@@ -121,7 +121,6 @@ const CREATE_PRODUCT = gql`
       title
       description
       price
-      # like
       createdAt
       thumbnail
       productTags {
@@ -145,7 +144,6 @@ const UPDATE_PRODUCT = gql`
       title
       description
       price
-      # like
       createdAt
       thumbnail
       productTags {
@@ -165,9 +163,9 @@ const UPLOAD_FILE = gql`
 export default function AdminProductWrite(props: any): JSX.Element {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [price, setPrice] = useState(0);
+  const [price, setPrice] = useState();
   const [hashArr, setHashArr] = useState<string[]>([]);
-  const [imageUrls, setImageUrls] = useState([""]);
+  const [imageUrls, setImageUrls] = useState([]);
 
   const [createProduct] = useMutation(CREATE_PRODUCT);
   const [updateProduct] = useMutation(UPDATE_PRODUCT);
@@ -224,7 +222,6 @@ export default function AdminProductWrite(props: any): JSX.Element {
     if (props.data?.fetchProduct.thumbnail) {
       setImageUrls([...props.data?.fetchProduct.thumbnail]);
     }
-    //   },[props.data?.fetchProduct.thumbnail])
   }, [props.data]);
 
   const onClickSubmit = async () => {
@@ -235,11 +232,13 @@ export default function AdminProductWrite(props: any): JSX.Element {
             title,
             description,
             price: Number(price),
-            // imageUrls:["123"],
+            imageUrls:imageUrls,
             productTags: hashArr,
           },
         },
       });
+
+      console.log("create REsult", result)
       Modal.success({ content: "상품을 등록하였습니다" });
       router.push("/admin/product");
     } catch (error: any) {
@@ -258,7 +257,7 @@ export default function AdminProductWrite(props: any): JSX.Element {
       if (title) updateVariables.title = title;
       if (description) updateVariables.description = description;
       if (price) updateVariables.price = price;
-      if (isChangeFile) updateVariables.thumbnail = imageUrls[0];
+      // if (isChangeFile) updateVariables.thumbnail = imageUrls;
 
       await updateProduct({
         variables: {
@@ -267,7 +266,7 @@ export default function AdminProductWrite(props: any): JSX.Element {
             title,
             description,
             price: Number(price),
-            imageUrls,
+            // imageUrls,
             productTags: hashArr,
           },
         },

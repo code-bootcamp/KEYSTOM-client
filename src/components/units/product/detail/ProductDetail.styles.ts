@@ -2,8 +2,8 @@ import styled from "@emotion/styled";
 import { HexColorPicker, HexColorInput } from "react-colorful";
 
 export const Wrapper = styled.div`
-  width: 1920px;
-  padding: 0 210px;
+  width: 1240px;
+  padding: 0 340px;
   /* margin-left: auto; */
   /* margin-right: auto; */
   margin-top: 50px;
@@ -49,8 +49,8 @@ export const SeeIcon = styled.img`
 `;
 
 export const ProductSelectWrapper = styled.div`
-  width: 1180px;
-  height: 800px;
+  width: 908px;
+  height: 796px;
   display: flex;
 
   background: none;
