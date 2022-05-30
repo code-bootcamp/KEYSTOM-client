@@ -21,10 +21,10 @@ export default function ReviewModalPresenter(props:any){
             onOk={props.handleOk}
             onCancel={props.handleCancel}
             width= {"auto"}
-            bodyStyle={{width:"900px", padding:"0px",  borderRadius:"30px" }}
+            bodyStyle={{width:"900px", padding:"0px",  borderRadius:"10px" }}
             cancelButtonProps={{style:{display:"none"}}}
             okButtonProps={{style:{display:"none"}}}
-            style={{width:"900px", marginBottom:"100px", overflow:"auto",borderRadius:"30px"}}
+            style={{width:"900px", marginBottom:"100px", overflow:"auto",borderRadius:"10px"}}
             maskStyle={{ height:"100%", background:"#000", opacity:0.15}}
             footer={null}
             // zIndex={10}
@@ -34,17 +34,17 @@ export default function ReviewModalPresenter(props:any){
             >
             <B.ModalDiv>
                 <B.ReviewImageWrapper>
-                    <B.ReviewImage src="/images/review-modal.png"/>
+                    <B.ReviewImage src={`https://storage.googleapis.com/${props.reviewData?.thumbnail}`}/>
                 </B.ReviewImageWrapper>
                 <B.ModalCancelBtn src='/images/review/close.png' onClick={props.onClickCloseModal}/>
                 <B.PreviewWrapper>
-                    <B.ImagePreviewWrapper>
+                    {/* <B.ImagePreviewWrapper>
                         <B.ImagePreview src='/images/review/review-thumb.png'/>
                         <B.ImagePreview src='/images/review/Product_img.png'/>
                         <B.ImagePreview src='/images/review/Product_img.png'/>
                         <B.ImagePreview src='/images/review/Product_img.png'/>
                         <B.ImagePreview src='/images/review/Product_img.png'/>
-                    </B.ImagePreviewWrapper>
+                    </B.ImagePreviewWrapper> */}
                 </B.PreviewWrapper>
             
 
@@ -52,16 +52,16 @@ export default function ReviewModalPresenter(props:any){
                         <B.ReviewTitleDiv>
                             <B.ReviewModalTop>
                                 <B.ReviewTopWrapper>
-                                    <B.ReviewerProfile src="/images/review/jake.png"/>
-                                    {/* <B.ReviewerText>{props.reviewData?.fetchReview.user.name} | </B.ReviewerText> */}
-                                    <B.ReviewDate>{props.reviewData?.fetchReview.createdAt}123</B.ReviewDate>
+                                    <B.ReviewerProfile src="/images/review/profile-review.png"/>
+                                    <B.ReviewerText>{props.reviewData?.fetchReview.user.name}</B.ReviewerText>|
+                                    <B.ReviewDate>{props.reviewData?.fetchReview.createdAt.slice(0,10)}</B.ReviewDate>
                                 </B.ReviewTopWrapper>
                                 <B.ReviewLike>
-                                    <B.ReviewLikeIcon src='/images/review/like.png'/>
-                                    <B.ReviewLikeNum>{props.reviewData?.fetchReview.like}</B.ReviewLikeNum>
+                                    <B.ReviewLikeIcon src='/images/review/like-p.png'/>
+                                    <B.ReviewLikeNum>123</B.ReviewLikeNum>
                                 </B.ReviewLike>
                             </B.ReviewModalTop>
-                            <B.ReviewTitle>{props.reviewData?.fetchReview.title}title</B.ReviewTitle>
+                            <B.ReviewTitle>{props.reviewData?.fetchReview.title}</B.ReviewTitle>
                         </B.ReviewTitleDiv>
 
                         <B.ReviewContentsDiv>
@@ -80,7 +80,7 @@ export default function ReviewModalPresenter(props:any){
 
                             {props.commentData?.fetchReviewComments.map((el:any)=>(
                                 <div>
-                                    <CommentListPage el={el}  key={el.id} commentData={props.commentData} />
+                                    <CommentListPage el={el}  key={el.id} commentData={props.commentData} selectedId={props.selectedId} />
                                 </div>
                             ))}
                         </B.ReviewCommentListWrapper>
