@@ -10,7 +10,7 @@ const FETCH_USER_LOGGED_IN = gql`
       addressDetail
       zipCode
       user {
-        # email
+        email
         name
         nickName
         profileImage
@@ -65,8 +65,6 @@ export default function MypageContainer() {
   const { data: orderData } = useQuery(FETCH_ORDERS);
   const { data: userHaveCouponData } = useQuery(FETCH_USER_HAVE_COUPONS);
 
-  console.log("주문데이터", orderData);
-
   const handleOK = () => {
     setIsModalOpen(false);
   };
@@ -75,18 +73,12 @@ export default function MypageContainer() {
     setIsModalOpen(false);
   };
 
-  //   console.log("로그인 유저", data);
-  //   console.log("쿠폰데이터", couponsData);
-
   useEffect(() => {
     const basketsArr = JSON.parse(localStorage.getItem("baskets") || "[]");
     setBaskets(basketsArr);
   }, [isBasket]);
 
-  console.log(baskets);
-
-  const moveToReviewWrite = (event:any) => {
-
+  const moveToReviewWrite = (event: any) => {
     router.push(`/mypage/${event.target.id}`);
   };
 
@@ -94,15 +86,11 @@ export default function MypageContainer() {
     setIsModalOpen(true);
   };
 
-  const moveToProductDetail = (event:any) => {
-    router.push(`/store/${event.target.id}`)
-  }
-
-
+  const moveToProductDetail = (event: any) => {
+    router.push(`/store/${event.target.id}`);
+  };
 
   const onClickDeleteBasket = (e: any) => {
-    console.log(e.target.id);
-
     const basketsArr = JSON.parse(localStorage.getItem("baskets") || "[]");
     const newBasketsArr = basketsArr.filter(
       (basketEl: any) => basketEl.id !== e.target.id
@@ -110,7 +98,6 @@ export default function MypageContainer() {
     localStorage.setItem("baskets", JSON.stringify(newBasketsArr));
     setIsBasket((prev) => !prev);
   };
-
 
   return (
     <MypagePresenter

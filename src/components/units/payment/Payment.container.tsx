@@ -83,7 +83,6 @@ export default function PaymentContainer() {
   };
 
   const handleComplete = (data: any) => {
-    console.log(data, "address data");
     setZipCode(data.zonecode);
     setAddress(data.address);
     setIsOpen(false);
@@ -144,9 +143,6 @@ export default function PaymentContainer() {
                 productId: productId,
               },
             },
-            // refetchQueries:[{
-            //   query: FETCH_USER
-            // }]
           });
           Modal.success({ content: "결제를 성공하였습니다. 감사합니다!" });
           router.push("/mypage");

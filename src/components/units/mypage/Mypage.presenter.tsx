@@ -99,9 +99,11 @@ export default function MypagePresenter(props: any) {
                 </S.UserName>
               </S.NameContainer>
               <S.IdContainer>
-                <S.UserTitle>ID</S.UserTitle>
+                <S.UserTitle>Email</S.UserTitle>
                 <S.VerticalLine />
-                {/* <S.UserId>{props.data?.fetchUserLoggedIn.user.email}</S.UserId> */}
+                <S.UserId>
+                  {props.data?.fetchUserLoggedIn?.user?.email}
+                </S.UserId>
               </S.IdContainer>
               <S.NickNameContainer>
                 <S.UserTitle>NickName</S.UserTitle>
@@ -123,7 +125,8 @@ export default function MypagePresenter(props: any) {
                 <S.VerticalLine />
                 <S.UserDeliveryAddress>
                   {" "}
-                  {props.userHaveCouponData?.fetchUserHaveCoupons.length}개의 쿠폰이 있습니다
+                  {props.userHaveCouponData?.fetchUserHaveCoupons.length}개의
+                  쿠폰이 있습니다
                 </S.UserDeliveryAddress>
                 <S.SeeCoupon onClick={props.onClickSeeCoupon}>
                   쿠폰함 보기
@@ -170,15 +173,15 @@ export default function MypagePresenter(props: any) {
                     <S.BoughtReviewStatus>작성 안함</S.BoughtReviewStatus>
                   </S.BoughtReviewWrapper>
                   <S.BoughtReviewIcon
-                  id={el.id} 
-                  onClick={props.moveToReviewWrite}>
+                    id={el.id}
+                    onClick={props.moveToReviewWrite}
+                  >
                     리뷰 작성하기
                   </S.BoughtReviewIcon>
                 </S.BoughtListInfo>
               ))
             ) : (
-              <S.NoBoughtListInfo>
-              No purchase history</S.NoBoughtListInfo>
+              <S.NoBoughtListInfo>No purchase history</S.NoBoughtListInfo>
             )}
           </S.MiddleWrapper>
 
@@ -191,30 +194,33 @@ export default function MypagePresenter(props: any) {
               props.baskets.map((el: any) => (
                 <S.BottomWrapper>
                   <S.BasketProductImageWrapper>
-                    <S.BasketProductImage 
-                    id={el.id}
-                    onClick={props.moveToProductDetail}
-                    src={`https://storage.googleapis.com/${el?.thumbnail}`} />
+                    <S.BasketProductImage
+                      id={el.id}
+                      onClick={props.moveToProductDetail}
+                      src={`https://storage.googleapis.com/${el?.thumbnail}`}
+                    />
                   </S.BasketProductImageWrapper>
 
                   <S.BasketProductInfoWrapper>
-                      <S.ProductInfoWrapper>
+                    <S.ProductInfoWrapper>
                       <S.BasketProductInfoWrapper2>
-                          <S.ProductName>{el.title}</S.ProductName>
-                          <S.ProductDelete
-                            onClick={props.onClickDeleteBasket}
-                            src="./images/delete/delete.png"
-                            id={el.id}
-                          />
-                         </S.BasketProductInfoWrapper2>
-                        <S.ProductContents>{el.description.slice(84,el.description.length)}</S.ProductContents>
-                        <S.BasketProductInfoWrapper3>
-                          <S.ProductPrice>￦{el.price}</S.ProductPrice>
-                          <S.ProductBuyButton onClick={onClickMoveToPayment}>
-                            결제하기
-                          </S.ProductBuyButton>
-                        </S.BasketProductInfoWrapper3>
-                      </S.ProductInfoWrapper>
+                        <S.ProductName>{el.title}</S.ProductName>
+                        <S.ProductDelete
+                          onClick={props.onClickDeleteBasket}
+                          src="./images/delete/delete.png"
+                          id={el.id}
+                        />
+                      </S.BasketProductInfoWrapper2>
+                      <S.ProductContents>
+                        {el.description.slice(84, el.description.length)}
+                      </S.ProductContents>
+                      <S.BasketProductInfoWrapper3>
+                        <S.ProductPrice>￦{el.price}</S.ProductPrice>
+                        <S.ProductBuyButton onClick={onClickMoveToPayment}>
+                          결제하기
+                        </S.ProductBuyButton>
+                      </S.BasketProductInfoWrapper3>
+                    </S.ProductInfoWrapper>
                   </S.BasketProductInfoWrapper>
                 </S.BottomWrapper>
               ))
