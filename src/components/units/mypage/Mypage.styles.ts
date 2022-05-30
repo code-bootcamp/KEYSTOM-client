@@ -442,11 +442,11 @@ export const BottomMapWrapper = styled.div`
   width: 1240px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+
+  /* justify-content: space-between; */
 `;
 
-export const BottomWrapper = styled.div`
-`;
+export const BottomWrapper = styled.div``;
 
 export const BasketList = styled.div`
   font-weight: 700;
@@ -458,22 +458,23 @@ export const BasketList = styled.div`
   margin-bottom: 20px;
 `;
 
-export const BasketProductImageWrapper = styled.div``;
+export const BasketProductImageWrapper = styled.div`
+  margin-right: 33px;
+`;
 
 export const BasketProductImage = styled.img`
-  width: 400px;
+  width: 380px;
   height: 350px;
   border-radius: 10px 10px 0 0;
-  background-color:#b1b1b1;
+  background-color: #b1b1b1;
   cursor: pointer;
 `;
 
 export const BasketProductInfoWrapper = styled.div`
-  padding: 46px 30px;
+  padding: 30px 30px;
 
-  width: 400px;
-  height: 235px;
-
+  width: 380px;
+  height: 170px;
 
   background-color: #2c2c2c;
   border-radius: 0px 0px 10px 10px;
@@ -483,16 +484,15 @@ export const BasketProductInfoWrapper2 = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
-  padding-bottom: 20px;
+  padding-bottom: 30px;
 `;
-
 
 export const BasketProductInfoWrapper3 = styled.div`
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   align-items: center;
-`
+`;
 export const ProductInfoWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -502,11 +502,10 @@ export const ProductInfoWrapper = styled.div`
 export const ProductName = styled.div`
   font-style: normal;
   font-weight: 700;
-  font-size: 24px;
+  font-size: 22px;
   line-height: 28px;
 
   color: #f1f1f1;
-
 `;
 
 export const ProductContents = styled.div`
@@ -522,12 +521,13 @@ export const ProductPrice = styled.div`
   font-weight: 700;
   font-size: 18px;
   line-height: 24px;
-`
+`;
 
 export const ProductDelete = styled.img`
   width: 24px;
   height: 24px;
   cursor: pointer;
+  margin-right: -5px;
 `;
 
 export const ProductBuyButton = styled.button`
@@ -539,11 +539,12 @@ export const ProductBuyButton = styled.button`
   color: #ffffff;
   border: 1px solid #f1f1f1;
   background-color: #2c2c2c;
+
+  margin-left: auto;
   cursor: pointer;
-  :hover{
+  :hover {
     border: none;
-    background-color: #B150F2;
-    
+    background-color: #b150f2;
   }
 `;
 

@@ -126,7 +126,10 @@ export default function MypagePresenter(props: any) {
                 <S.VerticalLine />
                 <S.UserDeliveryAddress>
                   {" "}
-                  {props.userHaveCouponData?.fetchUserHaveCoupons.length}
+                  {props.userHaveCouponData?.fetchUserHaveCoupons.length ===
+                  undefined
+                    ? 0
+                    : props.userHaveCouponData?.fetchUserHaveCoupons.length}
                   개의 쿠폰이 있습니다
                 </S.UserDeliveryAddress>
                 <S.SeeCoupon onClick={props.onClickSeeCoupon}>
@@ -205,16 +208,13 @@ export default function MypagePresenter(props: any) {
                   <S.BasketProductInfoWrapper>
                     <S.ProductInfoWrapper>
                       <S.BasketProductInfoWrapper2>
-                        <S.ProductName>{el.title}</S.ProductName>
+                        <S.ProductName>{el.title.slice(0, 20)}</S.ProductName>
                         <S.ProductDelete
                           onClick={props.onClickDeleteBasket}
                           src="./images/delete/delete.png"
                           id={el.id}
                         />
                       </S.BasketProductInfoWrapper2>
-                      <S.ProductContents>
-                        {el.description.slice(84, el.description.length)}
-                      </S.ProductContents>
                       <S.BasketProductInfoWrapper3>
                         <S.ProductPrice>￦{el.price}</S.ProductPrice>
                         <S.ProductBuyButton onClick={onClickMoveToPayment}>
@@ -228,7 +228,6 @@ export default function MypagePresenter(props: any) {
             ) : (
               <div></div>
             )}
-
           </S.BottomMapWrapper>
         </S.WrapperContainer>
       </S.Wrapper>

@@ -16,7 +16,6 @@ const HIDDEN_HEADER = ["/"];
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
   const [loading, setLoding] = useState(true);
-  let loading2 = true;
 
   let isHidden = HIDDEN_HEADER.includes(router.asPath);
 
