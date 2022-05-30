@@ -1,16 +1,14 @@
-import { gql, useQuery, useMutation } from '@apollo/client';
+import { gql, useQuery, useMutation } from "@apollo/client";
 import styled from "@emotion/styled";
 import { useRouter } from "next/router";
-import { FETCH_PRODUCTS } from '../../../product/list/ProductList.queries';
-import dynamic from 'next/dynamic';
-import '@toast-ui/editor/dist/toastui-editor.css';
-import { Modal } from 'antd';
+import { FETCH_PRODUCTS } from "../../../product/list/ProductList.queries";
+import dynamic from "next/dynamic";
+import "@toast-ui/editor/dist/toastui-editor.css";
+import { Modal } from "antd";
+import { useEffect, useState } from "react";
+import AdminDescriptionPage from "./description";
 
-
-const PostViewer = dynamic(
-    ()=> import('../detail/Viewer'),
-    {ssr:false}
-  )
+const PostViewer = dynamic(() => import("../detail/Viewer"), { ssr: false });
 
 const ProductWriteWrapper = styled.div`
     width: 100%;
@@ -68,7 +66,6 @@ const TagWrapper = styled.div`
     cursor: pointer;
 `;
 
-
 const ImageWrapper = styled.div`
     display: flex;
     padding-left: 20px;
@@ -114,19 +111,14 @@ const DELETE_PRODUCT = gql`
     }
 `;
 
-
-
-
 export default function AdminProductDetail() {
     const router = useRouter();
-    console.log("router", router)
+    console.log("router", router);
     const { data } = useQuery(FETCH_PRODUCT, {
         variables: {
-            productId: String(router.query.productId)
+            productId: String(router.query.productId),
         },
     });
-
-    console.log("fetchproductdata", data)
 
     const [deleteProduct] = useMutation(DELETE_PRODUCT, {
         variables: {},
@@ -149,16 +141,15 @@ export default function AdminProductDetail() {
                     },
                 ],
             });
-            Modal.success({content:"삭제 성공하였습니다!"})
-            router.push("/admin/product/")
-
+            Modal.success({ content: "삭제 성공하였습니다!" });
+            router.push("/admin/product/");
         } catch (error: any) {
-            Modal.error({content:error.message})
+            Modal.error({ content: error.message });
         }
     };
     const moveToEditProduct = () => {
-        router.push(`/admin/product/${router.query.productId}/edit`)
-    }
+        router.push(`/admin/product/${router.query.productId}/edit`);
+    };
 
     return (
         <ProductWriteWrapper>
@@ -167,12 +158,9 @@ export default function AdminProductDetail() {
                 <SmallTitle>Title</SmallTitle>
                 <ContentDiv>{data?.fetchProduct.title}</ContentDiv>
                 <SmallTitle>Description</SmallTitle>
-                <ContentDiv
-                    style={{width:"100%", height:"auto"}}
-                >
-                    <PostViewer data={data}/>
-                    {data?.fetchProduct.description}
-                </ContentDiv>
+                <AdminDescriptionPage
+                    data={data?.fetchProduct}
+                ></AdminDescriptionPage>
                 <SmallTitle>Price</SmallTitle>
                 <ContentDiv>{data?.fetchProduct.price}</ContentDiv>
             </InputWrapper>
@@ -180,7 +168,7 @@ export default function AdminProductDetail() {
                 <SmallTitle>ProductTags</SmallTitle>
                 <TagDivWrapper>
                     {/* <TagWrapper> */}
-                        {/* {data?.fetchProduct.productTags.map((el:any)=>(
+                    {/* {data?.fetchProduct.productTags.map((el:any)=>(
                         <Tag key={el.id}>{el.tag}</Tag>
                         ))} */}
                     {/* </TagWrapper> */}
