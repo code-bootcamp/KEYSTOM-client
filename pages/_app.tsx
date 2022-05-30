@@ -37,11 +37,13 @@ function MyApp({ Component, pageProps }: AppProps) {
         <AnimatePresence>
           <Global styles={globalStyles} />
           {loading && <LandingAnimation />}
-          <Layout>
-            <AppLayout>
-              <Component {...pageProps} />
-            </AppLayout>
-          </Layout>
+          {!loading && (
+            <Layout>
+              <AppLayout>
+                <Component {...pageProps} />
+              </AppLayout>
+            </Layout>
+          )}
         </AnimatePresence>
       </ApolloSetting>
     </RecoilRoot>
