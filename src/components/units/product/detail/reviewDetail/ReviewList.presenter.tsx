@@ -11,8 +11,8 @@ export default function ReviewDetailPresenter(props: any) {
 
   // 리뷰 모달
   const showModal = (event: any) => {
-    setIsOpen(true);
     setSelectedId(event.target.id);
+    setIsOpen(true);
   };
 
   const handleOK = () => {
@@ -32,13 +32,14 @@ export default function ReviewDetailPresenter(props: any) {
       <A.Wrapper>
         <A.AllReviewsDiv>
           <A.AllText>Reviews</A.AllText>
-          <A.AllNum>NN</A.AllNum>
+          <A.AllNum>{props.data?.fetchReviews.length}</A.AllNum>
         </A.AllReviewsDiv>
 
         <A.ReviewWrapper>
           {props.data?.fetchReviews.map((el: any) => (
             <A.ReviewDiv key={el.id}>
-              <A.ReviewImage
+              {/* {props.data?.fetchReviews.thumbnail ?( */}
+                <A.ReviewImage
                 src={`https://storage.googleapis.com/${el.thumbnail}`}
                 onClick={showModal}
                 id={el.id}
@@ -50,28 +51,14 @@ export default function ReviewDetailPresenter(props: any) {
                   <A.ReviewLikeNum>123</A.ReviewLikeNum>
                 </A.LikeDiv>
                 <A.Reviewer>
-                  <A.ReviewSmallText>{el.user.nickName}</A.ReviewSmallText>
-                  <A.ReviewSmallText>
-                    {el.createdAt.slice(0, 10)}
-                  </A.ReviewSmallText>
+                  <A.ReviewSmallText>{el.user.nickName}</A.ReviewSmallText> | 
+                  <A.ReviewCreatedAt>{el.createdAt.slice(0, 10)}</A.ReviewCreatedAt>
                 </A.Reviewer>
               </A.ReviewTop>
-                <A.ReviewTop>
-                  <A.ReviewTopTop>
-                    <A.ReviewTitle>{el.title}</A.ReviewTitle>
-                  </A.ReviewTopTop>
-                </A.ReviewTop>
-                <A.ReviewBottom>
-                  <A.Contents>{el.description}</A.Contents>
-                  <A.BottomDiv>
-                    <A.BottomText>
-                  
-            
-                    </A.BottomText>
-             
-              
-                  </A.BottomDiv>
-                </A.ReviewBottom>
+              <A.BottomDiv>
+                <A.ReviewTitle>{el.title}</A.ReviewTitle>
+                <A.Contents>{el.description}</A.Contents>
+              </A.BottomDiv>
               </A.ReviewBottom>
               {isOpen && (
                 <ReviewModalContainer

@@ -702,8 +702,7 @@ export const Button = styled.button`
 
     cursor: pointer;
 
-    :hover {
-        background-color: #b150f2;
-        border: none;
-    }
+  margin-left: 206px;
+  margin-top: auto;
+  margin-bottom: auto;
 `;

@@ -118,10 +118,11 @@ margin-right: 8px;
 `
 
 export const ReviewerText = styled.div`
+padding-right: 10px;
 `
 
 export const ReviewDate = styled.div`
-padding-left: 8px;
+padding-left: 10px;
 `
 
 export const ReviewLike = styled.div`

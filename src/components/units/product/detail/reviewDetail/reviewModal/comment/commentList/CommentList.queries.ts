@@ -5,7 +5,7 @@ query fetchReviewComments($reviewId:String!){
     fetchReviewComments(reviewId:$reviewId){
         id
         commentContent
-        ParentId
+        # parentId
         createdAt
     }
 }

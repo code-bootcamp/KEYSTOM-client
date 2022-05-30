@@ -1,6 +1,7 @@
 import * as B from "./CommentList.styles"
 import Reply from '../../ReviewReply';
 import { useQuery } from "@apollo/client"
+// import { FETCH_REVIEW_COMMENTS } from "./CommentList.queries";
 
 
 export default function CommentListPage(props:any){
@@ -14,7 +15,7 @@ export default function CommentListPage(props:any){
                     <B.CommentInner>
                         <B.CommentTop>
                             <B.CommentTopDiv>
-                                <B.CommentWriter></B.CommentWriter>
+                                <B.CommentWriter>{props.el.user.nickName}</B.CommentWriter>
                                 <B.CommentCreatedAt>{props.el.createdAt}</B.CommentCreatedAt>
                             </B.CommentTopDiv>
                             
@@ -31,11 +32,11 @@ export default function CommentListPage(props:any){
 
             </B.CommentWrapper>
 
-            {[0].map(el=>(
+            {/* {[0].map(el=>(
                         <div>
                             <Reply/>
                         </div>
-            ))}     
+            ))}      */}
         </B.CommentContainer>
     )
 }
