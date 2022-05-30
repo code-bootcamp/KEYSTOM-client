@@ -46,11 +46,11 @@ export default function ReviewWriteContainer() {
   //     productId:String(router.query.review)
   //   }
   // })
-  const {data} = useQuery(FETCH_ORDER,{
-    variables:{
-      orderId:String(router.query.review)
-    }
-  })
+  // const {data} = useQuery(FETCH_ORDER,{
+  //   variables:{
+  //     orderId:String(router.query.review)
+  //   }
+  // })
 
 
 
@@ -75,34 +75,33 @@ export default function ReviewWriteContainer() {
   const onClickSubmit = async () => {
     try {
 
-      const orderData = await client.query({
-        query: FETCH_ORDER,
-        variables:{
-          orderId:String(router.query.review)
-        },
-        context: {
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-          },
-        },
-      })
+      // const orderData = await client.query({
+      //   query: FETCH_ORDER,
+      //   variables:{
+      //     orderId:String(router.query.review)
+      //   },
+      //   context: {
+      //     headers: {
+      //       Authorization: `Bearer ${accessToken}`,
+      //     },
+      //   },
+      // })
 
-      console.log("orderData", orderData)
+      // console.log("orderData", orderData)
     
       const result = await createReview({
         variables: {
           createReviewInput: {
             title,
             description,
-            // 수정중
             imageUrls,
-            // productId: String(orderData?.fetchOrder.product.id),
-            orderId: String(router.query.review)
+            orderId: router.query.review
           },
         },
       });
 
       Modal.success({ content: "리뷰 작성을 완료했습니다!" });
+      router.push("/mypage")
     } catch (error: any) {
       Modal.error({ content: error.message });
     }

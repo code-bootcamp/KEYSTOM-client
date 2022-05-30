@@ -275,6 +275,7 @@ export const BoughtImage = styled.img`
   height: 104px;
   background-color: white;
   border-radius: 10px 0px 0px 10px;
+  cursor: pointer;
 `;
 
 export const BoughtName = styled.div`

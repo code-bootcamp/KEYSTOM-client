@@ -87,6 +87,7 @@ export default function MypageContainer() {
   };
 
   const moveToProductDetail = (event: any) => {
+    console.log("event.id", event.target.id)
     router.push(`/store/${event.target.id}`);
   };
 

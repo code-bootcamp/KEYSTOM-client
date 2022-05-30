@@ -14,19 +14,19 @@ export const AllReviewsDiv = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
+  padding-top: 48px;
   padding-bottom: 50px;
   padding-left: 210px;
 `;
 
 export const AllText = styled.div`
   padding-right: 40px;
-  font-weight: 400;
-  font-size: 24px;
+  font-size: 20px;
 `;
 
 export const AllNum = styled.div`
   font-weight: 700;
-  font-size: 32px;
+  font-size: 24px;
 `;
 
 export const ReviewWrapper = styled.div`
@@ -40,24 +40,25 @@ export const ReviewWrapper = styled.div`
 export const ReviewDiv = styled.div`
   display: flex;
   flex-direction: column;
-  width: 730px;
-  height: 662px;
-  background: #f3f3f3;
+  width: 400px;
+  height: 505px;
+  background: #1b1b1b;
   margin-bottom: 50px;
-  border-radius: 30px;
+  border-radius: 10px;
   cursor: pointer;
 `;
 
 export const ReviewImage = styled.img`
   width: 100%;
-  height: 366px;
+  height: 291px;
+  border-radius: 10px 10px 0 0 ;
 `;
-export const ReviewRight = styled.div`
+export const ReviewBottom = styled.div`
   width: 100%;
-  padding: 40px;
+  padding: 25px 30px;
 `;
+
 export const ReviewTop = styled.div`
-  border-bottom: 1px solid #c4c4c4;
   padding-bottom: 15px;
 `;
 
@@ -67,9 +68,9 @@ export const ReviewTopTop = styled.div`
 `;
 
 export const ReviewTitle = styled.div`
-  font-weight: 400;
   font-size: 24px;
   line-height: 24px;
+  color: #fff;
 `;
 
 export const BottomDiv = styled.div`
@@ -82,10 +83,11 @@ export const BottomText = styled.div`
   justify-content: flex-end;
 `;
 
+
 export const Reviewer = styled.div`
   display: flex;
   width: 200px;
-  padding-right: 60px;
+  color: #b1b1b1;
 `;
 
 export const ReviewDate = styled.div`
@@ -106,19 +108,15 @@ export const ReviewSmallText = styled.div`
   line-height: 18px;
 `;
 
-export const ReviewBottom = styled.div`
-  width: 100%;
-`;
 
 export const Contents = styled.div`
   width: 100%;
-  height: 80px;
-  padding: 20px 40px 0px 40px;
-  margin-bottom: 46px;
-  font-weight: 400;
-  font-size: 20px;
+  height: 50px;
+  padding: 20px 30px;
+  font-size: 18px;
   line-height: 24px;
   text-overflow: ellipsis;
+  color: #b1b1b1;
 `;
 
 export const LikeDiv = styled.div`
@@ -133,8 +131,8 @@ export const LikeDiv = styled.div`
 `;
 
 export const ReviewLikeImage = styled.img`
-  width: 54px;
-  height: 54px;
+  width: 24px;
+  height: 24px;
   cursor: pointer;
 `;
 
