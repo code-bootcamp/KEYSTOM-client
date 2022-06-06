@@ -10,16 +10,31 @@ export default function ReviewWritePresenter(props: IReviewWritePresenter) {
         <S.ReviewTextWrapper>리뷰 작성하기</S.ReviewTextWrapper>
 
         <S.ReviewProductWrapper>
-          <S.ReviewProductImage></S.ReviewProductImage>
+          <S.ReviewProductImage
+            src={`https://storage.googleapis.com/${props.data?.fetchOrder?.product?.thumbnail}`}
+          />
           <S.ReviewProductTitleOptionWrapper>
-            <S.ReviewProductTitle>{props.data?.fetchProduct.title}</S.ReviewProductTitle>
+            <S.ReviewProductTitle>
+              {props.data?.fetchProduct?.title}
+            </S.ReviewProductTitle>
 
             <S.ReviewProductOptionWrapper>
-              <S.ReviewProductOption>적용한 커스텀 옵션</S.ReviewProductOption>
+              <S.ReviewProductOption>
+                {props.customData?.fetchCustom?.esc && "Esc 변경"}
+              </S.ReviewProductOption>
               <S.VerticalLine></S.VerticalLine>
-              <S.ReviewProductOption>적용한 커스텀 옵션</S.ReviewProductOption>
+              <S.ReviewProductOption>
+                {props.customData?.fetchCustom?.enter && "Enter 변경"}
+              </S.ReviewProductOption>
               <S.VerticalLine></S.VerticalLine>
-              <S.ReviewProductOption>적용한 커스텀 옵션</S.ReviewProductOption>
+              <S.ReviewProductOption>
+                {props.customData?.fetchCustom?.space && "SpaceBar 변경"}
+              </S.ReviewProductOption>
+              <S.VerticalLine></S.VerticalLine>
+              <S.ReviewProductOption>
+                {props.customData?.fetchCustom?.rest &&
+                  `키패드 ${props.customData?.fetchCustom?.rest}개 변경`}
+              </S.ReviewProductOption>
             </S.ReviewProductOptionWrapper>
           </S.ReviewProductTitleOptionWrapper>
         </S.ReviewProductWrapper>
@@ -35,7 +50,9 @@ export default function ReviewWritePresenter(props: IReviewWritePresenter) {
             onChange={props.onChangeReviewDescription}
             placeholder="리뷰를 작성해주세요!"
           ></S.ReviewContents>
-          <S.ReviewContentsMaxLength>{props.description.length} / 1000</S.ReviewContentsMaxLength>
+          <S.ReviewContentsMaxLength>
+            {props.description.length} / 1000
+          </S.ReviewContentsMaxLength>
         </S.ReviewTitleContentsWrapper>
 
         <S.ReviewUploadWrapper>

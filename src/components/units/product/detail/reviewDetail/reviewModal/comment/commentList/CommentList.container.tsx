@@ -4,18 +4,19 @@ import { useQuery } from "@apollo/client";
 // import { FETCH_REVIEW_COMMENTS } from "./CommentList.queries";
 
 export default function CommentListPage(props: any) {
-
-  console.log(props.el, "props.el")
+  console.log(props.el, "props.el");
   return (
     <B.CommentContainer key={props.el.id}>
       <B.CommentWrapper>
-        <B.CommentProfile></B.CommentProfile>
+        <B.CommentProfile>{props.el?.user?.profileImage}</B.CommentProfile>
         <B.CommentInner>
           <B.CommentTop>
             <B.CommentTopDiv>
               {/*  고칠거 고칠거 고칠거 */}
-              <B.CommentWriter>{props.el?.user?.nickName}123</B.CommentWriter>
-              <B.CommentCreatedAt>| {props.el?.createdAt}abc</B.CommentCreatedAt>
+              <B.CommentWriter>{props.el?.user?.nickName}</B.CommentWriter>
+              <B.CommentCreatedAt>
+                | {props.el?.createdAt.slice(0, 10)}
+              </B.CommentCreatedAt>
             </B.CommentTopDiv>
 
             <B.CommentBtns>
@@ -24,9 +25,9 @@ export default function CommentListPage(props: any) {
             </B.CommentBtns>
           </B.CommentTop>
           <B.CommentContents>{props.el?.content}</B.CommentContents>
-          <B.ReplyBtn>
-            {/* <B.ReplyIcon src="/images/comment/reply.png" /> */}
-          </B.ReplyBtn>
+          {/* <B.ReplyBtn> */}
+          {/* <B.ReplyIcon src="/images/comment/reply.png" /> */}
+          {/* </B.ReplyBtn> */}
         </B.CommentInner>
       </B.CommentWrapper>
 
