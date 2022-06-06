@@ -20,7 +20,9 @@ export default function PaymentPresenter(props: any) {
         <S.PaymentWrapper>
           <S.PaymentText>Payment</S.PaymentText>
           <S.PaymentMainWrapper>
-            <S.PaymentMainImage></S.PaymentMainImage>
+            <S.PaymentMainImage
+              src={`https://storage.googleapis.com/${props.productData?.fetchProduct?.thumbnail}`}
+            />
 
             <S.PaymentPriceWrapper>
               <S.PaymentSmallTitle>

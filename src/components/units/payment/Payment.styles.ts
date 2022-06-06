@@ -33,13 +33,11 @@ export const PaymentMainWrapper = styled.div`
   border-bottom: 1px solid #c4c4c4;
 `;
 
-export const PaymentMainImage = styled.div`
+export const PaymentMainImage = styled.img`
   width: 640px;
   height: 556px;
-  background-image: url("/images/payment/payment-img.png");
-  background-position: center;
-  background-size: cover;
 
+  border: 1px solid #b1b1b1;
   border-radius: 10px;
 
   margin-right: 40px;
