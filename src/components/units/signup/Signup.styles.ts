@@ -106,7 +106,9 @@ export const PasswordWatch = styled.div`
     background-color: transparent;
 `;
 
-export const EyeIcon = styled(EyeOutlined)`
+export const EyeIcon = styled(EyeOutlined)<{
+    "data-is-write-password": boolean;
+}>`
     font-size: 20px;
     /* padding-top: 10px; */
 
@@ -116,7 +118,9 @@ export const EyeIcon = styled(EyeOutlined)`
         props["data-is-write-password"] ? "#b150f2" : " #ffffff"};
 `;
 
-export const EyeIcon2 = styled(EyeOutlined)`
+export const EyeIcon2 = styled(EyeOutlined)<{
+    "data-is-write-password-check": boolean;
+}>`
     font-size: 20px;
     /* padding-top: 10px; */
 
