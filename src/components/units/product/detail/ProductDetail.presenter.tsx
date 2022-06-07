@@ -17,7 +17,6 @@ import {
   recoilEscLength,
 } from "../../../commons/store";
 import { GLTF } from "three/examples/jsm/loaders/GLTFLoader";
-import { Material, Mesh } from "three";
 
 // export interface GLTF extends GLTFThree {
 //   nodes: Record<string, Mesh>;
@@ -25,7 +24,7 @@ import { Material, Mesh } from "three";
 // }
 
 // 키보드 색상 state
-const state = proxy({
+let state = proxy({
   current: null,
   items: {
     "'\"": "#ffffff",
@@ -342,6 +341,7 @@ type GLTFResult = GLTF & {
 function Keyboard(props: JSX.IntrinsicElements["group"]) {
   const ref = useRef();
   const snap = useSnapshot(state);
+
   const { nodes, materials } = useGLTF(
     "/images/keyboard_fix.glb"
   ) as unknown as GLTFResult;
@@ -352,7 +352,7 @@ function Keyboard(props: JSX.IntrinsicElements["group"]) {
         ref={ref}
         {...props}
         dispose={null}
-        onClick={(e) => (
+        onClick={(e:any) => (
           e.stopPropagation(), (state.current = e.object.material.name)
         )}
         position={[-0.26, 0, -0.1]}
@@ -801,22 +801,25 @@ function Keyboard(props: JSX.IntrinsicElements["group"]) {
     </>
   );
 }
-
 function Picker() {
   const snap = useSnapshot(state);
-
+  console.log("snap", snap)
   return (
     <S.HexColorPickerWrapper>
       <S.HexColorPick
         className="picker"
+        //@ts-ignore
         color={snap.items[snap.current]}
+        //@ts-ignore
         onChange={(color) => (state.items[snap.current] = color)}
       />
 
       <S.HexColorCodeWrapper>
         <S.HexColorCode>Color Code</S.HexColorCode>
         <S.HexColorPickInput
+          //@ts-ignore
           color={snap.items[snap.current]}
+          //@ts-ignore
           onChange={(color) => (state.items[snap.current] = color)}
         />
       </S.HexColorCodeWrapper>
