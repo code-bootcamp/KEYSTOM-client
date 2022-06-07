@@ -1,15 +1,12 @@
 import * as A from "./ReviewDetail.styles";
-import { useRouter } from "next/router";
 import { useState } from "react";
 import ReviewModalContainer from "./reviewModal/ReviewModal.container";
 
 export default function ReviewDetailPresenter(props: any) {
     const [isOpen, setIsOpen] = useState(false);
-    const router = useRouter();
 
     const [selectedId, setSelectedId] = useState("");
 
-    // 리뷰 모달
     const showModal = (event: any) => {
         setSelectedId(event.target.id);
         setIsOpen(true);

@@ -88,10 +88,12 @@ export default function ReviewModalPresenter(props: any) {
                 </B.CommentAllDiv>
 
                 {props.commentData?.fetchReviewComments.map((el: any) => (
-                  <div>
+                  <div
+                  key={el.id}
+                  
+                  >
                     <CommentListPage
                       el={el}
-                      key={el.id}
                       commentData={props.commentData}
                       selectedId={props.selectedId}
                     />

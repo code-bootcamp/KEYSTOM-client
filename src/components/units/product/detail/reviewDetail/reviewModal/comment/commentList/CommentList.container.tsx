@@ -1,7 +1,4 @@
 import * as B from "./CommentList.styles";
-import Reply from "../../ReviewReply";
-import { useQuery } from "@apollo/client";
-// import { FETCH_REVIEW_COMMENTS } from "./CommentList.queries";
 
 export default function CommentListPage(props: any) {
   console.log(props.el, "props.el");
@@ -12,7 +9,6 @@ export default function CommentListPage(props: any) {
         <B.CommentInner>
           <B.CommentTop>
             <B.CommentTopDiv>
-              {/*  고칠거 고칠거 고칠거 */}
               <B.CommentWriter>{props.el?.user?.nickName}</B.CommentWriter>
               <B.CommentCreatedAt>
                 | {props.el?.createdAt.slice(0, 10)}
