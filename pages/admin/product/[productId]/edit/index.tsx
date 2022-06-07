@@ -1,6 +1,6 @@
-import AdminProductWrite from '../../../../../src/components/units/admin/product/write/index';
-import { useQuery, gql } from '@apollo/client';
-import { useRouter } from 'next/router';
+import AdminProductWrite from "../../../../../src/components/units/admin/product/write/index";
+import { useQuery, gql } from "@apollo/client";
+import { useRouter } from "next/router";
 
 const FETCH_PRODUCT = gql`
     query fetchProduct($productId: String!) {
@@ -9,25 +9,18 @@ const FETCH_PRODUCT = gql`
             title
             description
             price
-            # like
             createdAt
             thumbnail
-            # productTags{
-            #     id
-            #     tag
-            # }
         }
     }
 `;
-export default function AdminProductEditPage(){
-    const router = useRouter()
+export default function AdminProductEditPage() {
+    const router = useRouter();
     const { data } = useQuery(FETCH_PRODUCT, {
         variables: {
-            productId: String(router.query.productId)
+            productId: String(router.query.productId),
         },
     });
 
-    return(
-        <AdminProductWrite isEdit={true} data={data}/>
-    )
+    return <AdminProductWrite isEdit={true} data={data} />;
 }

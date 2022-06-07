@@ -14,40 +14,40 @@ import { useRouter } from "next/router";
 const HIDDEN_HEADER = ["/"];
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const router = useRouter();
-  const [loading, setLoding] = useState(true);
+    const router = useRouter();
+    const [loading, setLoding] = useState(true);
 
-  let isHidden = HIDDEN_HEADER.includes(router.asPath);
+    let isHidden = HIDDEN_HEADER.includes(router.asPath);
 
-  isHidden
-    ? useEffect(() => {
-        setTimeout(() => {
-          setLoding(false);
-        }, 4500);
-      }, [])
-    : useEffect(() => {
-        setTimeout(() => {
-          setLoding(false);
-        }, 0);
-      });
+    isHidden
+        ? useEffect(() => {
+              setTimeout(() => {
+                  setLoding(false);
+              }, 4500);
+          }, [])
+        : useEffect(() => {
+              setTimeout(() => {
+                  setLoding(false);
+              }, 0);
+          });
 
-  return (
-    <RecoilRoot>
-      <ApolloSetting>
-        <AnimatePresence>
-          <Global styles={globalStyles} />
-          {loading && <LandingAnimation />}
-          {!loading && (
-            <Layout>
-              <AppLayout>
-                <Component {...pageProps} />
-              </AppLayout>
-            </Layout>
-          )}
-        </AnimatePresence>
-      </ApolloSetting>
-    </RecoilRoot>
-  );
+    return (
+        <RecoilRoot>
+            <ApolloSetting>
+                <AnimatePresence>
+                    <Global styles={globalStyles} />
+                    {loading && <LandingAnimation />}
+                    {!loading && (
+                        <Layout>
+                            <AppLayout>
+                                <Component {...pageProps} />
+                            </AppLayout>
+                        </Layout>
+                    )}
+                </AnimatePresence>
+            </ApolloSetting>
+        </RecoilRoot>
+    );
 }
 
 export default MyApp;

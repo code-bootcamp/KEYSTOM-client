@@ -1,12 +1,7 @@
 import styled from "@emotion/styled";
 import { useEffect, useState } from "react";
-
-import { gql, useQuery, useMutation } from "@apollo/client";
-import { useRouter } from "next/router";
-import { FETCH_PRODUCTS } from "../../../product/list/ProductList.queries";
 import dynamic from "next/dynamic";
 import "@toast-ui/editor/dist/toastui-editor.css";
-import { Modal } from "antd";
 
 const PostViewer = dynamic(() => import("../detail/Viewer"), { ssr: false });
 
@@ -54,7 +49,6 @@ export default function AdminDescriptionPage(props: any) {
     return (
         <ContentDiv style={{ width: "100%", height: "auto" }}>
             <PostViewer data={props.data} />
-            {/* {data?.fetchProduct.description} */}
             {newDescription}
         </ContentDiv>
     );

@@ -108,7 +108,6 @@ export const ChattingButton = styled.div`
     :hover {
         color: #b150f2;
     }
-    /* background-color: red; */
 `;
 
 export const ProductWrapper = styled.div`

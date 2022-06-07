@@ -8,52 +8,49 @@ import styled from "@emotion/styled";
 import LayoutAdminSideBar from "./admin/index";
 
 interface ILayoutProps {
-  children: ReactNode;
+    children: ReactNode;
 }
 
 const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
 `;
 
 const BodyWrapper = styled.div`
-  display: flex;
-  width: 100%;
+    display: flex;
+    width: 100%;
 `;
 
 const Body = styled.div`
-  width: 100%;
-  height: auto;
+    width: 100%;
+    height: auto;
 `;
 
 const Inner = styled.div`
-  width: 100%;
-  display: flex;
+    width: 100%;
+    display: flex;
 `;
 
-// const HIDDEN_HEADER = ["/"];
 const HIDDEN_ADMIN_SIDEBAR = ["/admin", "/admin/product", "/admin/user"];
 
 export default function Layout(props: ILayoutProps) {
-  const router = useRouter();
+    const router = useRouter();
 
-  // let isHidden2 = HIDDEN_HEADER.includes(router.asPath);
-  let isHidden = HIDDEN_ADMIN_SIDEBAR.includes(router.asPath);
+    let isHidden = HIDDEN_ADMIN_SIDEBAR.includes(router.asPath);
 
-  return (
-    <Wrapper>
-      {/* {!isHidden && <LayoutHeader />} */}
-      <LayoutHeader />
-      <Inner>
-        {isHidden && <LayoutAdminSideBar />}
-        <BodyWrapper>
-          <Body>{props.children}</Body>
-        </BodyWrapper>
-      </Inner>
-      <LayoutFooter />
-    </Wrapper>
-  );
+    return (
+        <Wrapper>
+            <LayoutHeader />
+            <Inner>
+                {isHidden && <LayoutAdminSideBar />}
+                <BodyWrapper>
+                    <Body>{props.children}</Body>
+                </BodyWrapper>
+            </Inner>
+            <LayoutFooter />
+        </Wrapper>
+    );
 }

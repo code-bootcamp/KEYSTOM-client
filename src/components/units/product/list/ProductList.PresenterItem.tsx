@@ -36,13 +36,6 @@ export default function ProductListPresenterItem(props: any) {
 
     return (
         <S.ProductBox>
-            {/* <S.ProductImageDiv>
-                {props.el.thumbnail &&(
-                        <PostViewer 
-                        style={{width:"100px"}}/>
-                )}
-            </S.ProductImageDiv>
-         */}
             {props.el.thumbnail ? (
                 <S.ProductImage
                     onClick={props.onClickMoveToDetail}
@@ -55,8 +48,6 @@ export default function ProductListPresenterItem(props: any) {
                     style={{ backgroundColor: "gray" }}
                     id={props.el.id}
                 ></S.ProductImage>
-                // <PostViewer
-                // style={{width:"100px"}}/>
             )}
 
             <S.ProductBoxRightWrapper>
@@ -73,7 +64,6 @@ export default function ProductListPresenterItem(props: any) {
                             </S.TextToken>
                         ))}
                 </S.ProductTitle>
-                {/* <S.ProductTitle>&gt;</S.ProductTitle> */}
                 <S.ProductPrice>
                     ￦
                     {props.el.price
@@ -88,11 +78,9 @@ export default function ProductListPresenterItem(props: any) {
                                 {el}
                             </S.TextToken>
                         ))}
-                    {/* <span>원</span> */}
                 </S.ProductPrice>
                 <S.ProductContents>
                     {newDescription
-                        // .substring(props.el.description.indexOf("png)") + 5)
                         .replaceAll(props.keyword, `#$%${props.keyword}#$%`)
                         .split("#$%")
                         .map((el: any) => (

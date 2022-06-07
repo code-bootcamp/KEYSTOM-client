@@ -10,12 +10,9 @@ export default function SignUpPresenter(props: any) {
                 <S.SignUpContainer>
                     <S.SignUpTitle>Sign Up</S.SignUpTitle>
                     <S.SignUpContentsWrapper>
-                        {/* <S.InfoTitle>기본 정보 입력</S.InfoTitle> */}
-
                         <S.InfoDiv>
                             <S.InfoText>Name</S.InfoText>
                             <S.InfoInput
-                                // style={{width:"200px"}}
                                 placeholder="홍길동"
                                 {...props.register("name")}
                             />
@@ -47,7 +44,6 @@ export default function SignUpPresenter(props: any) {
                         <S.InfoDiv>
                             <S.InfoText>NickName</S.InfoText>
                             <S.InfoInput
-                                // style={{width:"200px"}}
                                 placeholder="Gill"
                                 {...props.register("nickName")}
                             />
@@ -151,9 +147,7 @@ export default function SignUpPresenter(props: any) {
                             <S.InfoInput
                                 type="number"
                                 placeholder="숫자만 입력해주세요."
-                                // style={{width:"200px"}}
                                 onChange={props.onChangePhone}
-                                // {...props.register("phone")}
                             />
 
                             <S.PhoneCheckButton
@@ -165,13 +159,6 @@ export default function SignUpPresenter(props: any) {
                             </S.PhoneCheckButton>
                         </S.InfoDiv>
                         <S.InfoDiv>
-                            {/* <S.Timer>
-                                {String(Math.floor(props.sec / 60)).padStart(
-                                    2,
-                                    "0"
-                                )}
-                                :{String(props.sec % 60).padStart(2, "0")}
-                            </S.Timer> */}
                             {props.timerStart ? (
                                 <TimerPage
                                     setTimerStart={props.setTimerStart}
@@ -196,8 +183,6 @@ export default function SignUpPresenter(props: any) {
                         <S.SignUpError>
                             {props.formState.errors.phone?.message}
                         </S.SignUpError>
-
-                        {/* 구분선 */}
                     </S.SignUpContentsWrapper>
                 </S.SignUpContainer>
                 <S.SignUpBtnWrapper>

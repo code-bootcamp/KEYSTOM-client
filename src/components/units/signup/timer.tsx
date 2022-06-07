@@ -3,15 +3,6 @@ import * as S from "./Signup.styles";
 
 export default function TimerPage(props: any) {
     const [sec, setSec] = useState(180);
-    //     const secTime = useRef(5)
-    //     const secRef = useRef();
-
-    //     useEffect(() => {
-    // secRef.current = setInterval(() =>{
-
-    // })
-
-    //     }
 
     useEffect(() => {
         const timer = setInterval(() => {

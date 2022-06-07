@@ -131,7 +131,6 @@ export default function MypageContainer() {
     };
 
     const moveToProductDetail = (event: any) => {
-        // console.log("event.id", event.target.id);
         router.push(`/store/${event.target.id}`);
     };
 
@@ -159,7 +158,6 @@ export default function MypageContainer() {
 
         console.log(result);
         window.open(url, "", "_blank");
-        // router.replace(url);
     };
 
     return (

@@ -1,14 +1,13 @@
-import { gql, useMutation } from '@apollo/client';
-import { Modal, Result } from 'antd';
-import { useRef, useState, ChangeEvent } from 'react';
-import styled from '@emotion/styled';
-// import { checkFileValidation } from '../../../commons/libraries/fileValidation';
+import { gql, useMutation } from "@apollo/client";
+import { Modal, Result } from "antd";
+import { useRef, useState, ChangeEvent } from "react";
+import styled from "@emotion/styled";
 
 const UPLOAD_FILE = gql`
-    mutation uploadFile($files:[Upload!]!){
-        uploadFile(files:$files)
+    mutation uploadFile($files: [Upload!]!) {
+        uploadFile(files: $files)
     }
-`
+`;
 
 const ReviewUploadImage = styled.button`
     width: 160px;
@@ -24,97 +23,89 @@ const ReviewUploadImage = styled.button`
 
     color: #000000;
     cursor: pointer;
-
 `;
 
 const ImageWrapper = styled.div`
     width: 100%;
     display: flex;
-`
+`;
 
 const Image = styled.img`
-border: 1px solid #fff;
-width: 160px;
-height: 160px;
-border-radius: 10px;
-margin-right: 20px;
-`
+    border: 1px solid #fff;
+    width: 160px;
+    height: 160px;
+    border-radius: 10px;
+    margin-right: 20px;
+`;
 
-interface IUploadFilePage{
-    setImageUrls:any
-    imageUrls:string[]
+interface IUploadFilePage {
+    setImageUrls: any;
+    imageUrls: string[];
 }
 
-export default function UploadFilePage(props:IUploadFilePage){
-    const [uploadFile] = useMutation(UPLOAD_FILE)
-    const imageFileRef = useRef<HTMLInputElement>(null)
-
+export default function UploadFilePage(props: IUploadFilePage) {
+    const [uploadFile] = useMutation(UPLOAD_FILE);
+    const imageFileRef = useRef<HTMLInputElement>(null);
 
     const onClickUpload = () => {
-        imageFileRef.current?.click()
-    }
+        imageFileRef.current?.click();
+    };
 
-    const onChangeFile = async(event: ChangeEvent<HTMLInputElement>) => {
-        if(props.imageUrls.length > 6){
-            return Modal.error({content:"이미지는 7개까지 업로드 하실 수 있습니다!"})
+    const onChangeFile = async (event: ChangeEvent<HTMLInputElement>) => {
+        if (props.imageUrls.length > 6) {
+            return Modal.error({
+                content: "이미지는 7개까지 업로드 하실 수 있습니다!",
+            });
         }
-        const file:any | null = event.target.files
-        console.log("file이다", file)
+        const file: any | null = event.target.files;
+        console.log("file이다", file);
 
-        let imageList = [...file]
-        imageList.map(async(el)=>{
-            try{
+        let imageList = [...file];
+        imageList.map(async (el) => {
+            try {
                 const result = await uploadFile({
-                    variables:{
-                        files:el,
-                    }
-                })
-                console.log("result!!!", result)
-                props.setImageUrls((prev:string[])=>([...prev, result.data.uploadFile[0]]))
-                console.log("imageFile", props.imageUrls)
-
-            }catch(error:any){
-                Modal.error({content:error.message})
+                    variables: {
+                        files: el,
+                    },
+                });
+                console.log("result!!!", result);
+                props.setImageUrls((prev: string[]) => [
+                    ...prev,
+                    result.data.uploadFile[0],
+                ]);
+                console.log("imageFile", props.imageUrls);
+            } catch (error: any) {
+                Modal.error({ content: error.message });
             }
-        })
+        });
+    };
 
-      
-    }
-
-   
-
-    return(
+    return (
         <ImageWrapper>
-            {/* {props.imageFile ? ( */}
-               
-                {/* ): ( */}
-                <ReviewUploadImage  onClick={onClickUpload}>
-                    <span>Upload Image</span>
-                </ReviewUploadImage>
+            <ReviewUploadImage onClick={onClickUpload}>
+                <span>Upload Image</span>
+            </ReviewUploadImage>
 
-                {props.imageUrls.length >= 1 ?
-                props.imageUrls.map((el)=>(
-                <Image
-                onClick={onClickUpload}
-                src={`https://storage.googleapis.com/${el}`}
-                /> 
+            {props.imageUrls.length >= 1 ? (
+                props.imageUrls.map((el) => (
+                    <Image
+                        onClick={onClickUpload}
+                        src={`https://storage.googleapis.com/${el}`}
+                    />
                 ))
-                
-                :
+            ) : (
                 <div></div>
-                }
-               
-                {/* )}                    */}
-            <div style={{display: "none"}}>
-                <input 
-                onChange={onChangeFile}  
-                type="file"  
-                multiple
-                accept='.jpg,.jpeg,.png'
-                ref={imageFileRef}/>
+            )}
+
+            <div style={{ display: "none" }}>
+                <input
+                    onChange={onChangeFile}
+                    type="file"
+                    multiple
+                    accept=".jpg,.jpeg,.png"
+                    ref={imageFileRef}
+                />
             </div>
-    
-                
         </ImageWrapper>
-    )
+    );
 }

@@ -14,7 +14,6 @@ export const SignUpContainer = styled.div`
     width: 1000px;
     display: flex;
     flex-direction: column;
-    /* justify-content: center; */
     align-items: center;
 
     border-bottom: 0.1px solid #b1b1b1;
@@ -59,19 +58,6 @@ export const InfoDiv = styled.div`
     padding-bottom: 20px;
 `;
 
-// export const NameInfoInput = styled.input`
-//     width: 379px;
-//     height: 54px;
-
-//     border: none;
-//     border-bottom: 1px solid #ffffff;
-//     background-color: transparent;
-
-//     :focus {
-//         outline: none;
-//     }
-// `;
-
 export const InfoInput = styled.input`
     width: 340px;
     height: 54px;
@@ -89,17 +75,12 @@ export const EmailCheckButton = styled.button<{ isWriteEmail: boolean }>`
     width: 150px;
     height: 54px;
     margin-left: 20px;
-    /* border: 1px solid #ffffff; */
     border-radius: 6px;
     color: ${(props) => (props.isWriteEmail ? "#b150f2" : " #ffffff")};
     border: 1px solid
         ${(props) => (props.isWriteEmail ? "#b150f2" : " #ffffff")};
 
     cursor: pointer;
-    /* :hover {
-        border: 1px solid #b150f2;
-        color: #b150f2;
-    } */
 `;
 
 export const PasswordWatch = styled.div`
@@ -110,7 +91,6 @@ export const EyeIcon = styled(EyeOutlined)<{
     "data-is-write-password": boolean;
 }>`
     font-size: 20px;
-    /* padding-top: 10px; */
 
     cursor: pointer;
 
@@ -122,26 +102,12 @@ export const EyeIcon2 = styled(EyeOutlined)<{
     "data-is-write-password-check": boolean;
 }>`
     font-size: 20px;
-    /* padding-top: 10px; */
 
     cursor: pointer;
 
     color: ${(props) =>
         props["data-is-write-password-check"] ? "#b150f2" : " #ffffff"};
 `;
-
-// export const IDInfoInput = styled.input`
-//     width: 379px;
-//     height: 54px;
-
-//     border: none;
-//     border-bottom: 1px solid #ffffff;
-//     background-color: transparent;
-
-//     :focus {
-//         outline: none;
-//     }
-// `;
 
 export const InfoText = styled.div`
     width: 150px;
@@ -153,7 +119,6 @@ export const InfoText = styled.div`
 
 export const SignUpError = styled.div`
     color: #b150f2;
-    /* padding-top: 15px; */
     margin-bottom: 20px;
     margin-left: 200px;
 `;
@@ -226,7 +191,6 @@ export const SignUpButton = styled.button`
     font-weight: 700;
     font-size: 32px;
     line-height: 32px;
-    /* color: #f1f1f1; */
     color: #f1f1f1;
 `;
 
@@ -235,17 +199,12 @@ export const PhoneCheckButton = styled.button<{ isWritePhone: boolean }>`
     width: 150px;
     height: 54px;
     margin-left: 20px;
-    /* border: 1px solid #ffffff; */
     border-radius: 6px;
     color: ${(props) => (props.isWritePhone ? "#b150f2" : " #f1f1f1")};
     border: 1px solid
         ${(props) => (props.isWritePhone ? "#b150f2" : " #f1f1f1")};
 
     cursor: pointer;
-    /* :hover {
-        border: 1px solid #b150f2;
-        color: #b150f2;
-    } */
 `;
 
 export const Timer = styled.div`
@@ -260,7 +219,6 @@ export const CheckTokenButton = styled.button<{ isWriteToken: boolean }>`
     width: 150px;
     height: 54px;
     margin-left: 20px;
-    /* border: 1px solid #ffffff; */
     border-radius: 6px;
     color: ${(props) => (props.isWriteToken ? "#b150f2" : " #f1f1f1")};
     border: 1px solid

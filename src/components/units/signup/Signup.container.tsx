@@ -41,11 +41,6 @@ const schema = yup.object({
         .string()
         .oneOf([yup.ref("password"), null], "비밀번호가 일치하지 않습니다.")
         .required("비밀번호는 필수 입력 사항입니다."),
-
-    // phone: yup
-    //     .string()
-    //     .matches(/^\d{3}\d{3,4}\d{4}$/, "'-'를 제외한 숫자만 입력해주세요.")
-    //     .required("전화번호는 필수 입력 사항입니다."),
 });
 
 interface IFormValues {
@@ -84,10 +79,6 @@ export default function SignUpContainer() {
     const [addressDetail, setAddressDetail] = useState("");
 
     const [isDisabled, setIsDisabled] = useState(true);
-    // const [time, setTime] = useState(120)
-    // const [timer, setTimer] = useState(null)
-
-    // const [min, setMin] = useState();
     const [sec, setSec] = useState(5);
 
     const tokenInputRef = useRef<HTMLInputElement>();
@@ -123,7 +114,6 @@ export default function SignUpContainer() {
 
     const onChangePhone = (event: any) => {
         setPhone(event.target.value);
-        // console.log(event.target.value);
         if (event.target.value) {
             setIsWritePhone(true);
         } else {
@@ -146,7 +136,6 @@ export default function SignUpContainer() {
 
     const onClickSignUp = async (data: IFormValues) => {
         try {
-         
             const result = await createUser({
                 variables: {
                     createUserInput: {
@@ -163,11 +152,10 @@ export default function SignUpContainer() {
                 },
             });
 
-            // console.log("회원가입",result);
-            Modal.success({content:"회원가입에 성공하였습니다"})
+            Modal.success({ content: "회원가입에 성공하였습니다" });
             router.push("/");
         } catch (error: any) {
-            Modal.error({content:error.message})
+            Modal.error({ content: error.message });
             console.log(JSON.stringify(error, null, 2));
         }
     };
@@ -176,40 +164,19 @@ export default function SignUpContainer() {
         try {
             const result = await checkEmail({ variables: { email } });
 
-            // console.log(result, "result check email");
             Modal.success({ content: "사용가능한 이메일입니다." });
         } catch (error: any) {
             Modal.error({ content: "사용할 수 없는 이메일입니다." });
         }
     };
 
-    // let min = String(Math.floor(time / 60)).padStart(2, "0");
-    // let sec = String(time % 60).padStart(2, "0");
-
-    // const Timer = () => {
-    //     const timer = setInterval(() => {
-    //         if (sec > 0) {
-    //             setSec((prev) => prev - 1);
-    //             console.log(sec);
-    //         }
-    //     }, 1000);
-    // };
-
-    // useEffect(() => {
-    //     if(sec === 0)
-    //     clearInterval();
-
-    // },[sec])
-    // console.log(sec);
-
     const onClickSendToken = async () => {
         try {
             await sendToken({ variables: { phone } });
-            Modal.success({content:"인증번호를 전송하였습니다!"})
+            Modal.success({ content: "인증번호를 전송하였습니다!" });
             if (tokenInputRef.current) tokenInputRef.current.disabled = false;
             if (tokenInputRef.current) tokenInputRef.current.focus();
             setTimerStart(true);
-            // Timer();
         } catch (error: any) {
             Modal.error({ content: error.message });
         }
@@ -303,8 +270,6 @@ export default function SignUpContainer() {
             onChangeToken={onChangeToken}
             onClickCheckToken={onClickCheckToken}
             isDisabled={isDisabled}
-            // min={min}
-            // sec={sec}
             tokenInputRef={tokenInputRef}
             timerStart={timerStart}
             setTimerStart={setTimerStart}
