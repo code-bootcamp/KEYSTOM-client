@@ -91,13 +91,6 @@ const SmallInput = styled.input`
     color: #f1f1f1;
 `;
 
-const ImageWrapper = styled.div`
-    display: flex;
-    padding-left: 20px;
-    width: 100%;
-    margin-top: 20px;
-    margin-bottom: 40px;
-`;
 
 const SubmitButton = styled.button`
     width: 250px;
@@ -158,7 +151,7 @@ const UPLOAD_FILE = gql`
     }
 `;
 
-export default function AdminProductWrite(props: any): JSX.Element {
+export default function AdminProductWrite(props: any) {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [price, setPrice] = useState();
@@ -222,7 +215,7 @@ export default function AdminProductWrite(props: any): JSX.Element {
                         title,
                         description,
                         price: Number(price),
-                        imageUrls: imageUrls,
+                        imageUrls,
                         productTags: hashArr,
                     },
                 },
@@ -237,9 +230,9 @@ export default function AdminProductWrite(props: any): JSX.Element {
     };
 
     const onClickUpdateProduct = async () => {
-        const currentFile = JSON.stringify(imageUrls);
-        const defaultFile = JSON.stringify(props.data?.fetchProduct.imageUrls);
-        const isChangeFile = currentFile !== defaultFile;
+        // const currentFile = JSON.stringify(imageUrls);
+        // const defaultFile = JSON.stringify(props.data?.fetchProduct.imageUrls);
+        // const isChangeFile = currentFile !== defaultFile;
         try {
             const updateVariables: IUpdateVariables = {
                 productId: router.query.productId,

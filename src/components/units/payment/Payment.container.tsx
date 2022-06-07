@@ -21,7 +21,7 @@ declare const window: typeof globalThis & {
 
 export default function PaymentContainer() {
   const router = useRouter();
-  const [productId, setProductId] = useRecoilState(paymentProductId);
+  const [productId, ] = useRecoilState(paymentProductId);
   const [couponId, setCouponId] = useState("");
   const [isClickedModal, setIsClickedModal] = useState(false);
   const [isClickedCoupon, setIsClickedCoupon] = useState(false);
@@ -49,7 +49,7 @@ export default function PaymentContainer() {
   const { data: userData } = useQuery(FETCH_USER_LOGGED_IN);
   const { data: couponDetailData } = useQuery(FETCH_COUPON, {
     variables: {
-      couponId: couponId,
+      couponId,
     },
   });
 
@@ -135,23 +135,23 @@ export default function PaymentContainer() {
                 couponDetailData?.fetchCoupon?.discountPrice,
               impUid: rsp.imp_uid,
               createAddressInput: {
-                address: address,
-                addressDetail: addressDetail,
-                zipCode: zipCode,
+                address,
+                addressDetail,
+                zipCode,
               },
               createOrderInput: {
                 count: 1,
                 price: productData?.fetchProduct?.price,
-                receiverName: receiverName,
-                receiverPhone: receiverPhone,
-                productId: productId,
+                receiverName,
+                receiverPhone,
+                productId,
               },
             },
           });
           Modal.success({ content: "결제를 성공하였습니다. 감사합니다!" });
           deleteCoupon({
             variables: {
-              couponId: couponId,
+              couponId,
             },
           });
           router.push("/mypage");

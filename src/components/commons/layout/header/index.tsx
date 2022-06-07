@@ -1,13 +1,12 @@
-// 헤더 페이지
-import { gql, useApolloClient, useMutation } from "@apollo/client";
+import { gql, useMutation } from "@apollo/client";
 import styled from "@emotion/styled";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { useRecoilState } from "recoil";
-import { accessTokenState, userInfoState } from "../../store";
+import { accessTokenState} from "../../store";
 import * as S from "../../../units/login/Login.styles";
 import * as yup from "yup";
-import { LOGIN, LOGIN_TEST } from "../../../units/login/Login.queries";
+import { LOGIN} from "../../../units/login/Login.queries";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { Modal } from "antd";
@@ -120,22 +119,17 @@ const BasketIcon = styled.img`
 `;
 
 export default function LayoutHeader() {
-    const [nowLogin, setNowLogin] = useRecoilState(accessTokenState);
+    const [nowLogin, ] = useRecoilState(accessTokenState);
     const [logout] = useMutation(LOG_OUT);
 
     const [, setAccessToken] = useRecoilState(accessTokenState);
-    const [, setUserInfo] = useRecoilState(userInfoState);
     const [login] = useMutation(LOGIN);
-    const [logintest] = useMutation(LOGIN_TEST);
-    const client = useApolloClient();
-    const [isHovered, setIsHovered] = useState(false);
 
     const { register, formState, handleSubmit } = useForm({
         resolver: yupResolver(schema),
         mode: "onChange",
     });
 
-    // 로그인 버튼
     const onClickLogin = async (data: any) => {
         try {
             const result = await login({

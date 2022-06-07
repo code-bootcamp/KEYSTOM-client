@@ -1,6 +1,6 @@
 import { gql, useMutation } from "@apollo/client";
-import { Modal, Result } from "antd";
-import { useRef, useState, ChangeEvent } from "react";
+import { Modal } from "antd";
+import { useRef, ChangeEvent } from "react";
 import styled from "@emotion/styled";
 
 const UPLOAD_FILE = gql`
@@ -60,7 +60,7 @@ export default function UploadFilePage(props: IUploadFilePage) {
         const file: any | null = event.target.files;
         console.log("file이다", file);
 
-        let imageList = [...file];
+        const imageList = [...file];
         imageList.map(async (el) => {
             try {
                 const result = await uploadFile({
@@ -87,8 +87,9 @@ export default function UploadFilePage(props: IUploadFilePage) {
             </ReviewUploadImage>
 
             {props.imageUrls.length >= 1 ? (
-                props.imageUrls.map((el) => (
+                props.imageUrls.map((el, idx) => (
                     <Image
+                        key={idx}
                         onClick={onClickUpload}
                         src={`https://storage.googleapis.com/${el}`}
                     />

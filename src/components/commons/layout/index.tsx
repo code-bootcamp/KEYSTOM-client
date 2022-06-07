@@ -1,5 +1,3 @@
-// 전체 레이아웃 페이지
-// Header + Footer
 import { ReactNode } from "react";
 import { useRouter } from "next/router";
 import LayoutFooter from "./footer";
@@ -39,7 +37,7 @@ const HIDDEN_ADMIN_SIDEBAR = ["/admin", "/admin/product", "/admin/user"];
 export default function Layout(props: ILayoutProps) {
     const router = useRouter();
 
-    let isHidden = HIDDEN_ADMIN_SIDEBAR.includes(router.asPath);
+    const isHidden = HIDDEN_ADMIN_SIDEBAR.includes(router.asPath);
 
     return (
         <Wrapper>

@@ -29,7 +29,6 @@ export default function DescriptionPage(props: any) {
         }
         if (props.el.description) setNewDescription(props.el.description);
 
-        return;
     }, [newDescription]);
 
     return <ListItemContents>{newDescription}</ListItemContents>;

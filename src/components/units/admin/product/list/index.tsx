@@ -1,6 +1,5 @@
-import { useMutation, useQuery } from "@apollo/client";
+import { useMutation, useQuery, gql} from "@apollo/client";
 import { useRouter } from "next/router";
-import { gql } from "@apollo/client";
 import styled from "@emotion/styled";
 import dynamic from "next/dynamic";
 import { Modal } from "antd";
@@ -36,10 +35,11 @@ const ListItemWrapper = styled.div`
     border-bottom: 1px solid #f1f1f1;
     padding-top: 20px;
     padding-bottom: 20px;
-    cursor: pointer;
 `;
 const ListItemDivWrapper = styled.div`
-    width: 700px;
+    width: 600px;
+    cursor: pointer;
+
 `;
 const ListItemDiv = styled.div`
     display: flex;
@@ -74,12 +74,18 @@ const ListItemTag = styled.span`
 const ListItemImage = styled.img`
     width: 200px;
     margin-right: 30px;
+    cursor: pointer;
 `;
-const ButtonWrapper = styled.div``;
+const ButtonWrapper = styled.div`
+display: flex;
+justify-content: flex-end;
+width: 250px;
+`;
 
 const DeleteButton = styled.button`
     width: 100px;
     height: 50px;
+    margin-bottom: 10px;
 `;
 
 export const FETCH_PRODUCTS = gql`
@@ -112,18 +118,16 @@ export default function AdminProductList() {
         variables: {},
     });
 
-    // console.log(router, "router");
-    const { data, refetch } = useQuery(FETCH_PRODUCTS, {
+    const { data} = useQuery(FETCH_PRODUCTS, {
         variables: {
             page: 1,
         },
     });
 
-    console.log("확인", data?.fetchProducts);
 
     const onClickDelete = async (e: any) => {
         try {
-            const result = await deleteProduct({
+             await deleteProduct({
                 variables: {
                     productId: e.target.id,
                 },
@@ -137,7 +141,6 @@ export default function AdminProductList() {
                 ],
             });
             Modal.success({ content: "삭제 성공하였습니다" });
-            console.log(result);
         } catch (error: any) {
             Modal.error({ content: error.message });
         }

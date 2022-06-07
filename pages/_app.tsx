@@ -17,7 +17,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     const router = useRouter();
     const [loading, setLoding] = useState(true);
 
-    let isHidden = HIDDEN_HEADER.includes(router.asPath);
+    const isHidden = HIDDEN_HEADER.includes(router.asPath);
 
     isHidden
         ? useEffect(() => {

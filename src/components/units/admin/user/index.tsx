@@ -100,7 +100,7 @@ const DELETE_USER = gql`
 `;
 
 export default function AdminUser() {
-  const { data, refetch } = useQuery(FETCH_USERS);
+  const { data } = useQuery(FETCH_USERS);
   const [deleteUser] = useMutation(DELETE_USER);
 
   const onClickDeleteUser = async (e: any) => {

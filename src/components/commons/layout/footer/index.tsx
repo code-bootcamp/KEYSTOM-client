@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import MapPage from "../../map";
 
 const FooterWrapper = styled.div`
     display: flex;
@@ -15,10 +14,6 @@ const FooterWrapper = styled.div`
 
 const FooterLeftDiv = styled.div``;
 
-const FooterRightDiv = styled.div`
-    width: 200px;
-    padding-left: 250px;
-`;
 
 const FooterTopDiv = styled.div`
     display: flex;
@@ -74,18 +69,6 @@ const FooterMidContent = styled.div`
 
 const CopyRight = styled.div``;
 
-const LocationText = styled.div`
-    font-weight: 700;
-    font-size: 20px;
-    line-height: 20px;
-    padding-top: 140px;
-    padding-bottom: 24px;
-`;
-
-const FooterMapDiv = styled.div`
-    width: 500px;
-    height: 300px;
-`;
 
 export default function LayoutFooter() {
     return (

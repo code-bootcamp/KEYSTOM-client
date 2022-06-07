@@ -36,14 +36,6 @@ const FETCH_ORDERS = gql`
     }
 `;
 
-const FETCH_ORDER = gql`
-    query fetchOrder {
-        fetchOrder {
-            isReview
-        }
-    }
-`;
-
 const FETCH_USER_HAVE_COUPONS = gql`
     query fetchUserHaveCoupons {
         fetchUserHaveCoupons {
@@ -72,18 +64,13 @@ export default function MypageContainer() {
     const [isBasket, setIsBasket] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isModalTracking, setIsModalTracking] = useState(false);
-    const [isReview, setIsReview] = useState(false);
+    const [isReview,] = useState(false);
     const [orderId, setOrderId] = useState("");
 
     const router = useRouter();
     const { data } = useQuery(FETCH_USER_LOGGED_IN);
     const { data: orderData } = useQuery(FETCH_ORDERS);
     const { data: userHaveCouponData } = useQuery(FETCH_USER_HAVE_COUPONS);
-    const { data: reviewData } = useQuery(FETCH_ORDER, {
-        variables: {
-            orderId: orderId,
-        },
-    });
 
     const handleOK = () => {
         setIsModalOpen(false);
