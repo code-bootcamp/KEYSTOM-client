@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 
 export default function useMousePosition() {
-  let [mousePosition, setmousePosition] = useState({ x: null, y: null });
+  const [mousePosition, setmousePosition] = useState({ x: null, y: null });
 
   useEffect(() => {
-    function handlePosition(e:any) {
+    function handlePosition(e: any) {
       setmousePosition({ x: e.pageX, y: e.pageY });
     }
     window.addEventListener("mousemove", handlePosition);
