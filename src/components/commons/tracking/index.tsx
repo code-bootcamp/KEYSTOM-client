@@ -13,11 +13,11 @@ export default function SmartPage() {
     //     aaa();
     // }, []);
 
-    const onChangeCode = (e) => {
+    const onChangeCode = (e:any) => {
         setCode(e.target.value);
     };
 
-    const onChangeInvoice = (e) => {
+    const onChangeInvoice = (e:any) => {
         setInvoice(e.target.value);
     };
 

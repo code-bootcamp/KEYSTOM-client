@@ -8,11 +8,11 @@ import { ChangeEvent } from "react";
 
 export interface ISearchbars01Props {
     refetch: (
-        variables: Partial<IQueryFetchBoardsArgs>
-    ) => Promise<ApolloQueryResult<Pick<IQuery, "fetchBoards">>>;
+        variables: any
+    ) => void
     refetchBoardsCount: (
-        variables: Partial<IQueryFetchBoardsCountArgs>
-    ) => Promise<ApolloQueryResult<Pick<IQuery, "fetchBoardsCount">>>;
+        variables: any
+    ) => void
     onChangeKeyword: (value: string) => void;
 }
 

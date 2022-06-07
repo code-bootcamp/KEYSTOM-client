@@ -11,7 +11,7 @@ import { LOGIN, LOGIN_TEST } from "../../../units/login/Login.queries";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { Modal } from "antd";
-import MovingText from "react-moving-text";
+// import MovingText from "react-moving-text";
 import Link from "next/link";
 
 export const LOG_OUT = gql`
@@ -53,16 +53,16 @@ const Logo = styled.div`
   cursor: pointer;
 `;
 
-const MovingText2 = styled(MovingText)`
-  font-family: "Orbitron-bold";
-  font-size: 24px;
-  line-height: 100%;
-  width: 100%;
-  text-align: center;
-  color: #B150F2;
+// const MovingText2 = styled(MovingText)<{MovingText: any}>`
+//   font-family: "Orbitron-bold";
+//   font-size: 24px;
+//   line-height: 100%;
+//   width: 100%;
+//   text-align: center;
+//   color: #B150F2;
 
-  cursor: pointer;
-`;
+//   cursor: pointer;
+// `;
 
 const MenuWrapper = styled.div`
   display: flex;
@@ -333,7 +333,7 @@ export default function LayoutHeader() {
       )}
       <Wrapper>
         <LogoDiv>
-          <Logo
+          {/* <Logo
             onClick={moveToHome}
             onMouseOver={() => setIsHovered(true)}
             onMouseOut={() => setIsHovered(false)}
@@ -353,8 +353,11 @@ export default function LayoutHeader() {
             ) : (
               <Logo>KEYSTOM</Logo>
             )}
-            {/* KEYSTOM */}
-          </Logo>
+          </Logo> */}
+          <Logo
+            onClick={moveToHome}
+          >KEYSTOM</Logo>
+
         </LogoDiv>
         <MenuWrapper>
           <MenuDiv>

@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build:ssg": "next build && next export",
+    "build:ssr": "next build",
     "start": "next start",
     "lint": "next lint"
   },
@@ -53,6 +54,7 @@
   "devDependencies": {
     "@types/node": "^17.0.32",
     "@types/react": "^18.0.9",
+    "@types/react-transition-group": "^4.4.4",
     "@types/uuid": "^8.3.4",
     "eslint": "8.15.0",
     "eslint-config-next": "12.1.6",

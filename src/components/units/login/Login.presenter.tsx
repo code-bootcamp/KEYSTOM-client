@@ -47,9 +47,9 @@ export default function LoginPresenter(props: ILoginPresenterProps) {
                     <S.BtnWrapper>
                         <S.LoginBtn>로그인하기</S.LoginBtn>
                         <S.SocialLogin>
-                            <S.SocialLoginBtn src="/images//KakaoLogin_img.png" />
-                            <S.SocialLoginBtn src="/images/NaverLogin_img.png" />
-                            <S.SocialLoginBtn src="/images/GoogleLogin_img.png" />
+                            <S.SocialLoginImg src="/images//KakaoLogin_img.png" />
+                            <S.SocialLoginImg src="/images/NaverLogin_img.png" />
+                            <S.SocialLoginImg src="/images/GoogleLogin_img.png" />
                         </S.SocialLogin>
                     </S.BtnWrapper>
 

@@ -11,7 +11,7 @@ export default function Searchbars01(props: ISearchbars01Props) {
         props.onChangeKeyword(data);
     }, 200);
 
-    function onChangeSearchbar(event) {
+    function onChangeSearchbar(event:any) {
         getDebounce(event.target.value);
     }
 

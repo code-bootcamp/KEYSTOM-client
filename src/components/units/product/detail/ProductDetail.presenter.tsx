@@ -212,12 +212,15 @@ function EnterChangeKey() {
     return <div>{enterLength}</div>;
 }
 
+  
+
 // 키보드 3d 구현 함수
 function Keyboard(props: any) {
     const ref = useRef();
     const snap = useSnapshot(state);
-    const { nodes, materials } = useGLTF("/images/keyboard_fix.glb");
+    const { nodes, materials } = useGLTF<GLTF>("/images/keyboard_fix.glb");
 
+    
     return (
         <>
             <group

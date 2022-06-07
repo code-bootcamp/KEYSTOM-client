@@ -1,4 +1,4 @@
-import MarketWriteContainer from "../../../src/components/units/market/write/MarketWrite.container";
+import MarketWriteContainer from '../../../units/market/write/MarketWrite.container';
 
 export default function MarketWrite() {
     return <MarketWriteContainer />;

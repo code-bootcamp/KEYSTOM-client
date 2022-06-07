@@ -128,7 +128,7 @@ export default function ProductDetailContainer() {
   const onClickCouponApply = () => {};
 
   // 결제하기
-  const onClickPayNow = async (e) => {
+  const onClickPayNow = async (e:any) => {
     try {
       const payResult = await createCustom({
         variables: {

@@ -1,11 +1,28 @@
 import { ReactNode } from "react";
-import { Transition, TransitionGroup } from "react-transition-group";
+import { Transition, TransitionGroup, TransitionStatus } from "react-transition-group";
 import { useRouter } from "next/router";
 interface Props {
     children: ReactNode;
 }
+interface ITransitionValue{
+    entering: {
+        position: string;
+        opacity: number;
+    };
+    entered: {
+        transition: string;
+        opacity: number;
+    };
+    exiting: {
+        transition: string;
+        opacity: number;
+    };
+    exited?:any
+    unmounted?:any
+}
+
 const TIMEOUT = 100;
-const getTransitionStyles = {
+const getTransitionStyles:ITransitionValue = {
     entering: {
         position: `absolute`,
         opacity: 0,
@@ -42,7 +59,7 @@ const AppLayout = ({ children }: Props) => {
                         exit: TIMEOUT,
                     }}
                 >
-                    {(status: any) => (
+                    {(status) => (
                         <div
                             style={{
                                 ...getTransitionStyles[status],

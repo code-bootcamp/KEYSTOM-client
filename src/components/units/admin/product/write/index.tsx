@@ -7,7 +7,7 @@ import { useRouter } from "next/router";
 import { Modal } from "antd";
 import dynamic from "next/dynamic";
 import "@toast-ui/editor/dist/toastui-editor.css";
-import { IUpdateVariables } from "./productWrite.types";
+import { IUpdateVariables } from './ProductWrite.types';
 
 const PostEditor = dynamic(() => import("../write/EditorLoader"), {
   ssr: false,
@@ -165,7 +165,7 @@ export default function AdminProductWrite(props: any): JSX.Element {
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState();
   const [hashArr, setHashArr] = useState<string[]>([]);
-  const [imageUrls, setImageUrls] = useState([]);
+  const [imageUrls, setImageUrls] = useState<string[]>([]);
 
   const [createProduct] = useMutation(CREATE_PRODUCT);
   const [updateProduct] = useMutation(UPDATE_PRODUCT);
