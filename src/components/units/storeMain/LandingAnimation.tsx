@@ -3,8 +3,8 @@ import gsap from "gsap";
 import * as S from "./StoreMain.styles";
 
 // 키보드 배경
-function Preloader({ children, timeline }) {
-  const el = useRef();
+function Preloader({ children, timeline }: any) {
+  const el = useRef<any>();
 
   useEffect(() => {
     timeline &&
@@ -20,8 +20,8 @@ function Preloader({ children, timeline }) {
 }
 
 // 당신만의 키보드를 만들어 보세요.
-function HideTitleFunc({ children, timeline }) {
-  const el = useRef();
+function HideTitleFunc({ children, timeline }: any) {
+  const el = useRef<any>();
 
   useEffect(() => {
     timeline &&
@@ -37,8 +37,8 @@ function HideTitleFunc({ children, timeline }) {
 }
 
 // 취향은 내맘대로, 색상은 자유자재로
-function HideTopContentsFunc({ children, timeline }) {
-  const el = useRef();
+function HideTopContentsFunc({ children, timeline }: any) {
+  const el = useRef<any>();
 
   useEffect(() => {
     timeline &&
@@ -53,8 +53,8 @@ function HideTopContentsFunc({ children, timeline }) {
   return <S.HideTopContents ref={el}>{children}</S.HideTopContents>;
 }
 
-function HideBottomContentsFunc({ children, timeline }) {
-  const el = useRef();
+function HideBottomContentsFunc({ children, timeline }: any) {
+  const el = useRef<any>();
 
   useEffect(() => {
     timeline &&
@@ -70,7 +70,7 @@ function HideBottomContentsFunc({ children, timeline }) {
 }
 
 export default function LandingAnimation() {
-  const [tl, setTl] = useState();
+  const [tl, setTl] = useState<any>();
 
   useEffect(() => {
     const tl = gsap.timeline();
