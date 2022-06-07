@@ -11,384 +11,329 @@ import { LOGIN, LOGIN_TEST } from "../../../units/login/Login.queries";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { Modal } from "antd";
-// import MovingText from "react-moving-text";
 import Link from "next/link";
 
 export const LOG_OUT = gql`
-  mutation logout {
-    logout
-  }
+    mutation logout {
+        logout
+    }
 `;
 
 const schema = yup.object({
-  email: yup.string().required("아이디를 입력해주세요."),
+    email: yup.string().required("아이디를 입력해주세요."),
 
-  password: yup.string().required("비밀번호는 필수 입력 사항입니다."),
+    password: yup.string().required("비밀번호는 필수 입력 사항입니다."),
 });
 
 const Wrapper = styled.div`
-  display: flex;
-  height: 80px;
-  width: 100%;
-  background-color: transparent;
-  padding: 25px 340px;
-  color: #fff;
-  z-index: 10;
+    display: flex;
+    height: 80px;
+    width: 100%;
+    background-color: transparent;
+    padding: 25px 340px;
+    color: #fff;
+    z-index: 10;
 `;
 
 const LogoDiv = styled.div`
-  width: 140px;
-  margin-right: 60px;
+    width: 140px;
+    margin-right: 60px;
 `;
 
 const Logo = styled.div`
-  font-family: "Orbitron-bold";
-  font-size: 24px;
-  line-height: 100%;
-  width: 100%;
-  text-align: center;
-  color: #f1f1f1;
-  /* color: #B150F2; */
+    font-family: "Orbitron-bold";
+    font-size: 24px;
+    line-height: 100%;
+    width: 100%;
+    text-align: center;
+    color: #f1f1f1;
 
-  cursor: pointer;
+    cursor: pointer;
 `;
 
-// const MovingText2 = styled(MovingText)<{MovingText: any}>`
-//   font-family: "Orbitron-bold";
-//   font-size: 24px;
-//   line-height: 100%;
-//   width: 100%;
-//   text-align: center;
-//   color: #B150F2;
-
-//   cursor: pointer;
-// `;
-
 const MenuWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
 `;
 
 const MenuDiv = styled.div`
-  display: flex;
-  align-items: center;
-  margin-right: 60px;
+    display: flex;
+    align-items: center;
+    margin-right: 60px;
 `;
 const Menu = styled.div`
-  /* color: #B150F2; */
-  color: #f1f1f1;
-  padding-left: 50px;
-  font-weight: 300;
-  font-size: 20px;
-  line-height: 24px;
-  cursor: pointer;
-  :hover {
-    /* font-weight: 500; */
-    color: #b150f2;
-  }
+    color: #f1f1f1;
+    padding-left: 50px;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 24px;
+    cursor: pointer;
+    :hover {
+        color: #b150f2;
+    }
 
-  transition: 400ms;
-  border-bottom: 2px solid transparent;
+    transition: 400ms;
+    border-bottom: 2px solid transparent;
 
-  &::after {
-    content: "";
-    display: block;
-    width: 0;
-    height: 2px;
-    background: #b150f2;
-    transition: width 0.3s;
-  }
+    &::after {
+        content: "";
+        display: block;
+        width: 0;
+        height: 2px;
+        background: #b150f2;
+        transition: width 0.3s;
+    }
 
-  &:hover::after {
-    width: 100%;
-    transition: width 0.3s;
-  }
+    &:hover::after {
+        width: 100%;
+        transition: width 0.3s;
+    }
 `;
 const MenuIconDiv = styled.div`
-  display: flex;
-  width: 68px;
-  height: 100%;
+    display: flex;
+    width: 68px;
+    height: 100%;
 `;
 
 const IconWrapper = styled.div`
-  display: flex;
-  width: 24px;
-  height: 24px;
-  margin-right: 20px;
+    display: flex;
+    width: 24px;
+    height: 24px;
+    margin-right: 20px;
 `;
 
 const UserIcon = styled.img`
-  width: 24px;
-  height: 24px;
-  cursor: pointer;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
 `;
 const BasketWrapper = styled.div`
-  width: 24px;
-  height: 24px;
+    width: 24px;
+    height: 24px;
 `;
 
 const BasketIcon = styled.img`
-  width: 24px;
-  height: 24px;
-  cursor: pointer;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
 `;
 
-// const BasketNum = styled.div`
-// width: 20px;
-// height: 20px;
-// border-radius: 20px;
-// padding-left: 6px;
-// background-color:#B150F2  ;
-// position: relative;
-// left: 35px;
-// top:23px;
-// `
-
 export default function LayoutHeader() {
-  const [nowLogin, setNowLogin] = useRecoilState(accessTokenState);
-  const [logout] = useMutation(LOG_OUT);
+    const [nowLogin, setNowLogin] = useRecoilState(accessTokenState);
+    const [logout] = useMutation(LOG_OUT);
 
-  const [, setAccessToken] = useRecoilState(accessTokenState);
-  const [, setUserInfo] = useRecoilState(userInfoState);
-  const [login] = useMutation(LOGIN);
-  const [logintest] = useMutation(LOGIN_TEST);
-  const client = useApolloClient();
-  const [isHovered, setIsHovered] = useState(false);
+    const [, setAccessToken] = useRecoilState(accessTokenState);
+    const [, setUserInfo] = useRecoilState(userInfoState);
+    const [login] = useMutation(LOGIN);
+    const [logintest] = useMutation(LOGIN_TEST);
+    const client = useApolloClient();
+    const [isHovered, setIsHovered] = useState(false);
 
-  const { register, formState, handleSubmit } = useForm({
-    resolver: yupResolver(schema),
-    mode: "onChange",
-  });
+    const { register, formState, handleSubmit } = useForm({
+        resolver: yupResolver(schema),
+        mode: "onChange",
+    });
 
-  // 로그인 버튼
-  const onClickLogin = async (data: any) => {
-    try {
-      const result = await login({
-        variables: {
-          ...data,
-        },
-      });
-      console.log("이건 내 토큰", result.data?.login);
-      const accessToken = result.data?.login;
-      setAccessToken(accessToken);
-      // localStorage.setItem("accessToken", accessToken);
+    // 로그인 버튼
+    const onClickLogin = async (data: any) => {
+        try {
+            const result = await login({
+                variables: {
+                    ...data,
+                },
+            });
+            console.log("이건 내 토큰", result.data?.login);
+            const accessToken = result.data?.login;
+            setAccessToken(accessToken);
 
-      //   // 유저정보 받아오기
-      //   const resultUserInfo = await client.query({
-      //     query: MY_PAGE,
-      //     context: {
-      //       headers: {
-      //         Authorization: `Bearer ${accessToken}`,
-      //       },
-      //     },
-      //   });
-      //   const userInfo = resultUserInfo.data.fetchUserLoggedIn;
-      //   setUserInfo(userInfo);
+            Modal.success({ content: "로그인 성공하였습니다." });
+            location.reload();
+        } catch (error: any) {
+            Modal.error({ content: error.message });
+        }
+    };
 
-      Modal.success({content:"로그인 성공하였습니다."})
-      location.reload();
-    } catch (error:any) {
-      Modal.error({content:error.message})
+    console.log("현재 로그인 상태?", nowLogin);
 
-    }
-  };
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
-  console.log("현재 로그인 상태?", nowLogin);
+    const handleOK = () => {
+        setIsModalOpen(false);
+    };
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
+    const handleCancel = () => {
+        setIsModalOpen(false);
+    };
 
-  const handleOK = () => {
-    setIsModalOpen(false);
-  };
+    const router = useRouter();
 
-  const handleCancel = () => {
-    setIsModalOpen(false);
-  };
+    const moveToHome = () => {
+        router.push("/");
+    };
 
-  const router = useRouter();
+    const moveToStore = () => {
+        router.push("/store");
+    };
 
-  const moveToHome = () => {
-    router.push("/");
-  };
+    const moveToMyPage = () => {
+        router.push("/mypage");
+    };
 
-  const moveToStore = () => {
-    router.push("/store");
-  };
+    const moveToLogin = () => {
+        setIsModalOpen(true);
+    };
 
-  const moveToMyPage = () => {
-    router.push("/mypage");
-  };
+    const moveToEventPage = () => {
+        router.push("/event");
+    };
 
-  const moveToLogin = () => {
-    setIsModalOpen(true);
-  };
+    const onClickLogout = async () => {
+        try {
+            await logout({});
 
-  const moveToEventPage = () => {
-    router.push("/event");
-  };
+            location.reload();
+        } catch (error) {
+            alert("로그아웃 실패");
+        }
+    };
 
-  const onClickLogout = async () => {
-    try {
-      await logout({});
+    const moveToSignup = () => {
+        router.push("/signup");
+        setIsModalOpen(false);
+    };
 
-      location.reload();
-      // router.push("/");
-    } catch (error) {
-      alert("로그아웃 실패");
-    }
-  };
+    return (
+        <>
+            {isModalOpen ? (
+                <Modal
+                    visible={true}
+                    centered
+                    onOk={handleOK}
+                    onCancel={handleCancel}
+                    okButtonProps={{ style: { display: "none" } }}
+                    cancelButtonProps={{ style: { display: "none" } }}
+                    footer={null}
+                    style={{
+                        borderRadius: "30px",
+                        overflow: "auto",
+                    }}
+                >
+                    <form onSubmit={handleSubmit(onClickLogin)}>
+                        <S.Wrapper>
+                            <S.LoginDiv>
+                                <S.CancelWrapper></S.CancelWrapper>
 
-  const moveToSignup = () => {
-    router.push("/signup");
-    setIsModalOpen(false);
-  };
+                                <S.LogoDiv>
+                                    <S.Logo src="/images/header/keystom.png" />
+                                </S.LogoDiv>
 
-  return (
-    <>
-      {isModalOpen ? (
-        <Modal
-          visible={true}
-          centered
-          onOk={handleOK}
-          onCancel={handleCancel}
-          okButtonProps={{ style: { display: "none" } }}
-          cancelButtonProps={{ style: { display: "none" } }}
-          footer={null}
-          style={{
-            borderRadius: "30px",
-            overflow: "auto",
-          }}
-        >
-          <form onSubmit={handleSubmit(onClickLogin)}>
-            {/* <S.LoginWrapper> */}
-            <S.Wrapper>
-              <S.LoginDiv>
-                <S.CancelWrapper>
-                  {/* <S.CancelDiv>
-                                        <S.CancelBtn src="/images/cancel.png" />
-                                    </S.CancelDiv> */}
-                </S.CancelWrapper>
+                                <S.LoginInput
+                                    type="text"
+                                    placeholder="아이디"
+                                    {...register("email")}
+                                />
+                                <S.LoginError>
+                                    {formState.errors.email?.message}
+                                </S.LoginError>
+                                <S.LoginInput
+                                    type="password"
+                                    placeholder="비밀번호"
+                                    {...register("password")}
+                                />
+                                <S.LoginError>
+                                    {formState.errors.password?.message}
+                                </S.LoginError>
+                            </S.LoginDiv>
 
-                <S.LogoDiv>
-                  <S.Logo src="/images/header/keystom.png" />
-                </S.LogoDiv>
+                            <S.BtnWrapper>
+                                <S.LoginBtn>Login</S.LoginBtn>
+                                <S.SocialLogin>
+                                    <Link href="https://delifarm.site/login/kakao">
+                                        <a
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                        >
+                                            <S.SocialLoginImg src="/images/login/social-login-kakao.png" />
+                                        </a>
+                                    </Link>
 
-                <S.LoginInput
-                  type="text"
-                  placeholder="아이디"
-                  {...register("email")}
-                />
-                <S.LoginError>{formState.errors.email?.message}</S.LoginError>
-                <S.LoginInput
-                  type="password"
-                  placeholder="비밀번호"
-                  {...register("password")}
-                />
-                <S.LoginError>
-                  {formState.errors.password?.message}
-                </S.LoginError>
-              </S.LoginDiv>
+                                    <Link href="https://delifarm.site/login/naver">
+                                        <a
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                        >
+                                            <S.SocialLoginImg src="/images/login/social-login-naver.png" />
+                                        </a>
+                                    </Link>
 
-              <S.BtnWrapper>
-                <S.LoginBtn>Login</S.LoginBtn>
-                <S.SocialLogin>
-                  <Link href="https://delifarm.site/login/kakao" >
-                    <a target="_blank"  rel="noopener noreferrer">
-                      <S.SocialLoginImg src="/images/login/social-login-kakao.png" />
-                    </a>
-                  </Link>
+                                    <Link href="https://delifarm.site/login/google">
+                                        <a
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                        >
+                                            <S.SocialLoginImg src="/images/login/social-login-google.png" />
+                                        </a>
+                                    </Link>
+                                </S.SocialLogin>
+                            </S.BtnWrapper>
 
-                  <Link href="https://delifarm.site/login/naver">
-                    <a target="_blank"  rel="noopener noreferrer">
-                      <S.SocialLoginImg src="/images/login/social-login-naver.png" />
-                    </a>
-                  </Link>
+                            <S.StringWrapper>
+                                <S.StringDiv>Forgot Password?</S.StringDiv>
+                                <S.FindPassBtn>Find Password</S.FindPassBtn>
+                            </S.StringWrapper>
 
-                  <Link href="https://delifarm.site/login/google">
-                    <a target="_blank"  rel="noopener noreferrer">
-                      <S.SocialLoginImg src="/images/login/social-login-google.png" />
-                    </a>
-                  </Link>
-                </S.SocialLogin>
-              </S.BtnWrapper>
-
-              <S.StringWrapper>
-                <S.StringDiv>Forgot Password?</S.StringDiv>
-                <S.FindPassBtn>Find Password</S.FindPassBtn>
-              </S.StringWrapper>
-
-              <S.StringWrapper>
-                <S.StringDiv>Not a member yet?</S.StringDiv>
-                <S.SignUpBtn onClick={moveToSignup} type="button">
-                  Sign Up
-                </S.SignUpBtn>
-              </S.StringWrapper>
-            </S.Wrapper>
-            {/* </S.LoginWrapper> */}
-          </form>
-        </Modal>
-      ) : (
-        <div></div>
-      )}
-      <Wrapper>
-        <LogoDiv>
-          {/* <Logo
-            onClick={moveToHome}
-            onMouseOver={() => setIsHovered(true)}
-            onMouseOut={() => setIsHovered(false)}
-          >
-            {isHovered ? (
-              <MovingText2
-                type="bounce"
-                duration="1000ms"
-                delay="0s"
-                direction="normal"
-                timing="ease"
-                iteration="1"
-                fillMode="none"
-              >
-                KEYSTOM
-              </MovingText2>
+                            <S.StringWrapper>
+                                <S.StringDiv>Not a member yet?</S.StringDiv>
+                                <S.SignUpBtn
+                                    onClick={moveToSignup}
+                                    type="button"
+                                >
+                                    Sign Up
+                                </S.SignUpBtn>
+                            </S.StringWrapper>
+                        </S.Wrapper>
+                    </form>
+                </Modal>
             ) : (
-              <Logo>KEYSTOM</Logo>
+                <div></div>
             )}
-          </Logo> */}
-          <Logo
-            onClick={moveToHome}
-          >KEYSTOM</Logo>
+            <Wrapper>
+                <LogoDiv>
+                    <Logo onClick={moveToHome}>KEYSTOM</Logo>
+                </LogoDiv>
+                <MenuWrapper>
+                    <MenuDiv>
+                        <Menu onClick={moveToStore}>Store</Menu>
+                        <Menu onClick={moveToEventPage}>Event</Menu>
+                        <Menu onClick={moveToMyPage}>My Page</Menu>
+                    </MenuDiv>
+                    <MenuIconDiv>
+                        {nowLogin === undefined ? (
+                            <IconWrapper>
+                                <UserIcon
+                                    src="/images/header/account.png"
+                                    onClick={moveToLogin}
+                                />
+                            </IconWrapper>
+                        ) : (
+                            <IconWrapper>
+                                <UserIcon
+                                    src="/images/header/logout.png"
+                                    onClick={onClickLogout}
+                                />
+                            </IconWrapper>
+                        )}
 
-        </LogoDiv>
-        <MenuWrapper>
-          <MenuDiv>
-            <Menu onClick={moveToStore}>Store</Menu>
-            <Menu onClick={moveToEventPage}>Event</Menu>
-            <Menu onClick={moveToMyPage}>My Page</Menu>
-          </MenuDiv>
-          <MenuIconDiv>
-            {nowLogin === undefined ? (
-              <IconWrapper>
-                <UserIcon
-                  src="/images/header/account.png"
-                  onClick={moveToLogin}
-                />
-              </IconWrapper>
-            ) : (
-              <IconWrapper>
-                <UserIcon
-                  src="/images/header/logout.png"
-                  onClick={onClickLogout}
-                />
-              </IconWrapper>
-            )}
-
-            <BasketWrapper>
-              {/* <BasketNum>0</BasketNum> */}
-              <BasketIcon src="/images/header/on.png" onClick={moveToMyPage} />
-            </BasketWrapper>
-          </MenuIconDiv>
-        </MenuWrapper>
-      </Wrapper>
-    </>
-  );
+                        <BasketWrapper>
+                            <BasketIcon
+                                src="/images/header/on.png"
+                                onClick={moveToMyPage}
+                            />
+                        </BasketWrapper>
+                    </MenuIconDiv>
+                </MenuWrapper>
+            </Wrapper>
+        </>
+    );
 }

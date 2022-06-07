@@ -61,8 +61,6 @@ export const SearchInputWrapper = styled.div`
 export const SearchIcon = styled.img`
     width: 24px;
 
-    /* cursor: pointer; */
-
     :hover {
         color: #b150f2;
     }
@@ -134,7 +132,6 @@ export const ProductImage = styled.img<{ src?: string }>`
     background-color: gray;
     cursor: pointer;
 
-    /* background-image: url("/images/keyboard-01.jpg"); */
     background-position: center;
     background-size: cover;
     border-radius: 10px 0px 0px 10px;

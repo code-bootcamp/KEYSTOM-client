@@ -1,21 +1,24 @@
 import { GraphQLClient, gql } from "graphql-request";
 
 const RESTORE_ACCESS_TOKEN = gql`
-  mutation restoreAccessToken {
-    restoreAccessToken
-  }
+    mutation restoreAccessToken {
+        restoreAccessToken
+    }
 `;
 
 export async function getAccessToken() {
-  try {
-    const graphQLClient = new GraphQLClient("https://delifarm.site/graphql", {
-      credentials: "include",
-    });
-    const result = await graphQLClient.request(RESTORE_ACCESS_TOKEN);
-    const newAccessToken = result.restoreAccessToken;
-    console.log("새로운토큰", newAccessToken);
-    return newAccessToken;
-  } catch (error) {
-    console.log("겟엑세스토큰 실패임");
-  }
+    try {
+        const graphQLClient = new GraphQLClient(
+            "https://delifarm.site/graphql",
+            {
+                credentials: "include",
+            }
+        );
+        const result = await graphQLClient.request(RESTORE_ACCESS_TOKEN);
+        const newAccessToken = result.restoreAccessToken;
+        console.log("새로운토큰", newAccessToken);
+        return newAccessToken;
+    } catch (error) {
+        console.log("겟엑세스토큰 실패임");
+    }
 }
