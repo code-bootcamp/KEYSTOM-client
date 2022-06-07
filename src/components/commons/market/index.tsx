@@ -1,5 +1,5 @@
-import { withAuth } from "../../src/components/commons/hocs/withAuth";
-import MarketListContainer from "../../src/components/units/market/list/MarketList.container";
+import MarketListContainer from '../../units/market/list/MarketList.container';
+import { withAuth } from '../hocs/withAuth';
 
 function MarketList() {
     return <MarketListContainer />;

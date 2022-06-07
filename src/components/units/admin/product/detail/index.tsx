@@ -66,6 +66,8 @@ const TagWrapper = styled.div`
   cursor: pointer;
 `;
 
+const Tag = styled.span``
+
 const ImageWrapper = styled.div`
   display: flex;
   padding-left: 20px;

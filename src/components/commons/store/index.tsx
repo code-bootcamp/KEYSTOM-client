@@ -35,10 +35,10 @@ export const paymentProductId = atom({
   },
 });
 
-// export const visitedPageState = atom({
-//   key: "visitedPageState",
-//   default: "/",
-// });
+export const visitedPageState = atom({
+  key: "visitedPageState",
+  default: "/",
+});
 
 // export const recentItemList = atom({
 //   key: "TodayItemList",
