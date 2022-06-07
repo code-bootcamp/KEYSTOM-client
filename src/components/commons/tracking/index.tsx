@@ -1,11 +1,9 @@
 import axios from "axios";
-import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export default function SmartPage() {
-    const router = useRouter();
-    const [code, setCode] = useState("");
-    const [invoice, setInvoice] = useState("");
+    const [, setCode] = useState("");
+    const [, setInvoice] = useState("");
 
     const onChangeCode = (e: any) => {
         setCode(e.target.value);

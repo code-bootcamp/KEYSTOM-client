@@ -59,7 +59,7 @@ export default function MypagePresenter(props: any) {
                             <S.MyCouponListWrapper>
                                 {props.userHaveCouponData?.fetchUserHaveCoupons.map(
                                     (el: any) => (
-                                        <S.MyCouponList>
+                                        <S.MyCouponList key={el.id}>
                                             <S.MyCouponName>
                                                 {el.coupon?.couponName}
                                             </S.MyCouponName>
@@ -309,8 +309,8 @@ export default function MypagePresenter(props: any) {
                     <S.BasketList>My Basket</S.BasketList>
                     <S.BottomMapWrapper>
                         {props.baskets ? (
-                            props.baskets.map((el: any) => (
-                                <S.BottomWrapper>
+                            props.baskets.map((el: any, idx:number) => (
+                                <S.BottomWrapper key={idx}>
                                     <S.BasketProductImageWrapper>
                                         <S.BasketProductImage
                                             id={el.id}

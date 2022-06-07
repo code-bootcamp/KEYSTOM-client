@@ -39,22 +39,22 @@ export const visitedPageState = atom({
     default: "/",
 });
 
-export let recoilLength = atom({
+export const recoilLength = atom({
     key: "recoilLength",
     default: 0,
 });
 
-export let recoilSpaceLength = atom({
+export const recoilSpaceLength = atom({
     key: "recoilSpaceLength",
     default: 0,
 });
 
-export let recoilEnterLength = atom({
+export const recoilEnterLength = atom({
     key: "recoilEnterLength",
     default: 0,
 });
 
-export let recoilEscLength = atom({
+export const recoilEscLength = atom({
     key: "recoilEscLength",
     default: 0,
 });

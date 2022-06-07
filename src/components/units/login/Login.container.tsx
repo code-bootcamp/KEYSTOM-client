@@ -3,10 +3,10 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
-import { accessTokenState, userInfoState } from "../../commons/store";
-import { useApolloClient, useMutation } from "@apollo/client";
+import { accessTokenState} from "../../commons/store";
+import { useMutation } from "@apollo/client";
 import { useRecoilState } from "recoil";
-import { LOGIN, LOGIN_TEST } from "./Login.queries";
+import { LOGIN } from "./Login.queries";
 import { ILogin } from "./Login.types";
 import { Modal } from "antd";
 
@@ -20,9 +20,7 @@ const schema = yup.object({
 export default function LoginContainer() {
     const router = useRouter();
     const [, setAccessToken] = useRecoilState(accessTokenState);
-    const [, setUserInfo] = useRecoilState(userInfoState);
     const [login] = useMutation(LOGIN);
-    const client = useApolloClient();
 
     const { register, formState, handleSubmit } = useForm({
         resolver: yupResolver(schema),
@@ -36,7 +34,6 @@ export default function LoginContainer() {
                     ...data,
                 },
             });
-            console.log("이건 내 토큰", result.data?.login);
             const accessToken = result.data?.login;
             setAccessToken(accessToken);
             router.push("/");

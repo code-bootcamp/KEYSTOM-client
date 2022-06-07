@@ -1,4 +1,3 @@
-import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { useRecoilState, useRecoilValueLoadable } from "recoil";
 import {
@@ -8,7 +7,6 @@ import {
 } from "../store/index";
 
 export const withAuth = (Component:any) => (props:any) => {
-    const router = useRouter();
     const [accessToken] = useRecoilState(accessTokenState);
     const [isLoaded] = useRecoilState(isLoadedState);
     const loadableAccessToken = useRecoilValueLoadable(restoreAccessTokenLoadable);

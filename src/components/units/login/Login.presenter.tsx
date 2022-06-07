@@ -1,4 +1,3 @@
-import { Modal, Button } from "antd";
 
 import * as S from "./Login.styles";
 import { useRouter } from "next/router";

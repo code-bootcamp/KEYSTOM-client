@@ -41,7 +41,6 @@ export default function AdminDescriptionPage(props: any) {
         }
         if (props.data?.description) setNewDescription(props.data?.description);
 
-        return;
     }, [props.data?.description]);
 
     console.log("new디스크립션?", newDescription);

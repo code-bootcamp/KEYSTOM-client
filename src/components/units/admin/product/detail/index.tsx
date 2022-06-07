@@ -5,7 +5,6 @@ import { FETCH_PRODUCTS } from "../../../product/list/ProductList.queries";
 import dynamic from "next/dynamic";
 import "@toast-ui/editor/dist/toastui-editor.css";
 import { Modal } from "antd";
-import { useEffect, useState } from "react";
 import AdminDescriptionPage from "./description";
 
 const PostViewer = dynamic(() => import("../detail/Viewer"), { ssr: false });
@@ -68,14 +67,6 @@ const TagWrapper = styled.div`
 
 const Tag = styled.span``;
 
-const ImageWrapper = styled.div`
-    display: flex;
-    padding-left: 20px;
-    width: 100%;
-    margin-top: 20px;
-    margin-bottom: 40px;
-`;
-
 const SubmitButton = styled.button`
     width: 250px;
     height: 80px;
@@ -96,7 +87,6 @@ const FETCH_PRODUCT = gql`
             title
             description
             price
-            # like
             createdAt
             thumbnail
             productTags {
@@ -160,7 +150,9 @@ export default function AdminProductDetail() {
                 <SmallTitle>Description</SmallTitle>
                 <AdminDescriptionPage
                     data={data?.fetchProduct}
-                ></AdminDescriptionPage>
+                >
+                     <PostViewer />
+                </AdminDescriptionPage>
                 <SmallTitle>Price</SmallTitle>
                 <ContentDiv>{data?.fetchProduct.price}</ContentDiv>
             </InputWrapper>

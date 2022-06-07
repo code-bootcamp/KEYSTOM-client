@@ -3,13 +3,13 @@ import { Modal } from "antd";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import ProductDetailPresenter from "../detail/ProductDetail.presenter";
-import { paymentProductId } from "../../../commons/store";
 import { useRecoilState } from "recoil";
 import {
   recoilLength,
   recoilSpaceLength,
   recoilEnterLength,
   recoilEscLength,
+  paymentProductId
 } from "../../../commons/store";
 
 const FETCH_PRODUCT = gql`
@@ -21,14 +21,6 @@ const FETCH_PRODUCT = gql`
       price
       createdAt
       thumbnail
-    }
-  }
-`;
-
-const FETCH_USER_COUPON = gql`
-  query fetchUserCoupons($email: String!) {
-    fetchUserCoupons(email: $email) {
-      id
     }
   }
 `;
@@ -56,13 +48,13 @@ const CREATE_CUSTOM = gql`
 export default function ProductDetailContainer() {
   const router = useRouter();
   const [isBasket, setIsBasket] = useState(false);
-  const [productId, setProductId] = useRecoilState(paymentProductId);
-  const [recoilLength2, setRecoilLength2] = useRecoilState(recoilLength);
-  const [recoilSpaceLength2, setRecoilSpaceLength2] =
+  const [, setProductId] = useRecoilState(paymentProductId);
+  const [recoilLength2, ] = useRecoilState(recoilLength);
+  const [recoilSpaceLength2, ] =
     useRecoilState(recoilSpaceLength);
-  const [recoilEnterLength2, setRecoilEnterLength2] =
+  const [recoilEnterLength2, ] =
     useRecoilState(recoilEnterLength);
-  const [recoilEscLength2, setRecoilEscLength2] =
+  const [recoilEscLength2, ] =
     useRecoilState(recoilEscLength);
 
   const [getCoupon] = useMutation(CREATE_EVENT_COUPON);
@@ -79,22 +71,15 @@ export default function ProductDetailContainer() {
     const baskets = JSON.parse(localStorage.getItem("baskets") || "[]");
     const a = baskets.map((el: any) => el.id);
 
-    // console.log("로컬스토리지 저장 된 값", a);
 
     if (a.includes(productId)) {
       setIsBasket(true);
-      //   console.log("값 바뀌나?,", isBasket);
     }
   }, [data?.fetchProduct.id]);
 
-  // 담기
   const onClickBasket = (el: any) => () => {
-    // console.log(isBasket);
-    // console.log(el);
-    // 1. 기존 장바구니 가져오기
     const baskets = JSON.parse(localStorage.getItem("baskets") || "[]");
 
-    // 2. 이미 담겼는지 확인하기
     const temp = baskets.filter((basketEl: any) => basketEl.id === el.id);
 
     if (temp.length === 1) {
@@ -102,7 +87,6 @@ export default function ProductDetailContainer() {
       return;
     }
 
-    // // 3. 장바구니에 담기
     const { __typename, ...newEl } = el;
     baskets.push(newEl);
 
@@ -111,11 +95,8 @@ export default function ProductDetailContainer() {
     setIsBasket(true);
   };
 
-  // =================================================================
 
-  // 담기 취소
   const onClickDelete = (el: any) => () => {
-    // console.log(el);
 
     const baskets = JSON.parse(localStorage.getItem("baskets") || "[]");
 
@@ -124,13 +105,11 @@ export default function ProductDetailContainer() {
     setIsBasket((prev) => !prev);
   };
 
-  // 쿠폰 적용
   const onClickCouponApply = () => {};
 
-  // 결제하기
   const onClickPayNow = async (e:any) => {
     try {
-      const payResult = await createCustom({
+       await createCustom({
         variables: {
           createCustomInput: {
             space: recoilSpaceLength2,
@@ -141,7 +120,6 @@ export default function ProductDetailContainer() {
           },
         },
       });
-      // console.log(payResult);
       setProductId(e.target.id);
       router.push("/payment");
     } catch (error) {
@@ -151,8 +129,7 @@ export default function ProductDetailContainer() {
 
   const onClickGetCoupon = async () => {
     try {
-      const result = await getCoupon({});
-      // console.log("쿠폰리절트", result);
+      await getCoupon({});
       Modal.success({ content: "쿠폰을 발급 받았습니다!" });
     } catch (error) {
       Modal.error({
