@@ -162,11 +162,8 @@ export default function SignUpContainer() {
                     },
                 },
             });
-            console.log("==================================")
-            console.log("==================================")
-            console.log("==================================")
-            console.log("==================================")
-            console.log("회원가입",result);
+
+            // console.log("회원가입",result);
             Modal.success({content:"회원가입에 성공하였습니다"})
             router.push("/");
         } catch (error: any) {

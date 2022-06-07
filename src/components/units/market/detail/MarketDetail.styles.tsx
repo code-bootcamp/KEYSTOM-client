@@ -9,9 +9,6 @@ export const Wrapper = styled.div`
 
 export const DetailWrapper = styled.div`
     width: 1500px;
-
-    /* background-color: red; */
-
     padding-top: 120px;
     padding-bottom: 500px;
 `;

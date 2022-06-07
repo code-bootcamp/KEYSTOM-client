@@ -41,7 +41,6 @@ export const SearchInputIconWrapper = styled.div`
     height: 70px;
     padding-left: 30px;
 
-    font-weight: 400;
     font-size: 20px;
 
     background-color: transparent;
@@ -49,13 +48,11 @@ export const SearchInputIconWrapper = styled.div`
     border-radius: 10px;
 
     display: flex;
-    flex-direction: row;
     align-items: center;
 `;
 
 export const SearchInputWrapper = styled.div`
     display: flex;
-    flex-direction: row;
     justify-content: center;
     align-items: center;
     padding-bottom: 30px;
@@ -74,7 +71,6 @@ export const SearchIcon = styled.img`
 export const SearchInput = styled.input`
     width: 1240px;
     height: 50px;
-    font-weight: 400;
     font-size: 20px;
 
     border: none;
@@ -96,7 +92,6 @@ export const SearchTextWrapper = styled.div`
 `;
 
 export const SearchText = styled.div`
-    font-weight: 400;
     font-size: 20px;
     line-height: 28px;
 
@@ -113,16 +108,13 @@ export const ProductListWrapper = styled.div`
     padding-top: 40px;
     padding-bottom: 300px;
     display: flex;
-    flex-direction: row;
 `;
 
 export const ProductBox = styled.div`
     width: 610px;
     height: 270px;
 
-    /* background: yellow; */
     display: flex;
-    flex-direction: row;
 
     background-color: #c4c4c4;
     margin-bottom: 30px;
@@ -133,7 +125,6 @@ export const ProductImageDiv = styled.div`
     width: 292px;
     height: 270px;
     border-radius: 10px 0px 0px 10px;
-    background-color: aliceblue;
 `;
 
 export const ProductImage = styled.img<{ src?: string }>`
@@ -177,12 +168,10 @@ export const ProductPrice = styled.div`
 `;
 
 export const ProductContents = styled.div`
-    font-weight: 400;
     font-size: 14px;
     line-height: 20px;
     color: #b1b1b1;
 
-    /* white-space: nowrap; */
     overflow: hidden;
     text-overflow: ellipsis;
 `;

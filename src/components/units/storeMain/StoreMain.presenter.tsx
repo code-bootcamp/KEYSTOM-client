@@ -1,15 +1,15 @@
 import * as S from "./StoreMain.styles";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import gsap from "gsap";
 import { useRouter } from "next/router";
-import TypeWriter from "typewriter-effect";
+// import TypeWriter from "typewriter-effect";
 import ScrollAnimation from "react-animate-on-scroll";
 import "animate.css/animate.compat.css";
-import LayoutHeader from "../../commons/layout/header/index";
-import { AnimatePresence } from "framer-motion";
-import LandingAnimation from "./LandingAnimation";
-import { FullPage, Slide } from "react-full-page";
-import LayoutFooter from "../../commons/layout/footer";
+// import LayoutHeader from "../../commons/layout/header/index";
+// import { AnimatePresence } from "framer-motion";
+// import LandingAnimation from "./LandingAnimation";
+// import { FullPage, Slide } from "react-full-page";
+// import LayoutFooter from "../../commons/layout/footer";
 
 const ReviewArr = [
   {
@@ -33,7 +33,7 @@ const ReviewArr = [
 ];
 
 export default function StorePresenter() {
-  const [tl, setTl] = useState();
+  const [tl, setTl] = useState<any>();
   const router = useRouter();
 
   useEffect(() => {

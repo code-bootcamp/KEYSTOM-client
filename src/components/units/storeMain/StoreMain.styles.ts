@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-// import { useMediaQuery } from "react-responsive";
 
 export const Wrapper = styled.div`
   width: 100%;
@@ -13,7 +12,6 @@ export const MainWrapper = styled.div`
   width: 1920px;
   position: relative;
   top: -80px;
-  /* padding-top: 70px; */
 `;
 
 export const ImageWrapper = styled.div`
@@ -23,7 +21,6 @@ export const ImageWrapper = styled.div`
 export const MainImage = styled.div`
   width: 100%;
   height: 1080px;
-  /* background-color: Red; */
   background-image: url("/images/main/main-banner1.png");
   background-position: center;
   background-size: cover;
@@ -32,7 +29,6 @@ export const MainImage = styled.div`
 export const MainImage2 = styled.div`
   width: 100%;
   height: 1080px;
-  /* background-color: Red; */
   background-image: url("/images/main/main-2.png");
   background-position: center;
   background-size: cover;
@@ -41,7 +37,6 @@ export const MainImage2 = styled.div`
 export const MainImage3 = styled.div`
   width: 100%;
   height: 1080px;
-  /* background-color: Red; */
   background-image: url("/images/main/main-6.png");
   background-position: center;
   background-size: cover;
@@ -53,7 +48,6 @@ export const ContentsWrapper = styled.div`
   padding: 325px 340px 361px 340px;
 
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
 `;
 
@@ -138,7 +132,7 @@ export const Text = styled.div`
 
 export const BestReviewWrapper = styled.div`
   width: 100%;
-  padding: 200px 340px 200px 340px;
+  padding: 200px 340px;
 `;
 
 export const BestProductWrapper = styled.div`
@@ -158,9 +152,6 @@ export const ReviewImage = styled.img<{ src: string }>`
   height: 291px;
   border-radius: 10px 10px 0 0;
 
-  /* background-color: blue; */
-
-  /* background-image: url(); */
   background-position: center;
   background-size: cover;
 `;
@@ -261,7 +252,7 @@ export const PreloaderDiv = styled.div`
   height: 100%;
   display: flex;
   overflow: hidden;
-  overflow-y: hidden; /* Hide vertical scrollbar */
+  overflow-y: hidden;
   overflow-x: hidden;
 `;
 
@@ -279,8 +270,7 @@ export const HideTitle = styled.div`
   margin-right: auto;
   margin-top: 355px;
 
-  font-family: "NanumGothicCoding";
-  font-style: normal;
+
   font-weight: 700;
   font-size: 48px;
   line-height: 64px;
@@ -293,9 +283,7 @@ export const HideTopContents = styled.div`
   margin-right: auto;
   margin-top: 73px;
 
-  font-family: "NanumGothicCoding";
-  font-style: normal;
-  font-weight: 400;
+
   font-size: 24px;
   line-height: 28px;
   color: #f1f1f1;
@@ -307,9 +295,6 @@ export const HideBottomContents = styled.div`
   margin-right: auto;
   margin-top: 5px;
 
-  font-family: "NanumGothicCoding";
-  font-style: normal;
-  font-weight: 400;
   font-size: 24px;
   line-height: 28px;
   color: #f1f1f1;
@@ -324,9 +309,6 @@ export const HideButton = styled.button`
   margin-top: 176px;
   border: none;
 
-  font-family: "NanumGothicCoding";
-  font-style: normal;
-  font-weight: 400;
   font-size: 20px;
   line-height: 24px;
   color: #ffffff;
