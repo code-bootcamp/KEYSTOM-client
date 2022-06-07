@@ -20,7 +20,6 @@ const FETCH_USED_PRODUCTS = gql`
 `;
 
 export default function MarketListContainer() {
-    // const { data } = useQuery(FETCH_USED_PRODUCTS);
-    // console.log(data);
+
     return <MarketListPresenter />;
 }

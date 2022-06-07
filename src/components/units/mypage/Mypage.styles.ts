@@ -17,7 +17,6 @@ export const WrapperContainer = styled.div`
 
 export const TopWrapper = styled.div`
   display: flex;
-  flex-direction: row;
 `;
 
 export const TopLeftContainer = styled.div`
@@ -31,8 +30,6 @@ export const ProfileImage = styled.img`
 
   border-radius: 30px;
 
-  /* background: #d9d9d9; */
-  /* background-image: url("images/mypage/profilePic.png"); */
   border-radius: 10px;
 `;
 
@@ -46,14 +43,12 @@ export const TopRightContainer = styled.div`
 
 export const NameContainer = styled.div`
   display: flex;
-  flex-direction: row;
   align-items: center;
 `;
 
 export const UserTitle = styled.div`
   display: flex;
   align-items: center;
-  font-style: normal;
 
   width: 100px;
   font-weight: 700;
@@ -68,9 +63,6 @@ export const VerticalLine = styled.img`
 `;
 
 export const UserName = styled.div`
-  font-style: normal;
-
-  font-weight: 400;
   font-size: 20px;
 
   margin-left: 20px;
@@ -78,40 +70,31 @@ export const UserName = styled.div`
 
 export const IdContainer = styled.div`
   display: flex;
-  flex-direction: row;
 `;
 
 export const NickNameContainer = styled.div`
   display: flex;
-  flex-direction: row;
 `;
 
 export const NickName = styled.div`
-  font-style: normal;
-
   width: 100px;
   font-weight: 700;
   font-size: 20px;
 `;
 
 export const UserNickName = styled.div`
-  font-style: normal;
-  font-weight: 400;
   font-size: 20px;
 
   margin-left: 20px;
 `;
 
 export const Id = styled.div`
-  font-style: normal;
   width: 100px;
   font-weight: 700;
   font-size: 20px;
 `;
 
 export const UserId = styled.div`
-  font-style: normal;
-  font-weight: 400;
   font-size: 20px;
 
   margin-left: 20px;
@@ -119,42 +102,32 @@ export const UserId = styled.div`
 
 export const PointWrapper = styled.div`
   display: flex;
-  flex-direction: row;
 `;
 
 export const Point = styled.div`
-  font-style: normal;
   width: 100px;
   font-weight: 700;
   font-size: 20px;
 `;
 
 export const UserPoint = styled.div`
-  font-style: normal;
-  font-weight: 400;
   font-size: 20px;
-
   margin-left: 20px;
 `;
 
 export const DeliverWrapper = styled.div`
   display: flex;
-  flex-direction: row;
   align-items: center;
 `;
 
 export const DeliveryAddress = styled.div`
-  font-style: normal;
   width: 100px;
   font-weight: 700;
   font-size: 20px;
 `;
 
 export const UserDeliveryAddress = styled.div`
-  font-style: normal;
-  font-weight: 400;
   font-size: 18px;
-
   margin-left: 20px;
 `;
 
@@ -168,8 +141,6 @@ export const SeeCoupon = styled.div`
   border: 1px solid #b150f2;
   border-radius: 4px;
 
-  font-style: normal;
-  font-weight: 400;
   font-size: 14px;
   line-height: 20px;
 
@@ -183,7 +154,6 @@ export const SeeCoupon = styled.div`
 
 export const ButtonWrapper = styled.div`
   display: flex;
-  flex-direction: row;
   margin-left: 290px;
   margin-top: 76px;
 `;
@@ -193,15 +163,12 @@ export const PointCharge = styled.button`
   height: 80px;
   background: #c4c4c4;
 
-  font-style: normal;
   font-weight: 700;
   font-size: 24px;
   color: #000000;
 
   margin-right: 30px;
   border: none;
-
-  cursor: pointer;
 `;
 
 export const PasswordFind = styled.button`
@@ -209,13 +176,10 @@ export const PasswordFind = styled.button`
   height: 80px;
   background: #c4c4c4;
 
-  font-style: normal;
   font-weight: 700;
   font-size: 24px;
   color: #000000;
   border: none;
-
-  cursor: pointer;
 `;
 
 export const Line = styled.div`
@@ -230,7 +194,6 @@ export const Line = styled.div`
 export const MiddleWrapper = styled.div``;
 
 export const BoughtList = styled.div`
-  font-style: normal;
   font-weight: 700;
   font-size: 32px;
   line-height: 32px;
@@ -244,8 +207,6 @@ export const BoughtListInfo = styled.div`
   width: 1240px;
   height: 104px;
   display: flex;
-  flex-direction: row;
-  /* justify-content: space-around; */
 
   background-color: #2c2c2c;
   margin-bottom: 30px;
@@ -256,14 +217,12 @@ export const NoBoughtListInfo = styled.div`
   width: 1240px;
   height: 104px;
   display: flex;
-  flex-direction: row;
   justify-content: center;
   align-items: center;
 
   background-color: #2c2c2c;
   border-radius: 10px;
 
-  font-style: normal;
   font-size: 20px;
   line-height: 24px;
 
@@ -302,8 +261,6 @@ export const BoughtDateWrapper = styled.div`
 `;
 
 export const BoughtDateText = styled.div`
-  font-style: normal;
-  font-weight: 400;
   font-size: 14px;
   line-height: 22px;
 
@@ -328,12 +285,9 @@ export const BoughtPriceWrapper = styled.div`
   margin-bottom: auto;
   margin-left: 60px;
 
-  /* text-align: center; */
 `;
 
 export const BoughtPriceText = styled.div`
-  font-style: normal;
-  font-weight: 400;
   font-size: 14px;
   line-height: 22px;
 
@@ -359,8 +313,6 @@ export const BoughtStatusWrapper = styled.div`
 `;
 
 export const BoughtStatusText = styled.div`
-  font-style: normal;
-  font-weight: 400;
   font-size: 14px;
   line-height: 22px;
 
@@ -375,17 +327,11 @@ export const BoughtStatus = styled.button`
   display: flex;
   align-items: center;
 
-  /* line-height: 24px; */
   color: #ffffff;
   background-color: transparent;
-  /* margin-right: 20px; */
   padding: 0 10px;
   font-size: 12px;
   border: 1px solid #ffffff;
-  /* border: none; */
-  /* border-radius: 6px; */
-
-  cursor: pointer;
 
   :hover {
     border: 1px solid #b150f2;
@@ -441,8 +387,6 @@ export const BoughtReviewIcon = styled.button`
   border: 1px solid #ffffff;
   border-radius: 6px;
 
-  cursor: pointer;
-
   :hover {
     background-color: #b150f2;
     border: none;
@@ -454,7 +398,6 @@ export const BottomMapWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
 
-  /* justify-content: space-between; */
 `;
 
 export const BottomWrapper = styled.div``;
@@ -501,7 +444,6 @@ export const BasketProductInfoWrapper2 = styled.div`
 export const BasketProductInfoWrapper3 = styled.div`
   width: 100%;
   display: flex;
-  /* justify-content: space-between; */
   align-items: center;
 `;
 export const ProductInfoWrapper = styled.div`
@@ -511,7 +453,6 @@ export const ProductInfoWrapper = styled.div`
 `;
 
 export const ProductName = styled.div`
-  font-style: normal;
   font-weight: 700;
   font-size: 22px;
   line-height: 28px;
@@ -552,7 +493,6 @@ export const ProductBuyButton = styled.button`
   background-color: #2c2c2c;
 
   margin-left: auto;
-  cursor: pointer;
   :hover {
     border: none;
     background-color: #b150f2;
@@ -575,7 +515,6 @@ export const MyCouponWrapper = styled.div`
 `;
 
 export const MyCoupon = styled.div`
-  font-style: normal;
   font-weight: 700;
   font-size: 24px;
   line-height: 28px;
@@ -588,8 +527,6 @@ export const MyCoupon = styled.div`
 `;
 
 export const MyCouponDesc = styled.div`
-  font-style: normal;
-  font-weight: 400;
   font-size: 14px;
   line-height: 20px;
 
@@ -606,7 +543,6 @@ export const MyCouponListWrapper = styled.div`
 
 export const MyCouponList = styled.div`
   display: flex;
-  flex-direction: row;
   width: 443px;
   height: 60px;
 
@@ -619,8 +555,6 @@ export const MyCouponList = styled.div`
 `;
 
 export const MyCouponName = styled.div`
-  font-style: normal;
-  font-weight: 400;
   font-size: 18px;
   line-height: 24px;
 
@@ -632,8 +566,6 @@ export const MyCouponName = styled.div`
 `;
 
 export const MyCouponDisCount = styled.div`
-  font-style: normal;
-  font-weight: 400;
   font-size: 14px;
   line-height: 20px;
 
@@ -709,7 +641,6 @@ export const Button = styled.button`
 
   border-radius: 6px;
 
-  cursor: pointer;
   :hover {
     color: #b150f2;
     border: 1px solid #b150f2;

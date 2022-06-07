@@ -27,10 +27,7 @@ export const ReviewTextWrapper = styled.div`
 `;
 export const ReviewProductWrapper = styled.div`
   width: 100%;
-
   display: flex;
-  flex-direction: row;
-
   padding-bottom: 30px;
 `;
 
@@ -43,7 +40,6 @@ export const ReviewProductImage = styled.img`
 export const ReviewProductTitleOptionWrapper = styled.div`
   width: calc(100% - 170px);
 
-  /* background-color: yellow; */
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -60,7 +56,6 @@ export const ReviewProductTitle = styled.div`
 
 export const ReviewProductOptionWrapper = styled.div`
   display: flex;
-  flex-direction: row;
   align-items: center;
 `;
 
@@ -74,7 +69,6 @@ export const VerticalLine = styled.div`
 `;
 
 export const ReviewProductOption = styled.div`
-  font-weight: 400;
   font-size: 18px;
 `;
 
@@ -92,12 +86,10 @@ export const ReviewTitleContentsWrapper = styled.div`
 
 export const ReviewTitle = styled.div`
   width: 100%;
-
-  font-weight: 400;
   font-size: 24px;
 
   color: #000000;
-  padding: 30px 40px 30px 40px;
+  padding: 30px 40px;
 
   border-bottom: 1px solid #ffffff;
 `;
@@ -118,7 +110,7 @@ export const ReviewContents = styled.textarea`
   font-weight: 400;
   font-size: 18px;
 
-  padding: 30px 40px 30px 40px;
+  padding: 30px 40px;
   background-color: #2c2c2c;
   color: #ffffff;
   border: none;
@@ -130,7 +122,6 @@ export const ReviewContentsMaxLength = styled.div`
   text-align: end;
   padding: 0px 40px 40px 0px;
 
-  font-weight: 400;
   font-size: 18px;
   color: #fff;
 `;
@@ -140,7 +131,6 @@ export const ReviewUploadWrapper = styled.div`
 
   text-align: end;
   display: flex;
-  flex-direction: row;
 
   background-color: #2c2c2c;
 
@@ -188,7 +178,6 @@ export const ReviewSubmitButton = styled.button`
   border-radius: 10px;
   font-size: 24px;
 
-  cursor: pointer;
   :hover {
     font-weight: 700;
   }
@@ -206,7 +195,6 @@ export const ReviewCancelButton = styled.button`
 
   margin-right: 27px;
 
-  cursor: pointer;
   :hover {
     border: 1px solid #b150f2;
     color: #b150f2;

@@ -7,5 +7,6 @@ export interface IReviewWritePresenter{
     setImageUrls:any
     imageUrls:any
     data:any
+    customData:any
 
 }
