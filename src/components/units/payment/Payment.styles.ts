@@ -9,9 +9,7 @@ export const Wrapper = styled.div`
 
 export const PaymentWrapper = styled.div`
   width: 1240px;
-
   padding-top: 100px;
-  /* padding-bottom: 200px; */
 `;
 
 export const PaymentText = styled.div`
@@ -63,26 +61,20 @@ export const PaymentPriceTitle = styled.div`
 `;
 
 export const PaymentPriceTableWrapper = styled.div`
-  /* height: 300px; */
-
-  font-weight: 400;
   font-size: 24px;
 `;
 
 export const PaymentPriceTableText = styled.div`
-  font-weight: 400;
   font-size: 18px;
   line-height: 24px;
 
   margin-bottom: 20px;
   color: #b1b1b1;
 
-  /* border-bottom: 2px solid #c4c4c4; */
 `;
 
 export const Row = styled.div`
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
   height: 49px;
   align-items: center;
@@ -99,7 +91,6 @@ export const Row = styled.div`
 
 export const Row2 = styled.div`
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
   height: 61px;
   align-items: center;
@@ -146,10 +137,7 @@ export const ColumnPrice = styled.div`
 `;
 
 export const PaymentPriceTotalWrapper = styled.div`
-  /* width: 100%; */
-
   display: flex;
-  flex-direction: row;
   justify-content: flex-end;
 
   margin-right: 28px;
@@ -159,7 +147,6 @@ export const PaymentPriceTotalWrapper = styled.div`
 `;
 
 export const PaymentPriceTotal = styled.div`
-  font-weight: 400;
   font-size: 18px;
   line-height: 24px;
   padding-right: 10px;
@@ -173,17 +160,11 @@ export const PaymentPriceTotalNumber = styled.div`
 
 export const PaymentSubWrapper = styled.div`
   width: 100%;
-
   display: flex;
-  flex-direction: row;
-  /* border-bottom: 1px solid #c4c4c4; */
 `;
 
 export const PaymentSubLeftWrapper = styled.div`
   width: 800px;
-
-  /* height: 665px; */
-
   display: flex;
   flex-direction: column;
 
@@ -205,7 +186,6 @@ export const PaymentSubTextWrapper = styled.div`
   width: 100%;
 
   display: flex;
-  flex-direction: row;
   align-items: center;
 
   margin-bottom: 20px;
@@ -240,7 +220,6 @@ export const PhoneHyphen = styled.div`
 
 export const InputBoxTextWrapper = styled.div`
   display: flex;
-  flex-direction: row;
 `;
 
 export const ZipCodeSearchButton = styled.button`
@@ -260,7 +239,6 @@ export const ZipCodeSearchButton = styled.button`
     color: #b150f2;
   }
 
-  cursor: pointer;
 `;
 
 export const PaymentSubRightWrapper = styled.div`
@@ -286,7 +264,6 @@ export const PaymentSubDiv = styled.div`
 
 export const OrderPriceWrapper = styled.div`
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
   align-items: center;
 
@@ -344,10 +321,7 @@ export const LabelText = styled.div`
 `;
 
 export const Line = styled.div`
-  font-weight: 400;
   font-size: 20px;
-
-  /* margin-top: 30px; */
   border-bottom: 1px solid #c4c4c4; ;
 `;
 
@@ -389,7 +363,6 @@ export const MyCouponWrapper = styled.div`
 `;
 
 export const MyCoupon = styled.div`
-  font-style: normal;
   font-weight: 700;
   font-size: 24px;
   line-height: 28px;
@@ -402,8 +375,6 @@ export const MyCoupon = styled.div`
 `;
 
 export const MyCouponDesc = styled.div`
-  font-style: normal;
-  font-weight: 400;
   font-size: 14px;
   line-height: 20px;
 
@@ -423,7 +394,6 @@ export const MyCouponListWrapper = styled.div`
 
 export const MyCouponList = styled.div`
   display: flex;
-  flex-direction: row;
   width: 443px;
   height: 60px;
 
@@ -444,8 +414,6 @@ export const MyCouponList = styled.div`
 `;
 
 export const MyCouponName = styled.div`
-  font-style: normal;
-  font-weight: 400;
   font-size: 18px;
   line-height: 24px;
 
@@ -455,8 +423,6 @@ export const MyCouponName = styled.div`
 `;
 
 export const MyCouponDisCount = styled.div`
-  font-style: normal;
-  font-weight: 400;
   font-size: 14px;
   line-height: 20px;
 
