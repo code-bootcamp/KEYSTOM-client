@@ -1,7 +1,6 @@
 import UploadFilePage from "../../commons/uploadFile";
 import * as S from "./ReviewWrite.styles";
 import { IReviewWritePresenter } from "./ReviewWrite.types";
-import { v4 as uuidv4 } from "uuid";
 
 export default function ReviewWritePresenter(props: IReviewWritePresenter) {
   return (

@@ -3,10 +3,10 @@ import ReviewDetail from "./reviewDetail/ReviewList.container";
 
 // 키보드에 필요한 import
 import { Suspense, useRef, useState, useEffect } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
+import { Canvas } from "@react-three/fiber";
 import { Environment, useGLTF, OrbitControls } from "@react-three/drei";
 import { proxy, useSnapshot } from "valtio";
-import { snap, Expo } from "gsap";
+import { Expo } from "gsap";
 import { motion } from "framer-motion";
 import useMousePosition from "./useMousePosition";
 import { useRecoilState } from "recoil";
@@ -24,7 +24,7 @@ import { GLTF } from "three/examples/jsm/loaders/GLTFLoader";
 // }
 
 // 키보드 색상 state
-let state = proxy({
+const state = proxy({
   current: null,
   items: {
     "'\"": "#ffffff",
@@ -98,7 +98,7 @@ let enterLength = 0;
 let escLength = 0;
 
 function ChangeKey() {
-  const [recoilLength2, setRecoilLength] = useRecoilState(recoilLength);
+  const [, setRecoilLength] = useRecoilState(recoilLength);
 
   useEffect(() => {
     if (
@@ -171,8 +171,7 @@ function ChangeKey() {
 
 // esc 색상 바꼈을 때
 function EscChangeKey() {
-  const [recoilEscLength2, setRecoilEscLength] =
-    useRecoilState(recoilEscLength);
+  const [, setRecoilEscLength] = useRecoilState(recoilEscLength);
 
   useEffect(() => {
     escLength = Object.values(state.items)[47] !== "#ffffff" ? 1 : 0;
@@ -184,8 +183,7 @@ function EscChangeKey() {
 
 // 스페이스바 색상 바꼈을 때
 function SpaceBarChangeKey() {
-  const [recoilSpaceLength2, setRecoilSpaceLength] =
-    useRecoilState(recoilSpaceLength);
+  const [, setRecoilSpaceLength] = useRecoilState(recoilSpaceLength);
   useEffect(() => {
     spacebarLength = Object.values(state.items)[33] !== "#ffffff" ? 1 : 0;
     setRecoilSpaceLength(Object.values(state.items)[33] !== "#ffffff" ? 1 : 0);
@@ -196,8 +194,7 @@ function SpaceBarChangeKey() {
 
 // 엔터 색상 바꼈을 때
 function EnterChangeKey() {
-  const [recoilEnterLength2, setRecoilEnterLength] =
-    useRecoilState(recoilEnterLength);
+  const [, setRecoilEnterLength] = useRecoilState(recoilEnterLength);
   useEffect(() => {
     enterLength = Object.values(state.items)[14] !== "#ffffff" ? 1 : 0;
     setRecoilEnterLength(Object.values(state.items)[14] !== "#ffffff" ? 1 : 0);
@@ -352,9 +349,7 @@ function Keyboard(props: JSX.IntrinsicElements["group"]) {
         ref={ref}
         {...props}
         dispose={null}
-        onClick={(e:any) => (
-          e.stopPropagation(), (state.current = e.object.material.name)
-        )}
+        onClick={(e: any) => (state.current = e.object.material.name)}
         position={[-0.26, 0, -0.1]}
         rotation={[0, 0, 0]}
         scale={[2, 2, 2]}
@@ -803,23 +798,23 @@ function Keyboard(props: JSX.IntrinsicElements["group"]) {
 }
 function Picker() {
   const snap = useSnapshot(state);
-  console.log("snap", snap)
+  console.log("snap", snap);
   return (
     <S.HexColorPickerWrapper>
       <S.HexColorPick
         className="picker"
-        //@ts-ignore
+        // @ts-ignore
         color={snap.items[snap.current]}
-        //@ts-ignore
+        // @ts-ignore
         onChange={(color) => (state.items[snap.current] = color)}
       />
 
       <S.HexColorCodeWrapper>
         <S.HexColorCode>Color Code</S.HexColorCode>
         <S.HexColorPickInput
-          //@ts-ignore
+          // @ts-ignore
           color={snap.items[snap.current]}
-          //@ts-ignore
+          // @ts-ignore
           onChange={(color) => (state.items[snap.current] = color)}
         />
       </S.HexColorCodeWrapper>
@@ -828,14 +823,13 @@ function Picker() {
 }
 
 export default function ProductDetailPresenter(props: any) {
-  const snap = useSnapshot(state);
+  useSnapshot(state);
+  useRef();
+  useMousePosition();
 
   const [seeImageHover, setSeeImageHover] = useState(false);
 
-  let list = useRef();
-  const { x, y } = useMousePosition();
-
-  const [listPosition, setListPosition] = useState({
+  const [listPosition] = useState({
     top: 0,
     left: 0,
   });
