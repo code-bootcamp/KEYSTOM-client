@@ -6,17 +6,16 @@ import {
     isLoadedState,
     restoreAccessTokenLoadable,
 } from "../store/index";
-// @ts-ignore
 
-export const withAuth = (Component) => (props) => {
+export const withAuth = (Component:any) => (props:any) => {
     const router = useRouter();
     const [accessToken] = useRecoilState(accessTokenState);
     const [isLoaded] = useRecoilState(isLoadedState);
-    const aaa = useRecoilValueLoadable(restoreAccessTokenLoadable);
+    const loadableAccessToken = useRecoilValueLoadable(restoreAccessTokenLoadable);
 
     useEffect(() => {
         if (!accessToken) {
-            aaa.toPromise().then((newAccessToken) => {
+            loadableAccessToken.toPromise().then((newAccessToken) => {
                 if (!newAccessToken) {
                     alert("로그인 후 이용 가능합니다!!!");
                     history.back();
