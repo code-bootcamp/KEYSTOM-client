@@ -95,7 +95,6 @@ export const FETCH_PRODUCTS = gql`
             title
             description
             price
-            # like
             createdAt
             thumbnail
             productTags {
