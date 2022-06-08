@@ -10,7 +10,7 @@ import {
   DELTETE_COUPON,
 } from "./Payment.queries";
 import { Modal } from "antd";
-import { useState } from "react";
+import React, { ChangeEvent, MouseEvent, useState } from "react";
 import { useRecoilState } from "recoil";
 import { paymentProductId } from "../../commons/store";
 import { useRouter } from "next/router";
@@ -21,11 +21,12 @@ declare const window: typeof globalThis & {
 
 export default function PaymentContainer() {
   const router = useRouter();
-  const [productId, ] = useRecoilState(paymentProductId);
+
+  const [productId] = useRecoilState(paymentProductId);
+
   const [couponId, setCouponId] = useState("");
   const [isClickedModal, setIsClickedModal] = useState(false);
   const [isClickedCoupon, setIsClickedCoupon] = useState(false);
-
   const [isOpen, setIsOpen] = useState(false);
   const [zipCode, setZipCode] = useState("");
   const [address, setAddress] = useState("");
@@ -33,8 +34,6 @@ export default function PaymentContainer() {
   const [receiverName, setReceiverName] = useState("");
   const [receiverPhone, setReceiverPhone] = useState("");
 
-  const [payment] = useMutation(PAYMENT);
-  const [deleteCoupon] = useMutation(DELTETE_COUPON);
   const { data: couponData } = useQuery(FETCH_USER_HAVE_COUPONS);
   const { data: productData } = useQuery(FETCH_PRODUCT, {
     variables: {
@@ -53,6 +52,9 @@ export default function PaymentContainer() {
     },
   });
 
+  const [payment] = useMutation(PAYMENT);
+  const [deleteCoupon] = useMutation(DELTETE_COUPON);
+
   const couponHandleOK = () => {
     setIsClickedModal(false);
   };
@@ -65,13 +67,14 @@ export default function PaymentContainer() {
     setIsClickedModal(true);
   };
 
-  const onClickCoupon = (e: any) => {
-    setCouponId(e.target.id);
-    setIsClickedCoupon(true);
-    setIsClickedModal(false);
+  const onClickCoupon = (event: MouseEvent<HTMLElement>) => {
+    if (event.target instanceof Element) {
+      setCouponId(event.target.id);
+      setIsClickedCoupon(true);
+      setIsClickedModal(false);
+    }
   };
 
-  // 주소 모달
   const showModal = () => {
     setIsOpen(true);
   };
@@ -90,15 +93,15 @@ export default function PaymentContainer() {
     setIsOpen(false);
   };
 
-  const onChangeAddressDetail = (event: any) => {
+  const onChangeAddressDetail = (event: ChangeEvent<HTMLInputElement>) => {
     setAddressDetail(event.target.value);
   };
 
-  const onChangeReceiverName = (event: any) => {
+  const onChangeReceiverName = (event: ChangeEvent<HTMLInputElement>) => {
     setReceiverName(event.target.value);
   };
 
-  const onChangeReceiverPhone = (event: any) => {
+  const onChangeReceiverPhone = (event: ChangeEvent<HTMLInputElement>) => {
     setReceiverPhone(event.target.value);
   };
 
@@ -123,7 +126,6 @@ export default function PaymentContainer() {
       },
       (rsp: any) => {
         if (rsp.success) {
-          console.log(rsp);
           payment({
             variables: {
               price:
