@@ -1,6 +1,6 @@
-import * as S from "./AdminWrite.styles"
+import * as S from "./AdminProductWrite.styles"
 import dynamic from "next/dynamic";
-import { IAdminWritePresenter } from './ProductWrite.types';
+import { IAdminWritePresenter } from './AdminProductWrite.types';
 
 
 

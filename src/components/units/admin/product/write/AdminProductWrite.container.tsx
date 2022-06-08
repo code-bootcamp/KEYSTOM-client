@@ -3,9 +3,9 @@ import { useState, useEffect, useRef, ChangeEvent, MouseEvent } from 'react';
 import { useRouter } from "next/router";
 import { Modal } from "antd";
 import "@toast-ui/editor/dist/toastui-editor.css";
-import { IUpdateVariables } from "./ProductWrite.types";
-import { CREATE_PRODUCT, UPDATE_PRODUCT, UPLOAD_FILE } from './AdminWrite.queries';
-import AdminProductWritePresenter from "./AdminWrite.presenter";
+import { IUpdateVariables } from "./AdminProductWrite.types";
+import { CREATE_PRODUCT, UPDATE_PRODUCT, UPLOAD_FILE } from './AdminProductWrite.queries';
+import AdminProductWritePresenter from "./AdminProductWrite.presenter";
 
 
 export default function AdminProductWrite(props: any) {
