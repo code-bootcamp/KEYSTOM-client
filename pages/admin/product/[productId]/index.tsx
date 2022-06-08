@@ -1,4 +1,4 @@
-import AdminProductDetail from '../../../../src/components/units/admin/product/detail/index';
+import AdminProductDetail from '../../../../src/components/units/admin/product/detail/AdminProductDetail.container';
 export default function AdminProductDetailPage(){
     return <AdminProductDetail/>
 }

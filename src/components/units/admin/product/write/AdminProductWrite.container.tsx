@@ -3,15 +3,15 @@ import { useState, useEffect, useRef, ChangeEvent, MouseEvent } from 'react';
 import { useRouter } from "next/router";
 import { Modal } from "antd";
 import "@toast-ui/editor/dist/toastui-editor.css";
-import { IUpdateVariables } from "./ProductWrite.types";
-import { CREATE_PRODUCT, UPDATE_PRODUCT, UPLOAD_FILE } from './AdminWrite.queries';
-import AdminProductWritePresenter from "./AdminWrite.presenter";
+import { IUpdateVariables } from "./AdminProductWrite.types";
+import { CREATE_PRODUCT, UPDATE_PRODUCT, UPLOAD_FILE } from './AdminProductWrite.queries';
+import AdminProductWritePresenter from "./AdminProductWrite.presenter";
 
 
 export default function AdminProductWrite(props: any) {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
-    const [price, setPrice] = useState();
+    const [price, setPrice] = useState<any>();
     const [hashArr, setHashArr] = useState<string[]>([]);
     const [imageUrls, setImageUrls] = useState<string[]>([]);
 
@@ -83,8 +83,10 @@ export default function AdminProductWrite(props: any) {
 
             Modal.success({ content: "상품을 등록하였습니다" });
             router.push("/admin/product");
-        } catch (error: any) {
-            Modal.error({ content: error.message });
+        } catch (error) {
+            if(error instanceof Error){
+                Modal.error({ content: error.message });
+            }
         }
     };
 
