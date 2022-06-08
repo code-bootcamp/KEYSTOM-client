@@ -297,8 +297,8 @@ export type IOrder = {
 };
 
 export enum IPayment_Status_Enum {
-  Cancel = 'CANCEL',
-  Payment = 'PAYMENT'
+  'CANCEL',
+  'PAYMENT'
 }
 
 export type IPayment = {
