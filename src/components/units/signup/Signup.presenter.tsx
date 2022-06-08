@@ -1,9 +1,10 @@
 import { Modal } from "antd";
 import * as S from "./Signup.styles";
 import DaumPostcode from "react-daum-postcode";
-import TimerPage from "./timer";
+import TimerPage from "../../../commons/libraries/timer";
+import { ISignUpPresenterProps } from "./Signup.types";
 
-export default function SignUpPresenter(props: any) {
+export default function SignUpPresenter(props: ISignUpPresenterProps) {
     return (
         <form onSubmit={props.handleSubmit(props.onClickSignUp)}>
             <S.Container>
