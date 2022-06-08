@@ -8,7 +8,7 @@ import { Environment, useGLTF, OrbitControls } from "@react-three/drei";
 import { proxy, useSnapshot } from "valtio";
 import { Expo } from "gsap";
 import { motion } from "framer-motion";
-import useMousePosition from "./useMousePosition";
+import useMousePosition from "../../../../commons/libraries/useMousePosition";
 import { useRecoilState } from "recoil";
 import {
   recoilLength,
