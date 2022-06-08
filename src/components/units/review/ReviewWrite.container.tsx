@@ -53,9 +53,6 @@ export default function ReviewWriteContainer() {
     },
   });
 
-  console.log("커스텀데이터", customData);
-  console.log("router라우터", router.query.review);
-  console.log("fetfchortrfder data", data);
   useApolloClient();
 
   const onChangeReviewTitle = (event: ChangeEvent<HTMLInputElement>) => {
