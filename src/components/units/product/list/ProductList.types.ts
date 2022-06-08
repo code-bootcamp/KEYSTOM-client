@@ -1,14 +1,19 @@
+import { MouseEvent } from "react";
+
 export interface IProductListPresenterProps {
-    refetch: any;
-    refetchProductCount: any;
     data: any;
+    refetch: any;
     productCount: any;
+    refetchProductCount: any;
     keyword: any;
-
     onChangeKeyword: (value: string) => void;
-
     onLoadMore: () => void;
-    (event: MouseEvent<HTMLImageElement>);
+    onClickMoveToDetail: (event: MouseEvent<HTMLImageElement>) => void;
 }
 
-export interface IProductListPresenterItemProps {}
+export interface IProductListPresenterItemProps {
+    data: any;
+    keyword: any;
+    el: any;
+    onClickMoveToDetail: (event: MouseEvent<HTMLImageElement>) => void;
+}
