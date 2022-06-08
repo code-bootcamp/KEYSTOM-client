@@ -1,4 +1,4 @@
-import AdminProductWrite from "../../../../src/components/units/admin/product/write/AdminWrite.container";
+import AdminProductWrite from "../../../../src/components/units/admin/product/write/AdminProductWrite.container";
 
 export default function AdminProductWritePage(){
 

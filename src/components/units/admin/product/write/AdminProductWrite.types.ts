@@ -24,7 +24,7 @@ export interface IAdminWritePresenter{
     hashArr:string[]
     onClickTagDelete:(event: MouseEvent<HTMLSpanElement>) => void
     
-    editorRef:null
+    editorRef:any
     uploadFile: () => void
     onChangeFileUrl: (fileUrl: any) => void
     description: string
