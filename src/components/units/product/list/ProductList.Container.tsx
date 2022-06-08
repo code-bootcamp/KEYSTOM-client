@@ -1,6 +1,6 @@
 import { useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { MouseEvent, useState } from "react";
 import ProductListPresenter from "./ProductList.Presenter";
 import { FETCH_PRODUCTS, FETCH_PRODUCT_ROW_COUNT } from "./ProductList.queries";
 
@@ -35,8 +35,9 @@ export default function ProductListContainer() {
             },
         });
     };
-    const onClickMoveToDetail = (e: any) => {
-        router.push(`/store/${e.target.id}`);
+    const onClickMoveToDetail = (event: MouseEvent<HTMLImageElement>) => {
+        if (event.target instanceof Element)
+            router.push(`/store/${event.target.id}`);
     };
 
     const onChangeKeyword = (value: string) => {

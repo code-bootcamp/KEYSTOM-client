@@ -3,8 +3,11 @@ import * as S from "./ProductList.styles";
 import InfiniteScroll from "react-infinite-scroller";
 import _ from "lodash";
 import Typewriter from "typewriter-effect";
+import { IProductListPresenterProps } from "./ProductList.types";
 
-export default function ProductListPresenter(props: any) {
+export default function ProductListPresenter(
+    props: IProductListPresenterProps
+) {
     if (!props.data) return <div></div>;
 
     const getDebounce = _.debounce((data: string) => {
