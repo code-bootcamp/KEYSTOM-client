@@ -6,6 +6,8 @@ import dynamic from "next/dynamic";
 import "@toast-ui/editor/dist/toastui-editor.css";
 import { Modal } from "antd";
 import AdminDescriptionPage from "./description";
+import Head from "next/head";
+import {request} from "graphql-request"
 
 const PostViewer = dynamic(() => import("../detail/Viewer"), { ssr: false });
 
@@ -103,7 +105,7 @@ const DELETE_PRODUCT = gql`
     }
 `;
 
-export default function AdminProductDetail() {
+export default function AdminProductDetail(props: any) {
     const router = useRouter();
     console.log("router", router);
     const { data } = useQuery(FETCH_PRODUCT, {
@@ -143,6 +145,11 @@ export default function AdminProductDetail() {
 
     return (
         <ProductWriteWrapper>
+            <Head>
+                <meta property="og:title" content={props.productData?.title}></meta>
+                <meta property="og:description" content={props.productData?.description}></meta>
+                <meta property="og:thumbnail" content={props.productData?.thumbnail}></meta>
+            </Head>
             <Title>Fetch Product</Title>
             <InputWrapper>
                 <SmallTitle>Title</SmallTitle>
@@ -172,3 +179,23 @@ export default function AdminProductDetail() {
         </ProductWriteWrapper>
     );
 }
+
+
+
+export const getServerSideProps = async (context:any) => {
+
+    // const {data} = useQuery(FETCH_PRODUCT)
+
+    const data = await request("https://delifarm.site/graphql", FETCH_PRODUCT, {productId:  context.query.productId})
+
+    return {
+        props:{
+            productData:{
+                title:data?.fetchProduct.title,
+                description: data?.fetchProduct.description,
+                thumbnail:data?.fetchProduct.thumbnail
+            }
+        }
+    }
+}
+
