@@ -1,4 +1,4 @@
-import AdminUser from '../../../src/components/units/admin/user/index';
+import AdminUser from '../../../src/components/units/admin/user/AdminUser.container';
 
 export default function AdminUserPage(){
 
