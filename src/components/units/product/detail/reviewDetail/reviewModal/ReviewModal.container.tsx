@@ -2,22 +2,22 @@ import ReviewModalPresenter from "./ReviewModal.presenter";
 import { useQuery } from "@apollo/client";
 import { FETCH_REVIEW } from "./ReviewModal.queries";
 import { FETCH_REVIEW_COMMENTS } from "./comment/commentList/CommentList.queries";
+import { IReviewModalContainerProps } from "./ReviewModal.types";
 
-export default function ReviewModalContainer(props: any) {
+export default function ReviewModalContainer(
+    props: IReviewModalContainerProps
+) {
     const { data: reviewData } = useQuery(FETCH_REVIEW, {
         variables: {
             reviewId: String(props.selectedId),
         },
     });
 
-    console.log("reviewData", reviewData);
-
     const { data: commentData } = useQuery(FETCH_REVIEW_COMMENTS, {
         variables: {
             reviewId: String(props.selectedId),
         },
     });
-    console.log("commentData", commentData);
 
     return (
         <ReviewModalPresenter

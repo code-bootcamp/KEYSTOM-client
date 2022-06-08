@@ -1,14 +1,17 @@
-import * as A from "./ReviewDetail.styles";
-import { useState } from "react";
+import * as A from "./ReviewList.styles";
+import { MouseEvent, useState } from "react";
 import ReviewModalContainer from "./reviewModal/ReviewModal.container";
+import { IReviewDetailPresenterProps } from "./ReviewList.types";
 
-export default function ReviewDetailPresenter(props: any) {
+export default function ReviewDetailPresenter(
+    props: IReviewDetailPresenterProps
+) {
     const [isOpen, setIsOpen] = useState(false);
 
     const [selectedId, setSelectedId] = useState("");
 
-    const showModal = (event: any) => {
-        setSelectedId(event.target.id);
+    const showModal = (event: MouseEvent<HTMLImageElement>) => {
+        if (event.target instanceof Element) setSelectedId(event.target.id);
         setIsOpen(true);
     };
 
