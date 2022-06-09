@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import * as S from "./StoreMain.styles";
 
-// 키보드 배경
 function Preloader({ children, timeline }: any) {
   const el = useRef<any>();
 
@@ -19,7 +18,6 @@ function Preloader({ children, timeline }: any) {
   return <S.PreloaderDiv ref={el}>{children}</S.PreloaderDiv>;
 }
 
-// 당신만의 키보드를 만들어 보세요.
 function HideTitleFunc({ children, timeline }: any) {
   const el = useRef<any>();
 
@@ -36,7 +34,6 @@ function HideTitleFunc({ children, timeline }: any) {
   return <S.HideTitle ref={el}>{children}</S.HideTitle>;
 }
 
-// 취향은 내맘대로, 색상은 자유자재로
 function HideTopContentsFunc({ children, timeline }: any) {
   const el = useRef<any>();
 

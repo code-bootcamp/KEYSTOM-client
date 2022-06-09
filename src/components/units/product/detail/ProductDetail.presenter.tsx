@@ -1,7 +1,6 @@
 import * as S from "./ProductDetail.styles";
 import ReviewDetail from "./reviewDetail/ReviewList.container";
 
-// 키보드에 필요한 import
 import { Suspense, useRef, useState, useEffect } from "react";
 import { Canvas } from "@react-three/fiber";
 import { Environment, useGLTF, OrbitControls } from "@react-three/drei";
@@ -18,12 +17,6 @@ import {
 } from "../../../commons/store";
 import { GLTF } from "three/examples/jsm/loaders/GLTFLoader";
 
-// export interface GLTF extends GLTFThree {
-//   nodes: Record<string, Mesh>;
-//   materials: Record<string, Material>;
-// }
-
-// 키보드 색상 state
 const state = proxy({
   current: null,
   items: {
@@ -91,7 +84,6 @@ const state = proxy({
   },
 });
 
-// 스페이스바 제외 색상 바뀐거 찾는 함수
 let length = 0;
 let spacebarLength = 0;
 let enterLength = 0;
@@ -169,7 +161,6 @@ function ChangeKey() {
   return <div>{length}</div>;
 }
 
-// esc 색상 바꼈을 때
 function EscChangeKey() {
   const [, setRecoilEscLength] = useRecoilState(recoilEscLength);
 
@@ -181,7 +172,6 @@ function EscChangeKey() {
   return <div>{escLength}</div>;
 }
 
-// 스페이스바 색상 바꼈을 때
 function SpaceBarChangeKey() {
   const [, setRecoilSpaceLength] = useRecoilState(recoilSpaceLength);
   useEffect(() => {
@@ -192,7 +182,6 @@ function SpaceBarChangeKey() {
   return <div>{spacebarLength}</div>;
 }
 
-// 엔터 색상 바꼈을 때
 function EnterChangeKey() {
   const [, setRecoilEnterLength] = useRecoilState(recoilEnterLength);
   useEffect(() => {
@@ -334,7 +323,6 @@ type GLTFResult = GLTF & {
   };
 };
 
-// 키보드 3d 구현 함수
 function Keyboard(props: JSX.IntrinsicElements["group"]) {
   const ref = useRef();
   const snap = useSnapshot(state);
@@ -834,13 +822,6 @@ export default function ProductDetailPresenter(props: any) {
     left: 0,
   });
 
-  // useEffect(() => {
-  //   setListPosition({
-  //     top: list?.current?.getBoundingClientRect().top,
-  //     left: list?.current?.getBoundingClientRect().left,
-  //   });
-  // }, []);
-
   return (
     <>
       <S.Wrapper>
@@ -851,7 +832,6 @@ export default function ProductDetailPresenter(props: any) {
               <S.SeeIcon
                 src="/images/detail/see.png"
                 onClick={() => setSeeImageHover((prev) => !prev)}
-                // onMouseOut={() => setSeeImageHover(false)}
               />
               <motion.div
                 initial={{ opacity: 0 }}

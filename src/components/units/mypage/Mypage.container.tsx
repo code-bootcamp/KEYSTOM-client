@@ -26,7 +26,7 @@ export default function MypageContainer() {
   const { data: orderData } = useQuery(FETCH_ORDERS);
   const { data: userHaveCouponData } = useQuery(FETCH_USER_HAVE_COUPONS);
 
-  const handleOK = () => {
+  const handleOk = () => {
     setIsModalOpen(false);
   };
 
@@ -34,7 +34,7 @@ export default function MypageContainer() {
     setIsModalOpen(false);
   };
 
-  const handleOK2 = () => {
+  const handleOk2 = () => {
     setIsModalTracking(false);
   };
 
@@ -47,7 +47,7 @@ export default function MypageContainer() {
     setBaskets(basketsArr);
   }, [isBasket]);
 
-  const moveToReviewWrite = (event: MouseEvent<HTMLInputElement>) => {
+  const moveToReviewWrite = (event: MouseEvent<HTMLButtonElement>) => {
     if (event.target instanceof Element) {
       setOrderId(event.target.id);
       router.push(`/mypage/${event.target.id}`);
@@ -69,7 +69,9 @@ export default function MypageContainer() {
     setIsModalTracking(true);
   };
 
-  const moveToProductDetail = (event: MouseEvent<HTMLInputElement>) => {
+  const moveToProductDetail = (
+    event: MouseEvent<HTMLImageElement> | MouseEvent<HTMLButtonElement>
+  ) => {
     if (event.target instanceof Element) {
       router.push(`/store/${event.target.id}`);
     }
@@ -85,11 +87,11 @@ export default function MypageContainer() {
     setIsBasket((prev) => !prev);
   };
 
-  const onChangeCode = (e: ChangeEvent<HTMLInputElement>) => {
-    setCode(e.currentTarget.value);
+  const onChangeCode = (event: ChangeEvent<HTMLSelectElement>) => {
+    setCode(event.currentTarget.value);
   };
-  const onChangeInvoice = (e: ChangeEvent<HTMLInputElement>) => {
-    setInvoice(e.currentTarget.value);
+  const onChangeInvoice = (event: ChangeEvent<HTMLInputElement>) => {
+    setInvoice(event.currentTarget.value);
   };
 
   const onClickTrackingSubmit = async () => {
@@ -113,9 +115,9 @@ export default function MypageContainer() {
       baskets={baskets}
       onClickSeeCoupon={onClickSeeCoupon}
       onClickTracking={onClickTracking}
-      handleOK={handleOK}
+      handleOk={handleOk}
       handleCancel={handleCancel}
-      handleOK2={handleOK2}
+      handleOk2={handleOk2}
       handleCancel2={handleCancel2}
       isModalOpen={isModalOpen}
       isModalTracking={isModalTracking}
