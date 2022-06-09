@@ -25,7 +25,6 @@ export default function ReviewModalContainer(
             handleOK={props.handleOK}
             handleCancel={props.handleCancel}
             onClickCloseModal={props.onClickCloseModal}
-            id={props.id}
             selectedId={props.selectedId}
             reviewData={reviewData}
             commentData={commentData}

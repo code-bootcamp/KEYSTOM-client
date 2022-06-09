@@ -17,7 +17,6 @@ import { IFormValues } from "./Signup.types";
 const schema = yup.object({
     name: yup
         .string()
-        // .matches(/^[a-zA-Z0-9]/, "형식에 맞지 않습니다.")
         .max(8, "이름은 8글자 이내여야 합니다.")
         .required("이름은 필수 입력 사항입니다."),
 
@@ -176,7 +175,7 @@ export default function SignUpContainer() {
 
     const onClickCheckToken = async () => {
         try {
-            const result = await checkToken({ variables: { token } });
+            await checkToken({ variables: { token } });
             Modal.success({ content: "인증을 성공하였습니다." });
             if (tokenInputRef.current) tokenInputRef.current.disabled = true;
             setTokenStatus(true);

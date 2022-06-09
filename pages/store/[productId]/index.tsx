@@ -1,5 +1,3 @@
-// Detail Page
-
 import ProductDetailContainer from '../../../src/components/units/product/detail/ProductDetail.container';
 
 
