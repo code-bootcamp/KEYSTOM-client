@@ -10,9 +10,9 @@ import "@toast-ui/editor/dist/theme/toastui-editor-dark.css";
 type HookCallback = (url: string, text?: string) => void;
 
 
-export default function PostEditor(props: any){
+export default function PostEditorNoEdit(props: any){
   return (
-    <>{props.data?
+    <>
       <Editor
         initialValue={props.data?.fetchProduct.description || ""}
         // onChange={props.onChangeDescription}
@@ -47,7 +47,7 @@ export default function PostEditor(props: any){
             props.onChangeFileUrl(uploadedImageURL?.data.uploadFile);
           },
         }}
-      />: <></>}
+      />
     </>
   );
 }

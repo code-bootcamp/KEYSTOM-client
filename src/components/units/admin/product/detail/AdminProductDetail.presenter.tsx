@@ -1,6 +1,6 @@
 import * as S from './AdminProductDetail.styles'
 import Head from "next/head";
-import AdminDescriptionPage from './description';
+// import AdminDescriptionPage from './description';
 import dynamic from "next/dynamic";
 import "@toast-ui/editor/dist/toastui-editor.css";
 import { IAdminProductDetailPresenterProps } from './AdminProductDetail.types';
@@ -21,11 +21,11 @@ export default function AdminProductDetailPresenter(props: IAdminProductDetailPr
             <S.SmallTitle>Title</S.SmallTitle>
             <S.ContentDiv>{props.data?.fetchProduct.title}</S.ContentDiv>
             <S.SmallTitle>Description</S.SmallTitle>
-            <AdminDescriptionPage
+            {/* <AdminDescriptionPage
                 data={props.data?.fetchProduct}
-            >
-                 <PostViewer />
-            </AdminDescriptionPage>
+            > */}
+                 <PostViewer data = {props.data} />
+            {/* </AdminDescriptionPage> */}
             <S.SmallTitle>Price</S.SmallTitle>
             <S.ContentDiv>{props.data?.fetchProduct.price}</S.ContentDiv>
         </S.InputWrapper>

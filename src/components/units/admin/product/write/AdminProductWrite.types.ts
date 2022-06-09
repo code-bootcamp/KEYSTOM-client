@@ -6,9 +6,9 @@ export interface IUpdateVariables{
     title?: string
     description?: string
     price?: number
-    imageUrls?:string[]
+    // imageUrls?:string[]
     thumbnail?:string
-    // productTags:string[]
+    productTags?:string[]
     data?: any
 
 }
@@ -18,7 +18,7 @@ export interface IAdminWritePresenter{
     isEdit:boolean
     data?:any
     onChangeTitle:(event: ChangeEvent<HTMLInputElement>) => void
-    onChangeDescription: (event: ChangeEvent<HTMLInputElement>) => void
+    // onChangeDescription: (event: ChangeEvent<HTMLInputElement>) => void
     onChangePrice: (event: ChangeEvent<HTMLInputElement>) => void
     onKeyUpHash:(event:any) => void
     hashArr:string[]

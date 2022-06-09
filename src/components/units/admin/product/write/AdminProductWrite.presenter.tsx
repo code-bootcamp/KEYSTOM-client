@@ -7,7 +7,9 @@ import { IAdminWritePresenter } from './AdminProductWrite.types';
 const PostEditor = dynamic(() => import("./EditorLoader"), {
     ssr: false,
 });
-
+const PostEditorNoEdit = dynamic(() => import("./EditorNoEdit"), {
+    ssr: false,
+});
 
 
 export default function AdminProductWritePresenter(props: IAdminWritePresenter) {
@@ -26,15 +28,23 @@ export default function AdminProductWritePresenter(props: IAdminWritePresenter) 
                 />
             </S.InputWrapper>
             <S.InputWrapper>
-                <S.SmallTitle>Description</S.SmallTitle>
-                <PostEditor
-                    onChangeDescription={props.onChangeDescription}
-                    editorRef={props.editorRef}
-                    data={props.data}
-                    uploadFile={props.uploadFile}
-                    onChangeFileUrl={props.onChangeFileUrl}
-                    description={props.description}
-                />
+            <S.SmallTitle>Description</S.SmallTitle>
+            {props.isEdit?
+            <PostEditor
+            editorRef={props.editorRef}
+            data={props.data}
+            uploadFile={props.uploadFile}
+            onChangeFileUrl={props.onChangeFileUrl}
+            description={props.description}
+            />
+            :
+            <PostEditorNoEdit 
+            editorRef={props.editorRef} 
+            data={props.data}
+            uploadFile={props.uploadFile}
+            onChangeFileUrl={props.onChangeFileUrl}
+            description={props.description}/>
+            }
             </S.InputWrapper>
 
             <S.InputWrapper>

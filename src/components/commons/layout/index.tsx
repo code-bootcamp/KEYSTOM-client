@@ -32,7 +32,7 @@ const Inner = styled.div`
     display: flex;
 `;
 
-const HIDDEN_ADMIN_SIDEBAR = ["/admin", "/admin/product", "/admin/user"];
+const HIDDEN_ADMIN_SIDEBAR = ["/admin/", "/admin/product/", "/admin/user/", "/admin/product/write/"];
 
 export default function Layout(props: ILayoutProps) {
     const router = useRouter();
