@@ -8,7 +8,7 @@ export const FETCH_PRODUCT = gql`
             description
             price
             createdAt
-            thumbnail
+            # thumbnail
         }
     }
 `;

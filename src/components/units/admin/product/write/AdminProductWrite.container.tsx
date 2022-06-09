@@ -13,8 +13,7 @@ export default function AdminProductWrite(props: any) {
     // const [description, setDescription] = useState("");
     const [price, setPrice] = useState<any>();
     const [hashArr, setHashArr] = useState<string[]>([]);
-    const [, setImageUrls] = useState<string[]>([]);
-
+    const [imageUrls, setImageUrls] = useState<string[]>([]);
     const [createProduct] = useMutation(CREATE_PRODUCT);
     const [updateProduct] = useMutation(UPDATE_PRODUCT);
     const [uploadFile] = useMutation(UPLOAD_FILE);
@@ -77,7 +76,7 @@ export default function AdminProductWrite(props: any) {
                         title,
                         description,
                         price: Number(price),
-                        // imageUrls,
+                        imageUrls,
                         productTags: hashArr,
                     },
                 },
@@ -110,6 +109,7 @@ export default function AdminProductWrite(props: any) {
                     updateProductInput: {
                         title,
                         description,
+                        imageUrls,
                         price: Number(price),
                         productTags: hashArr,
                     },
