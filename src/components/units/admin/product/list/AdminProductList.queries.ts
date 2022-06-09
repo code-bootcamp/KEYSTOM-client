@@ -8,7 +8,6 @@ export const FETCH_PRODUCTS = gql`
             description
             price
             createdAt
-            thumbnail
             productTags {
                 id
                 tag
