@@ -52,27 +52,27 @@ export default function AdminProductWritePresenter(props: IAdminWritePresenter) 
                 <S.Inputs
                     placeholder="price"
                     onChange={props.onChangePrice}
-                    type="number"
+                    type="text"
                     defaultValue={props.data?.fetchProduct.price}
                 />
                 <S.InputWrapper></S.InputWrapper>
-                <S.SmallTitle>ProductTags</S.SmallTitle>
+                {/* <S.SmallTitle>ProductTags</S.SmallTitle> */}
                 <S.TagInputWrapper>
-                    # {"  "}
+                    {/* # {"  "}
                     <S.SmallInput
                         type="text"
                         onKeyUp={props.onKeyUpHash}
                         placeholder="spacebar"
-                    />
+                    /> */}
                 </S.TagInputWrapper>
                 <S.TagDivWrapper>
-                    {props.hashArr.map((el: any, idx: any) => (
+                    {/* {props.hashArr.map((el: any, idx: any) => (
                         <S.TagWrapper key={idx}>
                             <S.Tag onClick={props.onClickTagDelete} id={idx}>
                                 {el}
                             </S.Tag>
                         </S.TagWrapper>
-                    ))}
+                    ))} */}
                 </S.TagDivWrapper>
             </S.InputWrapper>
 

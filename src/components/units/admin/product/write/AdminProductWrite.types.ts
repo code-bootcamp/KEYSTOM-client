@@ -8,7 +8,7 @@ export interface IUpdateVariables{
     price?: number
     // imageUrls?:string[]
     thumbnail?:string
-    productTags?:string[]
+    // productTags?:string[]
     data?: any
 
 }
@@ -20,9 +20,9 @@ export interface IAdminWritePresenter{
     onChangeTitle:(event: ChangeEvent<HTMLInputElement>) => void
     // onChangeDescription: (event: ChangeEvent<HTMLInputElement>) => void
     onChangePrice: (event: ChangeEvent<HTMLInputElement>) => void
-    onKeyUpHash:(event:any) => void
-    hashArr:string[]
-    onClickTagDelete:(event: MouseEvent<HTMLSpanElement>) => void
+    // onKeyUpHash:(event:any) => void
+    // hashArr:string[]
+    // onClickTagDelete:(event: MouseEvent<HTMLSpanElement>) => void
     
     editorRef:any
     uploadFile: () => void

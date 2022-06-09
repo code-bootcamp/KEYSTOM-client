@@ -46,9 +46,13 @@ export default function AdminProductDetail(props:IAdminProductDetailContainerPro
             Modal.error({ content: error.message });
         }
     };
-    const moveToEditProduct = (event: MouseEvent<HTMLButtonElement>) => {
+    const moveToEditProduct = () => {
         router.push(`/admin/product/${router.query.productId}/edit`);
     };
+
+    const moveToList = () => {
+        router.push("/admin/product/")
+    }
 
     return (
         <AdminProductDetailPresenter
@@ -56,6 +60,7 @@ export default function AdminProductDetail(props:IAdminProductDetailContainerPro
         data={data}
         onClickDeleteProduct={onClickDeleteProduct}
         moveToEditProduct={moveToEditProduct}
+        moveToList={moveToList}
         />
     );
 }

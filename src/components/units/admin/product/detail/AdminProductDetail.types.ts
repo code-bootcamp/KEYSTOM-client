@@ -8,5 +8,6 @@ export interface IAdminProductDetailPresenterProps{
     productData?:any
     data?:any
     onClickDeleteProduct:(event: MouseEvent<HTMLButtonElement>) => void
-    moveToEditProduct:(event: MouseEvent<HTMLButtonElement>) => void
+    moveToEditProduct:() => void
+    moveToList:() => void
 }
