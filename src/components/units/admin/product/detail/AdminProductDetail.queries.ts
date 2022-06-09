@@ -8,11 +8,11 @@ query fetchProduct($productId: String!) {
         description
         price
         createdAt
-        # thumbnail
-        productTags {
-            # id
-            tag
-        }
+        thumbnail
+        # productTags {
+        #     id
+        #     tag
+        # }
     }
 }
 `;

@@ -33,15 +33,16 @@ export default function AdminProductDetailPresenter(props: IAdminProductDetailPr
             <S.SmallTitle>ProductTags</S.SmallTitle>
             <S.TagDivWrapper>
                 <S.TagWrapper>
-                    {props.data?.fetchProduct.productTags.map((el: any) => (
+                    {/* {props.data?.fetchProduct.productTags.map((el: any) => (
                         <S.Tag key={el.id}>{el.tag}</S.Tag>
-                    ))}
+                    ))} */}
                 </S.TagWrapper>
             </S.TagDivWrapper>
         </S.InputWrapper>
 
         <S.SubmitButton onClick={props.onClickDeleteProduct}>Delete</S.SubmitButton>
         <S.SubmitButton onClick={props.moveToEditProduct}>Edit</S.SubmitButton>
+        <S.SubmitButton onClick={props.moveToList}>Move To List</S.SubmitButton>
     </S.ProductWriteWrapper>
     )
 }

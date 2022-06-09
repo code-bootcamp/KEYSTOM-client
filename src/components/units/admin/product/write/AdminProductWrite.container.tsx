@@ -1,5 +1,5 @@
 import { useMutation } from "@apollo/client";
-import { useState, useEffect, useRef, ChangeEvent, MouseEvent } from 'react';
+import { useState, useEffect, useRef, ChangeEvent } from 'react';
 import { useRouter } from "next/router";
 import { Modal } from "antd";
 import "@toast-ui/editor/dist/toastui-editor.css";
@@ -12,7 +12,7 @@ export default function AdminProductWrite(props: any) {
     const [title, setTitle] = useState("");
     // const [description, setDescription] = useState("");
     const [price, setPrice] = useState<any>();
-    const [hashArr, setHashArr] = useState<string[]>([]);
+    // const [hashArr, setHashArr] = useState<string[]>([]);
     const [imageUrls, setImageUrls] = useState<string[]>([]);
     const [createProduct] = useMutation(CREATE_PRODUCT);
     const [updateProduct] = useMutation(UPDATE_PRODUCT);
@@ -41,26 +41,26 @@ export default function AdminProductWrite(props: any) {
         setImageUrls(fileUrl);
     };
 
-    const onKeyUpHash = (event: any ) => {
-        if (event.keyCode === 32 && event.target.value !== "") {
-            setHashArr([...hashArr, "#" + event.target.value]);
-            event.target.value = "";
-        }
-    };
+    // const onKeyUpHash = (event: any ) => {
+    //     if (event.keyCode === 32 && event.target.value !== "") {
+    //         setHashArr([...hashArr, "#" + event.target.value]);
+    //         event.target.value = "";
+    //     }
+    // };
 
-    const onClickTagDelete = (event: MouseEvent<HTMLSpanElement>) => {
-        if(event.target instanceof Element){
-            hashArr.splice(Number(event.target.id), 1);
-            setHashArr([...hashArr]);
-        }
+    // const onClickTagDelete = (event: MouseEvent<HTMLSpanElement>) => {
+    //     if(event.target instanceof Element){
+    //         hashArr.splice(Number(event.target.id), 1);
+    //         setHashArr([...hashArr]);
+    //     }
     
-    };
+    // };
 
-    useEffect(() => {
-        if (props.data?.fetchProduct?.productTags?.tag.length) {
-            setHashArr([...props.data?.fetchProduct?.productTags?.tag]);
-        }
-    }, [props.data]);
+    // useEffect(() => {
+    //     if (props.data?.fetchProduct?.productTags?.tag.length) {
+    //         setHashArr([...props.data?.fetchProduct?.productTags?.tag]);
+    //     }
+    // }, [props.data]);
 
     useEffect(() => {
         if (props.data?.fetchProduct.thumbnail) {
@@ -77,7 +77,7 @@ export default function AdminProductWrite(props: any) {
                         description,
                         price: Number(price),
                         imageUrls,
-                        productTags: hashArr,
+                        // productTags: hashArr,
                     },
                 },
             });
@@ -111,7 +111,7 @@ export default function AdminProductWrite(props: any) {
                         description,
                         imageUrls,
                         price: Number(price),
-                        productTags: hashArr,
+                        // productTags: hashArr,
                     },
                 },
             });
@@ -129,9 +129,9 @@ export default function AdminProductWrite(props: any) {
       onChangeTitle={onChangeTitle}
     //   onChangeDescription={onChangeDescription}
       onChangePrice={onChangePrice}
-      onKeyUpHash={onKeyUpHash}
-      hashArr={hashArr}
-      onClickTagDelete={onClickTagDelete}
+    //   onKeyUpHash={onKeyUpHash}
+    //   hashArr={hashArr}
+    //   onClickTagDelete={onClickTagDelete}
 
       editorRef={editorRef}
       uploadFile={uploadFile}
