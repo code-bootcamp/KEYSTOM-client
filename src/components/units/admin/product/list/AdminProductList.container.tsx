@@ -43,7 +43,7 @@ export default function AdminProductList() {
         }
     };
 
-    const moveToDetail = (event: MouseEvent<HTMLButtonElement>) => {
+    const moveToDetail = (event: MouseEvent<HTMLButtonElement> | MouseEvent<HTMLImageElement> | MouseEvent<HTMLDivElement>) => {
         if(event.target instanceof Element){
             router.push(`/admin/product/${event.target.id}`);
         }

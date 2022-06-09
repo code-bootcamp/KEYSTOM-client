@@ -72,7 +72,6 @@ export default function ReviewDetailPresenter(
                                     onClickCloseModal={onClickCloseModal}
                                     el={el}
                                     selectedId={selectedId}
-                                    commentData={props.commentData}
                                 />
                             )}
                         </A.ReviewDiv>

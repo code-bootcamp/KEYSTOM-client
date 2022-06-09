@@ -51,7 +51,7 @@ export default function ProductDetailContainer() {
         const temp = baskets.filter((basketEl: any) => basketEl.id === el.id);
 
         if (temp.length === 1) {
-            alert("이미 장바구니에 있습니다!");
+            Modal.error({content:"이미 장바구니에 있습니다!"});
             return;
         }
 
@@ -75,7 +75,7 @@ export default function ProductDetailContainer() {
 
     const onClickCouponApply = () => {};
 
-    const onClickPayNow = async (e: any) => {
+    const onClickPayNow = async (event: any) => {
         try {
             await createCustom({
                 variables: {
@@ -88,7 +88,7 @@ export default function ProductDetailContainer() {
                     },
                 },
             });
-            setProductId(e.target.id);
+            setProductId(event.target.id);
             router.push("/payment");
         } catch (error) {
             alert(error instanceof Error);
