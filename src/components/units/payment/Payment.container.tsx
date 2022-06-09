@@ -55,7 +55,7 @@ export default function PaymentContainer() {
   const [payment] = useMutation(PAYMENT);
   const [deleteCoupon] = useMutation(DELTETE_COUPON);
 
-  const couponHandleOK = () => {
+  const couponHandleOk = () => {
     setIsClickedModal(false);
   };
 
@@ -171,13 +171,13 @@ export default function PaymentContainer() {
       couponDetailData={couponDetailData}
       customData={customData}
       userData={userData}
-      couponHandleOK={couponHandleOK}
+      couponHandleOk={couponHandleOk}
       couponHandleCancel={couponHandleCancel}
       onClickAvailableCoupon={onClickAvailableCoupon}
       onClickCoupon={onClickCoupon}
       isClickedModal={isClickedModal}
       showModal={showModal}
-      handleOK={handleOk}
+      handleOk={handleOk}
       handleCancel={handleCancel}
       handleComplete={handleComplete}
       onChangeAddressDetail={onChangeAddressDetail}

@@ -1,7 +1,8 @@
 import * as S from "./Mypage.styles";
 import Modal from "antd/lib/modal/Modal";
+import { IMypagePresenter } from "./Mypage.types";
 
-export default function MypagePresenter(props: any) {
+export default function MypagePresenter(props: IMypagePresenter) {
   return (
     <>
       {props.isModalOpen ? (
