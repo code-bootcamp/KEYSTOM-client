@@ -10,10 +10,10 @@ import AdminProductWritePresenter from "./AdminProductWrite.presenter";
 
 export default function AdminProductWrite(props: any) {
     const [title, setTitle] = useState("");
-    const [description, setDescription] = useState("");
+    // const [description, setDescription] = useState("");
     const [price, setPrice] = useState<any>();
     const [hashArr, setHashArr] = useState<string[]>([]);
-    const [imageUrls, setImageUrls] = useState<string[]>([]);
+    const [, setImageUrls] = useState<string[]>([]);
 
     const [createProduct] = useMutation(CREATE_PRODUCT);
     const [updateProduct] = useMutation(UPDATE_PRODUCT);
@@ -21,16 +21,18 @@ export default function AdminProductWrite(props: any) {
 
     const router = useRouter();
     const editorRef = useRef<any>();
+    const description = editorRef?.current?.getInstance().getMarkdown()
+
 
     const onChangeTitle = (event: ChangeEvent<HTMLInputElement>) => {
         setTitle(event.target.value);
     };
 
-    const onChangeDescription = (event: ChangeEvent<HTMLInputElement>) => {
-        if (editorRef.current) {
-            setDescription(editorRef.current.getInstance().getMarkdown());
-        }
-    };
+    // const onChangeDescription = (event: ChangeEvent<HTMLInputElement>) => {
+    //     if (editorRef.current) {
+    //         setDescription(editorRef.current.getInstance().getMarkdown());
+    //     }
+    // };
 
     const onChangePrice = (event: ChangeEvent<HTMLInputElement>) => {
         setPrice(event.target.value);
@@ -75,7 +77,7 @@ export default function AdminProductWrite(props: any) {
                         title,
                         description,
                         price: Number(price),
-                        imageUrls,
+                        // imageUrls,
                         productTags: hashArr,
                     },
                 },
@@ -125,7 +127,7 @@ export default function AdminProductWrite(props: any) {
       isEdit={props.isEdit}
       data={props.data}
       onChangeTitle={onChangeTitle}
-      onChangeDescription={onChangeDescription}
+    //   onChangeDescription={onChangeDescription}
       onChangePrice={onChangePrice}
       onKeyUpHash={onKeyUpHash}
       hashArr={hashArr}

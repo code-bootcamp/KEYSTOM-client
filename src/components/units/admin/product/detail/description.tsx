@@ -43,7 +43,6 @@ export default function AdminDescriptionPage(props: any) {
 
     }, [props.data?.description]);
 
-    console.log("new디스크립션?", newDescription);
 
     return (
         <ContentDiv style={{ width: "100%", height: "auto" }}>
