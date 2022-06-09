@@ -27,11 +27,14 @@ export default function AdminProductListPresenter(props:IAdminProductListPresent
                             <S.ListItemImage
                                 onClick={props.moveToDetail}
                                 id={el.id}
-                                src={
-                                    el.thumbnail
-                                        ? `https://storage.googleapis.com/${el.thumbnail}`
-                                        : "/images/no-image/no-image.png"
-                                }
+                                // src={
+                                //     el.thumbnail
+                                //         ? `https://storage.googleapis.com/${el.thumbnail}`
+                                //         : "/images/no-image/no-image.png"
+                                // }
+                                src={`${el.description.includes("https")?
+                                el.description?.slice(el.description.indexOf("https"),el.description.indexOf(")")) : "/images/no-image/no-image.png"
+                            }`}
                             />
                             <PostViewer style={{ width: "100px" }} />
                         </S.ListItemDiv>

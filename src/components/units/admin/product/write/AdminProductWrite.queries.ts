@@ -10,7 +10,6 @@ export const CREATE_PRODUCT = gql`
             description
             price
             createdAt
-            thumbnail
             productTags {
                 id
                 tag
@@ -33,7 +32,6 @@ export const UPDATE_PRODUCT = gql`
             description
             price
             createdAt
-            thumbnail
             productTags {
                 id
                 tag

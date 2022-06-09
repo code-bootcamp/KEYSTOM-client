@@ -8,7 +8,7 @@ query fetchProduct($productId: String!) {
         description
         price
         createdAt
-        thumbnail
+        # thumbnail
         productTags {
             # id
             tag

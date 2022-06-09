@@ -14,7 +14,7 @@ export default function AdminProductDetailPresenter(props: IAdminProductDetailPr
         <Head>
             <meta property="og:title" content={props.productData?.title}></meta>
             <meta property="og:description" content={props.productData?.description}></meta>
-            <meta property="og:thumbnail" content={props.productData?.thumbnail}></meta>
+            {/* <meta property="og:thumbnail" content={props.productData?.thumbnail}></meta> */}
         </Head>
         <S.Title>Fetch Product</S.Title>
         <S.InputWrapper>
