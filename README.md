@@ -11,20 +11,20 @@
 ‘데스크 셋업’의 주요 부품중 하나인 키보드의 수요가 증가할 것으로 예상이되는 가운데,  F12는 사용자가 원하는 디자인으로 커스텀 된 세상에서 하나뿐인 특별한 키보드를 제작하여 나만의 개성을 들어낼수 있는 서비스를 기획하였습니다.
 
 ## 2. 팀원소개
-![title](https://velog.velcdn.com/images/dooin/post/a8a48f18-05e1-4a8c-8f60-17ee7585ba0e/image.png)   
+![F12_member](https://user-images.githubusercontent.com/101323629/173024842-b7717f87-0eee-45ea-96eb-fe4e24f5527f.png)
 
-![title](https://velog.velcdn.com/images/dooin/post/ecb15924-1ca9-4dc0-998d-6b2bdd59666c/image.PNG)   
+![F12_Front](https://user-images.githubusercontent.com/101323629/173024864-7aeaeb3e-13be-45fb-9f9a-7d64e62a04ee.png)
 
-![title](https://velog.velcdn.com/images/dooin/post/958822a5-a6a5-41d2-81b1-ef9849cfdcaa/image.PNG)   
+![F12_Back](https://user-images.githubusercontent.com/101323629/173024872-42efa8ed-ac77-4490-bc32-7441f6e12855.png)
 
 ## 3. 기술스택
-![title](https://velog.velcdn.com/images/dooin/post/4a987ff1-229d-427a-baca-de61114a5005/image.PNG)   
+![F12_Front_Stack](https://user-images.githubusercontent.com/101323629/173024907-7075d2c1-e73b-43cb-bee5-97f9e5e9b60b.png)
 
-![title](https://velog.velcdn.com/images/dooin/post/6b2f5185-1a3f-4547-b9a7-255e9b9d105a/image.PNG)   
+![F12_Back_Stack](https://user-images.githubusercontent.com/101323629/173024928-cb44be68-738f-431c-87a8-37054064955d.png)
 
-![title](https://velog.velcdn.com/images/dooin/post/dabbb035-1868-45e2-a8bd-f7ea7f83577f/image.PNG)   
+![F12_DataFlow](https://user-images.githubusercontent.com/101323629/173024936-72f3c76f-f4ae-4ab8-b2c5-8220a2f918e0.png)
 
-![title](https://velog.velcdn.com/images/dooin/post/f96019e9-ad6c-44f3-836c-6e91f4d46528/image.PNG)   
+![F12_ERD](https://user-images.githubusercontent.com/101323629/173024946-b9d8f7d7-7e57-483e-b0e7-73ba5a11be37.png)
 
 ## 4. 시연영상
 ### 랜딩 페이지
